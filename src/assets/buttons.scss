@@ -1,0 +1,93 @@
+button {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn {
+    display: inline-block;
+    position: relative;
+    height: 40px;
+    padding: 0 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 40px;
+    box-shadow: 3px 3px #a9a7a6;
+    cursor: pointer;
+
+    &:disabled {
+        opacity: .3;
+        cursor: default;
+    }
+
+    &.primary {
+        background: #007d7a;
+        color: #fff;
+    }
+
+    &.secondary {
+        padding: 0 1rem;
+        white-space: nowrap;
+        background: #fff;
+        color: #515151;
+        border: 1px solid #d5d0cc;
+        box-shadow: 3px 3px #EFE9E4;
+
+        &.has-icon {
+            display: flex;
+            align-items: center;
+        }
+
+        > i,
+        > app-status-icon {
+            position: relative;
+            top: 1px;
+            margin-right: 0.2rem;
+        }
+    }
+
+    .button-badge {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+
+        display: block;
+        width: 20px;
+        height: 20px;
+
+        background: #ef8121;
+        border-radius: 50%;
+
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: bold;
+        text-align: center;
+        line-height: 20px;
+    }
+}
+
+button.link-btn {
+    color: #007D7A;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+button.back-btn {
+    font-weight: bold;
+    background-color: #f6f3f0;
+    border: #d5d0cc 1px solid;
+    color: #007D7A;
+    padding: 0.5rem 1rem;
+
+    i {
+        margin-right: 0.5rem;
+    }
+}
