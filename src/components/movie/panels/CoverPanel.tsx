@@ -10,6 +10,10 @@ import MovieModel from '../../../models/MovieModel';
 import {IMovieProps} from "../IMovieProps";
 import {IMovieState} from "../IMovieState";
 
+import {environment} from '../../../env/environment';
+
+export const IMAGE_URL = `${environment.apiBaseUrl}image/`;
+
 // TODO: Slå kanske ihop med format-panelen (cover-info till höger i så fall).
 
 class CoverPanel extends FormComponent<IMovieProps, IMovieState> {  // TODO: Byta FormComponent mot Component?
@@ -51,16 +55,29 @@ class CoverPanel extends FormComponent<IMovieProps, IMovieState> {  // TODO: Byt
                 <div className="cover-panel">
                     <div className="labelled-input">
                         <label htmlFor="foregroundUrl">Förgrundsbild:</label>
-                        {cover.foregroundUrl && (<img src={cover.foregroundUrl} alt="Förgrundsbild" />)}
-                        <input className="text-input-field" type="text" id="foregroundUrl" name="foregroundUrl"
-                               defaultValue={cover.foregroundUrl} onBlur={this.movieStateChanged} />
+                        {cover.fgFileName ?
+                            (<img src={IMAGE_URL + cover.fgFileName} alt="Förgrundsbild" className="cover-image" />)
+                            : (<>
+                                    {cover.foregroundUrl && (<img src={cover.foregroundUrl} alt="Förgrundsbild"/>)}
+                                    <input className="text-input-field" type="text" id="foregroundUrl"
+                                           name="foregroundUrl"
+                                           defaultValue={cover.foregroundUrl} onBlur={this.movieStateChanged}/>
+                                </>
+                            )
+                        }
                     </div>
 
                     <div className="labelled-input">
                         <label htmlFor="backgroundUrl">Bakgrundsbild:</label>
-                        {cover.backgroundUrl && (<img src={cover.backgroundUrl} alt="Bakgrundsbild" />)}
-                        <input className="text-input-field" type="text" id="backgroundUrl" name="backgroundUrl"
-                               defaultValue={cover.backgroundUrl} onBlur={this.movieStateChanged} />
+                        {cover.bgFileName ? (<img src={IMAGE_URL + cover.bgFileName} alt="Bakgrundsbild" className="cover-image"/>)
+                            : (
+                                <>
+                                    {cover.backgroundUrl && (<img src={cover.backgroundUrl} alt="Bakgrundsbild"/>)}
+                                    <input className="text-input-field" type="text" id="backgroundUrl"
+                                           name="backgroundUrl"
+                                           defaultValue={cover.backgroundUrl} onBlur={this.movieStateChanged}/>
+                                </>
+                            )}
                     </div>
                 </div>
             );
@@ -105,6 +122,20 @@ debugger;
             }
         } as MovieModel));
     }
+}
+
+const getImageUrl = (image: Uint32Array) => {
+    const blob = new Blob([image], { type: 'image/jpeg' });
+    // return URL.createObjectURL(blob);
+    return `data:image/jpeg;base64,${image}`;
+};
+
+function toDataURL(img:ArrayBuffer, contentType = 'image/jpeg') {
+    const image = btoa(
+        new Uint32Array(img)
+            .reduce((data, byte) => data + String.fromCharCode(byte), '')
+    );
+    return `data:${contentType};base64,${image}`;
 }
 
 function stateToProps({movie}) {

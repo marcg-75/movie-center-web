@@ -37,7 +37,7 @@ export default function movieReducer(state = {
         case MOVIES_RECEIVED:
             return {
                 ...state,
-                movies: payload,
+                movies: payload.content,
                 moviesNotLoaded: false,
                 movieListErrorMessages: undefined
             };

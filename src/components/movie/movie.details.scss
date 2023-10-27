@@ -56,6 +56,12 @@
 
 .movie-details-panel.cover > .cover-info {
   display: block;
+
+  .cover-panel {
+    img.cover-image {
+      max-width: 350px;
+    }
+  }
 }
 
 .movie-details-panel.personal > .personal-info {

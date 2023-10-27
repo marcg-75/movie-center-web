@@ -4,7 +4,11 @@ import {connect} from 'react-redux';
 
 import ListComponent, {IAbstractListState, getQueryParamValue} from "../common/ListComponent";
 import MovieModel, {MovieFilter} from "../../models/MovieModel";
-import {getMovies, updateFilterAndReloadMovies, clearFilterAndReloadMovies} from "../../actions/movie.actions";
+import {
+    getMovies,
+    updateFilterAndReloadMovies,
+    clearFilterAndReloadMovies
+} from "../../actions/movie.actions";
 import Loader from '../common/loader/Loader';
 import MovieFilterComponent from './movie-filter/MovieFilter';
 
@@ -159,7 +163,7 @@ class MovieList extends ListComponent<IMovieListProps, IMovieListState> {
 
         const sortOrder = this.sortOrdersByColumn.filter(sort => sort.column === sort.sortOrder)[0].sortOrder;
 
-        dispatch(getMovies(movie.filter, sortOrder, sort.sortDirection));
+        dispatch(getMovies(movie.filter, sortOrder, sort.sortDirection, 0, 1000));
     }
 }
 

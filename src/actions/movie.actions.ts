@@ -41,10 +41,22 @@ export const DEFAULT_FILTER: MovieFilter = {
     freetext: ''
 } as MovieFilter;
 
-export const getMovies = (filter: MovieFilter,
+/** @deprecated  */
+export const getAllMovies = (filter: MovieFilter,
                           sortOrder = 'title',
                           sortDir = 'asc') => createAction({
     endpoint: `${BASE_URL}/all${createQueryString(filter, sortOrder, sortDir)}`,
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+    types: [MOVIES_FETCHING, MOVIES_RECEIVED, MOVIES_ERROR]
+});
+
+export const getMovies = (filter: MovieFilter,
+                          sortOrder = 'title',
+                          sortDir = 'asc',
+                          page = 0,
+                          pageSize?: number) => createAction({
+    endpoint: `${BASE_URL}/list${createQueryString(filter, sortOrder, sortDir, page, pageSize)}`,
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
     types: [MOVIES_FETCHING, MOVIES_RECEIVED, MOVIES_ERROR]
@@ -147,7 +159,9 @@ export const clearFilterAndReloadMovies = () => {
 
 const createQueryString = (filter: MovieFilter,
                            sortOrder: string,
-                           sortDir: string): string => {
+                           sortDir: string,
+                           page?: number,
+                           pageSize?: number): string => {
     let params: Map<string, string> = new Map();
     let qpString = '';
 
@@ -174,7 +188,7 @@ const createQueryString = (filter: MovieFilter,
         }
     }
 
-    params = params.set('sort', sortOrder + ',' + sortDir);
+    params = addPageParams(params, sortOrder, sortDir, page, pageSize);
 
     const iter = params.entries();
     let qp = iter.next();
@@ -185,6 +199,19 @@ const createQueryString = (filter: MovieFilter,
     }
 
     return qpString.length ? `?${qpString.substring(0, qpString.length-1)}` : '';
+};
+
+const addPageParams = (params: Map<string, string>, sortOrder: string, sortDir: string, page?: number, pageSize?: number): Map<string, string> => {
+    if (page || page === 0) {
+        params = params.set('page', '' + page);
+    }
+    if (pageSize) {
+        params = params.set('size', '' + pageSize);
+    }
+    if (sortOrder && sortDir) {
+        params = params.set('sort', sortOrder + ',' + sortDir);
+    }
+    return params;
 };
 
 const transformToOuterModel = (movie: MovieModel): MovieModel => {
