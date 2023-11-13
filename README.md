@@ -2,6 +2,7 @@
 
 ## Krav
 - Migrera till React 18, hooks och annat som görs i RV, React Query (och Redux (konfigurerbar switch mellan dessa)), Tailwind
+- Introducera Next.js a'la RV och ta bort react-scripts och react router.
 v Lägg till helt nya personer (cast & crew). Separat flöde? Ska också kunna välja befintliga personer t.ex. när skådespelare ska läggas till.
 v Ta bort cast & crew från en film
 v Redigering av crew (alla roller)

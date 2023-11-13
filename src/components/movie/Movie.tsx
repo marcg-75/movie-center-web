@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import './movie.details.scss';
 
-import Loader from '../common/loader/Loader';
+import { Loader } from '../common/loader/Loader';
 import FormComponent from '../common/FormComponent';
 import GeneralInfoPanel from './panels/GeneralInfoPanel';
 import CastPanel from './panels/CastPanel';

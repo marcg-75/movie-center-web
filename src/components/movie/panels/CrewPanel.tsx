@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {connect} from 'react-redux';
 
 import '../movie.details.scss';
 
-import Loader from '../../common/loader/Loader';
+import { Loader } from '../../common/loader/Loader';
 
 import {environment} from "../../../env/environment";
 import FormComponent from '../../common/FormComponent';
@@ -84,6 +84,8 @@ class CrewPanel extends FormComponent<IMovieProps, ICrewState> {  // TODO: Byta 
             const otherElements = this.mapToElements(currentOtherInMovie, RoleEnum.MISC);
 
             const allCrewRoleOptions = createAllCrewRoleOptions(roles);
+            const crewMembersForRoleOptions: ReactNode[] = createSelectableCrewMembersForRole(selectableCrewMembersForRole);
+            const personsForRoleOptions: ReactNode[] = createSelectablePersonsForRole(selectablePersonsForRole);
 
             content = (
                 <div>
@@ -130,7 +132,7 @@ class CrewPanel extends FormComponent<IMovieProps, ICrewState> {  // TODO: Byta 
                             </select>
 
                             <select id="crewPersonRoleId" name="crewPersonRoleId" disabled={!selectableCrewMembersForRole || !selectableCrewMembersForRole.length}>
-                                {selectableCrewMembersForRole}
+                                {crewMembersForRoleOptions}
                             </select>
 
                             <input type="submit" value="Lägg till" />
@@ -148,7 +150,7 @@ class CrewPanel extends FormComponent<IMovieProps, ICrewState> {  // TODO: Byta 
                         {personsNotLoaded ? (<Loader />) : (
                             <select id="newCrewPersonId" name="crewPersonId" onChange={(e) => this.updateNewCrewName(e)}
                                     disabled={!selectablePersonsForRole || !selectablePersonsForRole.length}>
-                                {selectablePersonsForRole}
+                                {personsForRoleOptions}
                             </select>
                         )}
 
@@ -301,7 +303,7 @@ class CrewPanel extends FormComponent<IMovieProps, ICrewState> {  // TODO: Byta 
         const crewMembers = existingMovieCrewMembersForRole(movieItem, role);
 
         crewMembers.forEach((a: CastAndCrewModel) => {
-            if ((a.id && a.id === cacId) || !a.id && a.personRole.person.name === personName) {
+            if (((a.id && a.id === cacId) || !a.id) && a.personRole.person.name === personName) {
                 a.deleted = true;
             }
         });
@@ -401,7 +403,7 @@ class CrewPanel extends FormComponent<IMovieProps, ICrewState> {  // TODO: Byta 
     ));
 }
 
-const createAllCrewRoleOptions = (roles: Array<SelectableModel>): Array<any> => {
+const createAllCrewRoleOptions = (roles: Array<SelectableModel>): Array<ReactNode> => {
     if (!roles) {
         return [];
     }
@@ -410,6 +412,32 @@ const createAllCrewRoleOptions = (roles: Array<SelectableModel>): Array<any> => 
 
     const options: Array<any> = crewRoles.map((option: SelectableModel, i: number) => {
         return <option key={i+1} value={option.code}>{option.name}</option>;
+    });
+    options.unshift(<option key="0" value="" />);
+
+    return options;
+};
+
+const createSelectableCrewMembersForRole = (personRoles: PersonRoleModel[]): ReactNode[] => {
+    if (!personRoles) {
+        return [];
+    }
+
+    const options: Array<any> = personRoles.map((option: PersonRoleModel, i: number) => {
+        return <option key={i+1} value={option.person.id}>{option.person.name}</option>;
+    });
+    options.unshift(<option key="0" value="" />);
+
+    return options;
+};
+
+const createSelectablePersonsForRole = (persons: NameEntityModel[]): ReactNode[] => {
+    if (!persons) {
+        return [];
+    }
+
+    const options: Array<any> = persons.map((option: NameEntityModel, i: number) => {
+        return <option key={i+1} value={option.id}>{option.name}</option>;
     });
     options.unshift(<option key="0" value="" />);
 

@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import {default as moment} from 'moment';
 
 import {
     MOVIES_FETCHING, MOVIES_RECEIVED, MOVIES_ERROR,
@@ -14,8 +14,9 @@ import {
 } from './movie.actions';
 import MovieModel from '../models/MovieModel';
 import SelectableModel from '../models/SelectableModel';
+import {MovieStateModel} from "./models/movie-state.model";
 
-export default function movieReducer(state = {
+export default function movieReducer(state: MovieStateModel = {
     moviesNotLoaded: true,
     movieNotLoaded: true,
     movieCreated: false,
@@ -225,8 +226,8 @@ const createEmptyMovie = () => {
     return movie;
 };
 
-export const createErrorMessageArray = (payload) => {
-    const errorMessages = [];
+export const createErrorMessageArray = (payload): string[] => {
+    const errorMessages: string[] = [];
 
     if (payload.response && payload.response.errors) {
         payload.response.errors.forEach(err => {

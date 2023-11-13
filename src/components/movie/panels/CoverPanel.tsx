@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import '../movie.details.scss';
 
-import Loader from '../../common/loader/Loader';
+import { Loader } from '../../common/loader/Loader';
 import FormComponent from '../../common/FormComponent';
 import { updateMovieState } from '../../../actions/movie.actions';
 import MovieModel from '../../../models/MovieModel';

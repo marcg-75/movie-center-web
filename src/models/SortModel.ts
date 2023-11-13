@@ -12,7 +12,7 @@ export class SortModel {
     return sortModel;
   }
 
-  sortArrow() {
+  get sortArrow() {
     return this.sortDirection === 'desc' ? 'down' : 'up';
   }
 

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import '../movie.details.scss';
 
-import Loader from '../../common/loader/Loader';
+import { Loader } from '../../common/loader/Loader';
 import FormComponent from '../../common/FormComponent';
 import LabelledTextInput from '../inputs/LabelledTextInput';
 import LabelledSelect from '../inputs/LabelledSelect';

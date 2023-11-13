@@ -1,5 +1,3 @@
-import { Moment } from 'moment';
-
 import SelectableModel from './SelectableModel';
 import NameEntityModel from "./NameEntityModel";
 import CastAndCrewModel from "./CastAndCrewModel";

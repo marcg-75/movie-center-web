@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import '../movie.details.scss';
 
-import Loader from '../../common/loader/Loader';
+import { Loader } from '../../common/loader/Loader';
 
 import {environment} from "../../../env/environment";
 import FormComponent from '../../common/FormComponent';

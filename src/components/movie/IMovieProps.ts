@@ -5,7 +5,7 @@ import NameEntityModel from "../../models/NameEntityModel";
 import LanguageModel from "../../models/LanguageModel";
 
 export interface IMovieProps {
-    movie: {
+    movie?: {
         movieItem: MovieModel,
         movieNotLoaded: boolean,
         movieCreating: boolean,
@@ -15,7 +15,7 @@ export interface IMovieProps {
         movieUpdated: boolean,
         movieErrorMessages: Array<string>
     },
-    person: {
+    person?: {
         actors: Array<PersonRoleModel>,
         actorsNotLoaded: boolean,
         actorsErrorMessages: Array<string>,
@@ -26,7 +26,7 @@ export interface IMovieProps {
         personsNotLoaded: boolean,
         personsErrorMessages: Array<string>
     },
-    baseData: {
+    baseData?: {
         genresLoaded: boolean,
         rolesLoaded: boolean,
         formatsLoaded: boolean,
@@ -40,8 +40,8 @@ export interface IMovieProps {
         formatsErrorMessage: string,
         languagesErrorMessage: string
     },
-    history: any,
-    location: any,
-    testName: string,
-    dispatch: any
+    history?: any,
+    location?: any,
+    testName?: string,
+    dispatch?: any
 }
