@@ -8,6 +8,7 @@ import {MovieFilterComponent} from './movie-filter';
 import {MovieStateModel} from "../../actions/models/movie-state.model";
 import {getDefaultSortModel, scrollToTop} from "../../utils/list.util";
 import {SortModel} from "../../models/SortModel";
+import { MovieGenreModel } from '../../models/MovieGenreModel';
 
 const SORT_ORDERS_BY_COLUMN = [
     {column: 'title', sortOrder: 'title'},
@@ -49,6 +50,19 @@ const MovieList = ({movie, history, location, dispatch, testName = 'MovieList_te
 
     const goToMovie = (movieId: number) => {
         history.push(`/movie/${movieId}`);
+    };
+
+    const getMovieGenres = (movie: MovieModel, limit = 3): string[] => {
+        const mainGenre: MovieGenreModel | null = movie.genres.find((mg) => mg.mainGenre);
+
+        if (mainGenre) {
+            return [mainGenre.genre.name];
+        }
+
+        const result: string[] = movie.genres.map((mg) => mg.genre.name);
+        const genreNames = result.slice(0, limit);
+
+        return genreNames.map((genre, idx) => idx < genreNames.length-1 ? `${genre}, ` : genre);
     };
 
     const {movies, moviesNotLoaded, movieListErrorMessages} = movie;
@@ -100,9 +114,16 @@ const MovieList = ({movie, history, location, dispatch, testName = 'MovieList_te
                                         <tbody>
                                         {
                                             movies.map((element: MovieModel, i: number) => {
+
+
                                                 return (<tr className="clickable mat-row" key={i}>
                                                     <td className="mat-cell cdk-column-name mat-column-name" onClick={() => goToMovie(element.id)}>{ element.title }</td>
-                                                    <td className="mat-cell cdk-column-genre mat-column-genre hide-small-screen" onClick={() => goToMovie(element.id)}>{ element.mainGenre ? element.mainGenre.name : '' }</td>
+                                                    <td
+                                                        className="mat-cell cdk-column-genre mat-column-genre hide-small-screen"
+                                                        onClick={() => goToMovie(element.id)}
+                                                    >
+                                                        { getMovieGenres(element) }
+                                                    </td>
                                                     <td className="mat-cell cdk-column-grade mat-column-grade" onClick={() => goToMovie(element.id)}>{ element.moviePersonalInfo ? element.moviePersonalInfo.grade : '' }</td>
                                                 </tr>)
                                             })

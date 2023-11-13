@@ -17,6 +17,7 @@ import NameEntityModel from "../../../models/NameEntityModel";
 import {environment} from "../../../env/environment";
 import {IMovieProps} from "../IMovieProps";
 import {IMovieState} from "../IMovieState";
+import { MovieGenreModel } from '../../../models/MovieGenreModel';
 
 class GeneralInfoPanel extends FormComponent<IMovieProps, IMovieState> {  // TODO: Byta FormComponent mot Component?
 
@@ -66,15 +67,18 @@ class GeneralInfoPanel extends FormComponent<IMovieProps, IMovieState> {  // TOD
             });
             studioOptions.unshift(<option key="0" value=""></option>);
 
-            const currentAdditionalGenreCodes:Array<string> = (movieItem.additionalGenres && movieItem.additionalGenres.length > 0)
-                ? movieItem.additionalGenres.map((genre:SelectableModel) => genre ? genre.code : undefined) : [];
+            const mainGenre: MovieGenreModel | null = movieItem.genres?.find((mg) => mg.mainGenre);
+            const currentAdditionalGenres: MovieGenreModel[] = movieItem.genres?.filter((mg) => !mg.mainGenre);
+
+            const currentAdditionalGenreCodes: string[] = (currentAdditionalGenres?.length > 0)
+                ? currentAdditionalGenres.map((mg) => mg.genre.code) : [];
 
             const currentStudioIds:Array<string> = movieItem.studios
                 ? movieItem.studios.map((studio:NameEntityModel) => '' + studio.id) : [];
 
             content = (
                 <div>
-                    <LabelledSelect label="Huvudgenre: *" id="mainGenre" defaultValue={undefined} value={movieItem.mainGenre.code} options={genreOptions} callback={this.movieStateChanged} required={true} multiple={false} />
+                    {mainGenre && (<LabelledSelect label="Huvudgenre: *" id="mainGenre" defaultValue={undefined} value={mainGenre.genre.code} options={genreOptions} callback={this.movieStateChanged} required={true} multiple={false} />)}
 
                     <LabelledSelect label="Andra genrer:" id="additionalGenres" defaultValue={currentAdditionalGenreCodes} value={undefined} options={genreOptions} callback={this.additionalGenresChanged} required={false} multiple={true} />
 
@@ -138,20 +142,26 @@ class GeneralInfoPanel extends FormComponent<IMovieProps, IMovieState> {  // TOD
         const {movieItem} = this.props.movie;
         const {genres} = this.props.baseData;
         const {selectedOptions} = event.target;
-        const chosenGenres: Array<SelectableModel> = [];
+        const chosenGenres: Array<MovieGenreModel> = [];
 
         for (let i = 0 ; i < selectedOptions.length ; i++) {
             let option: any = selectedOptions[i];
             let genre: SelectableModel = genres.find((g: SelectableModel) => g.code === option.value);
 
             if (genre) {
-                chosenGenres.push(genre);
+                const movieGenre: MovieGenreModel = {
+                  movieTitle: movieItem.title,
+                  genre,
+                  mainGenre: false  // TODO: Change this when main genre selection feature is being implemented.
+                };
+
+                chosenGenres.push(movieGenre);
             }
         }
 
         dispatch(updateMovieState({
             ...movieItem,
-            additionalGenres: chosenGenres
+            genres: chosenGenres
         } as MovieModel));
     }
 

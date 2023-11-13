@@ -4,14 +4,14 @@ import CastAndCrewModel from "./CastAndCrewModel";
 import {CoverModel} from "./CoverModel";
 import {Filter} from './Filter';
 import LanguageModel from "./LanguageModel";
+import { MovieGenreModel } from './MovieGenreModel';
 
 export default class MovieModel {
 
     public id: number;
     public title: string;
     public description: string;
-    public mainGenre: SelectableModel = new SelectableModel();
-    public additionalGenres: Array<SelectableModel> = [];
+    public genres: Array<MovieGenreModel> = [];
     public runtime: string;
     public releaseDate: string;
     //public releaseDate: Moment;
@@ -46,11 +46,11 @@ export default class MovieModel {
   //}
 
     public toString(): string {
-        let additionalGenres = this.additionalGenres ? '' : undefined;
+        let genres = this.genres ? '' : undefined;
         let studios = this.studios ? '' : undefined;
 
-        if (additionalGenres) {
-            this.additionalGenres.forEach((genre: SelectableModel) => additionalGenres += `${genre.name}, `);
+        if (genres) {
+            this.genres.forEach((movieGenre: MovieGenreModel) => genres += `${movieGenre.genre.name}${movieGenre.mainGenre ? '(main genre)' : ''}, `);
         }
 
         if (studios) {
@@ -58,7 +58,7 @@ export default class MovieModel {
         }
 
         return `ID: ${this.id}, Title: ${this.title}, Description: ${this.description},
-            MainGenre: ${this.mainGenre ? this.mainGenre.name : undefined}, AdditionalGenres: ${additionalGenres}
+            Genres: ${genres}
             Runtime: ${this.runtime}, ReleaseDate: ${this.releaseDate}, Country: ${this.country},
             AgeRestriction: ${this.ageRestriction}, Studios: ${studios}`;
     }
