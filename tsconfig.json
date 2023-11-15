@@ -7,14 +7,17 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es5",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "noUncheckedIndexedAccess": true,
     "baseUrl": ".",
-
     "jsx": "preserve",
     "allowJs": true,
     "esModuleInterop": true,
@@ -23,6 +26,7 @@
     "forceConsistentCasingInFileNames": false,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noEmit": true,
     "incremental": true,
     "types": ["jest", "node"]
   },

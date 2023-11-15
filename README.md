@@ -19,7 +19,7 @@ v Backend: Adapter för inläsning av XML-fil(er) från DVD-profiler (triggas ma
 - Bootstrap-dialog (plus ev . andra saker från Bootstrap)
 - Felhantering i reducers, bl.a, inkl. FE-loggning till BE.
 - Kolla kvarvarande TODO-punkter i FE & BE.
-- Gör om sub-panelkomponenterna till "self invoking functions" istf React-komponenter.
+v Gör om sub-panelkomponenterna till "self invoking functions" istf React-komponenter.
 - Städa och optimera kod
 v Bestäm vilket språk som ska användas i GUI och inför detta
 - Skriv tester (frontend & backend)
