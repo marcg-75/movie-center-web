@@ -21,6 +21,9 @@ export default function movieReducer(state: MovieStateModel = {
     movieNotLoaded: true,
     movieCreated: false,
     movieUpdated: false,
+    movieCreating: false,
+    movieUpdating: false,
+    movieDeleting: false,
     filter: DEFAULT_FILTER
 }, {
     type,

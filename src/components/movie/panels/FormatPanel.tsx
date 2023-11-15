@@ -1,137 +1,57 @@
-import React from 'react';
-import {connect} from 'react-redux';
+import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 
 import '../movie.details.scss';
 
 import { Loader } from '../../common/loader/Loader';
-import FormComponent from '../../common/FormComponent';
 import LabelledTextInput from '../inputs/LabelledTextInput';
 import LabelledSelect from '../inputs/LabelledSelect';
 import { updateMovieState } from '../../../actions/movie.actions';
 import MovieModel from '../../../models/MovieModel';
 import SelectableModel from "../../../models/SelectableModel";
-import {IMovieProps} from "../IMovieProps";
-import {IMovieState} from "../IMovieState";
 import LanguageModel from "../../../models/LanguageModel";
+import { MovieStateModel } from '../../../actions/models/movie-state.model';
+import { BaseDataStateModel } from '../../../actions/models/base-data-state.model';
 
 const REGIONS: Array<number> = [1, 2, 3, 4, 5, 6];
 const regionOptions: Array<any> = REGIONS.map((r: number, i: number) => {
-    return <option key={i+1} value={r}>{r}</option>;
+    return <option key={i + 1} value={r}>{r}</option>;
 });
 regionOptions.unshift(<option key="0" value=""></option>);
 
 const SYSTEMS: Array<string> = ['PAL', 'NTSC'];
 const systemOptions: Array<any> = SYSTEMS.map((s: string, i: number) => {
-    return <option key={i+1} value={s}>{s}</option>;
+    return <option key={i + 1} value={s}>{s}</option>;
 });
 systemOptions.unshift(<option key="0" value=""></option>);
 
-class FormatPanel extends FormComponent<IMovieProps, IMovieState> {  // TODO: Byta FormComponent mot Component?
+interface FormatPanelProps {
+    movie: MovieStateModel;
+    baseData: BaseDataStateModel;
+    dispatch: (any: any) => void;
+    testName?: string;
+}
 
-    static defaultProps = {
-        testName: 'FormatPanel_test'
-    };
+const FormatPanel = ({movie, baseData, dispatch, testName = 'FormatPanel_test'}: FormatPanelProps) => {
 
-    constructor(props) {
-        super(props);
+    const [isMovieLoading, setIsMovieLoading] = useState(false);
+    const [isBaseDataLoading, setIsBaseDataLoading] = useState(false);
 
-        this.movieStateChanged = this.movieStateChanged.bind(this);
-        this.audioLanguagesChanged = this.audioLanguagesChanged.bind(this);
-        this.subtitlesChanged = this.subtitlesChanged.bind(this);
-    }
+    useEffect(() => {
+        setIsMovieLoading(!movie || movie.movieNotLoaded || movie.movieCreating || movie.movieUpdating || movie.movieDeleting);
+        setIsBaseDataLoading(!baseData || !(baseData.formatsLoaded && baseData.languagesLoaded));
+    }, [movie, baseData]);
 
-    componentDidMount() {
-    }
+    const {movieItem, movieErrorMessages} = movie;
+    const {formats, languages} = baseData;
+    const {movieFormatInfo} = movieItem;
 
-    componentDidUpdate() {
-    }
-
-    render() {
-        const {movieItem, movieErrorMessages} = this.props.movie;
-        const {formats, languages} = this.props.baseData;
-        const {movieFormatInfo} = movieItem;
-
-        let content;
-
-        if (movieErrorMessages) {  // TODO: Fyll på
-            //DialogComponent.openDefaultErrorDialog(this.dialog, movie.movieListErrorMessages);  // TODO: Implement error dialog handling.
-            //alert(movieErrorMessages);
-
-            content = (<div></div>);
-        } else if (this.isMovieLoading || !movieItem || this.isBaseDataLoading || !movieFormatInfo.format) {
-            // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
-            content = (<div><Loader /></div>);
-        } else {
-            const formatOptions = formats.map((option: SelectableModel, i: number) => {
-                return <option key={i+1} value={option.code}>{option.name}</option>;
-            });
-            formatOptions.unshift(<option key="0" value=""></option>);
-
-            const languageOptions = languages.map((option: LanguageModel, i:number) => {
-                return <option key={i+1} value={option.id}>{option.nameSwedish}</option>;
-            });
-            languageOptions.unshift(<option key="0" value=""></option>);
-
-            const currentAudioLanguageIds: Array<string> = movieFormatInfo.audioLanguages
-                ? movieFormatInfo.audioLanguages.map((lang: LanguageModel) => '' + lang.id) : [];
-
-            const currentSubtitleIds: Array<string> = movieFormatInfo.subtitles
-                ? movieFormatInfo.subtitles.map((lang: LanguageModel) => '' + lang.id) : [];
-
-            content = (
-                <div>
-                    <LabelledSelect label="Format: *" id="format" defaultValue={undefined} value={movieFormatInfo.format.code} options={formatOptions} callback={this.movieStateChanged} required={true} multiple={false} />
-
-                    <LabelledTextInput label="UPC-ID:" id="upcId" defaultValue={movieFormatInfo.upcId} callback={this.movieStateChanged} />
-
-                    <LabelledSelect label="Region:" id="region" defaultValue={undefined} value={movieFormatInfo.region} options={regionOptions} callback={this.movieStateChanged} required={false} multiple={false} />
-
-                    <LabelledTextInput label="Antal skivor:" id="discs" defaultValue={movieFormatInfo.discs} callback={this.movieStateChanged} />
-
-                    <LabelledTextInput label="Bildformat:" id="pictureFormat" defaultValue={movieFormatInfo.pictureFormat} callback={this.movieStateChanged} />
-
-                    <LabelledSelect label="System:" id="system" defaultValue={undefined} value={movieFormatInfo.system} options={systemOptions} callback={this.movieStateChanged} required={false} multiple={false} />
-
-                    <LabelledSelect label="Språk:" id="audioLanguages" defaultValue={undefined} value={currentAudioLanguageIds} options={languageOptions} callback={this.audioLanguagesChanged} required={false} multiple={true} />
-
-                    <LabelledSelect label="Undertexter:" id="subtitles" defaultValue={undefined} value={currentSubtitleIds} options={languageOptions} callback={this.subtitlesChanged} required={false} multiple={true} />
-                </div>
-            );
-        }
-
-        //{// TODO: Flytta till admin-vy
-        //    environment.enableMovieFormatEdit && (
-        //        <LabelledTextInput label="Add new language to select:" id="newLanguage" defaultValue={undefined} callback={this.languageAdded} />
-        //    )}
-
-        return (
-            <div data-test-name={this.props.testName}>{content}</div>
-        );
-    }
-
-    get isBaseDataLoading(): boolean {
-        const {baseData} = this.props;
-
-        return !baseData || !(baseData.formatsLoaded && baseData.languagesLoaded);
-    }
-
-    get isMovieLoading(): boolean {
-        const {movie} = this.props;
-
-        return movie.movieNotLoaded || movie.movieCreating || movie.movieUpdating || movie.movieDeleting;
-    }
-
-    movieStateChanged(event: any) {
-        const {dispatch} = this.props;
-        const {movieItem} = this.props.movie;
-        const {movieFormatInfo} = movieItem;
+    const movieStateChanged = (event: any) => {
         const {name, value} = event.target;
 
         let cValue = value;
 
         if (name === 'format') {
-            const {formats} = this.props.baseData;
-
             cValue = formats.find((f: SelectableModel) => f.code === value);
         } else if (name === 'discs') {
             cValue = parseInt(value, 10);
@@ -149,13 +69,10 @@ class FormatPanel extends FormComponent<IMovieProps, IMovieState> {  // TODO: By
                 [name]: cValue
             }
         } as MovieModel));
-    }
+    };
 
-    audioLanguagesChanged(event: any) {
-        const {dispatch} = this.props;
-        const {movieItem} = this.props.movie;
-        const {movieFormatInfo} = movieItem;
-        const audioLanguages: Array<LanguageModel> = this.getSelectedLanguages(event);
+    const audioLanguagesChanged = (event: any) => {
+        const audioLanguages: Array<LanguageModel> = getSelectedLanguages(event);
 
         dispatch(updateMovieState({
             ...movieItem,
@@ -164,13 +81,10 @@ class FormatPanel extends FormComponent<IMovieProps, IMovieState> {  // TODO: By
                 audioLanguages
             }
         } as MovieModel));
-    }
+    };
 
-    subtitlesChanged(event: any) {
-        const {dispatch} = this.props;
-        const {movieItem} = this.props.movie;
-        const {movieFormatInfo} = movieItem;
-        const subtitles: Array<LanguageModel> = this.getSelectedLanguages(event);
+    const subtitlesChanged = (event: any) => {
+        const subtitles: Array<LanguageModel> = getSelectedLanguages(event);
 
         dispatch(updateMovieState({
             ...movieItem,
@@ -179,14 +93,13 @@ class FormatPanel extends FormComponent<IMovieProps, IMovieState> {  // TODO: By
                 subtitles
             }
         } as MovieModel));
-    }
+    };
 
-    private getSelectedLanguages(event: any) : Array<LanguageModel> {
-        const {languages} = this.props.baseData;
+    const getSelectedLanguages = (event: any): Array<LanguageModel> => {
         const {selectedOptions} = event.target;
         const chosenLanguages: Array<LanguageModel> = [];
 
-        for (let i = 0 ; i < selectedOptions.length ; i++) {
+        for (let i = 0; i < selectedOptions.length; i++) {
             let option: any = selectedOptions[i];
             let lang: LanguageModel = languages.find((l: LanguageModel) => l.id === parseInt(option.value, 10));
 
@@ -195,12 +108,12 @@ class FormatPanel extends FormComponent<IMovieProps, IMovieState> {  // TODO: By
             }
         }
         return chosenLanguages;
-    }
+    };
 
     // TODO: Move to admin page.
     //languageAdded(event: any) {
-    //    const {dispatch} = this.props;
-    //    let {languages} = this.props.baseData;
+    //    const {dispatch} = props;
+    //    let {languages} = props.baseData;
     //    const {value} = event.target;
     //
     //    // Find existing language.
@@ -212,6 +125,73 @@ class FormatPanel extends FormComponent<IMovieProps, IMovieState> {  // TODO: By
     //
     //    dispatch(updateLanguages(languages));
     //}
+
+    let content;
+
+    if (movieErrorMessages) {  // TODO: Fyll på
+        //DialogComponent.openDefaultErrorDialog(dialog, movie.movieListErrorMessages);  // TODO: Implement error dialog handling.
+        //alert(movieErrorMessages);
+
+        content = (<div></div>);
+    } else if (isMovieLoading || !movieItem || isBaseDataLoading || !movieFormatInfo.format) {
+        // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
+        content = (<div><Loader/></div>);
+    } else {
+        const formatOptions = formats.map((option: SelectableModel, i: number) => {
+            return <option key={i + 1} value={option.code}>{option.name}</option>;
+        });
+        formatOptions.unshift(<option key="0" value=""></option>);
+
+        const languageOptions = languages.map((option: LanguageModel, i: number) => {
+            return <option key={i + 1} value={option.id}>{option.nameSwedish}</option>;
+        });
+        languageOptions.unshift(<option key="0" value=""></option>);
+
+        const currentAudioLanguageIds: Array<string> = movieFormatInfo.audioLanguages
+            ? movieFormatInfo.audioLanguages.map((lang: LanguageModel) => '' + lang.id) : [];
+
+        const currentSubtitleIds: Array<string> = movieFormatInfo.subtitles
+            ? movieFormatInfo.subtitles.map((lang: LanguageModel) => '' + lang.id) : [];
+
+        content = (
+            <div>
+                <LabelledSelect label="Format: *" id="format" defaultValue={undefined}
+                                value={movieFormatInfo.format.code} options={formatOptions} callback={movieStateChanged}
+                                required={true} multiple={false}/>
+
+                <LabelledTextInput label="UPC-ID:" id="upcId" defaultValue={movieFormatInfo.upcId}
+                                   callback={movieStateChanged}/>
+
+                <LabelledSelect label="Region:" id="region" defaultValue={undefined} value={movieFormatInfo.region}
+                                options={regionOptions} callback={movieStateChanged} required={false} multiple={false}/>
+
+                <LabelledTextInput label="Antal skivor:" id="discs" defaultValue={movieFormatInfo.discs}
+                                   callback={movieStateChanged}/>
+
+                <LabelledTextInput label="Bildformat:" id="pictureFormat" defaultValue={movieFormatInfo.pictureFormat}
+                                   callback={movieStateChanged}/>
+
+                <LabelledSelect label="System:" id="system" defaultValue={undefined} value={movieFormatInfo.system}
+                                options={systemOptions} callback={movieStateChanged} required={false} multiple={false}/>
+
+                <LabelledSelect label="Språk:" id="audioLanguages" defaultValue={undefined}
+                                value={currentAudioLanguageIds} options={languageOptions}
+                                callback={audioLanguagesChanged} required={false} multiple={true}/>
+
+                <LabelledSelect label="Undertexter:" id="subtitles" defaultValue={undefined} value={currentSubtitleIds}
+                                options={languageOptions} callback={subtitlesChanged} required={false} multiple={true}/>
+            </div>
+        );
+    }
+
+    //{// TODO: Flytta till admin-vy
+    //    environment.enableMovieFormatEdit && (
+    //        <LabelledTextInput label="Add new language to select:" id="newLanguage" defaultValue={undefined} callback={languageAdded} />
+    //    )}
+
+    return (
+        <div data-test-name={testName}>{content}</div>
+    );
 }
 
 function stateToProps({movie, baseData}) {

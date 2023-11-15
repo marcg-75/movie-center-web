@@ -1,5 +1,5 @@
 import {ListFilterItem} from "../../common/list-filter/list-filter-item/ListFilterItem";
-import React, {ReactNode, useEffect, useState} from "react";
+import {ReactNode, useEffect, useState} from "react";
 import {MovieFilter as MovieModelFilter} from "../../../models/MovieModel";
 import SelectableModel from "../../../models/SelectableModel";
 import {Loader} from "../../common/loader/Loader";
