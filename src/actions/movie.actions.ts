@@ -36,7 +36,7 @@ export const CLEAR_MOVIE_ACTION_STATE = 'CLEAR_MOVIE_ACTION_STATE';
 
 export const DEFAULT_FILTER: MovieFilter = {
     title: '',
-    mainGenreCode: MovieFilter.FILTER_DEFAULT_ALL_GENRES.code,
+    genreCode: MovieFilter.FILTER_DEFAULT_ALL_GENRES.code,
     grade: MovieFilter.FILTER_DEFAULT_ALL_GRADES.code,
     freetext: ''
 } as MovieFilter;
@@ -171,8 +171,8 @@ const createQueryString = (filter: MovieFilter,
             params = params.set('title', filter.title);
         }
 
-        if (filter.mainGenreCode && filter.mainGenreCode !== MovieFilter.FILTER_DEFAULT_ALL_GENRES.code) {
-            params = params.set('mainGenre', filter.mainGenreCode);
+        if (filter.genreCode && filter.genreCode !== MovieFilter.FILTER_DEFAULT_ALL_GENRES.code) {
+            params = params.set('genre', filter.genreCode);
         }
 
         if (filter.formatCode && filter.formatCode !== MovieFilter.FILTER_DEFAULT_ALL_FORMATS.code) {

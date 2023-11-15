@@ -108,7 +108,7 @@ export class MovieFilter extends Filter<MovieFilter> {
     ];
 
     public title: string;
-    public mainGenreCode: string;
+    public genreCode: string;
     public formatCode: string;
     public grade: number;  // TODO: Ändra till intervall.
     public freetext: string;

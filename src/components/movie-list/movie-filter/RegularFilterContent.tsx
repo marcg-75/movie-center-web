@@ -56,8 +56,8 @@ const RegularFilterContent = ({
             case 'title':
                 filterCopy.title = control.value;
                 break;
-            case 'mainGenreCode':
-                filterCopy.mainGenreCode = control.value;
+            case 'genreCode':
+                filterCopy.genreCode = control.value;
                 break;
             case 'freetext':
                 filterCopy.freetext = control.value;
@@ -100,7 +100,7 @@ const RegularFilterContent = ({
             </div>)} />
 
             <ListFilterItem label="Genre" filterBody={(
-                <select name="mainGenreCode" value={filter.mainGenreCode}
+                <select name="genreCode" value={filter.genreCode}
                         onChange={changeHandler}>
                     {filterGenreItemsToSelect}
                 </select>
