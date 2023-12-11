@@ -17,6 +17,7 @@ export default class MovieModel {
     //public releaseDate: Moment;
     public country: string;
     public ageRestriction: string;
+    public imdbId?: string;
     public studios: Array<NameEntityModel> = [];
 
     public actors: Array<CastAndCrewModel> = [];

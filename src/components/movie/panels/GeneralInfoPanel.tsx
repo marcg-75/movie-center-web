@@ -162,6 +162,8 @@ const GeneralInfoPanel = ({movie, baseData, dispatch, testName = 'GeneralInfoPan
                 )}
 
                 <LabelledTextarea label="Beskrivning: *" id="description" defaultValue={movieItem.description} callback={movieStateChanged} required={true} />
+
+                <a href={`https://www.imdb.com/title/${movieItem.imdbId}/`} target="browser1">IMDB info</a>
             </div>
         );
     }
