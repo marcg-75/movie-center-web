@@ -5,35 +5,35 @@
 import { STORAGE_TYPE } from '../models/storage.model';
 
 export interface Environment {
-    production: boolean;
-    apiBaseUrl: string;
+  production: boolean;
+  apiBaseUrl: string;
 
-    cacheStorageDefault: STORAGE_TYPE;
-    cacheExpTimeMinutes: number;
+  cacheStorageDefault: STORAGE_TYPE;
+  cacheExpTimeMinutes: number;
 
-    // Popup an alert-dialog before sending the frontend-log to backend.
-    errorLogAsAlert: boolean;
+  // Popup an alert-dialog before sending the frontend-log to backend.
+  errorLogAsAlert: boolean;
 
-    // Feature toggles
+  // Feature toggles
 
-    enableMovieInfoEdit: boolean;
-    enableMovieFormatEdit: boolean;
-    enableSaveMovieFilter: boolean;
+  enableMovieInfoEdit: boolean;
+  enableMovieFormatEdit: boolean;
+  enableSaveMovieFilter: boolean;
 }
 
 export const environment: Environment = {
-    production: false,
-    apiBaseUrl: 'http://localhost:8080/api/',
+  production: false,
+  apiBaseUrl: 'http://localhost:8080/api/',
 
-    cacheStorageDefault: STORAGE_TYPE.SESSION,  // ...or LOCAL
-    cacheExpTimeMinutes: 10,
+  cacheStorageDefault: STORAGE_TYPE.SESSION, // ...or LOCAL
+  cacheExpTimeMinutes: 10,
 
-    // Popup an alert-dialog before sending the frontend-log to backend.
-    errorLogAsAlert: false,
+  // Popup an alert-dialog before sending the frontend-log to backend.
+  errorLogAsAlert: false,
 
-    // Feature toggles
+  // Feature toggles
 
-    enableMovieInfoEdit: true,
-    enableMovieFormatEdit: true,
-    enableSaveMovieFilter: true
+  enableMovieInfoEdit: true,
+  enableMovieFormatEdit: true,
+  enableSaveMovieFilter: true,
 };

@@ -1,7 +1,6 @@
-@import "../../style";
+@import '../../style';
 
 .movie-title-panel {
-
 }
 
 .movie-details-panel-container {
@@ -20,7 +19,7 @@
 
     .movie-menu-link-box.active {
       background-color: #000000;
-      color: #FFFFFF;
+      color: #ffffff;
     }
 
     .movie-menu-link-box:not(:last-of-type) {
@@ -69,7 +68,6 @@
 }
 
 .movie-action-panel {
-
 }
 
 .labelled-input > label {

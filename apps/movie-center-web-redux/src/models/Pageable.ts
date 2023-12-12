@@ -1,6 +1,4 @@
-
 export interface Pageable<T> {
-
   content: Array<T>;
 
   empty: boolean;
@@ -9,7 +7,7 @@ export interface Pageable<T> {
   number: number;
   numberOfElements: number;
   pageable: {
-    sort: Sort,
+    sort: Sort;
     offset: number;
     pageSize: number;
     pageNumber: number;

@@ -1,97 +1,138 @@
-import {ListFilterItem} from "../../common/list-filter/list-filter-item/ListFilterItem";
-import { ChangeEvent, ReactNode, useEffect, useState } from "react";
-import {MovieFilter as MovieModelFilter} from "../../../models/movie.model";
-import SelectableModel from "../../../models/SelectableModel";
-import {Loader} from "../../common/loader/Loader";
-import {loadFormats} from "../../../actions/base-data.actions";
-import {connect} from "react-redux";
+import { ListFilterItem } from '../../common/list-filter/list-filter-item/ListFilterItem';
+import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
+import { MovieFilter as MovieModelFilter } from '../../../models/movie.model';
+import SelectableModel from '../../../models/SelectableModel';
+import { Loader } from '../../common/loader/Loader';
+import { loadFormats } from '../../../actions/base-data.actions';
+import { connect } from 'react-redux';
 
 interface ExtendedFilterContentProps {
-    filter: MovieModelFilter;
-    baseData: any;
-    filterChanged: (filter: MovieModelFilter) => void;
-    dispatch: (any: any) => void;
-    testName?: string;
+  filter: MovieModelFilter;
+  baseData: any;
+  filterChanged: (filter: MovieModelFilter) => void;
+  dispatch: (any: any) => void;
+  testName?: string;
 }
 
 const ExtendedFilterContent = ({
-    filter,
-    baseData,
-    filterChanged,
-    dispatch,
-    testName = 'ExtendedFilterContent_test'
+  filter,
+  baseData,
+  filterChanged,
+  dispatch,
+  testName = 'ExtendedFilterContent_test',
 }: ExtendedFilterContentProps) => {
+  const [filterLoading, setFilterLoading] = useState(true);
+  const [filterFormatsToSelect, setFilterFormatsToSelect] = useState([
+    MovieModelFilter.FILTER_DEFAULT_ALL_FORMATS,
+  ]);
+  const [filterGradesToSelect, setFilterGradesToSelect] = useState(
+    MovieModelFilter.FILTER_SELECTABLE_GRADES
+  );
 
-    const [filterLoading, setFilterLoading] = useState(true);
-    const [filterFormatsToSelect, setFilterFormatsToSelect] = useState([MovieModelFilter.FILTER_DEFAULT_ALL_FORMATS]);
-    const [filterGradesToSelect, setFilterGradesToSelect] = useState(MovieModelFilter.FILTER_SELECTABLE_GRADES);
+  useEffect(() => {
+    dispatch(loadFormats());
+  }, []);
 
-    useEffect(() => {
-        dispatch(loadFormats());
-    }, []);
+  useEffect(() => {
+    if (
+      !filterFormatsToSelect ||
+      (filterFormatsToSelect.length < 2 && baseData?.formats)
+    ) {
+      const formatsToSelect = Object.assign(
+        [],
+        baseData.formats
+      ) as Array<SelectableModel>;
+      formatsToSelect.unshift(MovieModelFilter.FILTER_DEFAULT_ALL_GENRES);
 
-    useEffect(() => {
-        if (!filterFormatsToSelect || (filterFormatsToSelect.length < 2 && baseData?.formats)) {
-            const formatsToSelect = Object.assign([], baseData.formats) as Array<SelectableModel>;
-            formatsToSelect.unshift(MovieModelFilter.FILTER_DEFAULT_ALL_GENRES);
+      setFilterFormatsToSelect(formatsToSelect);
+    }
 
-            setFilterFormatsToSelect(formatsToSelect);
+    setFilterLoading(!filter || !baseData?.formatsLoaded);
+  }, [filter, baseData]);
+
+  const changeHandler = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ): void => {
+    const control = e.target;
+
+    const filterCopy: MovieModelFilter = Object.assign(
+      {},
+      filter
+    ) as MovieModelFilter;
+
+    switch (control.name) {
+      case 'formatCode':
+        filterCopy.formatCode = control.value || undefined;
+        break;
+      case 'grade':
+        filterCopy.grade = control.value
+          ? parseInt(control.value, 10)
+          : undefined;
+        break;
+    }
+
+    if (filterChanged) {
+      filterChanged(filterCopy);
+    }
+  };
+
+  const filterFormatItemsToSelect: ReactNode[] = filterFormatsToSelect.map(
+    (option, i) => {
+      return (
+        <option key={i} value={option.code}>
+          {option.name}
+        </option>
+      );
+    }
+  );
+
+  const filterGradeItemsToSelect: ReactNode[] = filterGradesToSelect.map(
+    (option, i) => {
+      return (
+        <option key={i} value={option.code}>
+          {option.name}
+        </option>
+      );
+    }
+  );
+
+  return filterLoading ? (
+    <div>
+      <Loader />
+    </div>
+  ) : (
+    <div data-test-name={testName}>
+      <ListFilterItem
+        label="Format"
+        filterBody={
+          <select
+            name="formatCode"
+            value={filter.formatCode}
+            onChange={changeHandler}
+          >
+            {filterFormatItemsToSelect}
+          </select>
         }
+      />
 
-        setFilterLoading(!filter || !baseData?.formatsLoaded);
-    }, [filter, baseData]);
-
-    const changeHandler = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
-        const control = e.target;
-
-        const filterCopy: MovieModelFilter = Object.assign({}, filter) as MovieModelFilter;
-
-        switch (control.name) {
-            case 'formatCode':
-                filterCopy.formatCode = control.value || undefined;
-                break;
-            case 'grade':
-                filterCopy.grade = control.value ? parseInt(control.value, 10) : undefined;
-                break;
+      <ListFilterItem
+        label="Betyg"
+        filterBody={
+          <select name="grade" value={filter.grade} onChange={changeHandler}>
+            {filterGradeItemsToSelect}
+          </select>
         }
-
-        if (filterChanged) {
-            filterChanged(filterCopy);
-        }
-    };
-
-    const filterFormatItemsToSelect: ReactNode[] = filterFormatsToSelect.map((option, i) => {
-        return <option key={i} value={option.code}>{option.name}</option>;
-    });
-
-    const filterGradeItemsToSelect: ReactNode[] = filterGradesToSelect.map((option, i) => {
-        return <option key={i} value={option.code}>{option.name}</option>;
-    });
-
-    return filterLoading ? (<div><Loader/></div>) : (
-        <div data-test-name={testName}>
-            <ListFilterItem label="Format" filterBody={(
-                <select name="formatCode" value={filter.formatCode}
-                        onChange={changeHandler}>
-                    {filterFormatItemsToSelect}
-                </select>
-            )} />
-
-            <ListFilterItem label="Betyg" filterBody={(
-                <select name="grade" value={filter.grade} onChange={changeHandler}>
-                    {filterGradeItemsToSelect}
-                </select>
-            )} />
-        </div>
-    );
+      />
+    </div>
+  );
 };
 
 // @ts-ignore
-function stateToProps({baseData, movieList: {filter}}) {
-    return {
-        baseData,
-        filter
-    };
+function stateToProps({ baseData, movieList: { filter } }) {
+  return {
+    baseData,
+    filter,
+  };
 }
 
 export default connect(stateToProps)(ExtendedFilterContent);

@@ -1,13 +1,13 @@
 import { createAction } from 'redux-api-middleware';
 //import webApi from '../utils/webApi';
 
-import {environment} from '../env/environment';
-import {getStoredData} from '../utils/storageUtils';
+import { environment } from '../env/environment';
+import { getStoredData } from '../utils/storageUtils';
 
 export const CACHE_KEYS = {
-    GENRES: 'GENRES',
-    ROLES: 'ROLES',
-    FORMATS: 'FORMATS'
+  GENRES: 'GENRES',
+  ROLES: 'ROLES',
+  FORMATS: 'FORMATS',
 };
 
 export const GENRES_FETCHING = 'GENRES_FETCHING';
@@ -33,72 +33,77 @@ export const LANGUAGES_RECEIVE_ERROR = 'LANGUAGES_RECEIVE_ERROR';
 export const BASE_URL = `${environment.apiBaseUrl}base`;
 
 export const loadGenres = () => {
-    // Look in cache.
-    const cachedData = getStoredData(CACHE_KEYS.GENRES, true);
+  // Look in cache.
+  const cachedData = getStoredData(CACHE_KEYS.GENRES, true);
 
-    if (cachedData) {
-        return {
-            type: GENRES_RECEIVED,
-            payload: cachedData
-        }
-    }
+  if (cachedData) {
+    return {
+      type: GENRES_RECEIVED,
+      payload: cachedData,
+    };
+  }
 
-    return createAction({
-        endpoint: `${BASE_URL}/genres`,
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-        types: [GENRES_FETCHING, GENRES_RECEIVED, GENRES_RECEIVE_ERROR]
-    })
+  return createAction({
+    endpoint: `${BASE_URL}/genres`,
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    },
+    types: [GENRES_FETCHING, GENRES_RECEIVED, GENRES_RECEIVE_ERROR],
+  });
 };
 
 export const loadRoles = () => {
-    // Look in cache.
-    const cachedData = getStoredData(CACHE_KEYS.ROLES, true);
+  // Look in cache.
+  const cachedData = getStoredData(CACHE_KEYS.ROLES, true);
 
-    if (cachedData) {
-        return {
-            type: ROLES_RECEIVED,
-            payload: cachedData
-        }
-    }
+  if (cachedData) {
+    return {
+      type: ROLES_RECEIVED,
+      payload: cachedData,
+    };
+  }
 
-    return createAction({
-        endpoint: `${BASE_URL}/roles`,
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-        types: [ROLES_FETCHING, ROLES_RECEIVED, ROLES_RECEIVE_ERROR]
-    })
+  return createAction({
+    endpoint: `${BASE_URL}/roles`,
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+    types: [ROLES_FETCHING, ROLES_RECEIVED, ROLES_RECEIVE_ERROR],
+  });
 };
 
 export const loadFormats = () => {
-    // Look in cache.
-    const cachedData = getStoredData(CACHE_KEYS.FORMATS, true);
+  // Look in cache.
+  const cachedData = getStoredData(CACHE_KEYS.FORMATS, true);
 
-    if (cachedData) {
-        return {
-            type: FORMATS_RECEIVED,
-            payload: cachedData
-        }
-    }
+  if (cachedData) {
+    return {
+      type: FORMATS_RECEIVED,
+      payload: cachedData,
+    };
+  }
 
-    return createAction({
-        endpoint: `${BASE_URL}/formats`,
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-        types: [FORMATS_FETCHING, FORMATS_RECEIVED, FORMATS_RECEIVE_ERROR]
-    })
+  return createAction({
+    endpoint: `${BASE_URL}/formats`,
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+    types: [FORMATS_FETCHING, FORMATS_RECEIVED, FORMATS_RECEIVE_ERROR],
+  });
 };
 
-export const loadStudios = () => createAction({
+export const loadStudios = () =>
+  createAction({
     endpoint: `${BASE_URL}/studios`,
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
-    types: [STUDIOS_FETCHING, STUDIOS_RECEIVED, STUDIOS_RECEIVE_ERROR]
-});
+    types: [STUDIOS_FETCHING, STUDIOS_RECEIVED, STUDIOS_RECEIVE_ERROR],
+  });
 
-export const loadLanguages = () => createAction({
+export const loadLanguages = () =>
+  createAction({
     endpoint: `${BASE_URL}/languages`,
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
-    types: [LANGUAGES_FETCHING, LANGUAGES_RECEIVED, LANGUAGES_RECEIVE_ERROR]
-});
+    types: [LANGUAGES_FETCHING, LANGUAGES_RECEIVED, LANGUAGES_RECEIVE_ERROR],
+  });

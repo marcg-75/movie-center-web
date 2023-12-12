@@ -1,4 +1,4 @@
-@import "../../../style";
+@import '../../../style';
 
 .filter-header-toggle-container {
   display: flex;
@@ -12,7 +12,9 @@
   right: 1rem;
 }
 
-.filter-header-toggle-container > .filter-toggles > .filter-header-toggle-extended,
+.filter-header-toggle-container
+  > .filter-toggles
+  > .filter-header-toggle-extended,
 .filter-header-toggle-container > .filter-toggles > .filter-header-toggle {
   display: inline-flex;
   align-items: center;
@@ -35,12 +37,12 @@
 }
 
 .filter-store.standard-mode {
-    padding-top: 3px;
-    padding-bottom: 28px;
+  padding-top: 3px;
+  padding-bottom: 28px;
 }
 .filter-store.standard-mode > a > p,
 .filter-list.standard-mode > a > p {
-    margin: 0;
+  margin: 0;
 }
 
 .filter,
@@ -98,12 +100,12 @@ $bulletHeight: 18px;
   border-radius: 30px;
   position: relative;
   cursor: pointer;
-  background-color: rgba(243,188,92, 0.75);
+  background-color: rgba(243, 188, 92, 0.75);
   transition: border-color 100ms;
 
   .real-checkbox {
     position: absolute;
-    clip: rect(0,0,0,0);
+    clip: rect(0, 0, 0, 0);
 
     & + .toggle-button {
       position: absolute;
@@ -124,14 +126,13 @@ $bulletHeight: 18px;
         height: $bulletHeight;
         background-color: white;
         border-radius: 50%;
-        box-shadow: 1px 1px 3px rgba(0,0,0,0.5) ;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         transition: all 100ms ease-in-out;
       }
-
     }
 
     &:checked + .toggle-button {
-      background-color: #00A9A6;
+      background-color: #00a9a6;
       height: 20.5px;
 
       &::before {

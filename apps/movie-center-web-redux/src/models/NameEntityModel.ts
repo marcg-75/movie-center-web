@@ -1,4 +1,4 @@
 export default interface NameEntityModel {
-    id: number;
-    name: string;
+  id: number;
+  name: string;
 }

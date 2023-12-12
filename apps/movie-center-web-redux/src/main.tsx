@@ -11,10 +11,10 @@ import Movie from './components/movie/Movie';
 // TODO: Currently not in use. Possibly a move to Next.js is required.
 
 const routes = [
-    { path: '/movies', component: MovieList },
-    { path: '/movie/:id', component: Movie },
-    //{ path: '', redirectTo: 'movie', pathMatch: 'full' }
-    { path: '', component: MovieList }
+  { path: '/movies', component: MovieList },
+  { path: '/movie/:id', component: Movie },
+  //{ path: '', redirectTo: 'movie', pathMatch: 'full' }
+  { path: '', component: MovieList },
 ];
 
 const { store, persistor } = configureStore();
@@ -27,23 +27,23 @@ const { store, persistor } = configureStore();
 //injectGlobal`${theme.skins.Global(theme, process.env.NODE_ENV)}`; // eslint-disable-line no-unused-expressions
 
 const root = ReactDOM.createRoot(
-    document.getElementById('root') as HTMLElement
+  document.getElementById('root') as HTMLElement
 );
 
 root.render(
-    <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-            <Router>
-                <App>
-                    <Switch>
-                        {routes.map((route, i) => (
-                            <Route path={route.path} component={route.component} key={i}/>
-                        ))}
-                    </Switch>
-                </App>
-            </Router>
-        </PersistGate>
-    </Provider>
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <Router>
+        <App>
+          <Switch>
+            {routes.map((route, i) => (
+              <Route path={route.path} component={route.component} key={i} />
+            ))}
+          </Switch>
+        </App>
+      </Router>
+    </PersistGate>
+  </Provider>
 );
 
 // root.render(
