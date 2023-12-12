@@ -24,5 +24,6 @@ jobs:
       - run: git branch --track master origin/master
 
       - run: npx nx format:check
-      - run: npx nx affected --base=master --head=HEAD --target=lint
-      - run: npx nx affected --base=master --head=HEAD -t test,build --parallel=2
+      - run: npx nx affected --base=master --head=HEAD --target=lint --parallel=3
+      - run: npx nx affected --base=master --head=HEAD -t test --parallel=3
+      - run: npx nx affected --base=master --head=HEAD -t build --parallel=3
