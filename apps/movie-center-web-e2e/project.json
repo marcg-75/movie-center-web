@@ -1,0 +1,26 @@
+{
+  "name": "movie-center-web-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/movie-center-web-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/movie-center-web-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "movie-center-web:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "movie-center-web:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["movie-center-web"]
+}
