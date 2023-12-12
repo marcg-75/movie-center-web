@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 import './list-filter.component.scss';
 import { Filter } from '../../../models/Filter';

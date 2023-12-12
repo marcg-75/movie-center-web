@@ -8,6 +8,7 @@
     "test": "nx test movie-center-web",
     "lint": "nx run-many --all --target=lint",
     "affected:lint": "nx affected --base=master --head=HEAD --target=lint",
+    "affected:test": "nx affected --base=master --head=HEAD --target=test",
     "graph": "nx graph --groupByFolder --focus=web-client",
     "upgrade-nx": "nx migrate latest",
     "upgrade-nextjs": "npm i next@latest react@latest react-dom@latest && npm i -D eslint-config-next@latest"
