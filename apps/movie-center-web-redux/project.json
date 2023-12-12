@@ -1,0 +1,80 @@
+{
+  "name": "movie-center-web-redux",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/movie-center-web-redux",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/movie-center-web-redux",
+        "index": "apps/movie-center-web-redux/src/index.html",
+        "baseHref": "/",
+        "main": "apps/movie-center-web-redux/src/main.tsx",
+        "tsConfig": "apps/movie-center-web-redux/tsconfig.app.json",
+        "assets": [
+          "apps/movie-center-web-redux/src/favicon.ico",
+          "apps/movie-center-web-redux/src/assets"
+        ],
+        "styles": ["apps/movie-center-web-redux/src/style.scss"],
+        "scripts": [],
+        "webpackConfig": "apps/movie-center-web-redux/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/movie-center-web-redux/src/environments/environment.ts",
+              "with": "apps/movie-center-web-redux/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "movie-center-web-redux:build",
+        "port": 4300,
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "movie-center-web-redux:build:development"
+        },
+        "production": {
+          "buildTarget": "movie-center-web-redux:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/movie-center-web-redux/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

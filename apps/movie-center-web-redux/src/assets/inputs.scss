@@ -1,0 +1,244 @@
+input,
+textarea {
+  outline: 0;
+}
+
+input[type='text'] {
+  font-family: 'PT Sans', sans-serif;
+  letter-spacing: 0.06px;
+  font-size: 1rem;
+  color: #515151;
+
+  border: 1px solid #ccc;
+  border-radius: 0;
+  box-sizing: border-box;
+  padding: 0.5rem;
+}
+
+textarea {
+  padding: 0.5rem;
+  border-radius: 0;
+  width: 100%;
+  border: 1px solid #d5d0cc;
+  color: #515151;
+  line-height: 1.3rem;
+}
+
+textarea:focus,
+input[type='text']:focus,
+input[type='mat-date']:focus,
+mat-select:focus {
+  border: 2px solid #007d7a;
+
+  &.ng-invalid {
+    border: 1px solid #be0007;
+  }
+}
+
+:required {
+  background: #fffbe9 !important;
+  outline: none !important;
+}
+
+input:disabled,
+textarea:disabled {
+  opacity: 0.7;
+}
+
+mat-select {
+  font-family: 'PT Sans' !important;
+  border: #d5d0cc 1px solid;
+  font-weight: bold;
+  letter-spacing: 0.06rem;
+  color: #515151;
+  font-size: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: #ffffff;
+  margin: 0px;
+  position: relative;
+  padding: 0rem 0.15rem 0rem 0rem !important;
+}
+
+.mat-select-panel {
+  max-width: none !important;
+}
+
+.mat-select-arrow {
+  color: rgba(0, 0, 0, 0) !important;
+}
+
+mat-select:after {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f0d7';
+  font-size: 1.38rem;
+  position: absolute;
+  top: 0.2rem;
+  right: 0.5rem;
+  color: #515151;
+  pointer-events: none;
+  cursor: pointer;
+  line-height: 2rem !important;
+  height: 2rem !important;
+}
+
+mat-option {
+  font-family: 'PT Sans' !important;
+  letter-spacing: 0.06rem;
+  font-size: 1rem !important;
+  color: #515151;
+  line-height: 2.5rem !important;
+  height: 2.5rem !important;
+}
+
+mat-option:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+mat-option.mat-selected {
+  font-weight: bold;
+  background-color: #fffbe9 !important;
+}
+
+mat-option:hover {
+  background-color: #fffbe9 !important;
+  font-weight: bold;
+}
+
+.mat-select-required {
+  background: #fffbe9;
+  outline: none;
+}
+
+.mat-select-value {
+  padding-left: 0.625rem !important;
+  height: 2.2rem !important;
+  line-height: 2.2rem !important;
+}
+
+mat-select .mat-select-trigger {
+  border: 1px solid transparent;
+}
+
+mat-select:focus .mat-select-trigger {
+  border: none;
+}
+
+.mat-pseudo-checkbox {
+  border: 1px solid #007d7a;
+  color: #007d7a;
+  margin-right: 1.5rem;
+}
+
+.mat-pseudo-checkbox-checked {
+  background-color: #007d7a;
+  color: #ffffff;
+}
+
+.mat-list-text {
+  font-family: 'PT Sans';
+  font-size: 1rem;
+  line-height: 2rem;
+}
+
+.mat-list-item-content {
+  margin: 0rem;
+  padding: 0rem !important;
+}
+
+.mat-list-item-content:hover {
+  background-color: #f6f3f0 !important;
+}
+
+.mat-list-item-content:checked {
+  background-color: #f6f3f0 !important;
+}
+
+.mat-list-item-content-reverse {
+  flex-direction: row !important;
+}
+
+.mat-list-option {
+  height: auto !important;
+  animation: none;
+}
+
+.sbr-checkbox.mat-checkbox-checked .mat-checkbox-background {
+  background-color: #007d7a;
+}
+
+.sbr-checkbox .mat-checkbox-layout {
+  white-space: normal;
+}
+
+.mat-radio-group {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.mat-radio-button {
+  padding: 2% 0%;
+}
+
+.sbr-radio-button.mat-radio-checked {
+  .mat-radio-outer-circle {
+    border-color: #007d7a !important;
+  }
+
+  .mat-radio-inner-circle {
+    background-color: #007d7a !important;
+  }
+}
+
+mat-button-toggle-group {
+  box-shadow: none;
+  border-top: #d5d0cc 1px solid;
+  border-left: #d5d0cc 1px solid;
+  border-bottom: #d5d0cc 1px solid;
+}
+
+mat-button-toggle-group:required {
+  padding: 0.625rem !important;
+  background-color: #fffbe9;
+}
+
+.mat-button-toggle-label-content {
+  font-family: 'PT Sans' !important;
+  letter-spacing: 0.05rem !important;
+  font-size: 1rem !important;
+  font-weight: bold;
+  line-height: 2.25rem !important;
+  padding: 0rem 1rem !important;
+}
+
+mat-button-toggle {
+  color: #515151 !important;
+  background-color: #ffffff;
+  border-right: #d5d0cc 1px solid;
+  padding: 0px !important;
+}
+
+.mat-button-toggle-checked {
+  color: #ffffff !important;
+  background-color: #00a9a6;
+}
+
+.mat-selection-list.ng-invalid.ng-dirty .mat-pseudo-checkbox {
+  border-color: #be0007;
+}
+
+.mat.radio-label > div {
+  vertical-align: middle;
+}
+
+textarea.ng-touched.ng-invalid,
+input.ng-touched.ng-invalid,
+.mat-select.ng-touched.ng-invalid {
+  border: 1px solid #be0007;
+}
+
+.validation-error-text {
+  color: #be0007;
+  margin-top: 3px;
+}
