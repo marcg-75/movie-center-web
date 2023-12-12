@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import '../movie.details.scss';
@@ -15,7 +15,7 @@ import { BaseDataStateModel } from '../../../actions/models/base-data-state.mode
 import { loadFormats, loadLanguages } from '../../../actions/base-data.actions';
 
 const REGIONS: Array<number> = [1, 2, 3, 4, 5, 6];
-const regionOptions: Array<any> = REGIONS.map((r: number, i: number) => {
+const regionOptions: ReactNode[] = REGIONS.map((r: number, i: number) => {
   return (
     <option key={i + 1} value={r}>
       {r}
@@ -25,7 +25,7 @@ const regionOptions: Array<any> = REGIONS.map((r: number, i: number) => {
 regionOptions.unshift(<option key="0" value=""></option>);
 
 const SYSTEMS: Array<string> = ['PAL', 'NTSC'];
-const systemOptions: Array<any> = SYSTEMS.map((s: string, i: number) => {
+const systemOptions: ReactNode[] = SYSTEMS.map((s: string, i: number) => {
   return (
     <option key={i + 1} value={s}>
       {s}
@@ -37,7 +37,7 @@ systemOptions.unshift(<option key="0" value=""></option>);
 interface FormatPanelProps {
   movie: MovieStateModel;
   baseData: BaseDataStateModel;
-  dispatch: (any: any) => void;
+  dispatch: (any: unknown) => void;
   testName?: string;
 }
 
@@ -66,10 +66,12 @@ const FormatPanel = ({
   const { formats, languages } = baseData;
   const movieFormatInfo = movieItem?.movieFormatInfo;
 
-  const movieStateChanged = (event: any) => {
+  const movieStateChanged = (
+    event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = event.target;
 
-    let cValue = value;
+    let cValue: number | string | SelectableModel | undefined = value;
 
     if (name === 'format') {
       cValue = formats?.find((f: SelectableModel) => f.code === value);
@@ -93,7 +95,7 @@ const FormatPanel = ({
     );
   };
 
-  const audioLanguagesChanged = (event: any) => {
+  const audioLanguagesChanged = (event: ChangeEvent<HTMLSelectElement>) => {
     const audioLanguages: Array<LanguageModel> = getSelectedLanguages(event);
 
     dispatch(
@@ -107,7 +109,7 @@ const FormatPanel = ({
     );
   };
 
-  const subtitlesChanged = (event: any) => {
+  const subtitlesChanged = (event: ChangeEvent<HTMLSelectElement>) => {
     const subtitles: Array<LanguageModel> = getSelectedLanguages(event);
 
     dispatch(
@@ -121,13 +123,15 @@ const FormatPanel = ({
     );
   };
 
-  const getSelectedLanguages = (event: any): Array<LanguageModel> => {
+  const getSelectedLanguages = (
+    event: ChangeEvent<HTMLSelectElement>
+  ): Array<LanguageModel> => {
     const { selectedOptions } = event.target;
     const chosenLanguages: Array<LanguageModel> = [];
 
     for (let i = 0; i < selectedOptions.length; i++) {
-      let option: any = selectedOptions[i];
-      let lang: LanguageModel | undefined = languages?.find(
+      const option = selectedOptions[i];
+      const lang: LanguageModel | undefined = languages?.find(
         (l: LanguageModel) => l.id === parseInt(option.value, 10)
       );
 
@@ -295,8 +299,13 @@ const FormatPanel = ({
   return <div data-test-name={testName}>{content}</div>;
 };
 
-// @ts-ignore
-function stateToProps({ movie, baseData }) {
+function stateToProps({
+  movie,
+  baseData,
+}: {
+  movie: MovieStateModel;
+  baseData: BaseDataStateModel;
+}) {
   return {
     movie,
     baseData,

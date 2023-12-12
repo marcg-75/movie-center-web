@@ -9,6 +9,7 @@ import { getDefaultSortModel, scrollToTop } from '../../utils/list.util';
 import { SortModel } from '../../models/SortModel';
 import { MovieGenreModel } from '../../models/MovieGenreModel';
 import { IMovie } from '../../models/movie.model';
+import * as H from 'history';
 
 const SORT_ORDERS_BY_COLUMN = [
   { column: 'title', sortOrder: 'title' },
@@ -18,9 +19,9 @@ const SORT_ORDERS_BY_COLUMN = [
 
 interface MovieListProps {
   movieList: MovieListStateModel;
-  history: any;
-  location: any;
-  dispatch: (any: any) => void;
+  history: H.History;
+  location: H.Location;
+  dispatch: (any: unknown) => void;
   testName?: string;
 }
 
@@ -221,8 +222,7 @@ const MovieList = ({
   );
 };
 
-// @ts-ignore
-function stateToProps({ movieList }) {
+function stateToProps({ movieList }: { movieList: MovieListStateModel }) {
   return {
     movieList,
   };

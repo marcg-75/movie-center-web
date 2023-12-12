@@ -1,12 +1,13 @@
 import '../movie.details.scss';
 
 import { environment } from '../../../env/environment';
+import { FocusEvent } from 'react';
 
 interface LabelledTimeInputProps {
   label: string;
   id: string;
   defaultValue?: string;
-  callback: (event: any) => void;
+  callback: (event: FocusEvent<HTMLInputElement>) => void;
   testName?: string;
 }
 

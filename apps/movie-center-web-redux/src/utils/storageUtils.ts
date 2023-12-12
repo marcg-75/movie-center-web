@@ -7,7 +7,6 @@ import { STORAGE_TYPE, StoredData } from '../models/storage.model';
 
 const getDefaultStorageType = (): STORAGE_TYPE => {
   const fallbackStorageType = STORAGE_TYPE.SESSION;
-  const cacheStorageDefault = environment.cacheStorageDefault?.toUpperCase();
 
   return environment.cacheStorageDefault || fallbackStorageType;
 };
@@ -25,14 +24,14 @@ const EXPIRATION_TIME_MINUTES: number = environment.cacheExpTimeMinutes || 0;
  */
 export const getStoredData = (
   storageKey: string,
-  ignoreExpiration: Boolean = false,
+  ignoreExpiration: boolean = false,
   storageType: STORAGE_TYPE = DEFAULT_STORAGE_TYPE
-): Object | null => {
+): unknown | null => {
   if (storageKey && storageKey.trim().length > 0) {
     const storage = getStorage(storageType);
 
     if (storage) {
-      let strData = storage.getItem(storageKey);
+      const strData = storage.getItem(storageKey);
 
       if (strData) {
         const data = JSON.parse(strData) as StoredData;
@@ -66,7 +65,7 @@ export const getStoredData = (
 
 export const setStoredData = (
   storageKey: string,
-  content: Object,
+  content: unknown,
   storageType: STORAGE_TYPE = DEFAULT_STORAGE_TYPE
 ): void => {
   if (storageKey && storageKey.trim().length > 0) {

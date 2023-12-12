@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React, { ReactNode, useState } from 'react';
 
 import './list-filter.component.scss';
 import { Filter } from '../../../models/Filter';
@@ -13,13 +12,13 @@ interface ListFilterProps {
   helpText: string;
   isExtendedFilterEnabled?: boolean;
   clearFilter: () => void;
-  filter: Filter<any>;
+  filter: Filter<MovieFilter>;
   filterType: FilterType;
   loadFilter: (filter: MovieFilter) => void;
   enableSaveFilter: boolean;
   compactModeActions: boolean;
-  regularContent: any;
-  extendedContent: any;
+  regularContent: ReactNode;
+  extendedContent: ReactNode;
   testName?: string;
 }
 
@@ -175,8 +174,4 @@ const extendedFilterToggleDefault = (componentName: string): boolean => {
   }
 };
 
-function stateToProps({}) {
-  return {};
-}
-
-export default connect(stateToProps)(ListFilterComponent);
+export default ListFilterComponent;

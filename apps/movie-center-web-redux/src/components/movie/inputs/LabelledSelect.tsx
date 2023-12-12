@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ChangeEvent, ReactNode } from 'react';
 
 import '../movie.details.scss';
 import { environment } from '../../../env/environment';
@@ -9,7 +9,7 @@ interface LabelledSelectProps {
   defaultValue?: number | string | string[];
   value?: number | string | string[] | null;
   options: ReactNode;
-  callback: (event: any) => void;
+  callback: (event: ChangeEvent<HTMLSelectElement>) => void;
   required: boolean;
   multiple: boolean;
   testName?: string;

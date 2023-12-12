@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import * as H from 'history';
 
 import './movie.details.scss';
 
@@ -37,9 +38,9 @@ const INFO_PANEL_PERSONAL = 'personal';
 interface MovieProps {
   movie: MovieStateModel;
   baseData: BaseDataStateModel;
-  history: any;
-  location: any;
-  dispatch: (any: any) => void;
+  history: H.History;
+  location: H.Location;
+  dispatch: (any: unknown) => void;
   testName?: string;
 }
 
@@ -123,7 +124,7 @@ const Movie = ({
     return movieId === 0;
   };
 
-  const movieStateChanged = (event: any) => {
+  const movieStateChanged = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
     dispatch(
@@ -305,8 +306,13 @@ const Movie = ({
   );
 };
 
-// @ts-ignore
-function stateToProps({ movie, baseData }) {
+function stateToProps({
+  movie,
+  baseData,
+}: {
+  movie: MovieStateModel;
+  baseData: BaseDataStateModel;
+}) {
   return {
     movie,
     baseData,

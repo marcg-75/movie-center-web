@@ -28,7 +28,7 @@ import {
 
 interface BaseDataActionProps {
   type: string;
-  payload: Object | McPayload;
+  payload: unknown | McPayload;
 }
 
 export default function baseDataReducer(
@@ -65,7 +65,7 @@ export default function baseDataReducer(
       };
     case GENRES_RECEIVE_ERROR:
       const plg = payload as McPayload;
-      let errMsgGenre = plg.response ? plg.response.error : plg.message;
+      const errMsgGenre = plg.response ? plg.response.error : plg.message;
       //parseError(error);  // TODO: Implementera felhantering
 
       console.error(errMsgGenre);
@@ -97,7 +97,7 @@ export default function baseDataReducer(
       };
     case ROLES_RECEIVE_ERROR:
       const pl = payload as McPayload;
-      let errMsgRole = pl.response ? pl.response.error : pl.message;
+      const errMsgRole = pl.response ? pl.response.error : pl.message;
       //parseError(error);  // TODO: Implementera felhantering
       console.error(errMsgRole);
 
@@ -128,7 +128,7 @@ export default function baseDataReducer(
       };
     case FORMATS_RECEIVE_ERROR:
       const plf = payload as McPayload;
-      let errMsgFormat = plf.response ? plf.response.error : plf.message;
+      const errMsgFormat = plf.response ? plf.response.error : plf.message;
       //parseError(error);  // TODO: Implementera felhantering
       console.error(errMsgFormat);
 
@@ -156,7 +156,7 @@ export default function baseDataReducer(
       };
     case STUDIOS_RECEIVE_ERROR:
       const pls = payload as McPayload;
-      let errMsgStudio = pls.response ? pls.response.error : pls.message;
+      const errMsgStudio = pls.response ? pls.response.error : pls.message;
       //parseError(error);  // TODO: Implementera felhantering
       console.error(errMsgStudio);
 
@@ -184,7 +184,7 @@ export default function baseDataReducer(
       };
     case LANGUAGES_RECEIVE_ERROR:
       const pll = payload as McPayload;
-      let errMsgLang = pll.response ? pll.response.error : pll.message;
+      const errMsgLang = pll.response ? pll.response.error : pll.message;
       //parseError(error);  // TODO: Implementera felhantering
       console.error(errMsgLang);
 

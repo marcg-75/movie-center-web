@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ChangeEvent, FormEvent, ReactNode, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import '../movie.details.scss';
@@ -20,7 +20,7 @@ import { PersonStateModel } from '../../../actions/models/person-state.model';
 interface CastPanelProps {
   movie: MovieStateModel;
   person: PersonStateModel;
-  dispatch: (any: any) => void;
+  dispatch: (any: unknown) => void;
   testName?: string;
 }
 
@@ -63,15 +63,15 @@ const CastPanel = ({
     setSelectedPersonName(undefined);
   };
 
-  const addActor = (event: any) => {
+  const addActor = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!movieItem) {
       return;
     }
 
-    const actorPersonRoleId = event.target['actorPersonRoleId'].value;
-    const characterName = event.target['characterName'].value;
+    const actorPersonRoleId = event.currentTarget['actorPersonRoleId'].value;
+    const characterName = event.currentTarget['characterName'].value;
 
     if (!(actorPersonRoleId && characterName)) {
       alert('Både skådespelare och rollfigurens namn måste anges.');
@@ -101,20 +101,20 @@ const CastPanel = ({
       } as IMovie)
     );
 
-    event.target['actorPersonRoleId'].value = '';
-    event.target['characterName'].value = '';
+    event.currentTarget['actorPersonRoleId'].value = '';
+    event.currentTarget['characterName'].value = '';
   };
 
-  const addNewActor = (event: any) => {
+  const addNewActor = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!persons) {
       return;
     }
 
-    const personId = event.target['newActorPersonId'].value;
-    const personName = event.target['newActorName'].value;
-    const characterName = event.target['newActorCharacterName'].value;
+    const personId = event.currentTarget['newActorPersonId'].value;
+    const personName = event.currentTarget['newActorName'].value;
+    const characterName = event.currentTarget['newActorCharacterName'].value;
 
     if ((!personId && !personName) || !characterName) {
       alert('Både skådespelarens och rollfigurens namn måste anges.');
@@ -129,15 +129,15 @@ const CastPanel = ({
         'En person med detta namn finns redan. Vill du skapa en ny person som har samma namn? Avbryt annars och välj befintlig person i listan intill.'
       )
     ) {
-      event.target['newActorName'].value = '';
+      event.currentTarget['newActorName'].value = '';
       return;
     }
 
     updateMovieActorState(personId, personName, characterName);
 
-    event.target['newActorPersonId'].value = '';
-    event.target['newActorName'].value = '';
-    event.target['newActorCharacterName'].value = '';
+    event.currentTarget['newActorPersonId'].value = '';
+    event.currentTarget['newActorName'].value = '';
+    event.currentTarget['newActorCharacterName'].value = '';
 
     clearSelectedPerson();
 
@@ -154,7 +154,7 @@ const CastPanel = ({
       return;
     }
 
-    let actors = movieItem.actors ? movieItem.actors : [];
+    const actors = movieItem.actors ? movieItem.actors : [];
 
     const person: NameEntityModel = {
       id: personId ? parseInt(personId, 10) : undefined,
@@ -195,7 +195,7 @@ const CastPanel = ({
       return;
     }
 
-    let actorsForMovie = movieItem.actors ? movieItem.actors : [];
+    const actorsForMovie = movieItem.actors ? movieItem.actors : [];
 
     //actorsForMovie = actorsForMovie.filter((a: CastAndCrewModel) => a.id !== actorId);
 
@@ -244,7 +244,7 @@ const CastPanel = ({
     return selectablePersons;
   };
 
-  const updateNewActorName = (event: any) => {
+  const updateNewActorName = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelectedPersonId(event.target.value);
     setSelectedPersonName(event.target.selectedOptions[0].label);
   };
@@ -383,8 +383,13 @@ const CastPanel = ({
   return <div data-test-name={testName}>{content}</div>;
 };
 
-// @ts-ignore
-function stateToProps({ movie, person }) {
+function stateToProps({
+  movie,
+  person,
+}: {
+  movie: MovieStateModel;
+  person: PersonStateModel;
+}) {
   return {
     movie,
     person,

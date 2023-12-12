@@ -111,11 +111,13 @@ export const movieReducer = (
       };
     case MOVIE_CREATE_ERROR:
       // TODO: Implementera felhantering
-      const createErrorMessages = createErrorMessageArray(payload);
 
       return {
         ...state,
-        movieLoading: getFailedLoadingState(undefined, createErrorMessages),
+        movieLoading: getFailedLoadingState(
+          undefined,
+          createErrorMessageArray(payload)
+        ),
         movieCreated: false,
       };
     case MOVIE_UPDATING:

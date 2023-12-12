@@ -4,6 +4,6 @@ export enum STORAGE_TYPE {
 }
 
 export interface StoredData {
-  content: Object;
+  content: unknown;
   timestamp: Date;
 }

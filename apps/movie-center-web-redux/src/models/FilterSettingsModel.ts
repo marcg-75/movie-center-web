@@ -1,19 +1,18 @@
 import { Filter } from './Filter';
-import { MovieFilter } from './movie.model';
 
 export enum FilterType {
   MOVIE = 'MOVIE',
   ACTOR = 'ACTOR',
 }
 
-export class FilterSettings {
+export class FilterSettings<T> {
   public id: number;
   public name: string;
   public isDefault: boolean;
   public filterType: FilterType;
-  public filter: Filter<any>;
+  public filter: Filter<T>;
 
-  constructor(rawData: FilterSettingsRaw, filter: Filter<any>) {
+  constructor(rawData: FilterSettingsRaw, filter: Filter<T>) {
     this.id = rawData.id;
     this.name = rawData.name;
     this.isDefault = rawData.isDefault || false;
@@ -21,17 +20,17 @@ export class FilterSettings {
     this.filter = filter;
   }
 
-  static fromRaw(rawData: FilterSettingsRaw): FilterSettings {
+  static fromRaw<T>(rawData: FilterSettingsRaw): FilterSettings<T> {
     switch (rawData.filterType) {
       case FilterType.MOVIE:
         return new FilterSettings(
           rawData,
-          JSON.parse(rawData.filterValues) as MovieFilter
+          JSON.parse(rawData.filterValues) as Filter<T>
         );
       default:
         return new FilterSettings(
           rawData,
-          JSON.parse(rawData.filterValues) as Filter<any>
+          JSON.parse(rawData.filterValues) as Filter<T>
         );
     }
   }

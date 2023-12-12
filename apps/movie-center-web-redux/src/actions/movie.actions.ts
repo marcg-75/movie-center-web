@@ -148,8 +148,7 @@ export const updateFilter = (filter: MovieFilter) => {
 };
 
 export const updateFilterAndReloadMovies = (filter: MovieFilter) => {
-  // @ts-ignore
-  return (dispatch) => {
+  return (dispatch: (any: unknown) => void) => {
     dispatch(updateFilter(filter));
     return dispatch(getMovies(filter));
   };
@@ -168,8 +167,7 @@ export const clearFilter = () => {
 };
 
 export const clearFilterAndReloadMovies = () => {
-  // @ts-ignore
-  return (dispatch) => {
+  return (dispatch: (any: unknown) => void) => {
     dispatch(clearFilter());
     return dispatch(getMovies(DEFAULT_FILTER));
   };

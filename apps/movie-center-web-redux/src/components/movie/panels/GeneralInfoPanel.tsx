@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { ChangeEvent, ReactNode, useState } from 'react';
 import { connect } from 'react-redux';
 
 import '../movie.details.scss';
@@ -22,7 +22,7 @@ import { checkIfBaseDataIsLoading } from '../utils';
 interface GeneralInfoPanelProps {
   movie: MovieStateModel;
   baseData: BaseDataStateModel;
-  dispatch: (any: any) => void;
+  dispatch: (any: unknown) => void;
   testName?: string;
 }
 
@@ -32,20 +32,20 @@ const GeneralInfoPanel = ({
   dispatch,
   testName = 'GeneralInfoPanel_test',
 }: GeneralInfoPanelProps) => {
-  const [isMovieLoading, setIsMovieLoading] = useState(
-    movie?.movieLoading?.loading
-  );
-  const [isBaseDataLoading, setIsBaseDataLoading] = useState(
-    checkIfBaseDataIsLoading(baseData)
-  );
+  const [isMovieLoading] = useState(movie?.movieLoading?.loading);
+  const [isBaseDataLoading] = useState(checkIfBaseDataIsLoading(baseData));
 
   const { movieItem, movieLoading } = movie;
   const { genres, studios } = baseData;
 
-  const movieStateChanged = (event: any) => {
+  const movieStateChanged = (
+    event: ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     const { name, value } = event.target;
 
-    let cValue = value;
+    let cValue: string | SelectableModel | undefined = value;
 
     if (name === 'mainGenre') {
       cValue = genres?.find((g: SelectableModel) => g.code === value);
@@ -59,13 +59,13 @@ const GeneralInfoPanel = ({
     );
   };
 
-  const additionalGenresChanged = (event: any) => {
+  const additionalGenresChanged = (event: ChangeEvent<HTMLSelectElement>) => {
     const { selectedOptions } = event.target;
     const chosenGenres: Array<MovieGenreModel> = [];
 
     for (let i = 0; i < selectedOptions.length; i++) {
-      let option: any = selectedOptions[i];
-      let genre: SelectableModel | undefined = genres?.find(
+      const option = selectedOptions[i];
+      const genre: SelectableModel | undefined = genres?.find(
         (g: SelectableModel) => g.code === option.value
       );
 
@@ -88,7 +88,7 @@ const GeneralInfoPanel = ({
     );
   };
 
-  const studioAdded = (event: any) => {
+  const studioAdded = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
 
     const newStudio: NameEntityModel = { name: value } as NameEntityModel;
@@ -104,13 +104,13 @@ const GeneralInfoPanel = ({
     );
   };
 
-  const studiosChanged = (event: any) => {
+  const studiosChanged = (event: ChangeEvent<HTMLSelectElement>) => {
     const { selectedOptions } = event.target;
     const chosenStudios: Array<NameEntityModel> = [];
 
     for (let i = 0; i < selectedOptions.length; i++) {
-      let option: any = selectedOptions[i];
-      let studio: NameEntityModel | undefined = studios?.find(
+      const option = selectedOptions[i];
+      const studio: NameEntityModel | undefined = studios?.find(
         (s: NameEntityModel) => s.id === parseInt(option.value, 10)
       );
 
@@ -271,8 +271,13 @@ const GeneralInfoPanel = ({
   return <div data-test-name={testName}>{content}</div>;
 };
 
-// @ts-ignore
-function stateToProps({ movie, baseData }) {
+function stateToProps({
+  movie,
+  baseData,
+}: {
+  movie: MovieStateModel;
+  baseData: BaseDataStateModel;
+}) {
   return {
     movie,
     baseData,

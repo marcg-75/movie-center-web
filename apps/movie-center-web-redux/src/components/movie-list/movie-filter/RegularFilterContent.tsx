@@ -13,6 +13,8 @@ import { connect } from 'react-redux';
 import { updateFilter } from '../../../actions/movie.actions';
 import { loadGenres } from '../../../actions/base-data.actions';
 import SelectableModel from '../../../models/SelectableModel';
+import { BaseDataStateModel } from '../../../actions/models/base-data-state.model';
+import { MovieListStateModel } from '../../../actions/models/movie-state.model';
 
 const helpFilterFreetext =
   'Du kan välja att filtrera på filmens titel, genre eller annat. Tryck sedan på ' +
@@ -20,9 +22,9 @@ const helpFilterFreetext =
 
 interface RegularFilterContentProps {
   filter: MovieModelFilter;
-  baseData: any;
+  baseData: BaseDataStateModel;
   filterChanged: (filter: MovieModelFilter) => void;
-  dispatch: (any: any) => void;
+  dispatch: (any: unknown) => void;
   testName?: string;
 }
 
@@ -56,7 +58,7 @@ const RegularFilterContent = ({
       setFilterGenresToSelect(genresToSelect);
     }
 
-    setFilterLoading(!filter || !baseData || !baseData.genresLoaded);
+    setFilterLoading(!filter || !baseData || baseData.genresLoading?.loading);
   }, [filter, baseData]);
 
   const changeHandler = (
@@ -94,8 +96,8 @@ const RegularFilterContent = ({
   };
 
   const handleEnterKeyInvoke = (
-    e: any,
-    callback: (e: KeyboardEvent) => void
+    e: KeyboardEvent<HTMLInputElement>,
+    callback: (e: KeyboardEvent<HTMLInputElement>) => void
   ) => {
     if (e.key === 'Enter') {
       callback(e);
@@ -183,8 +185,13 @@ const RegularFilterContent = ({
   );
 };
 
-// @ts-ignore
-function stateToProps({ baseData, movieList: { filter } }) {
+function stateToProps({
+  baseData,
+  movieList: { filter },
+}: {
+  baseData: BaseDataStateModel;
+  movieList: MovieListStateModel;
+}) {
   return {
     baseData,
     filter,

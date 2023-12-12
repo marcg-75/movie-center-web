@@ -1,12 +1,13 @@
 import '../movie.details.scss';
 
 import { environment } from '../../../env/environment';
+import { FocusEvent } from 'react';
 
 interface LabelledTextareaProps {
   label: string;
   id: string;
   defaultValue?: string;
-  callback: (event: any) => void;
+  callback: (event: FocusEvent<HTMLTextAreaElement>) => void;
   required: boolean;
   testName?: string;
 }

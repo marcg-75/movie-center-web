@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, ReactNode, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import '../movie.details.scss';
@@ -13,7 +13,7 @@ import { MovieStateModel } from '../../../actions/models/movie-state.model';
 import { IMovie } from '../../../models/movie.model';
 
 const GRADES: Array<number> = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
-const gradeOptions: Array<any> = GRADES.map((g: number, i: number) => {
+const gradeOptions: ReactNode[] = GRADES.map((g: number, i: number) => {
   return (
     <option key={i + 1} value={g}>
       {g}
@@ -23,7 +23,7 @@ const gradeOptions: Array<any> = GRADES.map((g: number, i: number) => {
 gradeOptions.unshift(<option key="0" value=""></option>);
 
 const CURRENCIES: Array<string> = ['SEK', 'EUR', 'NOK', 'DKK', 'GBP', 'USD'];
-const currencyOptions: Array<any> = CURRENCIES.map((c: string, i: number) => {
+const currencyOptions: ReactNode[] = CURRENCIES.map((c: string, i: number) => {
   return (
     <option key={i + 1} value={c}>
       {c}
@@ -34,7 +34,7 @@ currencyOptions.unshift(<option key="0" value=""></option>);
 
 interface PersonalInfoPanelProps {
   movie: MovieStateModel;
-  dispatch: (any: any) => void;
+  dispatch: (any: unknown) => void;
   testName?: string;
 }
 
@@ -52,10 +52,14 @@ const PersonalInfoPanel = ({
   const { movieItem, movieLoading } = movie;
   const moviePersonalInfo = movieItem?.moviePersonalInfo;
 
-  const movieStateChanged = (event: any) => {
+  const movieStateChanged = (
+    event: ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     const { name, value } = event.target;
 
-    let cValue = value;
+    let cValue: number | string = value;
 
     if (name === 'grade') {
       cValue = parseFloat(value);
@@ -162,8 +166,7 @@ const PersonalInfoPanel = ({
   return <div data-test-name={testName}>{content}</div>;
 };
 
-// @ts-ignore
-function stateToProps({ movie }) {
+function stateToProps({ movie }: { movie: MovieStateModel }) {
   return {
     movie,
   };

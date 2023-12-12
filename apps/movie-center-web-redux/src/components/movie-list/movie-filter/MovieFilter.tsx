@@ -13,6 +13,7 @@ import { MovieFilter as MovieModelFilter } from '../../../models/movie.model';
 import { FilterType } from '../../../models/FilterSettingsModel';
 import ExtendedFilterContent from './ExtendedFilterContent';
 import RegularFilterContent from './RegularFilterContent';
+import { MovieListStateModel } from '../../../actions/models/movie-state.model';
 
 const helpFilter =
   'Du kan filtrera fram de filmer som du är intresserad i genom att välja kriteria ' +
@@ -22,7 +23,7 @@ const helpFilter =
 interface MovieFilterProps {
   filter: MovieModelFilter;
   componentName: string;
-  dispatch: (any: any) => void;
+  dispatch: (any: unknown) => void;
   testName?: string;
 }
 
@@ -69,8 +70,11 @@ const MovieFilter = ({
   );
 };
 
-// @ts-ignore
-function stateToProps({ movieList: { filter } }) {
+function stateToProps({
+  movieList: { filter },
+}: {
+  movieList: MovieListStateModel;
+}) {
   return {
     filter,
   };

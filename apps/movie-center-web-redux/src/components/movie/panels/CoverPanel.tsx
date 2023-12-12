@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import '../movie.details.scss';
@@ -14,7 +14,7 @@ export const IMAGE_URL = `${environment.apiBaseUrl}image/`;
 
 interface CoverPanelProps {
   movie: MovieStateModel;
-  dispatch: (any: any) => void;
+  dispatch: (any: unknown) => void;
   testName?: string;
 }
 
@@ -35,10 +35,10 @@ const CoverPanel = ({
   const movieFormatInfo = movieItem?.movieFormatInfo;
   const cover = movieFormatInfo ? movieFormatInfo.cover : undefined;
 
-  const movieStateChanged = (event: any) => {
+  const movieStateChanged = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
-    let cValue = value;
+    // let cValue = value;
 
     //if (name === 'format') {
     //    const {formats} = this.props.baseData;
@@ -53,7 +53,7 @@ const CoverPanel = ({
           ...movieFormatInfo,
           cover: {
             ...cover,
-            [name]: cValue,
+            [name]: value, // cValue
           },
         },
       } as IMovie)
@@ -136,24 +136,23 @@ const CoverPanel = ({
   return <div data-test-name={testName}>{content}</div>;
 };
 
-const getImageUrl = (image: Uint32Array) => {
-  const blob = new Blob([image], { type: 'image/jpeg' });
-  // return URL.createObjectURL(blob);
-  return `data:image/jpeg;base64,${image}`;
-};
+// const getImageUrl = (image: Uint32Array) => {
+//   const blob = new Blob([image], { type: 'image/jpeg' });
+//   // return URL.createObjectURL(blob);
+//   return `data:image/jpeg;base64,${image}`;
+// };
+//
+// function toDataURL(img: ArrayBuffer, contentType = 'image/jpeg') {
+//   const image = btoa(
+//     new Uint32Array(img).reduce(
+//       (data, byte) => data + String.fromCharCode(byte),
+//       ''
+//     )
+//   );
+//   return `data:${contentType};base64,${image}`;
+// }
 
-function toDataURL(img: ArrayBuffer, contentType = 'image/jpeg') {
-  const image = btoa(
-    new Uint32Array(img).reduce(
-      (data, byte) => data + String.fromCharCode(byte),
-      ''
-    )
-  );
-  return `data:${contentType};base64,${image}`;
-}
-
-// @ts-ignore
-function stateToProps({ movie }) {
+function stateToProps({ movie }: { movie: MovieStateModel }) {
   return {
     movie,
   };

@@ -52,7 +52,7 @@ export const movieListReducer = (
 
       //if (payload.status && payload.status === 401 && !state.logoutIniated) {  // TODO: Borde hanteras med en generell interceptor i stället. Finns det stöd för det i redux-api-middleware?
       //    state.logoutIniated = true;
-      //this.router.navigate(['start', { canDeactivate: true }], { queryParams: { redirectToUrl: encodeURI(this.router.url) } });
+      //this.router.navigate(['start', { canDeactivate: true }], { queryParams: {redirectToUrl: encodeURI(this.router.url) }});
       //}
       //parseError(error);  // TODO: Implementera felhantering
       //log.error(err.message, err.stacktrace);

@@ -30,7 +30,7 @@ export default function configureStore() {
     initialState,
     composeEnhancers(applyMiddleware(reduxThunk, apiMiddleware))
   );
-  let persistor = persistStore(store);
+  const persistor = persistStore(store);
 
   // if (module.hot) {
   //     // Enable Webpack hot module replacement for reducers

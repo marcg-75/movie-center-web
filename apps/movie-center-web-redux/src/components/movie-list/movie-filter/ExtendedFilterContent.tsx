@@ -5,12 +5,14 @@ import SelectableModel from '../../../models/SelectableModel';
 import { Loader } from '../../common/loader/Loader';
 import { loadFormats } from '../../../actions/base-data.actions';
 import { connect } from 'react-redux';
+import { BaseDataStateModel } from '../../../actions/models/base-data-state.model';
+import { MovieListStateModel } from '../../../actions/models/movie-state.model';
 
 interface ExtendedFilterContentProps {
   filter: MovieModelFilter;
-  baseData: any;
+  baseData: BaseDataStateModel;
   filterChanged: (filter: MovieModelFilter) => void;
-  dispatch: (any: any) => void;
+  dispatch: (any: unknown) => void;
   testName?: string;
 }
 
@@ -25,7 +27,7 @@ const ExtendedFilterContent = ({
   const [filterFormatsToSelect, setFilterFormatsToSelect] = useState([
     MovieModelFilter.FILTER_DEFAULT_ALL_FORMATS,
   ]);
-  const [filterGradesToSelect, setFilterGradesToSelect] = useState(
+  const [filterGradesToSelect] = useState(
     MovieModelFilter.FILTER_SELECTABLE_GRADES
   );
 
@@ -127,8 +129,13 @@ const ExtendedFilterContent = ({
   );
 };
 
-// @ts-ignore
-function stateToProps({ baseData, movieList: { filter } }) {
+function stateToProps({
+  baseData,
+  movieList: { filter },
+}: {
+  baseData: BaseDataStateModel;
+  movieList: MovieListStateModel;
+}) {
   return {
     baseData,
     filter,

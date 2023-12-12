@@ -49,14 +49,15 @@ export default function personReducer(
         actorsErrorMessages: undefined,
       };
     case ACTORS_ERROR:
-      const actorsErrorMessages = createErrorMessageArray(payload as McPayload);
-
       // TODO: Implementera felhantering
 
       return {
         ...state,
         actors: [],
-        actorsLoading: getFailedLoadingState(undefined, actorsErrorMessages),
+        actorsLoading: getFailedLoadingState(
+          undefined,
+          createErrorMessageArray(payload as McPayload)
+        ),
       };
     case CREW_FETCHING:
       return {
@@ -72,14 +73,15 @@ export default function personReducer(
         crewNotLoaded: false,
       };
     case CREW_ERROR:
-      const crewErrorMessages = createErrorMessageArray(payload as McPayload);
-
       // TODO: Implementera felhantering
 
       return {
         ...state,
         crew: [],
-        crewLoading: getFailedLoadingState(undefined, crewErrorMessages),
+        crewLoading: getFailedLoadingState(
+          undefined,
+          createErrorMessageArray(payload as McPayload)
+        ),
         crewNotLoaded: false,
       };
     case ALL_PERSONS_FETCHING:
@@ -96,16 +98,15 @@ export default function personReducer(
         personsNotLoaded: false,
       };
     case ALL_PERSONS_ERROR:
-      const personsErrorMessages = createErrorMessageArray(
-        payload as McPayload
-      );
-
       // TODO: Implementera felhantering
 
       return {
         ...state,
         persons: [],
-        personsLoading: getFailedLoadingState(undefined, personsErrorMessages),
+        personsLoading: getFailedLoadingState(
+          undefined,
+          createErrorMessageArray(payload as McPayload)
+        ),
         personsNotLoaded: false,
       };
     default:

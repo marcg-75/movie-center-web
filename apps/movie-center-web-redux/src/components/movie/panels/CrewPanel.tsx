@@ -1,4 +1,10 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, {
+  ChangeEvent,
+  FormEvent,
+  ReactNode,
+  useEffect,
+  useState,
+} from 'react';
 import { connect } from 'react-redux';
 
 import '../movie.details.scss';
@@ -22,7 +28,7 @@ interface CrewPanelProps {
   movie: MovieStateModel;
   person: PersonStateModel;
   baseData: BaseDataStateModel;
-  dispatch: (any: any) => void;
+  dispatch: (any: unknown) => void;
   testName?: string;
 }
 
@@ -60,15 +66,15 @@ const CrewPanel = ({
     setSelectedPersonName(undefined);
   };
 
-  const addCrewMember = (event: any) => {
+  const addCrewMember = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!crew || !movieItem) {
       return;
     }
 
-    const roleCode: string = event.target['addCrewRole'].value;
-    const crewPersonRoleId = event.target['crewPersonRoleId'].value;
+    const roleCode: string = event.currentTarget['addCrewRole'].value;
+    const crewPersonRoleId = event.currentTarget['crewPersonRoleId'].value;
 
     if (!(roleCode && crewPersonRoleId)) {
       alert('Både roll och person måste väljas.');
@@ -100,20 +106,20 @@ const CrewPanel = ({
       } as IMovie)
     );
 
-    event.target['addCrewRole'].value = '';
-    event.target['crewPersonRoleId'].value = '';
+    event.currentTarget['addCrewRole'].value = '';
+    event.currentTarget['crewPersonRoleId'].value = '';
   };
 
-  const addNewCrewMember = (event: any) => {
+  const addNewCrewMember = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!persons) {
       return;
     }
 
-    const roleCode: string = event.target['newCrewRole'].value;
-    const personId = event.target['newCrewPersonId'].value;
-    const personName = event.target['newCrewName'].value;
+    const roleCode: string = event.currentTarget['newCrewRole'].value;
+    const personId = event.currentTarget['newCrewPersonId'].value;
+    const personName = event.currentTarget['newCrewName'].value;
 
     if (!roleCode && (!personId || !personName)) {
       alert('Roll, befintlig person eller ny persons namn måste anges.');
@@ -128,7 +134,7 @@ const CrewPanel = ({
         'En person med detta namn finns redan. Vill du skapa en ny person som har samma namn? Avbryt annars och välj befintlig person i listan intill.'
       )
     ) {
-      event.target['newCrewName'].value = '';
+      event.currentTarget['newCrewName'].value = '';
       return;
     }
 
@@ -136,9 +142,9 @@ const CrewPanel = ({
 
     updateMovieCrewState(personId, personName, role);
 
-    event.target['newCrewRole'].value = '';
-    event.target['newCrewPersonId'].value = '';
-    event.target['newCrewName'].value = '';
+    event.currentTarget['newCrewRole'].value = '';
+    event.currentTarget['newCrewPersonId'].value = '';
+    event.currentTarget['newCrewName'].value = '';
 
     clearSelectedPerson();
 
@@ -250,9 +256,11 @@ const CrewPanel = ({
       </div>
     ));
 
-  const getSelectableCrewMembersByRole = (event: any) => {
+  const getSelectableCrewMembersByRole = (
+    event: ChangeEvent<HTMLSelectElement>
+  ) => {
     const selectedRoleCode: string = event.target.value;
-    let selectableCrewMembersForRole: Array<any> = [];
+    let selectableCrewMembersForRole: Array<PersonRoleModel> = [];
 
     if (selectedRoleCode && selectedRoleCode.length && !!crew && !!movieItem) {
       const role: RoleEnum =
@@ -279,9 +287,11 @@ const CrewPanel = ({
     setSelectableCrewMembersForRole(selectableCrewMembersForRole);
   };
 
-  const getSelectablePersonsByRole = (event: any) => {
+  const getSelectablePersonsByRole = (
+    event: ChangeEvent<HTMLSelectElement>
+  ) => {
     const selectedRoleCode: string = event.target.value;
-    let selectablePersonsForRole: Array<any> = [];
+    let selectablePersonsForRole: Array<NameEntityModel> = [];
 
     if (
       persons &&
@@ -315,7 +325,7 @@ const CrewPanel = ({
     setSelectablePersonsForRole(selectablePersonsForRole);
   };
 
-  const updateNewCrewName = (event: any) => {
+  const updateNewCrewName = (event: ChangeEvent<HTMLSelectElement>) => {
     setSelectedPersonId(event.target.value);
     setSelectedPersonName(event.target.selectedOptions[0].label);
   };
@@ -531,7 +541,7 @@ const CrewPanel = ({
 
 const createAllCrewRoleOptions = (
   roles: Array<SelectableModel>
-): Array<ReactNode> => {
+): ReactNode[] => {
   if (!roles) {
     return [];
   }
@@ -540,7 +550,7 @@ const createAllCrewRoleOptions = (
     (role: SelectableModel) => role.code !== RoleEnum[RoleEnum.ACTOR]
   );
 
-  const options: Array<any> = crewRoles.map(
+  const options: ReactNode[] = crewRoles.map(
     (option: SelectableModel, i: number) => {
       return (
         <option key={i + 1} value={option.code}>
@@ -561,7 +571,7 @@ const createSelectableCrewMembersForRole = (
     return [];
   }
 
-  const options: Array<any> = personRoles.map(
+  const options: ReactNode[] = personRoles.map(
     (option: PersonRoleModel, i: number) => {
       return (
         <option key={i + 1} value={option.person.id}>
@@ -582,7 +592,7 @@ const createSelectablePersonsForRole = (
     return [];
   }
 
-  const options: Array<any> = persons.map(
+  const options: ReactNode[] = persons.map(
     (option: NameEntityModel, i: number) => {
       return (
         <option key={i + 1} value={option.id}>
@@ -611,8 +621,8 @@ const extractPersonRolesFromCrew = (
 
   // Sort
   return personRoles.sort((a: PersonRoleModel, b: PersonRoleModel) => {
-    var nameA = a.person.name.toUpperCase(); // ignore upper and lowercase
-    var nameB = b.person.name.toUpperCase(); // ignore upper and lowercase
+    const nameA = a.person.name.toUpperCase(); // ignore upper and lowercase
+    const nameB = b.person.name.toUpperCase(); // ignore upper and lowercase
 
     if (nameA < nameB) {
       return -1;
@@ -654,27 +664,6 @@ const existingMovieCrewMembersForRole = (
     default:
       return [];
   }
-};
-
-const mapToOptionElements = (
-  personRoles: Array<PersonRoleModel>
-): Array<any> => {
-  if (!personRoles) {
-    return [];
-  }
-
-  const options: Array<any> = personRoles.map(
-    (option: PersonRoleModel, i: number) => {
-      return (
-        <option key={i + 1} value={option.id}>
-          {option.person.name}
-        </option>
-      );
-    }
-  );
-  options.unshift(<option key="0" value="" />);
-
-  return options;
 };
 
 export const mapToPersonOptionElements = (
@@ -725,8 +714,15 @@ const getCrewTypeName = (role: RoleEnum): string => {
   }
 };
 
-// @ts-ignore
-function stateToProps({ movie, person, baseData }) {
+function stateToProps({
+  movie,
+  person,
+  baseData,
+}: {
+  movie: MovieStateModel;
+  person: PersonStateModel;
+  baseData: BaseDataStateModel;
+}) {
   return {
     movie,
     person,
