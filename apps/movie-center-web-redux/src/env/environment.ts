@@ -2,7 +2,7 @@
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import { STORAGE_TYPE } from '../models/storage.model';
+import { STORAGE_TYPE } from '../../../../libs/data-access-redux/src/models/storage.model';
 
 export interface Environment {
   production: boolean;

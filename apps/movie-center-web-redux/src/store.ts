@@ -1,10 +1,10 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import reduxThunk from 'redux-thunk';
 import { apiMiddleware } from 'redux-api-middleware';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { reducers } from '@giron/data-access-redux';
 
-import reducers from './reducers';
 //import {authInterceptor} from './authInterceptorMiddleware';
 
 const initialState = {};

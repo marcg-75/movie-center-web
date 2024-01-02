@@ -5,8 +5,8 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import configureStore from './store';
 import App from './components/App';
-import MovieList from './components/movie-list/MovieList';
-import Movie from './components/movie/Movie';
+import MovieList from '@giron/feature-movie-list-redux';
+import Movie from '@giron/feature-movie-redux';
 
 // TODO: Currently not in use. Possibly a move to Next.js is required.
 
