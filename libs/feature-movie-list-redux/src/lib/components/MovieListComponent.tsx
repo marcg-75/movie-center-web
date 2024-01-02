@@ -20,11 +20,11 @@ interface MovieListProps {
 }
 
 const MovieListComponent = ({
-                              movieList,
-                              history,
-                              location,
-                              dispatch,
-                            }: MovieListProps) => {
+  movieList,
+  history,
+  location,
+  dispatch,
+}: MovieListProps) => {
   const loadMovies = (sort: SortModel) => {
     const sortOrder = SORT_ORDERS_BY_COLUMN.filter(
       (csort) => csort.column === sort.sortOrder
@@ -53,13 +53,14 @@ const MovieListComponent = ({
   }
 
   return (
-    <MovieList filterComponent={<MovieFilterComponent componentName="movie_list"/>}
-               movies={movies}
-               createMovie={createMovie}
-               goToMovie={goToMovie}
-               reloadMovies={loadMovies}
-               queryParams={location.search}
-               isLoading={moviesNotLoaded}
+    <MovieList
+      filterComponent={<MovieFilterComponent componentName="movie_list" />}
+      movies={movies}
+      createMovie={createMovie}
+      goToMovie={goToMovie}
+      reloadMovies={loadMovies}
+      queryParams={location.search}
+      isLoading={moviesNotLoaded}
     />
   );
 };

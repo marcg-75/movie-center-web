@@ -14,21 +14,19 @@ type Props = {
   queryParams: string;
   isLoading?: boolean;
   testName?: string;
-}
+};
 
 export const MovieList = ({
-                            filterComponent,
-                            movies,
-                            createMovie,
-                            goToMovie,
-                            reloadMovies,
-                            queryParams,
-                            isLoading = false,
-                            testName = 'MovieList_test'
-                          }: Props) => {
-  const [sort, setSort] = useState(
-    getDefaultSortModel('title', queryParams)
-  );
+  filterComponent,
+  movies,
+  createMovie,
+  goToMovie,
+  reloadMovies,
+  queryParams,
+  isLoading = false,
+  testName = 'MovieList_test',
+}: Props) => {
+  const [sort, setSort] = useState(getDefaultSortModel('title', queryParams));
 
   useEffect(() => {
     reloadMovies(sort);
@@ -62,7 +60,7 @@ export const MovieList = ({
         {filterComponent}
         {isLoading ? (
           <div>
-            <Loader/>
+            <Loader />
           </div> // TODO: Add app start loader (splash screen)
         ) : (
           <div>
@@ -88,8 +86,7 @@ export const MovieList = ({
                 >
                   <div className="list-create-link-icon">
                     <i className="fas fa-plus-circle orange"></i>
-                  </div>
-                  {' '}
+                  </div>{' '}
                   <div className="list-create-link-text">Lägg till ny film</div>
                 </div>
               </div>
@@ -97,76 +94,76 @@ export const MovieList = ({
               {movies && movies.length > 0 && (
                 <table className="mat-elevation-z8 authority-list-table mat-table">
                   <thead>
-                  <tr className="mat-header-row">
-                    <th
-                      onClick={() => changeSortOrder('title')}
-                      className="sortable mat-header-cell cdk-column-name mat-column-name"
-                    >
-                      <span className="icon-texts">Film</span>
-                      <span>
+                    <tr className="mat-header-row">
+                      <th
+                        onClick={() => changeSortOrder('title')}
+                        className="sortable mat-header-cell cdk-column-name mat-column-name"
+                      >
+                        <span className="icon-texts">Film</span>
+                        <span>
                           {sort.sortOrder === 'title' && (
                             <i
                               className={`icons sort-icon fas fa-sort-${sort.sortArrow}`}
                             />
                           )}
                         </span>
-                    </th>
-                    <th
-                      onClick={() => changeSortOrder('mainGenre')}
-                      className="sortable hide-small-screen mat-header-cell cdk-column-name mat-column-name"
-                    >
-                      <span className="icon-texts">Genre</span>
-                      <span>
+                      </th>
+                      <th
+                        onClick={() => changeSortOrder('mainGenre')}
+                        className="sortable hide-small-screen mat-header-cell cdk-column-name mat-column-name"
+                      >
+                        <span className="icon-texts">Genre</span>
+                        <span>
                           {sort.sortOrder === 'mainGenre' && (
                             <i
                               className={`icons sort-icon fas fa-sort-${sort.sortArrow}`}
                             />
                           )}
                         </span>
-                    </th>
-                    <th
-                      onClick={() => changeSortOrder('grade')}
-                      className="sortable mat-header-cell cdk-column-name mat-column-name"
-                    >
-                      <span className="icon-texts">Betyg</span>
-                      <span>
+                      </th>
+                      <th
+                        onClick={() => changeSortOrder('grade')}
+                        className="sortable mat-header-cell cdk-column-name mat-column-name"
+                      >
+                        <span className="icon-texts">Betyg</span>
+                        <span>
                           {sort.sortOrder === 'grade' && (
                             <i
                               className={`icons sort-icon fas fa-sort-${sort.sortArrow}`}
                             />
                           )}
                         </span>
-                    </th>
-                  </tr>
+                      </th>
+                    </tr>
                   </thead>
 
                   <tbody>
-                  {movies.map((element: IMovie, i: number) => {
-                    return (
-                      <tr className="clickable mat-row" key={i}>
-                        <td
-                          className="mat-cell cdk-column-name mat-column-name"
-                          onClick={() => goToMovie(element.id)}
-                        >
-                          {element.title}
-                        </td>
-                        <td
-                          className="mat-cell cdk-column-genre mat-column-genre hide-small-screen"
-                          onClick={() => goToMovie(element.id)}
-                        >
-                          {getMovieGenres(element)}
-                        </td>
-                        <td
-                          className="mat-cell cdk-column-grade mat-column-grade"
-                          onClick={() => goToMovie(element.id)}
-                        >
-                          {element.moviePersonalInfo
-                            ? element.moviePersonalInfo.grade
-                            : ''}
-                        </td>
-                      </tr>
-                    );
-                  })}
+                    {movies.map((element: IMovie, i: number) => {
+                      return (
+                        <tr className="clickable mat-row" key={i}>
+                          <td
+                            className="mat-cell cdk-column-name mat-column-name"
+                            onClick={() => goToMovie(element.id)}
+                          >
+                            {element.title}
+                          </td>
+                          <td
+                            className="mat-cell cdk-column-genre mat-column-genre hide-small-screen"
+                            onClick={() => goToMovie(element.id)}
+                          >
+                            {getMovieGenres(element)}
+                          </td>
+                          <td
+                            className="mat-cell cdk-column-grade mat-column-grade"
+                            onClick={() => goToMovie(element.id)}
+                          >
+                            {element.moviePersonalInfo
+                              ? element.moviePersonalInfo.grade
+                              : ''}
+                          </td>
+                        </tr>
+                      );
+                    })}
                   </tbody>
                 </table>
               )}
