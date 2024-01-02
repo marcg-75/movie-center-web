@@ -25,9 +25,9 @@ type Props = {
   componentName: string;
   dispatch: (any: unknown) => void;
   testName?: string;
-}
+};
 
-const MovieFilter = ({
+const MovieFilterComponent = ({
   filter,
   componentName,
   dispatch,
@@ -80,4 +80,4 @@ function stateToProps({
   };
 }
 
-export default connect(stateToProps)(MovieFilter);
+export default connect(stateToProps)(MovieFilterComponent);

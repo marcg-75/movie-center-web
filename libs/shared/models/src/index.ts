@@ -7,3 +7,4 @@ export {
   FilterSettingsRaw,
   FilterSettings,
 } from './FilterSettingsModel';
+export { SortModel } from './SortModel';

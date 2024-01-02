@@ -1,4 +1,4 @@
-import { SortModel } from '../models/SortModel';
+import { SortModel } from '@giron/shared-models';
 
 const getQueryParamValue = (
   key: string,
@@ -20,8 +20,4 @@ export const getDefaultSortModel = (
     getQueryParamValue('sortBy', strQueryParams) || sortByDefault,
     getQueryParamValue('sortDirection', strQueryParams)
   );
-};
-
-export const scrollToTop = () => {
-  window.scrollTo(0, 0);
 };

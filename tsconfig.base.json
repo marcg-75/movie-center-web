@@ -24,7 +24,8 @@
       "@giron/shared-movie-components": [
         "libs/shared/movie-components/src/index.ts"
       ],
-      "@giron/shared-ui-library": ["libs/shared/ui-library/src/index.ts"]
+      "@giron/shared-ui-library": ["libs/shared/ui-library/src/index.ts"],
+      "@giron/shared-util-helpers": ["libs/shared/util-helpers/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

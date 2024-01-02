@@ -1,0 +1,40 @@
+{
+  "name": "shared-util-helpers",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/util-helpers/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "build": {
+      "executor": "@nx/rollup:rollup",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/shared/util-helpers",
+        "tsConfig": "libs/shared/util-helpers/tsconfig.lib.json",
+        "project": "libs/shared/util-helpers/package.json",
+        "entryFile": "libs/shared/util-helpers/src/index.ts",
+        "external": ["react", "react-dom", "react/jsx-runtime"],
+        "rollupConfig": "@nx/react/plugins/bundle-rollup",
+        "compiler": "babel",
+        "assets": [
+          {
+            "glob": "libs/shared/util-helpers/README.md",
+            "input": ".",
+            "output": "."
+          }
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/shared/util-helpers/jest.config.ts"
+      }
+    }
+  }
+}

@@ -13,7 +13,7 @@ type Props = {
   baseData: BaseDataStateModel;
   filterChanged: (filter: MovieModelFilter) => void;
   dispatch: (any: unknown) => void;
-}
+};
 
 const ExtendedFilterContent = ({
   filter,
