@@ -16,7 +16,7 @@ import {
   MovieStateModel,
   NameEntityModel,
   SelectableModel,
-  updateMovieState
+  updateMovieState,
 } from '@giron/data-access-redux';
 import { checkIfBaseDataIsLoading } from '../../utils/movie.utils';
 import { environment } from '../../../../../../apps/movie-center-web-redux/src/env/environment';

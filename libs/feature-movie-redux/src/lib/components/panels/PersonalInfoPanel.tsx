@@ -8,7 +8,11 @@ import { LabelledTextInput } from '../inputs/LabelledTextInput';
 import { LabelledSelect } from '../inputs/LabelledSelect';
 import { LabelledDateInput } from '../inputs/LabelledDateInput';
 import { LabelledTextarea } from '../inputs/LabelledTextarea';
-import { IMovie, MovieStateModel, updateMovieState } from '@giron/data-access-redux';
+import {
+  IMovie,
+  MovieStateModel,
+  updateMovieState,
+} from '@giron/data-access-redux';
 
 const GRADES: Array<number> = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
 const gradeOptions: ReactNode[] = GRADES.map((g: number, i: number) => {

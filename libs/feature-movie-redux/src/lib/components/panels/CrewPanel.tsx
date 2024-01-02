@@ -1,4 +1,10 @@
-import React, { ChangeEvent, FormEvent, ReactNode, useEffect, useState, } from 'react';
+import React, {
+  ChangeEvent,
+  FormEvent,
+  ReactNode,
+  useEffect,
+  useState,
+} from 'react';
 import { connect } from 'react-redux';
 
 import '../movie.details.scss';
@@ -15,7 +21,7 @@ import {
   PersonStateModel,
   RoleEnum,
   SelectableModel,
-  updateMovieState
+  updateMovieState,
 } from '@giron/data-access-redux';
 import { environment } from '../../../../../../apps/movie-center-web-redux/src/env/environment';
 

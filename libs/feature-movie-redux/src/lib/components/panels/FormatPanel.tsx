@@ -14,7 +14,7 @@ import {
   loadLanguages,
   MovieStateModel,
   SelectableModel,
-  updateMovieState
+  updateMovieState,
 } from '@giron/data-access-redux';
 
 const REGIONS: Array<number> = [1, 2, 3, 4, 5, 6];

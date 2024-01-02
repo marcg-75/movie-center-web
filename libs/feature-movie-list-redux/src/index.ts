@@ -1,1 +1,1 @@
-export {default} from './lib/components/MovieList';
+export { default } from './lib/components/MovieList';

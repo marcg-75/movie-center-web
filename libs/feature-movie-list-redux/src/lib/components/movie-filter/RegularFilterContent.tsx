@@ -1,4 +1,10 @@
-import { ChangeEvent, KeyboardEvent, ReactNode, useEffect, useState, } from 'react';
+import {
+  ChangeEvent,
+  KeyboardEvent,
+  ReactNode,
+  useEffect,
+  useState,
+} from 'react';
 import { Loader } from '@giron/shared-ui-library';
 import { ListFilterItem } from '../list-filter/list-filter-item/ListFilterItem';
 import { TextListFilterItem } from '../list-filter/text-list-filter-item/TextListFilterItem';
@@ -8,7 +14,7 @@ import {
   loadGenres,
   MovieListStateModel,
   SelectableModel,
-  updateFilter
+  updateFilter,
 } from '@giron/data-access-redux';
 import { MovieFilter as MovieModelFilter } from '../../models/MovieFilter';
 

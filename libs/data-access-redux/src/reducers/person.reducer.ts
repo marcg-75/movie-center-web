@@ -10,7 +10,7 @@ import {
   CREW_RECEIVED,
 } from '../actions/person.actions';
 import { createErrorMessageArray, McPayload } from './movie.reducer';
-import {PersonRoleModel} from '../models/PersonRoleModel';
+import { PersonRoleModel } from '../models/PersonRoleModel';
 import { PersonStateModel } from '../models/state/person-state.model';
 import {
   getFailedLoadingState,

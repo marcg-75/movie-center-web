@@ -1,6 +1,11 @@
 import { ListFilterItem } from '../list-filter/list-filter-item/ListFilterItem';
 import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
-import { BaseDataStateModel, loadFormats, MovieListStateModel, SelectableModel } from '@giron/data-access-redux';
+import {
+  BaseDataStateModel,
+  loadFormats,
+  MovieListStateModel,
+  SelectableModel,
+} from '@giron/data-access-redux';
 import { Loader } from '@giron/shared-ui-library';
 import { connect } from 'react-redux';
 import { MovieFilter as MovieModelFilter } from '../../models/MovieFilter';

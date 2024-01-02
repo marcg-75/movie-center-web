@@ -1,6 +1,6 @@
-import {SelectableModel} from '../SelectableModel';
-import {NameEntityModel} from '../NameEntityModel';
-import {LanguageModel} from '../LanguageModel';
+import { SelectableModel } from '../SelectableModel';
+import { NameEntityModel } from '../NameEntityModel';
+import { LanguageModel } from '../LanguageModel';
 import { LoadingState } from './loading.model';
 
 export interface BaseDataStateModel {

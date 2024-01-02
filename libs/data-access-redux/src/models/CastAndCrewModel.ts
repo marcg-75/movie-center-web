@@ -1,4 +1,4 @@
-import {PersonRoleModel} from './PersonRoleModel';
+import { PersonRoleModel } from './PersonRoleModel';
 
 export interface CastAndCrewModel {
   id: number;

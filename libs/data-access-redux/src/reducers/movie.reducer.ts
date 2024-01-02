@@ -18,7 +18,7 @@ import {
   MOVIE_UPDATING,
 } from '../actions/movie.actions';
 import { IMovie } from '../models/movie.model';
-import {SelectableModel} from '../models/SelectableModel';
+import { SelectableModel } from '../models/SelectableModel';
 import { MovieStateModel } from '../models/state/movie-state.model';
 import {
   getFailedLoadingState,

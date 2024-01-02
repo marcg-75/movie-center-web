@@ -13,7 +13,7 @@ import {
   PersonRoleModel,
   PersonStateModel,
   SelectableModel,
-  updateMovieState
+  updateMovieState,
 } from '@giron/data-access-redux';
 import { mapToPersonOptionElements } from './CrewPanel';
 import { environment } from '../../../../../../apps/movie-center-web-redux/src/env/environment';

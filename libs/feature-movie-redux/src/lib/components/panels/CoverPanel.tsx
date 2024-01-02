@@ -4,7 +4,11 @@ import { connect } from 'react-redux';
 import '../movie.details.scss';
 
 import { Loader } from '@giron/shared-ui-library';
-import { IMovie, MovieStateModel, updateMovieState } from '@giron/data-access-redux';
+import {
+  IMovie,
+  MovieStateModel,
+  updateMovieState,
+} from '@giron/data-access-redux';
 import { environment } from '../../../../../../apps/movie-center-web-redux/src/env/environment';
 
 export const IMAGE_URL = `${environment.apiBaseUrl}image/`;

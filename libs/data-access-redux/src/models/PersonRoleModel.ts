@@ -1,5 +1,5 @@
-import {NameEntityModel} from './NameEntityModel';
-import {SelectableModel} from './SelectableModel';
+import { NameEntityModel } from './NameEntityModel';
+import { SelectableModel } from './SelectableModel';
 
 export interface PersonRoleModel {
   id: number;

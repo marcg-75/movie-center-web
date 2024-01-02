@@ -1,4 +1,4 @@
-import {SelectableModel} from './SelectableModel';
+import { SelectableModel } from './SelectableModel';
 
 export interface MovieGenreModel {
   movieTitle: string;
