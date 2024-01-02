@@ -1,7 +1,7 @@
 {
-  "name": "shared-models",
+  "name": "shared-movie-components",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/shared/models/src",
+  "sourceRoot": "libs/shared/movie-components/src",
   "projectType": "library",
   "tags": [],
   "targets": {
@@ -13,20 +13,27 @@
       "executor": "@nx/rollup:rollup",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/shared/models",
-        "tsConfig": "libs/shared/models/tsconfig.lib.json",
-        "project": "libs/shared/models/package.json",
-        "entryFile": "libs/shared/models/src/index.ts",
+        "outputPath": "dist/libs/shared/movie-components",
+        "tsConfig": "libs/shared/movie-components/tsconfig.lib.json",
+        "project": "libs/shared/movie-components/package.json",
+        "entryFile": "libs/shared/movie-components/src/index.ts",
         "external": ["react", "react-dom", "@emotion/react/jsx-runtime"],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [
           {
-            "glob": "libs/shared/models/README.md",
+            "glob": "libs/shared/movie-components/README.md",
             "input": ".",
             "output": "."
           }
         ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/shared/movie-components/jest.config.ts"
       }
     }
   }

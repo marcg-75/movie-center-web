@@ -18,7 +18,7 @@ import {
   MOVIE_UPDATING,
 } from '../actions/movie.actions';
 import { IMovie } from '../models/movie.model';
-import { SelectableModel } from '../../../shared/models/src/SelectableModel';
+import { SelectableModel } from '@giron/shared-models';
 import { MovieStateModel } from '../models/state/movie-state.model';
 import {
   getFailedLoadingState,

@@ -1,11 +1,10 @@
-import React from 'react';
 import './loader.component.scss';
 
-interface LoaderProps {
+type Props = {
   testName?: string;
-}
+};
 
-export const Loader = ({ testName = 'Loader_test' }: LoaderProps) => (
+export const Loader = ({ testName = 'Loader_test' }: Props) => (
   <div className="lds-spinner" data-test-name={testName}>
     <div></div>
     <div></div>

@@ -7,18 +7,20 @@ import {
   updateFilterAndReloadMovies,
 } from '@giron/data-access-redux';
 
-import ListFilter from '../list-filter/ListFilterComponent';
-import { FilterType } from '../../../../../shared/models/src/FilterSettingsModel';
+import {
+  FilterType,
+  MovieFilter as MovieModelFilter,
+} from '@giron/shared-models';
 import ExtendedFilterContent from './ExtendedFilterContent';
 import RegularFilterContent from './RegularFilterContent';
-import { MovieFilter as MovieModelFilter } from '@giron/shared-models';
+import { ListFilter } from '@giron/shared-movie-components';
 
 const helpFilter =
   'Du kan filtrera fram de filmer som du är intresserad i genom att välja kriteria ' +
   'eller skriva valfri text. Du kan återställa filtret genom att trycka på länken ' +
   '"Rensa filtrering", varefter alla filmer kommer att visas.';
 
-interface MovieFilterProps {
+type Props = {
   filter: MovieModelFilter;
   componentName: string;
   dispatch: (any: unknown) => void;
@@ -30,7 +32,7 @@ const MovieFilter = ({
   componentName,
   dispatch,
   testName = 'MovieFilter_test',
-}: MovieFilterProps) => {
+}: Props) => {
   useEffect(() => {
     dispatch(clearMovieActionState());
   }, []);

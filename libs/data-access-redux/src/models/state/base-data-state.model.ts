@@ -1,5 +1,4 @@
-import { SelectableModel } from '../../../../shared/models/src/SelectableModel';
-import { NameEntityModel } from '../../../../shared/models/src/NameEntityModel';
+import { NameEntityModel, SelectableModel } from '@giron/shared-models';
 import { LanguageModel } from '../LanguageModel';
 import { LoadingState } from './loading.model';
 

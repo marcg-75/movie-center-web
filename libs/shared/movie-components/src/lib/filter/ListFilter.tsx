@@ -1,10 +1,10 @@
 import { ReactNode, useState } from 'react';
 
-import '../../../../../shared/ui-library/src/lib/filter/filter.component.scss';
+import './filter.component.scss';
 import { Filter, FilterType, MovieFilter } from '@giron/shared-models';
 import { FilterItemClear } from '@giron/shared-ui-library';
 
-interface ListFilterProps {
+type Props = {
   componentName: string;
   header: string;
   helpText: string;
@@ -18,9 +18,9 @@ interface ListFilterProps {
   regularContent: ReactNode;
   extendedContent: ReactNode;
   testName?: string;
-}
+};
 
-const ListFilterComponent = ({
+export const ListFilter = ({
   componentName,
   header,
   helpText,
@@ -34,7 +34,7 @@ const ListFilterComponent = ({
   regularContent,
   extendedContent,
   testName = 'ListFilter_test',
-}: ListFilterProps) => {
+}: Props) => {
   const [isVisible, setIsVisible] = useState(
     filterToggleDefault(componentName)
   );
@@ -171,5 +171,3 @@ const extendedFilterToggleDefault = (componentName: string): boolean => {
     return false; // By default the extended filter criteria is hidden.
   }
 };
-
-export default ListFilterComponent;

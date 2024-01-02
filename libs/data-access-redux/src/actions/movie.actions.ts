@@ -1,7 +1,7 @@
 import { createAction } from 'redux-api-middleware';
 
 import { IMovie } from '../models/movie.model';
-import { MovieFilter } from '../../../shared/models/src/MovieFilter';
+import { MovieFilter } from '@giron/shared-models';
 
 const BASE_URL = `${process.env.NX_API_BASE_URL}movie`;
 

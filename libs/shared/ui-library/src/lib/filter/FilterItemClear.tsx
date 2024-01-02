@@ -1,15 +1,12 @@
 import './filter.component.scss';
 import { FilterItem } from './FilterItem';
 
-interface ClearListFilterItemProps {
+type Props = {
   clearFilter: () => void;
   compactMode: boolean;
-}
+};
 
-export const FilterItemClear = ({
-  clearFilter,
-  compactMode,
-}: ClearListFilterItemProps) => {
+export const FilterItemClear = ({ clearFilter, compactMode }: Props) => {
   const clear = () => {
     if (window.confirm('Vill du nollställa filtret?')) {
       clearFilter();

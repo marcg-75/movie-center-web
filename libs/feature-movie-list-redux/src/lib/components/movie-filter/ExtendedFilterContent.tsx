@@ -1,22 +1,18 @@
-import { FilterItem, Loader } from '@giron/shared-ui-library';
-import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   BaseDataStateModel,
   loadFormats,
   MovieListStateModel,
 } from '@giron/data-access-redux';
 import { connect } from 'react-redux';
-import {
-  MovieFilter as MovieModelFilter,
-  SelectableModel,
-} from '@giron/shared-models';
+import { MovieFilter as MovieModelFilter } from '@giron/shared-models';
+import { ExtendedFilter } from '@giron/shared-movie-components';
 
-interface ExtendedFilterContentProps {
+type Props = {
   filter: MovieModelFilter;
   baseData: BaseDataStateModel;
   filterChanged: (filter: MovieModelFilter) => void;
   dispatch: (any: unknown) => void;
-  testName?: string;
 }
 
 const ExtendedFilterContent = ({
@@ -24,111 +20,24 @@ const ExtendedFilterContent = ({
   baseData,
   filterChanged,
   dispatch,
-  testName = 'ExtendedFilterContent_test',
-}: ExtendedFilterContentProps) => {
+}: Props) => {
   const [filterLoading, setFilterLoading] = useState(true);
-  const [filterFormatsToSelect, setFilterFormatsToSelect] = useState([
-    MovieModelFilter.FILTER_DEFAULT_ALL_FORMATS,
-  ]);
-  const [filterGradesToSelect] = useState(
-    MovieModelFilter.FILTER_SELECTABLE_GRADES
-  );
 
   useEffect(() => {
     dispatch(loadFormats());
   }, []);
 
   useEffect(() => {
-    if (
-      !filterFormatsToSelect ||
-      (filterFormatsToSelect.length < 2 && baseData?.formats)
-    ) {
-      const formatsToSelect = Object.assign(
-        [],
-        baseData.formats
-      ) as Array<SelectableModel>;
-      formatsToSelect.unshift(MovieModelFilter.FILTER_DEFAULT_ALL_GENRES);
-
-      setFilterFormatsToSelect(formatsToSelect);
-    }
-
     setFilterLoading(!filter || !baseData?.formatsLoaded);
   }, [filter, baseData]);
 
-  const changeHandler = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ): void => {
-    const control = e.target;
-
-    const filterCopy: MovieModelFilter = Object.assign(
-      {},
-      filter
-    ) as MovieModelFilter;
-
-    switch (control.name) {
-      case 'formatCode':
-        filterCopy.formatCode = control.value || undefined;
-        break;
-      case 'grade':
-        filterCopy.grade = control.value
-          ? parseInt(control.value, 10)
-          : undefined;
-        break;
-    }
-
-    if (filterChanged) {
-      filterChanged(filterCopy);
-    }
-  };
-
-  const filterFormatItemsToSelect: ReactNode[] = filterFormatsToSelect.map(
-    (option, i) => {
-      return (
-        <option key={i} value={option.code}>
-          {option.name}
-        </option>
-      );
-    }
-  );
-
-  const filterGradeItemsToSelect: ReactNode[] = filterGradesToSelect.map(
-    (option, i) => {
-      return (
-        <option key={i} value={option.code}>
-          {option.name}
-        </option>
-      );
-    }
-  );
-
-  return filterLoading ? (
-    <div>
-      <Loader />
-    </div>
-  ) : (
-    <div data-test-name={testName}>
-      <FilterItem
-        label="Format"
-        filterBody={
-          <select
-            name="formatCode"
-            value={filter.formatCode}
-            onChange={changeHandler}
-          >
-            {filterFormatItemsToSelect}
-          </select>
-        }
-      />
-
-      <FilterItem
-        label="Betyg"
-        filterBody={
-          <select name="grade" value={filter.grade} onChange={changeHandler}>
-            {filterGradeItemsToSelect}
-          </select>
-        }
-      />
-    </div>
+  return (
+    <ExtendedFilter
+      filter={filter}
+      filterChanged={filterChanged}
+      formats={baseData?.formats}
+      isLoading={filterLoading}
+    />
   );
 };
 
