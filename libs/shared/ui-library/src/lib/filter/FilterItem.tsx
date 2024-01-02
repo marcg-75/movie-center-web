@@ -7,7 +7,7 @@ type Props = {
   className?: string;
   headerAdditions?: ReactNode;
   filterBody: ReactNode;
-}
+};
 
 export const FilterItem = ({
   label,

@@ -1,4 +1,10 @@
-import React, { ChangeEvent, FormEvent, ReactNode, useEffect, useState, } from 'react';
+import React, {
+  ChangeEvent,
+  FormEvent,
+  ReactNode,
+  useEffect,
+  useState,
+} from 'react';
 import { connect } from 'react-redux';
 
 import '../movie.details.scss';
@@ -420,7 +426,8 @@ const CrewPanel = ({
       selectablePersonsForRole
     );
 
-    const enableMovieInfoEdit = process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
+    const enableMovieInfoEdit =
+      process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
 
     content = (
       <div>

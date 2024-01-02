@@ -6,7 +6,10 @@ import {
   MovieListStateModel,
 } from '@giron/data-access-redux';
 import { connect } from 'react-redux';
-import { MovieFilter as MovieModelFilter, SelectableModel } from '@giron/shared-models';
+import {
+  MovieFilter as MovieModelFilter,
+  SelectableModel,
+} from '@giron/shared-models';
 
 interface ExtendedFilterContentProps {
   filter: MovieModelFilter;
