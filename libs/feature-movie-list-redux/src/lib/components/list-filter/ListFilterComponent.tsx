@@ -1,9 +1,8 @@
 import { ReactNode, useState } from 'react';
 
 import '../../../../../shared/ui-library/src/lib/filter/filter.component.scss';
-import { FilterType } from '../../models/FilterSettingsModel';
+import { Filter, FilterType, MovieFilter } from '@giron/shared-models';
 import { FilterItemClear } from '@giron/shared-ui-library';
-import { Filter, MovieFilter } from '@giron/shared-models';
 
 interface ListFilterProps {
   componentName: string;

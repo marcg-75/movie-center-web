@@ -8,7 +8,7 @@ import {
 } from '@giron/data-access-redux';
 
 import ListFilter from '../list-filter/ListFilterComponent';
-import { FilterType } from '../../models/FilterSettingsModel';
+import { FilterType } from '../../../../../shared/models/src/FilterSettingsModel';
 import ExtendedFilterContent from './ExtendedFilterContent';
 import RegularFilterContent from './RegularFilterContent';
 import { MovieFilter as MovieModelFilter } from '@giron/shared-models';
