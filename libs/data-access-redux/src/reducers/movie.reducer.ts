@@ -38,7 +38,7 @@ export interface McPayload {
 
 interface IMoviePayload extends IMovie, McPayload {}
 
-interface MovieActionProps {
+export interface MovieActionProps {
   type: string;
   payload: IMoviePayload;
   movieItem: IMovie;

@@ -19,7 +19,7 @@ import {
   successLoadingState,
 } from '../models/state/loading.model';
 
-interface PersonActionProps {
+export interface PersonActionProps {
   type: string;
   payload: PersonRoleModel[] | McPayload;
 }

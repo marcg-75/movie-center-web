@@ -11,7 +11,7 @@ import {
 import { createErrorMessageArray } from './movie.reducer';
 import { MovieFilter } from '@giron/shared-models';
 
-interface MovieListActionProps {
+export interface MovieListActionProps {
   type: string;
   payload: MovieListPayload;
   filter: MovieFilter;
