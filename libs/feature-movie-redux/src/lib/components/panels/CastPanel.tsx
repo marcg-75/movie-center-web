@@ -9,13 +9,12 @@ import {
   getActors,
   IMovie,
   MovieStateModel,
-  NameEntityModel,
   PersonRoleModel,
   PersonStateModel,
-  SelectableModel,
   updateMovieState,
 } from '@giron/data-access-redux';
 import { mapToPersonOptionElements } from './CrewPanel';
+import { NameEntityModel, SelectableModel } from '@giron/shared-models';
 
 interface CastPanelProps {
   movie: MovieStateModel;

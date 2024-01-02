@@ -1,5 +1,5 @@
-import { SelectableModel } from '../SelectableModel';
-import { NameEntityModel } from '../NameEntityModel';
+import { SelectableModel } from '../../../../shared/models/src/SelectableModel';
+import { NameEntityModel } from '../../../../shared/models/src/NameEntityModel';
 import { LanguageModel } from '../LanguageModel';
 import { LoadingState } from './loading.model';
 

@@ -9,7 +9,7 @@ import {
   MOVIES_RECEIVED,
 } from '../actions/movie.actions';
 import { createErrorMessageArray } from './movie.reducer';
-import { MovieFilter } from '../models/MovieFilter';
+import { MovieFilter } from '../../../shared/models/src/MovieFilter';
 
 interface MovieListActionProps {
   type: string;

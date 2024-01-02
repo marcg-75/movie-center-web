@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import {
   clearFilterAndReloadMovies,
   clearMovieActionState,
-  MovieFilter as MovieModelFilter,
   MovieListStateModel,
   updateFilterAndReloadMovies,
 } from '@giron/data-access-redux';
@@ -12,6 +11,7 @@ import ListFilter from '../list-filter/ListFilterComponent';
 import { FilterType } from '../../models/FilterSettingsModel';
 import ExtendedFilterContent from './ExtendedFilterContent';
 import RegularFilterContent from './RegularFilterContent';
+import { MovieFilter as MovieModelFilter } from '@giron/shared-models';
 
 const helpFilter =
   'Du kan filtrera fram de filmer som du är intresserad i genom att välja kriteria ' +

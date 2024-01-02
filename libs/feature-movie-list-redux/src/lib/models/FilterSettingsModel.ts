@@ -1,4 +1,4 @@
-import { Filter } from '@giron/data-access-redux';
+import { Filter } from '@giron/shared-models';
 
 export enum FilterType {
   MOVIE = 'MOVIE',

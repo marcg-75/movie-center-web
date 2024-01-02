@@ -10,13 +10,12 @@ import {
   getCrew,
   IMovie,
   MovieStateModel,
-  NameEntityModel,
   PersonRoleModel,
   PersonStateModel,
   RoleEnum,
-  SelectableModel,
   updateMovieState,
 } from '@giron/data-access-redux';
+import { NameEntityModel, SelectableModel } from '@giron/shared-models';
 
 interface CrewPanelProps {
   movie: MovieStateModel;

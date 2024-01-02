@@ -1,6 +1,6 @@
 import { IMovie } from '../movie.model';
 import { LoadingState } from './loading.model';
-import { MovieFilter } from '../MovieFilter';
+import { MovieFilter } from '../../../../shared/models/src/MovieFilter';
 
 export interface MovieListStateModel {
   filter: MovieFilter;

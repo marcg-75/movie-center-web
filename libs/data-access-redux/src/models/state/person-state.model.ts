@@ -1,5 +1,5 @@
 import { PersonRoleModel } from '../PersonRoleModel';
-import { NameEntityModel } from '../NameEntityModel';
+import { NameEntityModel } from '../../../../shared/models/src/NameEntityModel';
 import { LoadingState } from './loading.model';
 
 export interface PersonStateModel {

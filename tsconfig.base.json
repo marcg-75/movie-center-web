@@ -20,6 +20,7 @@
         "libs/feature-movie-list-redux/src/index.ts"
       ],
       "@giron/feature-movie-redux": ["libs/feature-movie-redux/src/index.ts"],
+      "@giron/shared-models": ["libs/shared/models/src/index.ts"],
       "@giron/shared-ui-library": ["libs/shared/ui-library/src/index.ts"]
     }
   },
