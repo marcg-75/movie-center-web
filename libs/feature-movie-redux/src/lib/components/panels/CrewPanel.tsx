@@ -1,10 +1,4 @@
-import React, {
-  ChangeEvent,
-  FormEvent,
-  ReactNode,
-  useEffect,
-  useState,
-} from 'react';
+import React, { ChangeEvent, FormEvent, ReactNode, useEffect, useState, } from 'react';
 import { connect } from 'react-redux';
 
 import '../movie.details.scss';
@@ -23,7 +17,6 @@ import {
   SelectableModel,
   updateMovieState,
 } from '@giron/data-access-redux';
-import { environment } from '../../../../../../apps/movie-center-web-redux/src/env/environment';
 
 interface CrewPanelProps {
   movie: MovieStateModel;
@@ -244,7 +237,7 @@ const CrewPanel = ({
           {cac.personRole.person ? cac.personRole.person.name : 'Namn saknas'}
         </span>
 
-        {environment.enableMovieInfoEdit && (
+        {process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true' && (
           <button
             className="btn secondary"
             onClick={() =>
@@ -428,6 +421,8 @@ const CrewPanel = ({
       selectablePersonsForRole
     );
 
+    const enableMovieInfoEdit = process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
+
     content = (
       <div>
         <h4>Regissör(er)</h4>
@@ -464,7 +459,7 @@ const CrewPanel = ({
         <h4>Övriga</h4>
         {otherElements}
 
-        {environment.enableMovieInfoEdit && (
+        {enableMovieInfoEdit && (
           <form onSubmit={(e) => addCrewMember(e)} id="addCrewForm">
             <label>Lägg till medlem:</label>
 
@@ -491,7 +486,7 @@ const CrewPanel = ({
           </form>
         )}
 
-        {environment.enableMovieInfoEdit && (
+        {enableMovieInfoEdit && (
           <form onSubmit={(e) => addNewCrewMember(e)} id="addNewCrewMemberForm">
             <label>Lägg till ny medlem:</label>
 

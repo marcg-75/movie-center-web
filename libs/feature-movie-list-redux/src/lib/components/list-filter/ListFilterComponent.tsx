@@ -1,10 +1,9 @@
 import { ReactNode, useState } from 'react';
 
 import './list-filter.component.scss';
-import { Filter } from '../../models/Filter';
+import { Filter, MovieFilter } from '@giron/data-access-redux';
 import { FilterType } from '../../models/FilterSettingsModel';
 import { ClearListFilterItem } from './clear-list-filter-item/ClearListFilterItem';
-import { MovieFilter } from '../../models/MovieFilter';
 
 interface ListFilterProps {
   componentName: string;

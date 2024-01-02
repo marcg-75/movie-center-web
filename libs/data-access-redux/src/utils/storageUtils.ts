@@ -3,16 +3,25 @@
  */
 
 import { STORAGE_TYPE, StoredData } from '../models/storage.model';
-import { environment } from '../../../../apps/movie-center-web-redux/src/env/environment';
 
 const getDefaultStorageType = (): STORAGE_TYPE => {
+  const strStorageType = process.env.NX_CACHE_STORAGE_DEFAULT?.toUpperCase();
   const fallbackStorageType = STORAGE_TYPE.SESSION;
+  let cacheStorageDefault: STORAGE_TYPE | undefined;
 
-  return environment.cacheStorageDefault || fallbackStorageType;
+  if (strStorageType === 'SESSION') {
+    cacheStorageDefault = STORAGE_TYPE.SESSION;
+  } else if (strStorageType === 'LOCAL') {
+    cacheStorageDefault = STORAGE_TYPE.LOCAL;
+  }
+
+  return cacheStorageDefault || fallbackStorageType;
 };
 
 const DEFAULT_STORAGE_TYPE: STORAGE_TYPE = getDefaultStorageType();
-const EXPIRATION_TIME_MINUTES: number = environment.cacheExpTimeMinutes || 0;
+
+const strCacheExptime = process.env.NX_CACHE_EXP_TIME_MINUTES
+const EXPIRATION_TIME_MINUTES: number = strCacheExptime ? parseInt(strCacheExptime) : 0;
 
 /**
  * Retrieve cached data.

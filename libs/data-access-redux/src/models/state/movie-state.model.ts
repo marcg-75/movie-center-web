@@ -1,6 +1,6 @@
 import { IMovie } from '../movie.model';
 import { LoadingState } from './loading.model';
-import { MovieFilter } from '../../../../feature-movie-list-redux/src/lib/models/MovieFilter';
+import { MovieFilter } from '../MovieFilter';
 
 export interface MovieListStateModel {
   filter: MovieFilter;

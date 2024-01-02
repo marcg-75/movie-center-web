@@ -9,7 +9,7 @@ import {
   MOVIES_RECEIVED,
 } from '../actions/movie.actions';
 import { createErrorMessageArray } from './movie.reducer';
-import { MovieFilter } from '../../../feature-movie-list-redux/src/lib/models/MovieFilter';
+import { MovieFilter } from '../models/MovieFilter';
 
 interface MovieListActionProps {
   type: string;

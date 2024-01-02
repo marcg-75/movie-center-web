@@ -1,14 +1,11 @@
 import { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getMovies } from '../../../../data-access-redux/src/actions/movie.actions';
+import { getMovies, IMovie, MovieGenreModel, MovieListStateModel } from '@giron/data-access-redux';
 import { Loader } from '@giron/shared-ui-library';
 import { MovieFilterComponent } from './movie-filter';
-import { MovieListStateModel } from '../../../../data-access-redux/src/models/state/movie-state.model';
 import { getDefaultSortModel, scrollToTop } from '../utils/list.util';
 import { SortModel } from '../models/SortModel';
-import { MovieGenreModel } from '../../../../data-access-redux/src/models/MovieGenreModel';
-import { IMovie } from '../../../../data-access-redux/src/models/movie.model';
 import * as H from 'history';
 
 const SORT_ORDERS_BY_COLUMN = [

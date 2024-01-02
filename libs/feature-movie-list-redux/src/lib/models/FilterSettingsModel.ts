@@ -1,4 +1,4 @@
-import { Filter } from './Filter';
+import { Filter } from '@giron/data-access-redux';
 
 export enum FilterType {
   MOVIE = 'MOVIE',

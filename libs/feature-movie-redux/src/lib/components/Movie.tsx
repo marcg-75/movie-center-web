@@ -19,15 +19,14 @@ import {
   getAllPersons,
   getEmptyMovie,
   getMovieById,
+  IMovie,
   loadRoles,
   loadStudios,
   MovieStateModel,
   updateMovie,
   updateMovieState,
 } from '@giron/data-access-redux';
-import { IMovie } from '../../../../data-access-redux/src/models/movie.model';
 import { checkIfBaseDataIsLoading } from '../utils/movie.utils';
-import { environment } from '../../../../../apps/movie-center-web-redux/src/env/environment';
 
 const INFO_PANEL_GENERAL = 'general';
 const INFO_PANEL_CAST = 'cast';
@@ -71,7 +70,7 @@ const Movie = ({
     dispatch(loadStudios());
     dispatch(loadRoles());
 
-    if (environment.enableMovieInfoEdit) {
+    if (process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true') {
       dispatch(getAllPersons());
     }
 
@@ -283,7 +282,7 @@ const Movie = ({
 
         <div
           className="movie-action-panel"
-          hidden={!environment.enableMovieInfoEdit}
+          hidden={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'false'}
         >
           <button className="btn secondary" onClick={saveMovie.bind(this)}>
             Spara

@@ -1,7 +1,6 @@
 import { createAction } from 'redux-api-middleware';
 //import webApi from '../utils/webApi';
 import { getStoredData } from '../utils/storageUtils';
-import { environment } from '../../../../apps/movie-center-web-redux/src/env/environment';
 
 export const CACHE_KEYS = {
   GENRES: 'GENRES',
@@ -29,7 +28,7 @@ export const LANGUAGES_FETCHING = 'LANGUAGES_FETCHING';
 export const LANGUAGES_RECEIVED = 'LANGUAGES_RECEIVED';
 export const LANGUAGES_RECEIVE_ERROR = 'LANGUAGES_RECEIVE_ERROR';
 
-const BASE_URL = `${environment.apiBaseUrl}base`;
+const BASE_URL = `${process.env.NX_API_BASE_URL}base`;
 
 export const loadGenres = () => {
   // Look in cache.

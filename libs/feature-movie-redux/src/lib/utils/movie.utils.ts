@@ -1,4 +1,4 @@
-import { BaseDataStateModel } from '../../../../data-access-redux/src/models/state/base-data-state.model';
+import { BaseDataStateModel } from '@giron/data-access-redux';
 
 export const checkIfBaseDataIsLoading = (
   baseData?: BaseDataStateModel

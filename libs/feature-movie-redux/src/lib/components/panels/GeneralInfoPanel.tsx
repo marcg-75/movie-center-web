@@ -19,7 +19,6 @@ import {
   updateMovieState,
 } from '@giron/data-access-redux';
 import { checkIfBaseDataIsLoading } from '../../utils/movie.utils';
-import { environment } from '../../../../../../apps/movie-center-web-redux/src/env/environment';
 
 interface GeneralInfoPanelProps {
   movie: MovieStateModel;
@@ -243,7 +242,7 @@ const GeneralInfoPanel = ({
           multiple={true}
         />
 
-        {environment.enableMovieInfoEdit && (
+        {process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true' && (
           <LabelledTextInput
             label="Lägg till ny studio:"
             id="newStudio"

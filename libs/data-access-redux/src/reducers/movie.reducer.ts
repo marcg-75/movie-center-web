@@ -26,7 +26,6 @@ import {
   loadingLoadingState,
   successLoadingState,
 } from '../models/state/loading.model';
-import { MovieFilter } from '../../../feature-movie-list-redux/src/lib/models/MovieFilter';
 
 export interface McPayload {
   status?: number;
@@ -43,7 +42,6 @@ interface MovieActionProps {
   type: string;
   payload: IMoviePayload;
   movieItem: IMovie;
-  filter: MovieFilter;
 }
 
 export const movieReducer = (

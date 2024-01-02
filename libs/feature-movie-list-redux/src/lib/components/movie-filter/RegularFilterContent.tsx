@@ -1,10 +1,4 @@
-import {
-  ChangeEvent,
-  KeyboardEvent,
-  ReactNode,
-  useEffect,
-  useState,
-} from 'react';
+import { ChangeEvent, KeyboardEvent, ReactNode, useEffect, useState, } from 'react';
 import { Loader } from '@giron/shared-ui-library';
 import { ListFilterItem } from '../list-filter/list-filter-item/ListFilterItem';
 import { TextListFilterItem } from '../list-filter/text-list-filter-item/TextListFilterItem';
@@ -12,11 +6,11 @@ import { connect } from 'react-redux';
 import {
   BaseDataStateModel,
   loadGenres,
+  MovieFilter as MovieModelFilter,
   MovieListStateModel,
   SelectableModel,
   updateFilter,
 } from '@giron/data-access-redux';
-import { MovieFilter as MovieModelFilter } from '../../models/MovieFilter';
 
 const helpFilterFreetext =
   'Du kan välja att filtrera på filmens titel, genre eller annat. Tryck sedan på ' +

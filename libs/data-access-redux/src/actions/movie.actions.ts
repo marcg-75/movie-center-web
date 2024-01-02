@@ -1,10 +1,9 @@
 import { createAction } from 'redux-api-middleware';
 
 import { IMovie } from '../models/movie.model';
-import { MovieFilter } from '../../../feature-movie-list-redux/src/lib/models/MovieFilter';
-import { environment } from '../../../../apps/movie-center-web-redux/src/env/environment';
+import { MovieFilter } from '../models/MovieFilter';
 
-const BASE_URL = `${environment.apiBaseUrl}movie`;
+const BASE_URL = `${process.env.NX_API_BASE_URL}movie`;
 
 export const MOVIES_FETCHING = 'MOVIES_FETCHING';
 export const MOVIES_RECEIVED = 'MOVIES_RECEIVED';

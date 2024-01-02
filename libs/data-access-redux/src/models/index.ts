@@ -11,3 +11,5 @@ export { RoleEnum } from './RoleEnum';
 export type { SelectableModel } from './SelectableModel';
 export type { StoredData } from './storage.model';
 export { STORAGE_TYPE } from './storage.model';
+export {Filter} from './Filter';
+export {MovieFilter} from './MovieFilter';

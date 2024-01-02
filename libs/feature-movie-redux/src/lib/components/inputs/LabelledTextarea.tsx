@@ -1,6 +1,5 @@
 import '../movie.details.scss';
 import { FocusEvent } from 'react';
-import { environment } from '../../../../../../apps/movie-center-web-redux/src/env/environment';
 
 interface LabelledTextareaProps {
   label: string;
@@ -28,8 +27,8 @@ export const LabelledTextarea = ({
       required={required}
       defaultValue={defaultValue}
       onBlur={callback}
-      hidden={!environment.enableMovieInfoEdit}
+      hidden={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'false'}
     />
-    <span hidden={environment.enableMovieInfoEdit}>{defaultValue}</span>
+    <span hidden={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true'}>{defaultValue}</span>
   </div>
 );

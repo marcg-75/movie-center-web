@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {
   clearFilterAndReloadMovies,
   clearMovieActionState,
+  MovieFilter as MovieModelFilter,
   MovieListStateModel,
   updateFilterAndReloadMovies,
 } from '@giron/data-access-redux';
@@ -11,8 +12,6 @@ import ListFilter from '../list-filter/ListFilterComponent';
 import { FilterType } from '../../models/FilterSettingsModel';
 import ExtendedFilterContent from './ExtendedFilterContent';
 import RegularFilterContent from './RegularFilterContent';
-import { MovieFilter as MovieModelFilter } from '../../models/MovieFilter';
-import { environment } from '../../../../../../apps/movie-center-web-redux/src/env/environment';
 
 const helpFilter =
   'Du kan filtrera fram de filmer som du är intresserad i genom att välja kriteria ' +
@@ -58,7 +57,7 @@ const MovieFilter = ({
         filter={filter}
         filterType={FilterType.MOVIE}
         loadFilter={loadFilter}
-        enableSaveFilter={environment.enableSaveMovieFilter}
+        enableSaveFilter={process.env.NX_ENABLE_SAVE_MOVIE_FILTER === 'true'}
         compactModeActions={true}
         regularContent={<RegularFilterContent filterChanged={filterChanged} />}
         extendedContent={

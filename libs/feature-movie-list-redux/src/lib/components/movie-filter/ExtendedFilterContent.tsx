@@ -3,12 +3,12 @@ import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
 import {
   BaseDataStateModel,
   loadFormats,
+  MovieFilter as MovieModelFilter,
   MovieListStateModel,
   SelectableModel,
 } from '@giron/data-access-redux';
 import { Loader } from '@giron/shared-ui-library';
 import { connect } from 'react-redux';
-import { MovieFilter as MovieModelFilter } from '../../models/MovieFilter';
 
 interface ExtendedFilterContentProps {
   filter: MovieModelFilter;

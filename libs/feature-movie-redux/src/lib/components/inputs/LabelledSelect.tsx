@@ -1,7 +1,6 @@
 import { ChangeEvent, ReactNode } from 'react';
 
 import '../movie.details.scss';
-import { environment } from '../../../../../../apps/movie-center-web-redux/src/env/environment';
 
 interface LabelledSelectProps {
   label: string;
@@ -38,10 +37,10 @@ export const LabelledSelect = ({
         name={id}
         required={required}
         multiple={multiple}
-        disabled={!environment.enableMovieInfoEdit}
+        disabled={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'false'}
         value={value}
         onChange={callback}
-        className={environment.enableMovieInfoEdit ? '' : 'disabled'}
+        className={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true' ? '' : 'disabled'}
       >
         {options}
       </select>

@@ -1,5 +1,5 @@
 import { Filter } from './Filter';
-import { SelectableModel } from '@giron/data-access-redux';
+import { SelectableModel } from './SelectableModel';
 
 export class MovieFilter extends Filter<MovieFilter> {
   static FILTER_DEFAULT_ALL_GENRES: SelectableModel = {

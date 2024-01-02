@@ -1,5 +1,4 @@
 import { createAction } from 'redux-api-middleware';
-import { environment } from '../../../../apps/movie-center-web-redux/src/env/environment';
 
 export const ACTORS_FETCHING = 'ACTORS_FETCHING';
 export const ACTORS_RECEIVED = 'ACTORS_RECEIVED';
@@ -13,7 +12,7 @@ export const ALL_PERSONS_FETCHING = 'ALL_PERSONS_FETCHING';
 export const ALL_PERSONS_RECEIVED = 'ALL_PERSONS_RECEIVED';
 export const ALL_PERSONS_ERROR = 'ALL_PERSONS_ERROR';
 
-const BASE_URL = `${environment.apiBaseUrl}person`;
+const BASE_URL = `${process.env.NX_API_BASE_URL}person`;
 
 export const getActors = () =>
   createAction({

@@ -16,7 +16,6 @@ import {
   updateMovieState,
 } from '@giron/data-access-redux';
 import { mapToPersonOptionElements } from './CrewPanel';
-import { environment } from '../../../../../../apps/movie-center-web-redux/src/env/environment';
 
 interface CastPanelProps {
   movie: MovieStateModel;
@@ -288,7 +287,7 @@ const CastPanel = ({
           </span>
           <span className="text-value">{actor.characterName}</span>
 
-          {environment.enableMovieInfoEdit && (
+          {process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true' && (
             <button
               className="btn secondary"
               onClick={() =>
@@ -316,11 +315,13 @@ const CastPanel = ({
     const selectablePersonOptions: ReactNode[] =
       mapToPersonOptionElements(selectablePersons);
 
+    const enableMovieInfoEdit = process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
+
     content = (
       <div>
         {castElements}
 
-        {environment.enableMovieInfoEdit && (
+        {enableMovieInfoEdit && (
           <form onSubmit={(e) => addActor(e)} id="addActorForm">
             <label>Lägg till skådespelare:</label>
             <select id="addActor" name="actorPersonRoleId">
@@ -337,7 +338,7 @@ const CastPanel = ({
           </form>
         )}
 
-        {environment.enableMovieInfoEdit && (
+        {enableMovieInfoEdit && (
           <form onSubmit={(e) => addNewActor(e)} id="addNewActorForm">
             <label>Lägg till ny skådespelare:</label>
 

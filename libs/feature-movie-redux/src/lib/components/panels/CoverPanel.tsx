@@ -4,14 +4,9 @@ import { connect } from 'react-redux';
 import '../movie.details.scss';
 
 import { Loader } from '@giron/shared-ui-library';
-import {
-  IMovie,
-  MovieStateModel,
-  updateMovieState,
-} from '@giron/data-access-redux';
-import { environment } from '../../../../../../apps/movie-center-web-redux/src/env/environment';
+import { IMovie, MovieStateModel, updateMovieState, } from '@giron/data-access-redux';
 
-export const IMAGE_URL = `${environment.apiBaseUrl}image/`;
+export const IMAGE_URL = `${process.env.NX_API_BASE_URL}image/`;
 
 interface CoverPanelProps {
   movie: MovieStateModel;
