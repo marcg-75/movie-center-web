@@ -14,11 +14,10 @@ import {
   IMovie,
   MovieGenreModel,
   MovieStateModel,
-  NameEntityModel,
-  SelectableModel,
   updateMovieState,
 } from '@giron/data-access-redux';
 import { checkIfBaseDataIsLoading } from '../../utils/movie.utils';
+import { NameEntityModel, SelectableModel } from '@giron/shared-models';
 
 interface GeneralInfoPanelProps {
   movie: MovieStateModel;

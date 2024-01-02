@@ -1,6 +1,6 @@
 import { IMovie } from '../movie.model';
 import { LoadingState } from './loading.model';
-import { MovieFilter } from '../MovieFilter';
+import { MovieFilter } from '@giron/shared-models';
 
 export interface MovieListStateModel {
   filter: MovieFilter;

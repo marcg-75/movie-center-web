@@ -1,65 +1,40 @@
-import { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { getMovies, IMovie, MovieGenreModel, MovieListStateModel } from '@giron/data-access-redux';
+import { IMovie, MovieGenreModel } from '@giron/data-access-redux';
 import { Loader } from '@giron/shared-ui-library';
-import { MovieFilterComponent } from './movie-filter';
-import { getDefaultSortModel, scrollToTop } from '../utils/list.util';
-import { SortModel } from '../models/SortModel';
-import * as H from 'history';
+import { SortModel } from '@giron/shared-models';
+import { ReactNode, useEffect, useState } from 'react';
+import { scrollToTop } from '@giron/shared-util-helpers';
+import { getDefaultSortModel } from '../utils/list.util';
 
-const SORT_ORDERS_BY_COLUMN = [
-  { column: 'title', sortOrder: 'title' },
-  { column: 'mainGenre', sortOrder: 'mainGenre.name' },
-  { column: 'grade', sortOrder: 'grade' },
-];
-
-interface MovieListProps {
-  movieList: MovieListStateModel;
-  history: H.History;
-  location: H.Location;
-  dispatch: (any: unknown) => void;
+type Props = {
+  filterComponent: ReactNode;
+  movies?: IMovie[];
+  createMovie: () => void;
+  goToMovie: (movieId?: number) => void;
+  reloadMovies: (sort: SortModel) => void;
+  queryParams: string;
+  isLoading?: boolean;
   testName?: string;
-}
+};
 
-const MovieList = ({
-  movieList,
-  history,
-  location,
-  dispatch,
+export const MovieList = ({
+  filterComponent,
+  movies,
+  createMovie,
+  goToMovie,
+  reloadMovies,
+  queryParams,
+  isLoading = false,
   testName = 'MovieList_test',
-}: MovieListProps) => {
-  const [sort, setSort] = useState(
-    getDefaultSortModel('title', location.search)
-  );
+}: Props) => {
+  const [sort, setSort] = useState(getDefaultSortModel('title', queryParams));
 
   useEffect(() => {
-    loadMovies();
+    reloadMovies(sort);
   }, [sort]);
-
-  const loadMovies = () => {
-    const sortOrder = SORT_ORDERS_BY_COLUMN.filter(
-      (csort) => csort.column === sort.sortOrder
-    )[0].sortOrder;
-
-    dispatch(
-      getMovies(movieList.filter, sortOrder, sort.sortDirection, 0, 1000)
-    );
-  };
-
-  const createMovie = () => {
-    history.push('/movie/0', [{ mode: 'CREATE' }]);
-  };
 
   const changeSortOrder = (newSortOrder: string) => {
     sort.changeSortOrder(newSortOrder);
     setSort(SortModel.of(sort.sortOrder, sort.sortDirection));
-  };
-
-  const goToMovie = (movieId?: number) => {
-    if (movieId) {
-      history.push(`/movie/${movieId}`);
-    }
   };
 
   const getMovieGenres = (movie: IMovie, limit = 3): string[] => {
@@ -79,18 +54,11 @@ const MovieList = ({
     );
   };
 
-  const { movies, moviesNotLoaded, movieListErrorMessages } = movieList;
-
-  if (movieListErrorMessages) {
-    //DialogComponent.openDefaultErrorDialog(this.dialog, movieListErrorMessages);  // TODO: Implement error dialog handling.
-    //alert(movieListErrorMessages);
-  }
-
   return (
     <div data-test-name={testName}>
       <div className="main-page-container" data-test-name={testName}>
-        <MovieFilterComponent componentName="movie_list" />
-        {moviesNotLoaded ? (
+        {filterComponent}
+        {isLoading ? (
           <div>
             <Loader />
           </div> // TODO: Add app start loader (splash screen)
@@ -218,11 +186,3 @@ const MovieList = ({
     </div>
   );
 };
-
-function stateToProps({ movieList }: { movieList: MovieListStateModel }) {
-  return {
-    movieList,
-  };
-}
-
-export default withRouter(connect(stateToProps)(MovieList));

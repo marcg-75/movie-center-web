@@ -18,7 +18,7 @@ import {
   MOVIE_UPDATING,
 } from '../actions/movie.actions';
 import { IMovie } from '../models/movie.model';
-import { SelectableModel } from '../models/SelectableModel';
+import { SelectableModel } from '@giron/shared-models';
 import { MovieStateModel } from '../models/state/movie-state.model';
 import {
   getFailedLoadingState,
@@ -38,7 +38,7 @@ export interface McPayload {
 
 interface IMoviePayload extends IMovie, McPayload {}
 
-interface MovieActionProps {
+export interface MovieActionProps {
   type: string;
   payload: IMoviePayload;
   movieItem: IMovie;

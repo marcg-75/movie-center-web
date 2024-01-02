@@ -9,13 +9,12 @@ import {
   getActors,
   IMovie,
   MovieStateModel,
-  NameEntityModel,
   PersonRoleModel,
   PersonStateModel,
-  SelectableModel,
   updateMovieState,
 } from '@giron/data-access-redux';
 import { mapToPersonOptionElements } from './CrewPanel';
+import { NameEntityModel, SelectableModel } from '@giron/shared-models';
 
 interface CastPanelProps {
   movie: MovieStateModel;
@@ -315,7 +314,8 @@ const CastPanel = ({
     const selectablePersonOptions: ReactNode[] =
       mapToPersonOptionElements(selectablePersons);
 
-    const enableMovieInfoEdit = process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
+    const enableMovieInfoEdit =
+      process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
 
     content = (
       <div>

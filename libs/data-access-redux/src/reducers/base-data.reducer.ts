@@ -26,7 +26,7 @@ import {
   successLoadingState,
 } from '../models/state/loading.model';
 
-interface BaseDataActionProps {
+export interface BaseDataActionProps {
   type: string;
   payload: unknown | McPayload;
 }

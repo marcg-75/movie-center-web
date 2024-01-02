@@ -1,5 +1,14 @@
 @import '../../../../../../apps/movie-center-web-redux/src/style';
 
+.filter,
+.filter-body {
+  transition: all 100ms ease-in-out;
+}
+.filter-body {
+  display: flex;
+  justify-content: space-between;
+}
+
 .filter-header-toggle-container {
   display: flex;
   position: relative;
@@ -24,36 +33,6 @@
   margin-left: 3rem;
 }
 
-.list-filter-separator {
-  border-left: 1px solid #d5d0cc;
-  padding: 0;
-  margin-right: 1.25rem;
-  width: 1px;
-  min-height: 83.59px;
-}
-
-.filter-clear {
-  padding: 0;
-}
-
-.filter-store.standard-mode {
-  padding-top: 3px;
-  padding-bottom: 28px;
-}
-.filter-store.standard-mode > a > p,
-.filter-list.standard-mode > a > p {
-  margin: 0;
-}
-
-.filter,
-.filter-body {
-  transition: all 100ms ease-in-out;
-}
-.filter-body {
-  display: flex;
-  justify-content: space-between;
-}
-
 .filter-body > .filter-actions-container {
   border-left: 1px solid #d5d0cc;
   margin-left: 1rem;
@@ -71,6 +50,7 @@
   transition: all 0ms;
   pointer-events: none;
 }
+
 .filter-body .extended-section-visible {
   display: inline;
   opacity: 1;
@@ -84,8 +64,25 @@
   }
 }
 
+.filter-store.standard-mode {
+  padding-top: 3px;
+  padding-bottom: 28px;
+}
+.filter-store.standard-mode > a > p,
+.filter-list.standard-mode > a > p {
+  margin: 0;
+}
+
 .filter-extended-label {
   padding-left: 10px;
+}
+
+.list-filter-separator {
+  border-left: 1px solid #d5d0cc;
+  padding: 0;
+  margin-right: 1.25rem;
+  width: 1px;
+  min-height: 83.59px;
 }
 
 $width: 40px;

@@ -2,8 +2,7 @@ import { CastAndCrewModel } from './CastAndCrewModel';
 import { CoverModel } from './CoverModel';
 import { LanguageModel } from './LanguageModel';
 import { MovieGenreModel } from './MovieGenreModel';
-import { NameEntityModel } from './NameEntityModel';
-import { SelectableModel } from './SelectableModel';
+import { NameEntityModel, SelectableModel } from '@giron/shared-models';
 
 export interface IMovie {
   id?: number;
