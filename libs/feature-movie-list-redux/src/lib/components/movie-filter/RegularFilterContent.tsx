@@ -1,7 +1,5 @@
 import { ChangeEvent, KeyboardEvent, ReactNode, useEffect, useState, } from 'react';
-import { Loader } from '@giron/shared-ui-library';
-import { ListFilterItem } from '../list-filter/list-filter-item/ListFilterItem';
-import { TextListFilterItem } from '../list-filter/text-list-filter-item/TextListFilterItem';
+import { FilterItem, FilterItemText, Loader } from '@giron/shared-ui-library';
 import { connect } from 'react-redux';
 import {
   BaseDataStateModel,
@@ -123,7 +121,7 @@ const RegularFilterContent = ({
     </div>
   ) : (
     <div data-test-name={testName}>
-      <TextListFilterItem
+      <FilterItemText
         label="Titel"
         filterBody={
           <div>
@@ -144,7 +142,7 @@ const RegularFilterContent = ({
         }
       />
 
-      <ListFilterItem
+      <FilterItem
         label="Genre"
         filterBody={
           <select
@@ -157,7 +155,7 @@ const RegularFilterContent = ({
         }
       />
 
-      <TextListFilterItem
+      <FilterItemText
         helpFilterText={helpFilterFreetext}
         filterBody={
           <div>

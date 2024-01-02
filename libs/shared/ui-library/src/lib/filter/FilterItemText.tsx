@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
-import '../list-filter.component.scss';
-import { ListFilterItem } from '../list-filter-item/ListFilterItem';
+import './filter.component.scss';
+import { FilterItem } from './FilterItem';
 
 interface TextListFilterItemProps {
   label?: string;
@@ -9,7 +9,7 @@ interface TextListFilterItemProps {
   filterBody: ReactNode;
 }
 
-export const TextListFilterItem = ({
+export const FilterItemText = ({
   label = 'Fritext',
   helpFilterText,
   filterBody,
@@ -23,7 +23,7 @@ export const TextListFilterItem = ({
   );
 
   return (
-    <ListFilterItem
+    <FilterItem
       label={label}
       className="filter-body-block-freetext"
       headerAdditions={headerAdditions}

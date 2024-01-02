@@ -1,4 +1,4 @@
-import { ListFilterItem } from '../list-filter/list-filter-item/ListFilterItem';
+import { FilterItem, Loader } from '@giron/shared-ui-library';
 import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
 import {
   BaseDataStateModel,
@@ -7,7 +7,6 @@ import {
   MovieListStateModel,
   SelectableModel,
 } from '@giron/data-access-redux';
-import { Loader } from '@giron/shared-ui-library';
 import { connect } from 'react-redux';
 
 interface ExtendedFilterContentProps {
@@ -106,7 +105,7 @@ const ExtendedFilterContent = ({
     </div>
   ) : (
     <div data-test-name={testName}>
-      <ListFilterItem
+      <FilterItem
         label="Format"
         filterBody={
           <select
@@ -119,7 +118,7 @@ const ExtendedFilterContent = ({
         }
       />
 
-      <ListFilterItem
+      <FilterItem
         label="Betyg"
         filterBody={
           <select name="grade" value={filter.grade} onChange={changeHandler}>

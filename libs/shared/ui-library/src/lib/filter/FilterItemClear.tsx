@@ -1,14 +1,12 @@
-import React from 'react';
-
-import '../list-filter.component.scss';
-import { ListFilterItem } from '../list-filter-item/ListFilterItem';
+import './filter.component.scss';
+import { FilterItem } from './FilterItem';
 
 interface ClearListFilterItemProps {
   clearFilter: () => void;
   compactMode: boolean;
 }
 
-export const ClearListFilterItem = ({
+export const FilterItemClear = ({
   clearFilter,
   compactMode,
 }: ClearListFilterItemProps) => {
@@ -30,7 +28,7 @@ export const ClearListFilterItem = ({
   return (
     <div>
       {!compactMode && (
-        <ListFilterItem
+        <FilterItem
           label="&nbsp;"
           className="filter-clear"
           filterBody={filterItemBody}

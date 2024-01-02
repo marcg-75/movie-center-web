@@ -1,9 +1,9 @@
 import { ReactNode, useState } from 'react';
 
-import './list-filter.component.scss';
+import '../../../../../shared/ui-library/src/lib/filter/filter.component.scss';
 import { Filter, MovieFilter } from '@giron/data-access-redux';
 import { FilterType } from '../../models/FilterSettingsModel';
-import { ClearListFilterItem } from './clear-list-filter-item/ClearListFilterItem';
+import { FilterItemClear } from '@giron/shared-ui-library';
 
 interface ListFilterProps {
   componentName: string;
@@ -133,7 +133,7 @@ const ListFilterComponent = ({
           </div>
 
           <div className="filter-actions-container">
-            <ClearListFilterItem
+            <FilterItemClear
               clearFilter={clearFilter}
               compactMode={compactModeActions && enableSaveFilter}
             />

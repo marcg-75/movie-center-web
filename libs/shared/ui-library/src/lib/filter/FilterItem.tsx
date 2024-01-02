@@ -1,20 +1,20 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
-import '../list-filter.component.scss';
+import './filter.component.scss';
 
-interface ListFilterItemProps {
+type Props = {
   label: string;
   className?: string;
   headerAdditions?: ReactNode;
   filterBody: ReactNode;
 }
 
-export const ListFilterItem = ({
+export const FilterItem = ({
   label,
   className,
   headerAdditions,
   filterBody,
-}: ListFilterItemProps) => {
+}: Props) => {
   return (
     <div className={'filter-body-block ' + className}>
       {label && (
