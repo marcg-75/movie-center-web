@@ -19,7 +19,7 @@
           "apps/movie-center-web-redux/src/favicon.ico",
           "apps/movie-center-web-redux/src/assets"
         ],
-        "styles": ["apps/movie-center-web-redux/src/style.scss"],
+        "styles": ["libs/shared/style.scss"],
         "scripts": [],
         "webpackConfig": "apps/movie-center-web-redux/webpack.config.js"
       },

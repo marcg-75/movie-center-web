@@ -5,6 +5,8 @@ import { MovieFilterComponent } from './movie-filter';
 import { SortModel } from '@giron/shared-models';
 import * as H from 'history';
 import { MovieList } from '@giron/shared-movie-components';
+import { useEffect, useState } from 'react';
+import { getDefaultSortModel } from '@giron/shared-util-helpers';
 
 const SORT_ORDERS_BY_COLUMN = [
   { column: 'title', sortOrder: 'title' },
@@ -25,6 +27,14 @@ const MovieListComponent = ({
   location,
   dispatch,
 }: MovieListProps) => {
+  const [sort, setSort] = useState(
+    getDefaultSortModel('title', location.search)
+  );
+
+  useEffect(() => {
+    loadMovies(sort);
+  }, [sort]);
+
   const loadMovies = (sort: SortModel) => {
     const sortOrder = SORT_ORDERS_BY_COLUMN.filter(
       (csort) => csort.column === sort.sortOrder
@@ -45,6 +55,11 @@ const MovieListComponent = ({
     }
   };
 
+  const changeSortOrder = (newSortOrder: string) => {
+    sort.changeSortOrder(newSortOrder);
+    setSort(SortModel.of(sort.sortOrder, sort.sortDirection));
+  };
+
   const { movies, moviesNotLoaded, movieListErrorMessages } = movieList;
 
   if (movieListErrorMessages) {
@@ -55,11 +70,11 @@ const MovieListComponent = ({
   return (
     <MovieList
       filterComponent={<MovieFilterComponent />}
+      sort={sort}
       movies={movies}
       createMovie={createMovie}
       goToMovie={goToMovie}
-      reloadMovies={loadMovies}
-      queryParams={location.search}
+      changeSortOrder={changeSortOrder}
       isLoading={moviesNotLoaded}
     />
   );

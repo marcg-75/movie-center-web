@@ -54,4 +54,4 @@ export const MovieFilterComponent = ({
   );
 };
 
-export default connect(() => ({}))(MovieFilterComponent);
+export default connect()(MovieFilterComponent);
