@@ -1,4 +1,4 @@
-import { BackendServicePath, QueryParams } from './backend.types';
+import { QueryParams } from './backend.types';
 
 export function buildQueryString(params?: QueryParams): string {
   if (!params) {

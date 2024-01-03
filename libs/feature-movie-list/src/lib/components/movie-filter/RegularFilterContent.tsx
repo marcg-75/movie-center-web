@@ -7,8 +7,8 @@ type Props = {
 };
 
 export const RegularFilterContent = ({ filterChanged }: Props) => {
-  const [filter] = useMovieFilter();
-  const { genres, isGenresLoading, error } = useGenres();
+  const { filter } = useMovieFilter();
+  const { genres, isGenresLoading } = useGenres();
 
   return (
     <RegularFilter

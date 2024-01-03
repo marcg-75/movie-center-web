@@ -13,9 +13,7 @@ const SORT_ORDERS_BY_COLUMN = [
   { column: 'grade', sortOrder: 'moviePersonalInfo.grade' },
 ];
 
-type Props = {};
-
-export const MovieListComponent = ({}: Props) => {
+export const MovieListComponent = () => {
   const router = useRouter();
   const searchParms = useSearchParams();
 
@@ -27,7 +25,7 @@ export const MovieListComponent = ({}: Props) => {
     (csort) => csort.column === sort.sortOrder
   )[0].sortOrder;
 
-  const { movies, isMoviesLoading, error } = useMovieList(
+  const { movies, isMoviesLoading } = useMovieList(
     sortOrder,
     sort.sortDirection,
     0,

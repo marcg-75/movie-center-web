@@ -1,5 +1,4 @@
-import { NameEntityModel, SelectableModel } from '@giron/shared-models';
-import { LanguageModel } from '../LanguageModel';
+import { LanguageModel, NameEntityModel, SelectableModel } from '@giron/shared-models';
 import { LoadingState } from './loading.model';
 
 export interface BaseDataStateModel {

@@ -1,8 +1,8 @@
-import { IMovie, MovieFilter } from '@giron/shared-models';
+import { IMovie } from '@giron/shared-models';
 import { getBackendClient } from '@giron/shared-data-access-api-client';
 import { useQuery } from '@tanstack/react-query';
 import { createMovieListQueryString } from '@giron/shared-util-helpers';
-import { useMovieFilter } from '@giron/data-access';
+import { useMovieFilter } from './useMovieFilter';
 
 const PATH_PREFIX = 'movie';
 
@@ -17,7 +17,7 @@ export const useMovieListQuery = <T>(
   page: number,
   pageSize?: number
 ) => {
-  const [filter] = useMovieFilter();
+  const { filter } = useMovieFilter();
   const client = getBackendClient();
 
   const queryKey = createMovieListQueryString(

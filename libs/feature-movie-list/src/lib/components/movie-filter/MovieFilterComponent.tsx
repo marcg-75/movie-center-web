@@ -16,7 +16,7 @@ type Props = {
 export const MovieFilterComponent = ({
   testName = 'MovieFilterComponent_test',
 }: Props) => {
-  const [filter, setFilter, resetFilter] = useMovieFilter();
+  const { setFilter, resetFilter } = useMovieFilter();
 
   const filterChanged = (filter: MovieFilterModel) => {
     setFilter(filter);

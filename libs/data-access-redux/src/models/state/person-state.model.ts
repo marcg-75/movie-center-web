@@ -1,5 +1,4 @@
-import { PersonRoleModel } from '../PersonRoleModel';
-import { NameEntityModel } from '@giron/shared-models';
+import { NameEntityModel, PersonRoleModel } from '@giron/shared-models';
 import { LoadingState } from './loading.model';
 
 export interface PersonStateModel {

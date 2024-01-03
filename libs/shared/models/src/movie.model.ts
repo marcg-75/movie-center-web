@@ -1,7 +1,7 @@
-import { CastAndCrewModel } from '../../../data-access-redux/src/models/CastAndCrewModel';
-import { CoverModel } from '../../../data-access-redux/src/models/CoverModel';
-import { LanguageModel } from '../../../data-access-redux/src/models/LanguageModel';
-import { MovieGenreModel } from '../../../data-access-redux/src/models/MovieGenreModel';
+import { CastAndCrewModel } from './CastAndCrewModel';
+import { CoverModel } from './CoverModel';
+import { LanguageModel } from './LanguageModel';
+import { MovieGenreModel } from './MovieGenreModel';
 import { NameEntityModel, SelectableModel } from './index';
 
 export interface IMovie {

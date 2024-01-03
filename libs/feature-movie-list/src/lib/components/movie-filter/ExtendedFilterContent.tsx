@@ -7,8 +7,8 @@ type Props = {
 };
 
 export const ExtendedFilterContent = ({ filterChanged }: Props) => {
-  const [filter] = useMovieFilter();
-  const { formats, isFormatsLoading, error } = useFormats();
+  const { filter } = useMovieFilter();
+  const { formats, isFormatsLoading } = useFormats();
 
   return (
     <ExtendedFilter

@@ -7,5 +7,5 @@ export const useMovieFilter = () => {
   const [filter, setFilter] = useAtom(filterAtom);
   const resetFilter = () => setFilter(DEFAULT_FILTER);
 
-  return [filter, setFilter, resetFilter] as const;
+  return { filter, setFilter, resetFilter } as const;
 };
