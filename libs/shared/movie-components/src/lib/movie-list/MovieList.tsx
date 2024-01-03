@@ -109,17 +109,9 @@ export const MovieList = ({
                         </span>
                       </th>
                       <th
-                        onClick={() => changeSortOrder('mainGenre')}
-                        className="sortable hide-small-screen mat-header-cell cdk-column-name mat-column-name"
+                        className="hide-small-screen mat-header-cell cdk-column-name mat-column-name"
                       >
                         <span className="icon-texts">Genre</span>
-                        <span>
-                          {sort.sortOrder === 'mainGenre' && (
-                            <i
-                              className={`icons sort-icon fas fa-sort-${sort.sortArrow}`}
-                            />
-                          )}
-                        </span>
                       </th>
                       <th
                         onClick={() => changeSortOrder('grade')}

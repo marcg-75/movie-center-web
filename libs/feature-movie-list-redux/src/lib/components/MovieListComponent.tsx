@@ -8,8 +8,8 @@ import { MovieList } from '@giron/shared-movie-components';
 
 const SORT_ORDERS_BY_COLUMN = [
   { column: 'title', sortOrder: 'title' },
-  { column: 'mainGenre', sortOrder: 'mainGenre.name' },
-  { column: 'grade', sortOrder: 'grade' },
+  { column: 'genre', sortOrder: 'genres.genre.name' },
+  { column: 'grade', sortOrder: 'moviePersonalInfo.grade' },
 ];
 
 interface MovieListProps {
