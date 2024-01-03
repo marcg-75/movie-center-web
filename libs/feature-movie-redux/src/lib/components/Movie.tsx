@@ -19,7 +19,6 @@ import {
   getAllPersons,
   getEmptyMovie,
   getMovieById,
-  IMovie,
   loadRoles,
   loadStudios,
   MovieStateModel,
@@ -27,6 +26,7 @@ import {
   updateMovieState,
 } from '@giron/data-access-redux';
 import { checkIfBaseDataIsLoading } from '../utils/movie.utils';
+import { IMovie } from '@giron/shared-models';
 
 const INFO_PANEL_GENERAL = 'general';
 const INFO_PANEL_CAST = 'cast';

@@ -1,6 +1,5 @@
-import { IMovie, MovieGenreModel } from '@giron/data-access-redux';
 import { Loader } from '@giron/shared-ui-library';
-import { SortModel } from '@giron/shared-models';
+import { IMovie, MovieGenreModel, SortModel } from '@giron/shared-models';
 import { ReactNode } from 'react';
 import { scrollToTop } from '@giron/shared-util-helpers';
 

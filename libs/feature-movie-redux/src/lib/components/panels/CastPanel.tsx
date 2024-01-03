@@ -4,17 +4,9 @@ import { connect } from 'react-redux';
 import '../movie.details.scss';
 
 import { Loader } from '@giron/shared-ui-library';
-import {
-  CastAndCrewModel,
-  getActors,
-  IMovie,
-  MovieStateModel,
-  PersonRoleModel,
-  PersonStateModel,
-  updateMovieState,
-} from '@giron/data-access-redux';
+import { getActors, MovieStateModel, PersonStateModel, updateMovieState, } from '@giron/data-access-redux';
 import { mapToPersonOptionElements } from './CrewPanel';
-import { NameEntityModel, SelectableModel } from '@giron/shared-models';
+import { CastAndCrewModel, IMovie, NameEntityModel, PersonRoleModel, SelectableModel } from '@giron/shared-models';
 
 interface CastPanelProps {
   movie: MovieStateModel;

@@ -8,14 +8,12 @@ import { LabelledTextInput } from '../inputs/LabelledTextInput';
 import { LabelledSelect } from '../inputs/LabelledSelect';
 import {
   BaseDataStateModel,
-  IMovie,
-  LanguageModel,
   loadFormats,
   loadLanguages,
   MovieStateModel,
   updateMovieState,
 } from '@giron/data-access-redux';
-import { SelectableModel } from '@giron/shared-models';
+import { IMovie, LanguageModel, SelectableModel } from '@giron/shared-models';
 
 const REGIONS: Array<number> = [1, 2, 3, 4, 5, 6];
 const regionOptions: ReactNode[] = REGIONS.map((r: number, i: number) => {
