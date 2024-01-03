@@ -1,4 +1,10 @@
-import React, { ChangeEvent, FormEvent, ReactNode, useEffect, useState, } from 'react';
+import React, {
+  ChangeEvent,
+  FormEvent,
+  ReactNode,
+  useEffect,
+  useState,
+} from 'react';
 import { connect } from 'react-redux';
 
 import '../movie.details.scss';
@@ -12,7 +18,13 @@ import {
   RoleEnum,
   updateMovieState,
 } from '@giron/data-access-redux';
-import { CastAndCrewModel, IMovie, NameEntityModel, PersonRoleModel, SelectableModel } from '@giron/shared-models';
+import {
+  CastAndCrewModel,
+  IMovie,
+  NameEntityModel,
+  PersonRoleModel,
+  SelectableModel,
+} from '@giron/shared-models';
 
 interface CrewPanelProps {
   movie: MovieStateModel;

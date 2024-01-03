@@ -8,7 +8,7 @@ import { LabelledTextInput } from '../inputs/LabelledTextInput';
 import { LabelledSelect } from '../inputs/LabelledSelect';
 import { LabelledDateInput } from '../inputs/LabelledDateInput';
 import { LabelledTextarea } from '../inputs/LabelledTextarea';
-import { MovieStateModel, updateMovieState, } from '@giron/data-access-redux';
+import { MovieStateModel, updateMovieState } from '@giron/data-access-redux';
 import { IMovie } from '@giron/shared-models';
 
 const GRADES: Array<number> = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];

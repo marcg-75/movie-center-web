@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import '../movie.details.scss';
 
 import { Loader } from '@giron/shared-ui-library';
-import { MovieStateModel, updateMovieState, } from '@giron/data-access-redux';
+import { MovieStateModel, updateMovieState } from '@giron/data-access-redux';
 import { IMovie } from '@giron/shared-models';
 
 export const IMAGE_URL = `${process.env.NX_API_BASE_URL}image/`;
