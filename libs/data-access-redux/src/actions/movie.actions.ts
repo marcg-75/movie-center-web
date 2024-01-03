@@ -48,7 +48,11 @@ export const getAllMovies = (
   sortDir = 'asc'
 ) =>
   createAction({
-    endpoint: `${BASE_URL}/all${createMovieListQueryString(filter, sortOrder, sortDir)}`,
+    endpoint: `${BASE_URL}/all${createMovieListQueryString(
+      filter,
+      sortOrder,
+      sortDir
+    )}`,
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
     types: [MOVIES_FETCHING, MOVIES_RECEIVED, MOVIES_ERROR],

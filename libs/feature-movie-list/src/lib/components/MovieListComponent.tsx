@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { MovieList } from '@giron/shared-movie-components';
 import { MovieFilterComponent } from './movie-filter/MovieFilterComponent';
@@ -13,23 +13,25 @@ const SORT_ORDERS_BY_COLUMN = [
   { column: 'grade', sortOrder: 'moviePersonalInfo.grade' },
 ];
 
-type Props = {}
+type Props = {};
 
 export const MovieListComponent = ({}: Props) => {
   const router = useRouter();
   const searchParms = useSearchParams();
 
-  const [sort, setSort] = useState(getDefaultSortModel('title', searchParms.toString()));
+  const [sort, setSort] = useState(
+    getDefaultSortModel('title', searchParms.toString())
+  );
 
   const sortOrder = SORT_ORDERS_BY_COLUMN.filter(
     (csort) => csort.column === sort.sortOrder
   )[0].sortOrder;
 
-  const {movies, isMoviesLoading, error} = useMovieList(
+  const { movies, isMoviesLoading, error } = useMovieList(
     sortOrder,
     sort.sortDirection,
     0,
-    1000,
+    1000
   );
 
   const createMovie = () => {
@@ -49,7 +51,7 @@ export const MovieListComponent = ({}: Props) => {
 
   return (
     <MovieList
-      filterComponent={<MovieFilterComponent/>}
+      filterComponent={<MovieFilterComponent />}
       sort={sort}
       movies={movies}
       createMovie={createMovie}

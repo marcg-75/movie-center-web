@@ -10,8 +10,9 @@ export const useGenresQuery = <T>(select: (data: SelectableModel[]) => T) => {
     ['genres'],
     async () => {
       return await client.get<SelectableModel[]>(`${PATH_PREFIX}/genres`);
-    }, {
-      select
+    },
+    {
+      select,
     }
   );
 };

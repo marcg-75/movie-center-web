@@ -6,7 +6,7 @@ import {
   updateFilterAndReloadMovies,
 } from '@giron/data-access-redux';
 
-import { MovieFilter as MovieModelFilter, } from '@giron/shared-models';
+import { MovieFilter as MovieModelFilter } from '@giron/shared-models';
 import ExtendedFilterContent from './ExtendedFilterContent';
 import RegularFilterContent from './RegularFilterContent';
 import { ListFilter } from '@giron/shared-movie-components';

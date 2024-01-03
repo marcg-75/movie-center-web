@@ -1,7 +1,11 @@
 export type { CastAndCrewModel } from './CastAndCrewModel';
 export type { CoverModel } from './CoverModel';
 export type { LanguageModel } from './LanguageModel';
-export type { IMovie, MovieFormatInfo, MoviePersonalInfo } from '../../../shared/models/src/movie.model';
+export type {
+  IMovie,
+  MovieFormatInfo,
+  MoviePersonalInfo,
+} from '../../../shared/models/src/movie.model';
 export { movieToString } from '../../../shared/models/src/movie.model';
 export type { MovieGenreModel } from './MovieGenreModel';
 export type { Pageable, Sort } from './Pageable';

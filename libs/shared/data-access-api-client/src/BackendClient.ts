@@ -1,4 +1,9 @@
-import { BackendFetchOptions, HTTPMethod, QueryParams, RequestError, } from './backend.types';
+import {
+  BackendFetchOptions,
+  HTTPMethod,
+  QueryParams,
+  RequestError,
+} from './backend.types';
 import { buildPath, buildQueryString } from './fetch-utils';
 
 export class BackendClient {
@@ -16,8 +21,7 @@ export class BackendClient {
     return BackendClient.instance;
   }
 
-  private constructor() {
-  }
+  private constructor() {}
 
   post<T>(path: string, options: BackendFetchOptions = {}) {
     return this.fetch<T>('POST', path, options);

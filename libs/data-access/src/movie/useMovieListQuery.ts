@@ -31,9 +31,12 @@ export const useMovieListQuery = <T>(
   return useQuery(
     ['movies', filter, queryKey],
     async () => {
-      return await client.get<MovieListResponse>(`${PATH_PREFIX}/list${queryKey}`);
-    }, {
-      select
+      return await client.get<MovieListResponse>(
+        `${PATH_PREFIX}/list${queryKey}`
+      );
+    },
+    {
+      select,
     }
   );
 };

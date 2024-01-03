@@ -96,9 +96,7 @@ export const MovieList = ({
                           )}
                         </span>
                       </th>
-                      <th
-                        className="hide-small-screen mat-header-cell cdk-column-name mat-column-name"
-                      >
+                      <th className="hide-small-screen mat-header-cell cdk-column-name mat-column-name">
                         <span className="icon-texts">Genre</span>
                       </th>
                       <th

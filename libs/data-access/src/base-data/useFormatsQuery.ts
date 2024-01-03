@@ -10,8 +10,9 @@ export const useFormatsQuery = <T>(select: (data: SelectableModel[]) => T) => {
     ['formats'],
     async () => {
       return await client.get<SelectableModel[]>(`${PATH_PREFIX}/formats`);
-    }, {
-      select
+    },
+    {
+      select,
     }
   );
 };

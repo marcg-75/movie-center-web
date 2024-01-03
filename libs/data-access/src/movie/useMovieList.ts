@@ -6,7 +6,7 @@ export const useMovieList = (
   page = 0,
   pageSize?: number
 ) => {
-  const { data, isFetching, error  } = useMovieListQuery(
+  const { data, isFetching, error } = useMovieListQuery(
     (data) => data,
     sortOrder,
     sortDir,
