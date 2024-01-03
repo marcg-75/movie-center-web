@@ -11,13 +11,16 @@ import { LabelledTextarea } from '../inputs/LabelledTextarea';
 import { LabelledSelect } from '../inputs/LabelledSelect';
 import {
   BaseDataStateModel,
-  IMovie,
-  MovieGenreModel,
   MovieStateModel,
   updateMovieState,
 } from '@giron/data-access-redux';
 import { checkIfBaseDataIsLoading } from '../../utils/movie.utils';
-import { NameEntityModel, SelectableModel } from '@giron/shared-models';
+import {
+  IMovie,
+  MovieGenreModel,
+  NameEntityModel,
+  SelectableModel,
+} from '@giron/shared-models';
 
 interface GeneralInfoPanelProps {
   movie: MovieStateModel;

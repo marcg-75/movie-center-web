@@ -1,42 +1,29 @@
-import { IMovie, MovieGenreModel } from '@giron/data-access-redux';
 import { Loader } from '@giron/shared-ui-library';
-import { SortModel } from '@giron/shared-models';
-import { ReactNode, useEffect, useState } from 'react';
+import { IMovie, MovieGenreModel, SortModel } from '@giron/shared-models';
+import { ReactNode } from 'react';
 import { scrollToTop } from '@giron/shared-util-helpers';
-import { getDefaultSortModel } from '../utils/list.util';
 
 type Props = {
   filterComponent: ReactNode;
+  sort: SortModel;
   movies?: IMovie[];
   createMovie: () => void;
   goToMovie: (movieId?: number) => void;
-  reloadMovies: (sort: SortModel) => void;
-  queryParams: string;
+  changeSortOrder: (newSortOrder: string) => void;
   isLoading?: boolean;
   testName?: string;
 };
 
 export const MovieList = ({
   filterComponent,
+  sort,
   movies,
   createMovie,
   goToMovie,
-  reloadMovies,
-  queryParams,
+  changeSortOrder,
   isLoading = false,
   testName = 'MovieList_test',
 }: Props) => {
-  const [sort, setSort] = useState(getDefaultSortModel('title', queryParams));
-
-  useEffect(() => {
-    reloadMovies(sort);
-  }, [sort]);
-
-  const changeSortOrder = (newSortOrder: string) => {
-    sort.changeSortOrder(newSortOrder);
-    setSort(SortModel.of(sort.sortOrder, sort.sortDirection));
-  };
-
   const getMovieGenres = (movie: IMovie, limit = 3): string[] => {
     const mainGenre: MovieGenreModel | undefined = movie.genres.find(
       (mg) => mg.mainGenre
@@ -108,18 +95,8 @@ export const MovieList = ({
                           )}
                         </span>
                       </th>
-                      <th
-                        onClick={() => changeSortOrder('mainGenre')}
-                        className="sortable hide-small-screen mat-header-cell cdk-column-name mat-column-name"
-                      >
+                      <th className="hide-small-screen mat-header-cell cdk-column-name mat-column-name">
                         <span className="icon-texts">Genre</span>
-                        <span>
-                          {sort.sortOrder === 'mainGenre' && (
-                            <i
-                              className={`icons sort-icon fas fa-sort-${sort.sortArrow}`}
-                            />
-                          )}
-                        </span>
                       </th>
                       <th
                         onClick={() => changeSortOrder('grade')}

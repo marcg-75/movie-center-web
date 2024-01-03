@@ -1,4 +1,4 @@
-import { SelectableModel } from '@giron/shared-models';
+import { SelectableModel } from './index';
 
 export interface MovieGenreModel {
   movieTitle: string;

@@ -1,4 +1,4 @@
-import { IMovie } from '../models/movie.model';
+import { IMovie, MovieFilter } from '@giron/shared-models';
 import { MovieListStateModel } from '../models/state/movie-state.model';
 import {
   DEFAULT_FILTER,
@@ -9,7 +9,6 @@ import {
   MOVIES_RECEIVED,
 } from '../actions/movie.actions';
 import { createErrorMessageArray } from './movie.reducer';
-import { MovieFilter } from '@giron/shared-models';
 
 export interface MovieListActionProps {
   type: string;

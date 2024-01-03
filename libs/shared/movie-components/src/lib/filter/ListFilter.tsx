@@ -1,18 +1,15 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 
 import './filter.component.scss';
-import { Filter, FilterType, MovieFilter } from '@giron/shared-models';
 import { FilterItemClear } from '@giron/shared-ui-library';
+import { useShowExtendedFilter } from '../useShowExtendedFilter';
+import { useShowFilter } from '../useShowFilter';
 
 type Props = {
-  componentName: string;
   header: string;
   helpText: string;
   isExtendedFilterEnabled?: boolean;
   clearFilter: () => void;
-  filter: Filter<MovieFilter>;
-  filterType: FilterType;
-  loadFilter: (filter: MovieFilter) => void;
   enableSaveFilter: boolean;
   compactModeActions: boolean;
   regularContent: ReactNode;
@@ -21,42 +18,26 @@ type Props = {
 };
 
 export const ListFilter = ({
-  componentName,
   header,
   helpText,
   isExtendedFilterEnabled = true,
   clearFilter,
-  filter,
-  filterType,
-  loadFilter,
   enableSaveFilter,
   compactModeActions,
   regularContent,
   extendedContent,
   testName = 'ListFilter_test',
 }: Props) => {
-  const [isVisible, setIsVisible] = useState(
-    filterToggleDefault(componentName)
-  );
-  const [isExtendedVisible, setIsExtendedVisible] = useState(
-    extendedFilterToggleDefault(componentName)
-  );
+  const [isVisible, setIsVisible] = useShowFilter();
+  const [isExtendedVisible, setIsExtendedVisible] = useShowExtendedFilter();
 
   const toggleText = isVisible ? 'Dölj' : 'Visa';
 
   const toggleFilter = () => {
-    localStorage.setItem(
-      `${componentName}_filter_toggle_state`,
-      `${!isVisible}`
-    ); // TODO: Needed?
     setIsVisible(!isVisible);
   };
 
   const toggleExtended = () => {
-    localStorage.setItem(
-      `${componentName}_extended_filter_toggle_state`,
-      `${!isExtendedVisible}`
-    );
     setIsExtendedVisible(!isExtendedVisible);
   };
 
@@ -69,7 +50,7 @@ export const ListFilter = ({
       <div className={'filter-header' + (isVisible ? ' expanded' : '')}>
         <div className="filter-header-toggle-container">
           <span onClick={() => toggleFilter()}>
-            <i className="filter-header-title-icon fas fa-caret-right" />{' '}
+            <i className="fas fa-caret-right filter-header-title-icon" />{' '}
             {header} <i className="far fa-question-circle" title={helpText} />
           </span>
 
@@ -146,28 +127,4 @@ export const ListFilter = ({
       )}
     </div>
   );
-};
-
-const filterToggleDefault = (componentName: string): boolean => {
-  const filterToggleState = localStorage.getItem(
-    `${componentName}_filter_toggle_state`
-  );
-
-  if (filterToggleState !== null) {
-    return JSON.parse(filterToggleState);
-  } else {
-    return true;
-  }
-};
-
-const extendedFilterToggleDefault = (componentName: string): boolean => {
-  const filterToggleState = localStorage.getItem(
-    `${componentName}_extended_filter_toggle_state`
-  );
-
-  if (filterToggleState !== null) {
-    return JSON.parse(filterToggleState);
-  } else {
-    return false; // By default the extended filter criteria is hidden.
-  }
 };

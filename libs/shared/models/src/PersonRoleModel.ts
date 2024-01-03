@@ -1,4 +1,4 @@
-import { NameEntityModel, SelectableModel } from '@giron/shared-models';
+import { NameEntityModel, SelectableModel } from './index';
 
 export interface PersonRoleModel {
   id: number;

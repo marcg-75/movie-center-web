@@ -12,16 +12,19 @@ import '../movie.details.scss';
 import { Loader } from '@giron/shared-ui-library';
 import {
   BaseDataStateModel,
-  CastAndCrewModel,
   getCrew,
-  IMovie,
   MovieStateModel,
-  PersonRoleModel,
   PersonStateModel,
   RoleEnum,
   updateMovieState,
 } from '@giron/data-access-redux';
-import { NameEntityModel, SelectableModel } from '@giron/shared-models';
+import {
+  CastAndCrewModel,
+  IMovie,
+  NameEntityModel,
+  PersonRoleModel,
+  SelectableModel,
+} from '@giron/shared-models';
 
 interface CrewPanelProps {
   movie: MovieStateModel;
