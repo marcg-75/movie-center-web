@@ -54,7 +54,7 @@ const MovieListComponent = ({
 
   return (
     <MovieList
-      filterComponent={<MovieFilterComponent componentName="movie_list" />}
+      filterComponent={<MovieFilterComponent />}
       movies={movies}
       createMovie={createMovie}
       goToMovie={goToMovie}

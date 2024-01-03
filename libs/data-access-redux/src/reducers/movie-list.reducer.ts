@@ -1,4 +1,4 @@
-import { IMovie } from '../models/movie.model';
+import { IMovie } from '../../../shared/models/src/movie.model';
 import { MovieListStateModel } from '../models/state/movie-state.model';
 import {
   DEFAULT_FILTER,

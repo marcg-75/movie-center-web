@@ -1,6 +1,6 @@
 //@import "custom-theme.scss";
-@import 'assets/inputs';
-@import 'assets/buttons';
+@import '../../apps/movie-center-web-redux/src/assets/inputs';
+@import '../../apps/movie-center-web-redux/src/assets/buttons';
 
 html {
   -webkit-text-size-adjust: 100%;
@@ -1025,11 +1025,12 @@ tr.mat-row {
 }
 
 .filter-header-title-icon {
+  display: inline-flex;
+  align-items: center;
   font-size: 1.375rem;
   color: #ef8121;
   line-height: 1.875rem;
   height: 1.875rem;
-  vertical-align: middle;
   margin-bottom: 0.25rem;
   margin-right: 0.3rem;
 }

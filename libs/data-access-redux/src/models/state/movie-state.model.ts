@@ -1,4 +1,4 @@
-import { IMovie } from '../movie.model';
+import { IMovie } from '../../../../shared/models/src/movie.model';
 import { LoadingState } from './loading.model';
 import { MovieFilter } from '@giron/shared-models';
 

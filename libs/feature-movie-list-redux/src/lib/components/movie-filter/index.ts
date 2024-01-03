@@ -1,1 +1,1 @@
-export { default as MovieFilterComponent } from './MovieFilterComponent';
+export { MovieFilterComponent } from './MovieFilterComponent';
