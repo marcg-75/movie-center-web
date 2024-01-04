@@ -8,15 +8,21 @@ interface Props extends LabeledInputProps {
 }
 
 export const LabeledDateInput = ({
-                                   label,
-                                   id,
-                                   defaultValue,
-                                   labelMode,
-                                   orientation,
-                                   callback,
-                                   testName = 'LabelledDateInput_test',
-                                 }: Props) => (
-  <LabeledInput id={id} label={label} labelMode={labelMode} orientation={orientation} testName={testName}>
+  label,
+  id,
+  defaultValue,
+  labelMode,
+  orientation,
+  callback,
+  testName = 'LabelledDateInput_test',
+}: Props) => (
+  <LabeledInput
+    id={id}
+    label={label}
+    labelMode={labelMode}
+    orientation={orientation}
+    testName={testName}
+  >
     <input
       className="date-input"
       type="date"
@@ -26,6 +32,8 @@ export const LabeledDateInput = ({
       defaultValue={defaultValue}
       onBlur={callback}
     />
-    <span hidden={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true'}>{defaultValue}</span>
+    <span hidden={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true'}>
+      {defaultValue}
+    </span>
   </LabeledInput>
 );

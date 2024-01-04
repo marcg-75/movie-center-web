@@ -11,14 +11,20 @@ type Props = {
 };
 
 export const FilterItem = ({
-                             id = '',
-                             label,
-                             labelAddition,
-                             children,
-                           }: Props) => {
+  id = '',
+  label,
+  labelAddition,
+  children,
+}: Props) => {
   return (
     <div className="filter-item">
-      <LabeledInput id={id} label={label} labelAddition={labelAddition} labelMode="bold" orientation="column">
+      <LabeledInput
+        id={id}
+        label={label}
+        labelAddition={labelAddition}
+        labelMode="bold"
+        orientation="column"
+      >
         <div className="filter-body-block-field">{children}</div>
       </LabeledInput>
     </div>

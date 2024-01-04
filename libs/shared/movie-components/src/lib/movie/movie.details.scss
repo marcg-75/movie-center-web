@@ -1,4 +1,10 @@
-@import '../../../../shared/style';
+@import '../../../../style';
+
+.panel-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
 
 .movie-title-panel {
 }

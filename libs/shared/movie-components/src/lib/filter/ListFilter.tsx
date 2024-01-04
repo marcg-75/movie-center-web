@@ -18,16 +18,16 @@ type Props = {
 };
 
 export const ListFilter = ({
-                             header,
-                             helpText,
-                             isExtendedFilterEnabled = true,
-                             clearFilter,
-                             enableSaveFilter,
-                             compactModeActions,
-                             regularContent,
-                             extendedContent,
-                             testName = 'ListFilter_test',
-                           }: Props) => {
+  header,
+  helpText,
+  isExtendedFilterEnabled = true,
+  clearFilter,
+  enableSaveFilter,
+  compactModeActions,
+  regularContent,
+  extendedContent,
+  testName = 'ListFilter_test',
+}: Props) => {
   const [isVisible, setIsVisible] = useShowFilter();
   const [isExtendedVisible, setIsExtendedVisible] = useShowExtendedFilter();
 
@@ -50,8 +50,8 @@ export const ListFilter = ({
       <div className={'filter-header' + (isVisible ? ' expanded' : '')}>
         <div className="filter-header-toggle-container">
           <span onClick={() => toggleFilter()}>
-            <i className="fas fa-caret-right filter-header-title-icon"/>{' '}
-            {header} <i className="far fa-question-circle" title={helpText}/>
+            <i className="fas fa-caret-right filter-header-title-icon" />{' '}
+            {header} <i className="far fa-question-circle" title={helpText} />
           </span>
 
           <div className="filter-toggles">
@@ -92,7 +92,7 @@ export const ListFilter = ({
         </div>
 
         <button className="filter-header-back-btn" onClick={() => back()}>
-          <i className="fas fa-caret-left orange"/>
+          <i className="fas fa-caret-left orange" />
           Tillbaka
         </button>
       </div>

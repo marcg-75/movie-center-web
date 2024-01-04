@@ -8,16 +8,22 @@ interface Props extends LabeledInputProps {
 }
 
 export const LabeledTextarea = ({
-                                  label,
-                                  id,
-                                  defaultValue,
-                                  labelMode,
-                                  orientation = 'column',
-                                  callback,
-                                  required = false,
-                                  testName = 'LabelledTextarea_test',
-                                }: Props) => (
-  <LabeledInput id={id} label={label} labelMode={labelMode} orientation={orientation} testName={testName}>
+  label,
+  id,
+  defaultValue,
+  labelMode,
+  orientation = 'column',
+  callback,
+  required = false,
+  testName = 'LabelledTextarea_test',
+}: Props) => (
+  <LabeledInput
+    id={id}
+    label={label}
+    labelMode={labelMode}
+    orientation={orientation}
+    testName={testName}
+  >
     <textarea
       className="textarea-input-field"
       id={id}
@@ -27,6 +33,8 @@ export const LabeledTextarea = ({
       onBlur={callback}
       hidden={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'false'}
     />
-    <span hidden={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true'}>{defaultValue}</span>
+    <span hidden={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true'}>
+      {defaultValue}
+    </span>
   </LabeledInput>
 );

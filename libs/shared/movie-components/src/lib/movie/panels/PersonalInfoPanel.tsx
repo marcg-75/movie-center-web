@@ -1,16 +1,6 @@
-import React, { ChangeEvent, ReactNode, useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-
 import '../movie.details.scss';
-
-import {
-  LabeledDateInput,
-  LabeledSelect,
-  LabeledTextarea,
-  LabeledTextInput,
-  Loader
-} from '@giron/shared-ui-library';
-import { MovieStateModel, updateMovieState } from '@giron/data-access-redux';
+import { ChangeEvent, ReactNode } from 'react';
+import { LabeledDateInput, LabeledSelect, LabeledTextarea, LabeledTextInput, Loader } from '@giron/shared-ui-library';
 import { IMovie } from '@giron/shared-models';
 
 const GRADES: Array<number> = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
@@ -33,25 +23,24 @@ const currencyOptions: ReactNode[] = CURRENCIES.map((c: string, i: number) => {
 });
 currencyOptions.unshift(<option key="0" value=""></option>);
 
-interface PersonalInfoPanelProps {
-  movie: MovieStateModel;
-  dispatch: (any: unknown) => void;
+type Props = {
+  movie?: IMovie;
+  isLoading: boolean;
+  onMovieChange: (movie: IMovie) => void;
+  error?: string | Error;
+  errors?: string[] | Error[];
   testName?: string;
 }
 
-const PersonalInfoPanel = ({
-                             movie,
-                             dispatch,
-                             testName = 'PersonalInfoPanel_test',
-                           }: PersonalInfoPanelProps) => {
-  const [isMovieLoading, setIsMovieLoading] = useState(false);
-
-  useEffect(() => {
-    setIsMovieLoading(!movie?.movieLoading || movie.movieLoading.loading);
-  }, [movie]);
-
-  const { movieItem, movieLoading } = movie;
-  const moviePersonalInfo = movieItem?.moviePersonalInfo;
+export const PersonalInfoPanel = ({
+                                    movie,
+                                    isLoading = false,
+                                    onMovieChange,
+                                    error,
+                                    errors,
+                                    testName = 'PersonalInfoPanel_test',
+                                  }: Props) => {
+  const moviePersonalInfo = movie?.moviePersonalInfo;
 
   const movieStateChanged = (
     event: ChangeEvent<
@@ -74,26 +63,24 @@ const PersonalInfoPanel = ({
       }
     }
 
-    dispatch(
-      updateMovieState({
-        ...movieItem,
-        moviePersonalInfo: {
-          ...moviePersonalInfo,
-          [name]: cValue,
-        },
-      } as IMovie)
-    );
+    onMovieChange({
+      ...movie,
+      moviePersonalInfo: {
+        ...moviePersonalInfo,
+        [name]: cValue,
+      },
+    } as IMovie);
   };
 
   let content;
 
-  if (movieLoading?.errors) {
+  if (error || errors) {
     // TODO: Fyll på
     //DialogComponent.openDefaultErrorDialog(dialog, movie.movieListErrorMessages);  // TODO: Implement error dialog handling.
     //alert(movieErrorMessages);
 
-    content = <div></div>;
-  } else if (isMovieLoading || !movieItem) {
+    content = <div>Ett fel inträffade</div>;
+  } else if (isLoading || !movie) {
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
@@ -102,7 +89,7 @@ const PersonalInfoPanel = ({
     );
   } else {
     content = (
-      <div>
+      <div className="panel-content">
         <LabeledTextInput
           label="Arkivnummer:"
           id="archiveNumber"
@@ -166,11 +153,3 @@ const PersonalInfoPanel = ({
 
   return <div data-test-name={testName}>{content}</div>;
 };
-
-function stateToProps({ movie }: { movie: MovieStateModel }) {
-  return {
-    movie,
-  };
-}
-
-export default connect(stateToProps)(PersonalInfoPanel);

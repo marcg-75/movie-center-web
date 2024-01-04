@@ -8,16 +8,16 @@ interface Props extends LabeledInputProps {
 }
 
 export const LabeledInput = ({
-                               id,
-                               label,
-                               labelAddition,
-                               labelMode = 'light',
-                               orientation = 'row',
-                               children,
-                               testName,
-                             }: Props) => {
+  id,
+  label,
+  labelAddition,
+  labelMode = 'light',
+  orientation = 'row',
+  children,
+  testName,
+}: Props) => {
   const rootClassName = cn('container', {
-    'column': orientation === 'column'
+    column: orientation === 'column',
   });
 
   const labelClassName = cn('label', {
@@ -27,7 +27,9 @@ export const LabeledInput = ({
 
   return (
     <div className={rootClassName} data-test-name={testName}>
-      <label className={labelClassName} htmlFor={id}>{label} {labelAddition}</label>
+      <label className={labelClassName} htmlFor={id}>
+        {label} {labelAddition}
+      </label>
       {children}
     </div>
   );

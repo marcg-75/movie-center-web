@@ -1,4 +1,8 @@
-import { MovieFilter as MovieModelFilter, MovieFilter, SelectableModel, } from '@giron/shared-models';
+import {
+  MovieFilter as MovieModelFilter,
+  MovieFilter,
+  SelectableModel,
+} from '@giron/shared-models';
 import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
 import { FilterItem, FilterItemText, Loader } from '@giron/shared-ui-library';
 
@@ -88,10 +92,7 @@ export const RegularFilter = ({
         valueUpdated={(value) => textValueChangeHandler(value, 'title')}
       />
 
-      <FilterItem
-        id="genre-filter"
-        label="Genre"
-      >
+      <FilterItem id="genre-filter" label="Genre">
         <select
           name="genreCode"
           value={filter.genreCode}

@@ -1,47 +1,34 @@
-import React, {
-  ChangeEvent,
-  FormEvent,
-  ReactNode,
-  useEffect,
-  useState,
-} from 'react';
-import { connect } from 'react-redux';
-
 import '../movie.details.scss';
-
+import React, { ChangeEvent, FormEvent, ReactNode, useState, } from 'react';
 import { Loader } from '@giron/shared-ui-library';
-import {
-  BaseDataStateModel,
-  getCrew,
-  MovieStateModel,
-  PersonStateModel,
-  RoleEnum,
-  updateMovieState,
-} from '@giron/data-access-redux';
-import {
-  CastAndCrewModel,
-  IMovie,
-  NameEntityModel,
-  PersonRoleModel,
-  SelectableModel,
-} from '@giron/shared-models';
+import { RoleEnum, } from '@giron/data-access-redux';
+import { CastAndCrewModel, IMovie, NameEntityModel, PersonRoleModel, SelectableModel, } from '@giron/shared-models';
 
-interface CrewPanelProps {
-  movie: MovieStateModel;
-  person: PersonStateModel;
-  baseData: BaseDataStateModel;
-  dispatch: (any: unknown) => void;
+type Props = {
+  movie?: IMovie;
+  crew?: PersonRoleModel[];
+  persons?: NameEntityModel[];
+  roles?: SelectableModel[];
+  isMovieLoading?: boolean;
+  isCrewLoading?: boolean;
+  isPersonsLoading?: boolean;
+  onMovieChange: (movie: IMovie) => void;
+  errors?: string[] | Error[];
   testName?: string;
 }
 
-const CrewPanel = ({
-  movie,
-  person,
-  baseData,
-  dispatch,
-  testName = 'CrewPanel_test',
-}: CrewPanelProps) => {
-  const [isMovieLoading, setIsMovieLoading] = useState(false);
+export const CrewPanel = ({
+                            movie,
+                            crew,
+                            persons,
+                            roles = [],
+                            isMovieLoading,
+                            isCrewLoading,
+                            isPersonsLoading,
+                            onMovieChange,
+                            errors,
+                            testName = 'CrewPanel_test',
+                          }: Props) => {
   const [selectableCrewMembersForRole, setSelectableCrewMembersForRole] =
     useState<PersonRoleModel[]>([]);
   const [selectablePersonsForRole, setSelectablePersonsForRole] = useState<
@@ -49,18 +36,6 @@ const CrewPanel = ({
   >([]);
   const [selectedPersonId, setSelectedPersonId] = useState<string>();
   const [selectedPersonName, setSelectedPersonName] = useState<string>();
-
-  useEffect(() => {
-    dispatch(getCrew());
-  }, []);
-
-  useEffect(() => {
-    setIsMovieLoading(!movie?.movieLoading || movie.movieLoading.loading);
-  }, [movie]);
-
-  const { movieItem } = movie;
-  const { persons, crew, crewLoading, personsLoading } = person;
-  const roles = baseData.roles || [];
 
   const clearSelectedPerson = () => {
     setSelectablePersonsForRole([]);
@@ -71,7 +46,7 @@ const CrewPanel = ({
   const addCrewMember = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!crew || !movieItem) {
+    if (!crew || !movie) {
       return;
     }
 
@@ -86,14 +61,14 @@ const CrewPanel = ({
     const role: RoleEnum = RoleEnum[roleCode as keyof typeof RoleEnum];
     const allCurrentPersonRolesForRole: Array<PersonRoleModel> =
       extractPersonRolesFromCrew(crew, role);
-    const currentCrewMembers = existingMovieCrewMembersForRole(movieItem, role);
+    const currentCrewMembers = existingMovieCrewMembersForRole(movie, role);
     const selectedCrewMember: PersonRoleModel | undefined =
       allCurrentPersonRolesForRole.find(
         (a: PersonRoleModel) => a.id === parseInt(crewPersonRoleId, 10)
       );
 
     const newCrewMember: CastAndCrewModel = {
-      movieTitle: movieItem?.title || '',
+      movieTitle: movie?.title || '',
       personRole: selectedCrewMember,
     } as CastAndCrewModel;
 
@@ -101,12 +76,10 @@ const CrewPanel = ({
 
     const crewTypeName: string = getCrewTypeName(role);
 
-    dispatch(
-      updateMovieState({
-        ...movieItem,
-        [crewTypeName]: currentCrewMembers,
-      } as IMovie)
-    );
+    onMovieChange({
+      ...movie,
+      [crewTypeName]: currentCrewMembers,
+    } as IMovie);
 
     event.currentTarget['addCrewRole'].value = '';
     event.currentTarget['crewPersonRoleId'].value = '';
@@ -149,8 +122,6 @@ const CrewPanel = ({
     event.currentTarget['newCrewName'].value = '';
 
     clearSelectedPerson();
-
-    dispatch(getCrew());
   };
 
   // Adds new crew member (existing or completely new PERSON)
@@ -159,11 +130,11 @@ const CrewPanel = ({
     personName: string,
     pRole: RoleEnum
   ) => {
-    if (!movieItem || (!personId && !personName)) {
+    if (!movie || (!personId && !personName)) {
       return;
     }
 
-    const crewMembers = existingMovieCrewMembersForRole(movieItem, pRole);
+    const crewMembers = existingMovieCrewMembersForRole(movie, pRole);
 
     const person: NameEntityModel = {
       id: personId ? parseInt(personId, 10) : undefined,
@@ -180,7 +151,7 @@ const CrewPanel = ({
     } as PersonRoleModel;
 
     const newCrewMember: CastAndCrewModel = {
-      movieTitle: movieItem.title,
+      movieTitle: movie.title,
       personRole,
     } as CastAndCrewModel;
 
@@ -189,12 +160,10 @@ const CrewPanel = ({
     const crewTypeName: string = getCrewTypeName(pRole);
 
     if (crewTypeName) {
-      dispatch(
-        updateMovieState({
-          ...movieItem,
-          [crewTypeName]: crewMembers,
-        } as IMovie)
-      );
+      onMovieChange({
+        ...movie,
+        [crewTypeName]: crewMembers,
+      } as IMovie);
     }
   };
 
@@ -203,7 +172,7 @@ const CrewPanel = ({
     personName: string,
     role: RoleEnum
   ) => {
-    if (!movieItem) {
+    if (!movie) {
       return;
     }
 
@@ -215,7 +184,7 @@ const CrewPanel = ({
       return;
     }
 
-    const crewMembers = existingMovieCrewMembersForRole(movieItem, role);
+    const crewMembers = existingMovieCrewMembersForRole(movie, role);
 
     crewMembers.forEach((a: CastAndCrewModel) => {
       if (
@@ -228,12 +197,10 @@ const CrewPanel = ({
 
     const crewTypeName: string = getCrewTypeName(role);
 
-    dispatch(
-      updateMovieState({
-        ...movieItem,
-        [crewTypeName]: crewMembers,
-      } as IMovie)
-    );
+    onMovieChange({
+      ...movie,
+      [crewTypeName]: crewMembers,
+    } as IMovie);
 
     clearSelectedPerson();
   };
@@ -264,11 +231,11 @@ const CrewPanel = ({
     const selectedRoleCode: string = event.target.value;
     let selectableCrewMembersForRole: Array<PersonRoleModel> = [];
 
-    if (selectedRoleCode && selectedRoleCode.length && !!crew && !!movieItem) {
+    if (selectedRoleCode && selectedRoleCode.length && !!crew && !!movie) {
       const role: RoleEnum =
         RoleEnum[selectedRoleCode as keyof typeof RoleEnum];
       const currentCrewMembersForRole: CastAndCrewModel[] =
-        existingMovieCrewMembersForRole(movieItem, role);
+        existingMovieCrewMembersForRole(movie, role);
 
       // Filtrera bort alla personer som redan är tillagda för aktuell roll.
       const allSelectablePersonRolesForRole: Array<PersonRoleModel> =
@@ -300,12 +267,12 @@ const CrewPanel = ({
       persons.length > 0 &&
       selectedRoleCode &&
       selectedRoleCode.length &&
-      !!movieItem
+      !!movie
     ) {
       const role: RoleEnum =
         RoleEnum[selectedRoleCode as keyof typeof RoleEnum];
       const currentCrewMembersForRole: CastAndCrewModel[] =
-        existingMovieCrewMembersForRole(movieItem, role);
+        existingMovieCrewMembersForRole(movie, role);
 
       if (currentCrewMembersForRole?.length) {
         // Filtrera bort alla personer som redan är tillagda för aktuell roll.
@@ -334,52 +301,47 @@ const CrewPanel = ({
 
   let content: ReactNode;
 
-  if (crewLoading?.errors || personsLoading?.errors) {
+  if (errors) {
     //DialogComponent.openDefaultErrorDialog(dialog, movie.movieListErrorMessages);  // TODO: Implement error dialog handling.
     //alert(movieErrorMessages);
 
     content = (
       <div>
         <ul>
-          {crewLoading?.errors?.map((m, i: number) => (
+          {errors?.map((m, i: number) => (
             <li key={i}>{m as string}</li>
           ))}
         </ul>
       </div>
     );
-  } else if (
-    isMovieLoading ||
-    !movieItem ||
-    crewLoading?.loading ||
-    personsLoading?.loading
-  ) {
+  } else if (isMovieLoading || !movie || isCrewLoading || isPersonsLoading) {
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
-        <Loader />
+        <Loader/>
       </div>
     );
   } else {
     const currentDirectorsInMovie: CastAndCrewModel[] =
-      existingMovieCrewMembersForRole(movieItem, RoleEnum.DIRECTOR);
+      existingMovieCrewMembersForRole(movie, RoleEnum.DIRECTOR);
     const currentProducersInMovie: CastAndCrewModel[] =
-      existingMovieCrewMembersForRole(movieItem, RoleEnum.PRODUCER);
+      existingMovieCrewMembersForRole(movie, RoleEnum.PRODUCER);
     const currentComposersInMovie: CastAndCrewModel[] =
-      existingMovieCrewMembersForRole(movieItem, RoleEnum.MUSIC);
+      existingMovieCrewMembersForRole(movie, RoleEnum.MUSIC);
     const currentWritersInMovie: CastAndCrewModel[] =
-      existingMovieCrewMembersForRole(movieItem, RoleEnum.WRITER);
+      existingMovieCrewMembersForRole(movie, RoleEnum.WRITER);
     const currentCastersInMovie: CastAndCrewModel[] =
-      existingMovieCrewMembersForRole(movieItem, RoleEnum.CASTING);
+      existingMovieCrewMembersForRole(movie, RoleEnum.CASTING);
     const currentEditorsInMovie: CastAndCrewModel[] =
-      existingMovieCrewMembersForRole(movieItem, RoleEnum.EDITOR);
+      existingMovieCrewMembersForRole(movie, RoleEnum.EDITOR);
     const currentCinematographyInMovie: CastAndCrewModel[] =
-      existingMovieCrewMembersForRole(movieItem, RoleEnum.CINEMATOGRAPHY);
+      existingMovieCrewMembersForRole(movie, RoleEnum.CINEMATOGRAPHY);
     const currentSoundInMovie: CastAndCrewModel[] =
-      existingMovieCrewMembersForRole(movieItem, RoleEnum.SOUND);
+      existingMovieCrewMembersForRole(movie, RoleEnum.SOUND);
     const currentArtInMovie: CastAndCrewModel[] =
-      existingMovieCrewMembersForRole(movieItem, RoleEnum.ART);
+      existingMovieCrewMembersForRole(movie, RoleEnum.ART);
     const currentOtherInMovie: CastAndCrewModel[] =
-      existingMovieCrewMembersForRole(movieItem, RoleEnum.MISC);
+      existingMovieCrewMembersForRole(movie, RoleEnum.MISC);
 
     const directorElements: ReactNode[] = mapToElements(
       currentDirectorsInMovie,
@@ -433,7 +395,7 @@ const CrewPanel = ({
       process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
 
     content = (
-      <div>
+      <div className="panel-content">
         <h4>Regissör(er)</h4>
         {directorElements}
 
@@ -491,7 +453,7 @@ const CrewPanel = ({
               {crewMembersForRoleOptions}
             </select>
 
-            <input type="submit" value="Lägg till" />
+            <input type="submit" value="Lägg till"/>
           </form>
         )}
 
@@ -507,8 +469,8 @@ const CrewPanel = ({
               {allCrewRoleOptions}
             </select>
 
-            {!personsLoading || personsLoading?.loading ? (
-              <Loader />
+            {isPersonsLoading ? (
+              <Loader/>
             ) : (
               <select
                 id="newCrewPersonId"
@@ -534,7 +496,7 @@ const CrewPanel = ({
               }
             />
 
-            <input type="submit" value="Lägg till" />
+            <input type="submit" value="Lägg till"/>
           </form>
         )}
       </div>
@@ -564,7 +526,7 @@ const createAllCrewRoleOptions = (
       );
     }
   );
-  options.unshift(<option key="0" value="" />);
+  options.unshift(<option key="0" value=""/>);
 
   return options;
 };
@@ -585,7 +547,7 @@ const createSelectableCrewMembersForRole = (
       );
     }
   );
-  options.unshift(<option key="0" value="" />);
+  options.unshift(<option key="0" value=""/>);
 
   return options;
 };
@@ -606,7 +568,7 @@ const createSelectablePersonsForRole = (
       );
     }
   );
-  options.unshift(<option key="0" value="" />);
+  options.unshift(<option key="0" value=""/>);
 
   return options;
 };
@@ -642,30 +604,30 @@ const extractPersonRolesFromCrew = (
 };
 
 const existingMovieCrewMembersForRole = (
-  movieItem: IMovie,
+  movie: IMovie,
   role: RoleEnum
 ): CastAndCrewModel[] => {
   switch (role) {
     case RoleEnum.DIRECTOR:
-      return movieItem.directors ? movieItem.directors : [];
+      return movie.directors ? movie.directors : [];
     case RoleEnum.PRODUCER:
-      return movieItem.producers ? movieItem.producers : [];
+      return movie.producers ? movie.producers : [];
     case RoleEnum.MUSIC:
-      return movieItem.music ? movieItem.music : [];
+      return movie.music ? movie.music : [];
     case RoleEnum.WRITER:
-      return movieItem.writers ? movieItem.writers : [];
+      return movie.writers ? movie.writers : [];
     case RoleEnum.CASTING:
-      return movieItem.casters ? movieItem.casters : [];
+      return movie.casters ? movie.casters : [];
     case RoleEnum.EDITOR:
-      return movieItem.editors ? movieItem.editors : [];
+      return movie.editors ? movie.editors : [];
     case RoleEnum.CINEMATOGRAPHY:
-      return movieItem.cinematography ? movieItem.cinematography : [];
+      return movie.cinematography ? movie.cinematography : [];
     case RoleEnum.SOUND:
-      return movieItem.sound ? movieItem.sound : [];
+      return movie.sound ? movie.sound : [];
     case RoleEnum.ART:
-      return movieItem.art ? movieItem.art : [];
+      return movie.art ? movie.art : [];
     case RoleEnum.MISC:
-      return movieItem.otherRoles ? movieItem.otherRoles : [];
+      return movie.otherRoles ? movie.otherRoles : [];
     default:
       return [];
   }
@@ -687,7 +649,7 @@ export const mapToPersonOptionElements = (
       );
     }
   );
-  options.unshift(<option key={0} value="" />);
+  options.unshift(<option key={0} value=""/>);
 
   return options;
 };
@@ -718,21 +680,3 @@ const getCrewTypeName = (role: RoleEnum): string => {
       return '';
   }
 };
-
-function stateToProps({
-  movie,
-  person,
-  baseData,
-}: {
-  movie: MovieStateModel;
-  person: PersonStateModel;
-  baseData: BaseDataStateModel;
-}) {
-  return {
-    movie,
-    person,
-    baseData,
-  };
-}
-
-export default connect(stateToProps)(CrewPanel);

@@ -1,71 +1,56 @@
-import { ChangeEvent, useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-
 import '../movie.details.scss';
-
+import { ChangeEvent } from 'react';
 import { Loader } from '@giron/shared-ui-library';
-import { MovieStateModel, updateMovieState } from '@giron/data-access-redux';
 import { IMovie } from '@giron/shared-models';
 
 export const IMAGE_URL = `${process.env.NX_API_BASE_URL}image/`;
 
-interface CoverPanelProps {
-  movie: MovieStateModel;
-  dispatch: (any: unknown) => void;
+type Props = {
+  movie?: IMovie;
+  isLoading?: boolean;
+  onMovieChange: (movie: IMovie) => void;
+  error?: string | Error;
+  errors?: string[] | Error[];
   testName?: string;
 }
 
 // TODO: Slå kanske ihop med format-panelen (cover-info till höger i så fall).
 
-const CoverPanel = ({
+export const CoverPanel = ({
   movie,
-  dispatch,
+  isLoading = false,
+  onMovieChange,
+  error,
+  errors,
   testName = 'CoverPanel_test',
-}: CoverPanelProps) => {
-  const [isMovieLoading, setIsMovieLoading] = useState(false);
-
-  useEffect(() => {
-    setIsMovieLoading(!movie?.movieLoading || movie.movieLoading.loading);
-  }, [movie]);
-
-  const { movieItem, movieLoading } = movie;
-  const movieFormatInfo = movieItem?.movieFormatInfo;
+}: Props) => {
+  const movieFormatInfo = movie?.movieFormatInfo;
   const cover = movieFormatInfo ? movieFormatInfo.cover : undefined;
 
   const movieStateChanged = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
-    // let cValue = value;
-
-    //if (name === 'format') {
-    //    const {formats} = this.props.baseData;
-    //
-    //    cValue = formats.find((f: SelectableModel) => f.code === value);
-    //}
-
-    dispatch(
-      updateMovieState({
-        ...movieItem,
-        movieFormatInfo: {
-          ...movieFormatInfo,
-          cover: {
-            ...cover,
-            [name]: value, // cValue
-          },
+    onMovieChange({
+      ...movie,
+      movieFormatInfo: {
+        ...movieFormatInfo,
+        cover: {
+          ...cover,
+          [name]: value, // cValue
         },
-      } as IMovie)
-    );
+      },
+    } as IMovie);
   };
 
   let content;
 
-  if (movieLoading?.errors) {
+  if (error || errors) {
     // TODO: Fyll på
     //DialogComponent.openDefaultErrorDialog(this.dialog, movie.movieListErrorMessages);  // TODO: Implement error dialog handling.
     //alert(movieErrorMessages);
 
-    content = <div></div>;
-  } else if (isMovieLoading || !movieItem || !cover) {
+    content = <div>Ett fel inträffade</div>;
+  } else if (isLoading || !movie || !cover) {
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
@@ -74,7 +59,7 @@ const CoverPanel = ({
     );
   } else {
     content = (
-      <div className="cover-panel">
+      <div className="panel-content cover-panel">
         <div className="labelled-input">
           <label htmlFor="foregroundUrl">Förgrundsbild:</label>
           {cover.fgFileName ? (
@@ -148,11 +133,3 @@ const CoverPanel = ({
 //   );
 //   return `data:${contentType};base64,${image}`;
 // }
-
-function stateToProps({ movie }: { movie: MovieStateModel }) {
-  return {
-    movie,
-  };
-}
-
-export default connect(stateToProps)(CoverPanel);

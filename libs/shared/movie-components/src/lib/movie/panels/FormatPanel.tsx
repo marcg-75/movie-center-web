@@ -1,16 +1,6 @@
-import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-
 import '../movie.details.scss';
-
+import { ChangeEvent, ReactNode } from 'react';
 import { LabeledSelect, LabeledTextInput, Loader } from '@giron/shared-ui-library';
-import {
-  BaseDataStateModel,
-  loadFormats,
-  loadLanguages,
-  MovieStateModel,
-  updateMovieState,
-} from '@giron/data-access-redux';
 import { IMovie, LanguageModel, SelectableModel } from '@giron/shared-models';
 
 const REGIONS: Array<number> = [1, 2, 3, 4, 5, 6];
@@ -33,37 +23,28 @@ const systemOptions: ReactNode[] = SYSTEMS.map((s: string, i: number) => {
 });
 systemOptions.unshift(<option key="0" value=""></option>);
 
-interface FormatPanelProps {
-  movie: MovieStateModel;
-  baseData: BaseDataStateModel;
-  dispatch: (any: unknown) => void;
+type Props = {
+  movie?: IMovie;
+  formats?: SelectableModel[];
+  languages?: LanguageModel[];
+  isLoading?: boolean;
+  onMovieChange: (movie: IMovie) => void;
+  error?: string | Error;
+  errors?: string[] | Error[];
   testName?: string;
 }
 
-const FormatPanel = ({
-  movie,
-  baseData,
-  dispatch,
-  testName = 'FormatPanel_test',
-}: FormatPanelProps) => {
-  const [isMovieLoading, setIsMovieLoading] = useState(false);
-  const [isBaseDataLoading, setIsBaseDataLoading] = useState(false);
-
-  useEffect(() => {
-    dispatch(loadFormats());
-    dispatch(loadLanguages());
-  }, []);
-
-  useEffect(() => {
-    setIsMovieLoading(!movie?.movieLoading || movie.movieLoading.loading);
-    setIsBaseDataLoading(
-      !baseData || !(baseData.formatsLoaded && baseData.languagesLoaded)
-    );
-  }, [movie, baseData]);
-
-  const { movieItem, movieLoading } = movie;
-  const { formats, languages } = baseData;
-  const movieFormatInfo = movieItem?.movieFormatInfo;
+export const FormatPanel = ({
+                              movie,
+                              formats,
+                              languages,
+                              isLoading = false,
+                              onMovieChange,
+                              error,
+                              errors,
+                              testName = 'FormatPanel_test',
+                            }: Props) => {
+  const movieFormatInfo = movie?.movieFormatInfo;
 
   const movieStateChanged = (
     event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -83,43 +64,37 @@ const FormatPanel = ({
       }
     }
 
-    dispatch(
-      updateMovieState({
-        ...movieItem,
-        movieFormatInfo: {
-          ...movieFormatInfo,
-          [name]: cValue,
-        },
-      } as IMovie)
-    );
+    onMovieChange({
+      ...movie,
+      movieFormatInfo: {
+        ...movieFormatInfo,
+        [name]: cValue,
+      },
+    } as IMovie);
   };
 
   const audioLanguagesChanged = (event: ChangeEvent<HTMLSelectElement>) => {
     const audioLanguages: Array<LanguageModel> = getSelectedLanguages(event);
 
-    dispatch(
-      updateMovieState({
-        ...movieItem,
-        movieFormatInfo: {
-          ...movieFormatInfo,
-          audioLanguages,
-        },
-      } as IMovie)
-    );
+    onMovieChange({
+      ...movie,
+      movieFormatInfo: {
+        ...movieFormatInfo,
+        audioLanguages,
+      },
+    } as IMovie);
   };
 
   const subtitlesChanged = (event: ChangeEvent<HTMLSelectElement>) => {
     const subtitles: Array<LanguageModel> = getSelectedLanguages(event);
 
-    dispatch(
-      updateMovieState({
-        ...movieItem,
-        movieFormatInfo: {
-          ...movieFormatInfo,
-          subtitles,
-        },
-      } as IMovie)
-    );
+    onMovieChange({
+      ...movie,
+      movieFormatInfo: {
+        ...movieFormatInfo,
+        subtitles,
+      },
+    } as IMovie);
   };
 
   const getSelectedLanguages = (
@@ -159,22 +134,17 @@ const FormatPanel = ({
 
   let content;
 
-  if (movieLoading?.errors) {
+  if (error || errors) {
     // TODO: Fyll på
     //DialogComponent.openDefaultErrorDialog(dialog, movie.movieListErrorMessages);  // TODO: Implement error dialog handling.
     //alert(movieErrorMessages);
 
-    content = <div></div>;
-  } else if (
-    isMovieLoading ||
-    !movieItem ||
-    isBaseDataLoading ||
-    !movieFormatInfo?.format
-  ) {
+    content = <div>Ett fel inträffade</div>;
+  } else if (isLoading || !movie || !movieFormatInfo?.format) {
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
-        <Loader />
+        <Loader/>
       </div>
     );
   } else {
@@ -201,8 +171,8 @@ const FormatPanel = ({
     const currentAudioLanguageIds: Array<string> =
       movieFormatInfo?.audioLanguages
         ? movieFormatInfo?.audioLanguages.map(
-            (lang: LanguageModel) => '' + lang.id
-          )
+          (lang: LanguageModel) => '' + lang.id
+        )
         : [];
 
     const currentSubtitleIds: Array<string> = movieFormatInfo?.subtitles
@@ -210,7 +180,7 @@ const FormatPanel = ({
       : [];
 
     content = (
-      <div>
+      <div className="panel-content">
         <LabeledSelect
           label="Format: *"
           id="format"
@@ -297,18 +267,3 @@ const FormatPanel = ({
 
   return <div data-test-name={testName}>{content}</div>;
 };
-
-function stateToProps({
-  movie,
-  baseData,
-}: {
-  movie: MovieStateModel;
-  baseData: BaseDataStateModel;
-}) {
-  return {
-    movie,
-    baseData,
-  };
-}
-
-export default connect(stateToProps)(FormatPanel);

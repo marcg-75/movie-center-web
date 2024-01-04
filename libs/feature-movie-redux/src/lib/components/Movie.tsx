@@ -1,17 +1,17 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as H from 'history';
 
-import './movie.details.scss';
+import '../../../../shared/movie-components/src/lib/movie/movie.details.scss';
 
 import { Loader } from '@giron/shared-ui-library';
-import GeneralInfoPanel from './panels/GeneralInfoPanel';
-import CastPanel from './panels/CastPanel';
-import CrewPanel from './panels/CrewPanel';
-import FormatPanel from './panels/FormatPanel';
-import CoverPanel from './panels/CoverPanel';
-import PersonalInfoPanel from './panels/PersonalInfoPanel';
+import GeneralInfoPanel from './panels/GeneralInfoPanelComponent';
+import CastPanel from './panels/CastPanelComponent';
+import CrewPanel from './panels/CrewPanelComponent';
+import FormatPanel from './panels/FormatPanelComponent';
+import CoverPanel from './panels/CoverPanelComponent';
+import PersonalInfoPanel from './panels/PersonalInfoPanelComponent';
 import {
   BaseDataStateModel,
   clearMovieActionState,

@@ -32,11 +32,7 @@ export const FilterItemText = ({
   const debouncedOnChange = debounce(onChange, 500);
 
   return (
-    <FilterItem
-      id={id}
-      label={label}
-      labelAddition={labelAddition}
-    >
+    <FilterItem id={id} label={label} labelAddition={labelAddition}>
       <div className="filter-freetext-input-wrapper">
         <input
           className="filter-text-input-field"
@@ -45,7 +41,7 @@ export const FilterItemText = ({
           name={name}
           onChange={debouncedOnChange}
         />
-        <i className="fa fa-search filter-freetext-magnifying-glass"/>
+        <i className="fa fa-search filter-freetext-magnifying-glass" />
       </div>
     </FilterItem>
   );

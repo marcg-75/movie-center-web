@@ -11,24 +11,30 @@ interface Props extends LabeledInputProps {
 }
 
 export const LabeledSelect = ({
-                                label,
-                                id,
-                                defaultValue,
-                                value = defaultValue,
-                                labelMode,
-                                orientation,
-                                options,
-                                callback,
-                                required = false,
-                                multiple,
-                                testName = 'LabelledSelect_test',
-                              }: Props) => {
+  label,
+  id,
+  defaultValue,
+  value = defaultValue,
+  labelMode,
+  orientation,
+  options,
+  callback,
+  required = false,
+  multiple,
+  testName = 'LabelledSelect_test',
+}: Props) => {
   if (!value) {
     value = multiple ? [] : '';
   }
 
   return (
-    <LabeledInput id={id} label={label} labelMode={labelMode} orientation={orientation} testName={testName}>
+    <LabeledInput
+      id={id}
+      label={label}
+      labelMode={labelMode}
+      orientation={orientation}
+      testName={testName}
+    >
       <select
         id={id}
         name={id}
@@ -37,7 +43,9 @@ export const LabeledSelect = ({
         disabled={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'false'}
         value={value}
         onChange={callback}
-        className={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true' ? '' : 'disabled'}
+        className={
+          process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true' ? '' : 'disabled'
+        }
       >
         {options}
       </select>
