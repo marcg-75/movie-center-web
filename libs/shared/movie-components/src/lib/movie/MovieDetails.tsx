@@ -26,25 +26,25 @@ type Props = {
   personalInfoPanel: ReactNode;
   errors?: string[] | Error[];
   testName?: string;
-}
+};
 
 export const MovieDetails = ({
-                               movie,
-                               isLoading = false,
-                               isCreateMode = false,
-                               onCreateMovie,
-                               onUpdateMovie,
-                               onMovieTitleChange,
-                               onCancel,
-                               generalInfoPanel,
-                               castPanel,
-                               crewPanel,
-                               formatPanel,
-                               coverPanel,
-                               personalInfoPanel,
-                               errors,
-                               testName = 'MovieDetails_test',
-                             }: Props) => {
+  movie,
+  isLoading = false,
+  isCreateMode = false,
+  onCreateMovie,
+  onUpdateMovie,
+  onMovieTitleChange,
+  onCancel,
+  generalInfoPanel,
+  castPanel,
+  crewPanel,
+  formatPanel,
+  coverPanel,
+  personalInfoPanel,
+  errors,
+  testName = 'MovieDetails_test',
+}: Props) => {
   const [activeInfoPanel, setActiveInfoPanel] = useState(INFO_PANEL_GENERAL);
 
   const saveMovie = () => {
@@ -99,7 +99,7 @@ export const MovieDetails = ({
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
-        <Loader/>
+        <Loader />
       </div>
     );
   } else {
@@ -187,39 +187,27 @@ export const MovieDetails = ({
 
           <div className={'movie-details-panel ' + activeInfoPanel}>
             {activeInfoPanel === INFO_PANEL_GENERAL && (
-              <div className="general-info">
-                {generalInfoPanel}
-              </div>
+              <div className="general-info">{generalInfoPanel}</div>
             )}
 
             {activeInfoPanel === INFO_PANEL_CAST && (
-              <div className="cast-info">
-                {castPanel}
-              </div>
+              <div className="cast-info">{castPanel}</div>
             )}
 
             {activeInfoPanel === INFO_PANEL_CREW && (
-              <div className="crew-info">
-                {crewPanel}
-              </div>
+              <div className="crew-info">{crewPanel}</div>
             )}
 
             {activeInfoPanel === INFO_PANEL_FORMAT && (
-              <div className="format-info">
-                {formatPanel}
-              </div>
+              <div className="format-info">{formatPanel}</div>
             )}
 
             {activeInfoPanel === INFO_PANEL_COVER && (
-              <div className="cover-info">
-                {coverPanel}
-              </div>
+              <div className="cover-info">{coverPanel}</div>
             )}
 
             {activeInfoPanel === INFO_PANEL_PERSONAL && (
-              <div className="personal-info">
-                {personalInfoPanel}
-              </div>
+              <div className="personal-info">{personalInfoPanel}</div>
             )}
           </div>
         </div>

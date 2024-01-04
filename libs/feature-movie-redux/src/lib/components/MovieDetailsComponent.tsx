@@ -35,13 +35,13 @@ interface MovieProps {
 }
 
 const MovieDetailsComponent = ({
-                                 movie,
-                                 baseData,
-                                 history,
-                                 location,
-                                 dispatch,
-                                 testName = 'MovieDetailsComponent_test',
-                               }: MovieProps) => {
+  movie,
+  baseData,
+  history,
+  location,
+  dispatch,
+  testName = 'MovieDetailsComponent_test',
+}: MovieProps) => {
   const [movieId, setMovieId] = useState<number>();
   const [isMovieLoading] = useState(movie?.movieLoading?.loading);
   const [isBaseDataLoading] = useState(checkIfBaseDataIsLoading(baseData));
@@ -95,12 +95,12 @@ const MovieDetailsComponent = ({
       onUpdateMovie={(movie: IMovie) => dispatch(updateMovie(movie))}
       onMovieTitleChange={(movie: IMovie) => dispatch(updateMovieState(movie))}
       onCancel={() => history.goBack()}
-      generalInfoPanel={<GeneralInfoPanel/>}
-      castPanel={<CastPanel/>}
-      crewPanel={<CrewPanel/>}
-      formatPanel={<FormatPanel/>}
-      coverPanel={<CoverPanel/>}
-      personalInfoPanel={<PersonalInfoPanel/>}
+      generalInfoPanel={<GeneralInfoPanel />}
+      castPanel={<CastPanel />}
+      crewPanel={<CrewPanel />}
+      formatPanel={<FormatPanel />}
+      coverPanel={<CoverPanel />}
+      personalInfoPanel={<PersonalInfoPanel />}
       errors={movieLoading?.errors}
       testName={testName}
     />
@@ -108,9 +108,9 @@ const MovieDetailsComponent = ({
 };
 
 function stateToProps({
-                        movie,
-                        baseData,
-                      }: {
+  movie,
+  baseData,
+}: {
   movie: MovieStateModel;
   baseData: BaseDataStateModel;
 }) {
