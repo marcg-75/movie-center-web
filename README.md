@@ -61,27 +61,18 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
 
 ## Krav
 
-- Migrera till React 18, hooks och annat som görs i RV, React Query (och Redux (konfigurerbar switch mellan dessa)), Tailwind
-- Introducera Next.js a'la RV och ta bort react-scripts och react router.
-- Migrera till Tailwind.
-  v Lägg till helt nya personer (cast & crew). Separat flöde? Ska också kunna välja befintliga personer t.ex. när skådespelare ska läggas till.
-  v Ta bort cast & crew från en film
-  v Redigering av crew (alla roller)
-  v Redigering av format-info
+- Create a Next.js app that uses the same presentational components as the Redux based app.
+  - Use ReactQuery.
+  - Use Emotion/Tailwind.
+  - Use Material UI components where it makes sense. Use MUI for the dialogs too, if possible.
+- Error handling.
 - Möjlighet att ladda upp bild-filer för omslagsbilder.
-  v Redigering av personlig info
-  v Backend: Adapter för inläsning av XML-fil(er) från DVD-profiler (triggas manuellt)
 - Hämta filmdata från OMDB (eller andra källor):
   o URL och API (inkl. ev. nyckel)
   o Mappning extern modell till intern modell.
   o Anropa BE för att skapa / uppdatera filmdata.
-- Styling (Tailwind eller styled-components)
-- Bootstrap-dialog (plus ev . andra saker från Bootstrap)
-- Felhantering i reducers, bl.a, inkl. FE-loggning till BE.
 - Kolla kvarvarande TODO-punkter i FE & BE.
-  v Gör om sub-panelkomponenterna till "self invoking functions" istf React-komponenter.
 - Städa och optimera kod
-  v Bestäm vilket språk som ska användas i GUI och inför detta
 - Skriv tester (frontend & backend)
 
 ### UX
