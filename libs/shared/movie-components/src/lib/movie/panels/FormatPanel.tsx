@@ -1,6 +1,10 @@
 import '../movie.details.scss';
 import { ChangeEvent, ReactNode } from 'react';
-import { LabeledSelect, LabeledTextInput, Loader } from '@giron/shared-ui-library';
+import {
+  LabeledSelect,
+  LabeledTextInput,
+  Loader,
+} from '@giron/shared-ui-library';
 import { IMovie, LanguageModel, SelectableModel } from '@giron/shared-models';
 
 const REGIONS: Array<number> = [1, 2, 3, 4, 5, 6];
@@ -32,18 +36,18 @@ type Props = {
   error?: string | Error;
   errors?: string[] | Error[];
   testName?: string;
-}
+};
 
 export const FormatPanel = ({
-                              movie,
-                              formats,
-                              languages,
-                              isLoading = false,
-                              onMovieChange,
-                              error,
-                              errors,
-                              testName = 'FormatPanel_test',
-                            }: Props) => {
+  movie,
+  formats,
+  languages,
+  isLoading = false,
+  onMovieChange,
+  error,
+  errors,
+  testName = 'FormatPanel_test',
+}: Props) => {
   const movieFormatInfo = movie?.movieFormatInfo;
 
   const movieStateChanged = (
@@ -144,7 +148,7 @@ export const FormatPanel = ({
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
-        <Loader/>
+        <Loader />
       </div>
     );
   } else {
@@ -171,8 +175,8 @@ export const FormatPanel = ({
     const currentAudioLanguageIds: Array<string> =
       movieFormatInfo?.audioLanguages
         ? movieFormatInfo?.audioLanguages.map(
-          (lang: LanguageModel) => '' + lang.id
-        )
+            (lang: LanguageModel) => '' + lang.id
+          )
         : [];
 
     const currentSubtitleIds: Array<string> = movieFormatInfo?.subtitles

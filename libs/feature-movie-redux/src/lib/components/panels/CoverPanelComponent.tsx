@@ -11,10 +11,10 @@ interface CoverPanelProps {
 }
 
 const CoverPanelComponent = ({
-                               movie,
-                               dispatch,
-                               testName = 'CoverPanelComponent_test',
-                             }: CoverPanelProps) => {
+  movie,
+  dispatch,
+  testName = 'CoverPanelComponent_test',
+}: CoverPanelProps) => {
   const [isMovieLoading, setIsMovieLoading] = useState(false);
 
   useEffect(() => {
@@ -23,17 +23,11 @@ const CoverPanelComponent = ({
 
   const { movieItem, movieLoading } = movie;
 
-  const refreshMovieState = (movieItem: IMovie) => {
-    dispatch(
-      updateMovieState(movieItem)
-    );
-  };
-
   return (
     <CoverPanel
       movie={movieItem}
       isLoading={isMovieLoading}
-      onMovieChange={refreshMovieState}
+      onMovieChange={(movie: IMovie) => dispatch(updateMovieState(movie))}
       errors={movieLoading.errors}
       testName={testName}
     />

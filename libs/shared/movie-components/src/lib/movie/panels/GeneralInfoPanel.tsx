@@ -6,9 +6,14 @@ import {
   LabeledTextarea,
   LabeledTextInput,
   LabeledTimeInput,
-  Loader
+  Loader,
 } from '@giron/shared-ui-library';
-import { IMovie, MovieGenreModel, NameEntityModel, SelectableModel, } from '@giron/shared-models';
+import {
+  IMovie,
+  MovieGenreModel,
+  NameEntityModel,
+  SelectableModel,
+} from '@giron/shared-models';
 
 type Props = {
   movie?: IMovie;
@@ -19,7 +24,7 @@ type Props = {
   error?: string | Error;
   errors?: string[] | Error[];
   testName?: string;
-}
+};
 
 export const GeneralInfoPanel = ({
   movie,

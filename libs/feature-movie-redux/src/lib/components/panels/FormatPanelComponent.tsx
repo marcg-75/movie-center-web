@@ -18,11 +18,11 @@ interface FormatPanelProps {
 }
 
 const FormatPanelComponent = ({
-                                movie,
-                                baseData,
-                                dispatch,
-                                testName = 'FormatPanelComponent_test',
-                              }: FormatPanelProps) => {
+  movie,
+  baseData,
+  dispatch,
+  testName = 'FormatPanelComponent_test',
+}: FormatPanelProps) => {
   const [isMovieLoading, setIsMovieLoading] = useState(false);
   const [isBaseDataLoading, setIsBaseDataLoading] = useState(false);
 
@@ -34,18 +34,14 @@ const FormatPanelComponent = ({
   useEffect(() => {
     setIsMovieLoading(!movie?.movieLoading || movie.movieLoading.loading);
     setIsBaseDataLoading(
-      !baseData || baseData.formatsLoading?.loading || baseData.languagesLoading?.loading
+      !baseData ||
+        baseData.formatsLoading?.loading ||
+        baseData.languagesLoading?.loading
     );
   }, [movie, baseData]);
 
   const { movieItem, movieLoading } = movie;
   const { formats, languages } = baseData;
-
-  const refreshMovieState = (movieItem: IMovie) => {
-    dispatch(
-      updateMovieState(movieItem)
-    );
-  };
 
   return (
     <FormatPanel
@@ -53,7 +49,7 @@ const FormatPanelComponent = ({
       formats={formats}
       languages={languages}
       isLoading={isMovieLoading || isBaseDataLoading}
-      onMovieChange={refreshMovieState}
+      onMovieChange={(movie: IMovie) => dispatch(updateMovieState(movie))}
       errors={movieLoading?.errors}
       testName={testName}
     />
@@ -61,9 +57,9 @@ const FormatPanelComponent = ({
 };
 
 function stateToProps({
-                        movie,
-                        baseData,
-                      }: {
+  movie,
+  baseData,
+}: {
   movie: MovieStateModel;
   baseData: BaseDataStateModel;
 }) {

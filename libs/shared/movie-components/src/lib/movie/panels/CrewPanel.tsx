@@ -1,8 +1,14 @@
 import '../movie.details.scss';
-import React, { ChangeEvent, FormEvent, ReactNode, useState, } from 'react';
+import React, { ChangeEvent, FormEvent, ReactNode, useState } from 'react';
 import { Loader } from '@giron/shared-ui-library';
-import { RoleEnum, } from '@giron/data-access-redux';
-import { CastAndCrewModel, IMovie, NameEntityModel, PersonRoleModel, SelectableModel, } from '@giron/shared-models';
+import { RoleEnum } from '@giron/data-access-redux';
+import {
+  CastAndCrewModel,
+  IMovie,
+  NameEntityModel,
+  PersonRoleModel,
+  SelectableModel,
+} from '@giron/shared-models';
 
 type Props = {
   movie?: IMovie;
@@ -15,20 +21,20 @@ type Props = {
   onMovieChange: (movie: IMovie) => void;
   errors?: string[] | Error[];
   testName?: string;
-}
+};
 
 export const CrewPanel = ({
-                            movie,
-                            crew,
-                            persons,
-                            roles = [],
-                            isMovieLoading,
-                            isCrewLoading,
-                            isPersonsLoading,
-                            onMovieChange,
-                            errors,
-                            testName = 'CrewPanel_test',
-                          }: Props) => {
+  movie,
+  crew,
+  persons,
+  roles = [],
+  isMovieLoading,
+  isCrewLoading,
+  isPersonsLoading,
+  onMovieChange,
+  errors,
+  testName = 'CrewPanel_test',
+}: Props) => {
   const [selectableCrewMembersForRole, setSelectableCrewMembersForRole] =
     useState<PersonRoleModel[]>([]);
   const [selectablePersonsForRole, setSelectablePersonsForRole] = useState<
@@ -318,7 +324,7 @@ export const CrewPanel = ({
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
-        <Loader/>
+        <Loader />
       </div>
     );
   } else {
@@ -453,7 +459,7 @@ export const CrewPanel = ({
               {crewMembersForRoleOptions}
             </select>
 
-            <input type="submit" value="Lägg till"/>
+            <input type="submit" value="Lägg till" />
           </form>
         )}
 
@@ -470,7 +476,7 @@ export const CrewPanel = ({
             </select>
 
             {isPersonsLoading ? (
-              <Loader/>
+              <Loader />
             ) : (
               <select
                 id="newCrewPersonId"
@@ -496,7 +502,7 @@ export const CrewPanel = ({
               }
             />
 
-            <input type="submit" value="Lägg till"/>
+            <input type="submit" value="Lägg till" />
           </form>
         )}
       </div>
@@ -526,7 +532,7 @@ const createAllCrewRoleOptions = (
       );
     }
   );
-  options.unshift(<option key="0" value=""/>);
+  options.unshift(<option key="0" value="" />);
 
   return options;
 };
@@ -547,7 +553,7 @@ const createSelectableCrewMembersForRole = (
       );
     }
   );
-  options.unshift(<option key="0" value=""/>);
+  options.unshift(<option key="0" value="" />);
 
   return options;
 };
@@ -568,7 +574,7 @@ const createSelectablePersonsForRole = (
       );
     }
   );
-  options.unshift(<option key="0" value=""/>);
+  options.unshift(<option key="0" value="" />);
 
   return options;
 };
@@ -649,7 +655,7 @@ export const mapToPersonOptionElements = (
       );
     }
   );
-  options.unshift(<option key={0} value=""/>);
+  options.unshift(<option key={0} value="" />);
 
   return options;
 };

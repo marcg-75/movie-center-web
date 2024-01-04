@@ -1,31 +1,6 @@
-import { ChangeEvent, useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import * as H from 'history';
-
-import '../../../../shared/movie-components/src/lib/movie/movie.details.scss';
-
+import './movie.details.scss';
+import { ChangeEvent, ReactNode, useState } from 'react';
 import { Loader } from '@giron/shared-ui-library';
-import GeneralInfoPanel from './panels/GeneralInfoPanelComponent';
-import CastPanel from './panels/CastPanelComponent';
-import CrewPanel from './panels/CrewPanelComponent';
-import FormatPanel from './panels/FormatPanelComponent';
-import CoverPanel from './panels/CoverPanelComponent';
-import PersonalInfoPanel from './panels/PersonalInfoPanelComponent';
-import {
-  BaseDataStateModel,
-  clearMovieActionState,
-  createMovie,
-  getAllPersons,
-  getEmptyMovie,
-  getMovieById,
-  loadRoles,
-  loadStudios,
-  MovieStateModel,
-  updateMovie,
-  updateMovieState,
-} from '@giron/data-access-redux';
-import { checkIfBaseDataIsLoading } from '../utils/movie.utils';
 import { IMovie } from '@giron/shared-models';
 
 const INFO_PANEL_GENERAL = 'general';
@@ -35,80 +10,55 @@ const INFO_PANEL_FORMAT = 'format';
 const INFO_PANEL_COVER = 'cover';
 const INFO_PANEL_PERSONAL = 'personal';
 
-interface MovieProps {
-  movie: MovieStateModel;
-  baseData: BaseDataStateModel;
-  history: H.History;
-  location: H.Location;
-  dispatch: (any: unknown) => void;
+type Props = {
+  movie?: IMovie;
+  isLoading?: boolean;
+  isCreateMode?: boolean;
+  onCreateMovie: (movie: IMovie) => void;
+  onUpdateMovie: (movie: IMovie) => void;
+  onMovieTitleChange: (movie: IMovie) => void;
+  onCancel: () => void;
+  generalInfoPanel: ReactNode;
+  castPanel: ReactNode;
+  crewPanel: ReactNode;
+  formatPanel: ReactNode;
+  coverPanel: ReactNode;
+  personalInfoPanel: ReactNode;
+  errors?: string[] | Error[];
   testName?: string;
 }
 
-const Movie = ({
-  movie,
-  baseData,
-  history,
-  location,
-  dispatch,
-  testName = 'Movie_test',
-}: MovieProps) => {
-  const [movieId, setMovieId] = useState<number>();
+export const MovieDetails = ({
+                               movie,
+                               isLoading = false,
+                               isCreateMode = false,
+                               onCreateMovie,
+                               onUpdateMovie,
+                               onMovieTitleChange,
+                               onCancel,
+                               generalInfoPanel,
+                               castPanel,
+                               crewPanel,
+                               formatPanel,
+                               coverPanel,
+                               personalInfoPanel,
+                               errors,
+                               testName = 'MovieDetails_test',
+                             }: Props) => {
   const [activeInfoPanel, setActiveInfoPanel] = useState(INFO_PANEL_GENERAL);
-  const [isMovieLoading] = useState(movie?.movieLoading?.loading);
-  const [isBaseDataLoading] = useState(checkIfBaseDataIsLoading(baseData));
-
-  useEffect(() => {
-    const { pathname } = location;
-    const movieId = parseInt(
-      pathname.substring(pathname.lastIndexOf('/') + 1, pathname.length),
-      10
-    );
-
-    // Clear action state
-    dispatch(clearMovieActionState());
-
-    dispatch(loadStudios());
-    dispatch(loadRoles());
-
-    if (process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true') {
-      dispatch(getAllPersons());
-    }
-
-    setMovieId(movieId);
-
-    if (movieId === 0) {
-      dispatch(getEmptyMovie());
-    } else {
-      dispatch(getMovieById(movieId));
-    }
-  }, []);
-
-  useEffect(() => {
-    const { movieCreated, movieUpdated } = movie;
-
-    if (movieCreated || movieUpdated) {
-      // Clear action state
-      dispatch(clearMovieActionState());
-
-      // Navigate back to list.
-      history.push(`/movies`);
-    }
-  }, [movie, baseData]);
-
-  const { movieItem, movieLoading } = movie;
 
   const saveMovie = () => {
-    if (!movieItem) {
+    if (!movie) {
       return;
     }
 
-    alert('Saving movie: ' + JSON.stringify(movieItem));
+    alert('Saving movie: ' + JSON.stringify(movie));
 
-    if (!movieItem.id || movieItem.id === 0) {
-      delete movieItem.id;
-      dispatch(createMovie(movieItem));
+    if (!movie.id || movie.id === 0) {
+      delete movie.id;
+      onCreateMovie(movie);
     } else {
-      dispatch(updateMovie(movieItem));
+      onUpdateMovie(movie);
     }
   };
 
@@ -117,49 +67,43 @@ const Movie = ({
       return;
     }
 
-    history.goBack();
-  };
-
-  const isCreateMode = (): boolean => {
-    return movieId === 0;
+    onCancel();
   };
 
   const movieStateChanged = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
-    dispatch(
-      updateMovieState({
-        ...movieItem,
-        [name]: value,
-      } as IMovie)
-    );
+    onMovieTitleChange({
+      ...movie,
+      [name]: value,
+    } as IMovie);
   };
 
   let content;
 
-  if (movieLoading?.errors) {
+  if (errors) {
     //DialogComponent.openDefaultErrorDialog(dialog, movie.movieListErrorMessages);  // TODO: Implement error dialog handling.
     //alert(movieErrorMessages);
-    const errors = movieLoading.errors as string[];
+    const errs = errors as string[];
 
     content = (
       <div>
         <ul>
-          {errors.map((m: string, i: number) => (
+          {errs.map((m: string, i: number) => (
             <li key={i}>{m}</li>
           ))}
         </ul>
       </div>
     );
-  } else if (isMovieLoading || !movieItem || isBaseDataLoading) {
+  } else if (isLoading || !movie) {
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
-        <Loader />
+        <Loader/>
       </div>
     );
   } else {
-    const titleElem = isCreateMode() ? (
+    const titleElem = isCreateMode ? (
       <div className="labelled-input">
         <label htmlFor="title">Filmtitel: *</label>
         <input
@@ -168,13 +112,13 @@ const Movie = ({
           placeholder="Ange filmtitel"
           id="title"
           name="title"
-          defaultValue={movieItem.title}
+          defaultValue={movie.title}
           required={true}
           onBlur={movieStateChanged}
         />
       </div>
     ) : (
-      <h2>{movieItem.title}</h2>
+      <h2>{movie.title}</h2>
     );
 
     content = (
@@ -244,37 +188,37 @@ const Movie = ({
           <div className={'movie-details-panel ' + activeInfoPanel}>
             {activeInfoPanel === INFO_PANEL_GENERAL && (
               <div className="general-info">
-                <GeneralInfoPanel />
+                {generalInfoPanel}
               </div>
             )}
 
             {activeInfoPanel === INFO_PANEL_CAST && (
               <div className="cast-info">
-                <CastPanel />
+                {castPanel}
               </div>
             )}
 
             {activeInfoPanel === INFO_PANEL_CREW && (
               <div className="crew-info">
-                <CrewPanel />
+                {crewPanel}
               </div>
             )}
 
             {activeInfoPanel === INFO_PANEL_FORMAT && (
               <div className="format-info">
-                <FormatPanel />
+                {formatPanel}
               </div>
             )}
 
             {activeInfoPanel === INFO_PANEL_COVER && (
               <div className="cover-info">
-                <CoverPanel />
+                {coverPanel}
               </div>
             )}
 
             {activeInfoPanel === INFO_PANEL_PERSONAL && (
               <div className="personal-info">
-                <PersonalInfoPanel />
+                {personalInfoPanel}
               </div>
             )}
           </div>
@@ -305,18 +249,3 @@ const Movie = ({
     </div>
   );
 };
-
-function stateToProps({
-  movie,
-  baseData,
-}: {
-  movie: MovieStateModel;
-  baseData: BaseDataStateModel;
-}) {
-  return {
-    movie,
-    baseData,
-  };
-}
-
-export default withRouter(connect(stateToProps)(Movie));

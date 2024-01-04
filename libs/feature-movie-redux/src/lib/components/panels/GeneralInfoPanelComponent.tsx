@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { BaseDataStateModel, MovieStateModel, updateMovieState, } from '@giron/data-access-redux';
+import {
+  BaseDataStateModel,
+  MovieStateModel,
+  updateMovieState,
+} from '@giron/data-access-redux';
 import { checkIfBaseDataIsLoading } from '../../utils/movie.utils';
-import { IMovie, } from '@giron/shared-models';
+import { IMovie } from '@giron/shared-models';
 import { GeneralInfoPanel } from '@giron/shared-movie-components';
 
 interface GeneralInfoPanelProps {
@@ -13,29 +17,23 @@ interface GeneralInfoPanelProps {
 }
 
 const GeneralInfoPanelComponent = ({
-                                     movie,
-                                     baseData,
-                                     dispatch,
-                                     testName = 'GeneralInfoPanelComponent_test',
-                                   }: GeneralInfoPanelProps) => {
+  movie,
+  baseData,
+  dispatch,
+  testName = 'GeneralInfoPanelComponent_test',
+}: GeneralInfoPanelProps) => {
   const [isMovieLoading] = useState(movie?.movieLoading?.loading);
   const [isBaseDataLoading] = useState(checkIfBaseDataIsLoading(baseData));
 
   const { movieItem, movieLoading } = movie;
   const { genres, studios } = baseData;
 
-  const refreshMovieState = (movieItem: IMovie) => {
-    dispatch(
-      updateMovieState(movieItem)
-    );
-  };
-
   return (
     <GeneralInfoPanel
       movie={movieItem}
       genres={genres}
       studios={studios}
-      onMovieChange={refreshMovieState}
+      onMovieChange={(movie: IMovie) => dispatch(updateMovieState(movie))}
       isLoading={isMovieLoading || isBaseDataLoading}
       errors={movieLoading.errors}
       testName={testName}
@@ -44,9 +42,9 @@ const GeneralInfoPanelComponent = ({
 };
 
 function stateToProps({
-                        movie,
-                        baseData,
-                      }: {
+  movie,
+  baseData,
+}: {
   movie: MovieStateModel;
   baseData: BaseDataStateModel;
 }) {

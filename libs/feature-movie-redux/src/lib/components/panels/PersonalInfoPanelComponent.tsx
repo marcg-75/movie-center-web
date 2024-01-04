@@ -11,10 +11,10 @@ interface PersonalInfoPanelProps {
 }
 
 const PersonalInfoPanelComponent = ({
-                                      movie,
-                                      dispatch,
-                                      testName = 'PersonalInfoPanelComponent_test',
-                                    }: PersonalInfoPanelProps) => {
+  movie,
+  dispatch,
+  testName = 'PersonalInfoPanelComponent_test',
+}: PersonalInfoPanelProps) => {
   const [isMovieLoading, setIsMovieLoading] = useState(false);
 
   useEffect(() => {
@@ -23,17 +23,11 @@ const PersonalInfoPanelComponent = ({
 
   const { movieItem, movieLoading } = movie;
 
-  const refreshMovieState = (movieItem: IMovie) => {
-    dispatch(
-      updateMovieState(movieItem)
-    );
-  };
-
   return (
     <PersonalInfoPanel
       movie={movieItem}
       isLoading={isMovieLoading}
-      onMovieChange={refreshMovieState}
+      onMovieChange={(movie: IMovie) => dispatch(updateMovieState(movie))}
       errors={movieLoading?.errors}
       testName={testName}
     />

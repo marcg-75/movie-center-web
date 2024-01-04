@@ -2,6 +2,7 @@ export { ListFilter } from './lib/filter/ListFilter';
 export { RegularFilter } from './lib/filter/RegularFilter';
 export { ExtendedFilter } from './lib/filter/ExtendedFilter';
 export { MovieList } from './lib/movie-list/MovieList';
+export { MovieDetails } from './lib/movie/MovieDetails';
 export { GeneralInfoPanel } from './lib/movie/panels/GeneralInfoPanel';
 export { CastPanel } from './lib/movie/panels/CastPanel';
 export { CrewPanel } from './lib/movie/panels/CrewPanel';

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import {
   BaseDataStateModel,
@@ -7,7 +7,7 @@ import {
   PersonStateModel,
   updateMovieState,
 } from '@giron/data-access-redux';
-import { IMovie, } from '@giron/shared-models';
+import { IMovie } from '@giron/shared-models';
 import { CrewPanel } from '@giron/shared-movie-components';
 
 interface CrewPanelProps {
@@ -47,12 +47,6 @@ const CrewPanelComponent = ({
   const { persons, crew, crewLoading, personsLoading } = person;
   const roles = baseData.roles || [];
 
-  const refreshMovieState = (movieItem: IMovie) => {
-    dispatch(
-      updateMovieState(movieItem)
-    );
-  };
-
   return (
     <CrewPanel
       movie={movieItem}
@@ -62,7 +56,7 @@ const CrewPanelComponent = ({
       isMovieLoading={isMovieLoading}
       isCrewLoading={crewLoading?.loading}
       isPersonsLoading={personsLoading?.loading}
-      onMovieChange={refreshMovieState}
+      onMovieChange={(movie: IMovie) => dispatch(updateMovieState(movie))}
       errors={crewLoading?.errors}
       testName={testName}
     />

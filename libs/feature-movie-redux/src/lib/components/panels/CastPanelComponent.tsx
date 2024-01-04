@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { getActors, MovieStateModel, PersonStateModel, updateMovieState, } from '@giron/data-access-redux';
-import { IMovie, } from '@giron/shared-models';
+import {
+  getActors,
+  MovieStateModel,
+  PersonStateModel,
+  updateMovieState,
+} from '@giron/data-access-redux';
+import { IMovie } from '@giron/shared-models';
 import { CastPanel } from '@giron/shared-movie-components';
 
 interface CastPanelProps {
@@ -12,11 +17,11 @@ interface CastPanelProps {
 }
 
 const CastPanelComponent = ({
-                              movie,
-                              person,
-                              dispatch,
-                              testName = 'CastPanelComponent_test',
-                            }: CastPanelProps) => {
+  movie,
+  person,
+  dispatch,
+  testName = 'CastPanelComponent_test',
+}: CastPanelProps) => {
   const { movieItem } = movie;
   const { persons, actors, actorsLoading, personsLoading } = person;
 
@@ -38,12 +43,6 @@ const CastPanelComponent = ({
     setIsMovieLoading(!movie?.movieLoading || movie.movieLoading.loading);
   }, [movie, person]);
 
-  const refreshMovieState = (movieItem: IMovie) => {
-    dispatch(
-      updateMovieState(movieItem)
-    );
-  };
-
   return (
     <CastPanel
       movie={movieItem}
@@ -52,7 +51,7 @@ const CastPanelComponent = ({
       isMovieLoading={isMovieLoading}
       isActorsLoading={isActorsLoading}
       isPersonsLoading={personsLoading?.loading}
-      onMovieChange={refreshMovieState}
+      onMovieChange={(movie: IMovie) => dispatch(updateMovieState(movie))}
       errors={actorsLoading?.errors}
       testName={testName}
     />
@@ -60,9 +59,9 @@ const CastPanelComponent = ({
 };
 
 function stateToProps({
-                        movie,
-                        person,
-                      }: {
+  movie,
+  person,
+}: {
   movie: MovieStateModel;
   person: PersonStateModel;
 }) {

@@ -12,7 +12,7 @@ type Props = {
   error?: string | Error;
   errors?: string[] | Error[];
   testName?: string;
-}
+};
 
 // TODO: Slå kanske ihop med format-panelen (cover-info till höger i så fall).
 

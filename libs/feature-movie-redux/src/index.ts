@@ -1,1 +1,1 @@
-export { default } from './lib/components/Movie';
+export { default } from './lib/components/MovieDetailsComponent';

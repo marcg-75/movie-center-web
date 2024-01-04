@@ -1,6 +1,12 @@
 import '../movie.details.scss';
 import { ChangeEvent, ReactNode } from 'react';
-import { LabeledDateInput, LabeledSelect, LabeledTextarea, LabeledTextInput, Loader } from '@giron/shared-ui-library';
+import {
+  LabeledDateInput,
+  LabeledSelect,
+  LabeledTextarea,
+  LabeledTextInput,
+  Loader,
+} from '@giron/shared-ui-library';
 import { IMovie } from '@giron/shared-models';
 
 const GRADES: Array<number> = [1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
@@ -30,16 +36,16 @@ type Props = {
   error?: string | Error;
   errors?: string[] | Error[];
   testName?: string;
-}
+};
 
 export const PersonalInfoPanel = ({
-                                    movie,
-                                    isLoading = false,
-                                    onMovieChange,
-                                    error,
-                                    errors,
-                                    testName = 'PersonalInfoPanel_test',
-                                  }: Props) => {
+  movie,
+  isLoading = false,
+  onMovieChange,
+  error,
+  errors,
+  testName = 'PersonalInfoPanel_test',
+}: Props) => {
   const moviePersonalInfo = movie?.moviePersonalInfo;
 
   const movieStateChanged = (
@@ -84,7 +90,7 @@ export const PersonalInfoPanel = ({
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
-        <Loader/>
+        <Loader />
       </div>
     );
   } else {

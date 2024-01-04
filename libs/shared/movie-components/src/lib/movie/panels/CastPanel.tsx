@@ -2,7 +2,13 @@ import '../movie.details.scss';
 import { ChangeEvent, FormEvent, ReactNode, useEffect, useState } from 'react';
 import { Loader } from '@giron/shared-ui-library';
 import { mapToPersonOptionElements } from './CrewPanel';
-import { CastAndCrewModel, IMovie, NameEntityModel, PersonRoleModel, SelectableModel, } from '@giron/shared-models';
+import {
+  CastAndCrewModel,
+  IMovie,
+  NameEntityModel,
+  PersonRoleModel,
+  SelectableModel,
+} from '@giron/shared-models';
 
 type Props = {
   movie?: IMovie;
@@ -14,19 +20,19 @@ type Props = {
   onMovieChange: (movie: IMovie) => void;
   errors?: string[] | Error[];
   testName?: string;
-}
+};
 
 export const CastPanel = ({
-                            movie,
-                            actors,
-                            persons,
-                            isMovieLoading = false,
-                            isActorsLoading = false,
-                            isPersonsLoading = false,
-                            onMovieChange,
-                            errors,
-                            testName = 'CastPanel_test',
-                          }: Props) => {
+  movie,
+  actors,
+  persons,
+  isMovieLoading = false,
+  isActorsLoading = false,
+  isPersonsLoading = false,
+  onMovieChange,
+  errors,
+  testName = 'CastPanel_test',
+}: Props) => {
   const [selectablePersons, setSelectablePersons] = useState<NameEntityModel[]>(
     []
   );
@@ -238,7 +244,7 @@ export const CastPanel = ({
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
-        <Loader/>
+        <Loader />
       </div>
     );
   } else {
@@ -305,7 +311,7 @@ export const CastPanel = ({
               name="characterName"
               placeholder="Rollnamn"
             />
-            <input type="submit" value="Lägg till"/>
+            <input type="submit" value="Lägg till" />
           </form>
         )}
 
@@ -314,7 +320,7 @@ export const CastPanel = ({
             <label>Lägg till ny skådespelare:</label>
 
             {isPersonsLoading ? (
-              <Loader/>
+              <Loader />
             ) : (
               <select
                 id="newActorPersonId"
@@ -346,7 +352,7 @@ export const CastPanel = ({
               placeholder="Rollnamn"
             />
 
-            <input type="submit" value="Lägg till"/>
+            <input type="submit" value="Lägg till" />
           </form>
         )}
       </div>
