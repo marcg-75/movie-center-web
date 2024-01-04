@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 
 import '../movie.details.scss';
 
-import { Loader } from '@giron/shared-ui-library';
-import { LabelledTextInput } from '../inputs/LabelledTextInput';
-import { LabelledSelect } from '../inputs/LabelledSelect';
+import { LabeledSelect, LabeledTextInput, Loader } from '@giron/shared-ui-library';
 import {
   BaseDataStateModel,
   loadFormats,
@@ -213,7 +211,7 @@ const FormatPanel = ({
 
     content = (
       <div>
-        <LabelledSelect
+        <LabeledSelect
           label="Format: *"
           id="format"
           defaultValue={undefined}
@@ -224,14 +222,14 @@ const FormatPanel = ({
           multiple={false}
         />
 
-        <LabelledTextInput
+        <LabeledTextInput
           label="UPC-ID:"
           id="upcId"
           defaultValue={movieFormatInfo?.upcId}
           callback={movieStateChanged}
         />
 
-        <LabelledSelect
+        <LabeledSelect
           label="Region:"
           id="region"
           defaultValue={undefined}
@@ -242,21 +240,21 @@ const FormatPanel = ({
           multiple={false}
         />
 
-        <LabelledTextInput
+        <LabeledTextInput
           label="Antal skivor:"
           id="discs"
           defaultValue={movieFormatInfo?.discs}
           callback={movieStateChanged}
         />
 
-        <LabelledTextInput
+        <LabeledTextInput
           label="Bildformat:"
           id="pictureFormat"
           defaultValue={movieFormatInfo?.pictureFormat}
           callback={movieStateChanged}
         />
 
-        <LabelledSelect
+        <LabeledSelect
           label="System:"
           id="system"
           defaultValue={undefined}
@@ -267,7 +265,7 @@ const FormatPanel = ({
           multiple={false}
         />
 
-        <LabelledSelect
+        <LabeledSelect
           label="Språk:"
           id="audioLanguages"
           defaultValue={undefined}
@@ -278,7 +276,7 @@ const FormatPanel = ({
           multiple={true}
         />
 
-        <LabelledSelect
+        <LabeledSelect
           label="Undertexter:"
           id="subtitles"
           defaultValue={undefined}
@@ -294,7 +292,7 @@ const FormatPanel = ({
 
   //{// TODO: Flytta till admin-vy
   //    environment.enableMovieFormatEdit && (
-  //        <LabelledTextInput label="Add new language to select:" id="newLanguage" defaultValue={undefined} callback={languageAdded} />
+  //        <LabeledTextInput label="Add new language to select:" id="newLanguage" defaultValue={undefined} callback={languageAdded} />
   //    )}
 
   return <div data-test-name={testName}>{content}</div>;

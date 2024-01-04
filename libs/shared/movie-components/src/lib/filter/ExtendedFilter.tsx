@@ -11,7 +11,6 @@ type Props = {
   formats?: SelectableModel[];
   filterChanged: (filter: MovieFilter) => void;
   isLoading?: boolean;
-  testName?: string;
 };
 
 export const ExtendedFilter = ({
@@ -19,7 +18,6 @@ export const ExtendedFilter = ({
   formats,
   filterChanged,
   isLoading = false,
-  testName = 'ExtendedFilter_test',
 }: Props) => {
   const [filterFormatsToSelect, setFilterFormatsToSelect] = useState([
     MovieModelFilter.FILTER_DEFAULT_ALL_FORMATS,
@@ -94,28 +92,22 @@ export const ExtendedFilter = ({
       <Loader />
     </div>
   ) : (
-    <div data-test-name={testName}>
-      <FilterItem
-        label="Format"
-        filterBody={
-          <select
-            name="formatCode"
-            value={filter.formatCode}
-            onChange={changeHandler}
-          >
-            {selectableFormatItems}
-          </select>
-        }
-      />
+    <>
+      <FilterItem id="format-filter" label="Format">
+        <select
+          name="formatCode"
+          value={filter.formatCode}
+          onChange={changeHandler}
+        >
+          {selectableFormatItems}
+        </select>
+      </FilterItem>
 
-      <FilterItem
-        label="Betyg"
-        filterBody={
-          <select name="grade" value={filter.grade} onChange={changeHandler}>
-            {selectableGradeItems}
-          </select>
-        }
-      />
-    </div>
+      <FilterItem id="grade-filter" label="Betyg">
+        <select name="grade" value={filter.grade} onChange={changeHandler}>
+          {selectableGradeItems}
+        </select>
+      </FilterItem>
+    </>
   );
 };

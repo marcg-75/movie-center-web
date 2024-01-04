@@ -1,8 +1,4 @@
-import {
-  MovieFilter as MovieModelFilter,
-  MovieFilter,
-  SelectableModel,
-} from '@giron/shared-models';
+import { MovieFilter as MovieModelFilter, MovieFilter, SelectableModel, } from '@giron/shared-models';
 import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
 import { FilterItem, FilterItemText, Loader } from '@giron/shared-ui-library';
 
@@ -15,14 +11,12 @@ type Props = {
   genres?: SelectableModel[];
   filterChanged: (filter: MovieFilter) => void;
   isLoading?: boolean;
-  testName?: string;
 };
 export const RegularFilter = ({
   filter,
   genres,
   filterChanged,
   isLoading = false,
-  testName = 'RegularFilter_test',
 }: Props) => {
   const [filterGenresToSelect, setFilterGenresToSelect] = useState([
     MovieFilter.FILTER_DEFAULT_ALL_GENRES,
@@ -85,8 +79,9 @@ export const RegularFilter = ({
       <Loader />
     </div>
   ) : (
-    <div data-test-name={testName}>
+    <>
       <FilterItemText
+        id="title-filter"
         name="title"
         label="Titel"
         placeholder="Sök på filmtitel..."
@@ -94,24 +89,25 @@ export const RegularFilter = ({
       />
 
       <FilterItem
+        id="genre-filter"
         label="Genre"
-        filterBody={
-          <select
-            name="genreCode"
-            value={filter.genreCode}
-            onChange={genreChangeHandler}
-          >
-            {selectableGenreItems}
-          </select>
-        }
-      />
+      >
+        <select
+          name="genreCode"
+          value={filter.genreCode}
+          onChange={genreChangeHandler}
+        >
+          {selectableGenreItems}
+        </select>
+      </FilterItem>
 
       <FilterItemText
+        id="freetext-filter"
         name="freetext"
         helpFilterText={helpFilterFreetext}
         placeholder="Filtrera på övriga fält..."
         valueUpdated={(value) => textValueChangeHandler(value, 'freetext')}
       />
-    </div>
+    </>
   );
 };

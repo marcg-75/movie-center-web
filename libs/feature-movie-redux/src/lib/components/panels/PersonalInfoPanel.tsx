@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 
 import '../movie.details.scss';
 
-import { Loader } from '@giron/shared-ui-library';
-import { LabelledTextInput } from '../inputs/LabelledTextInput';
-import { LabelledSelect } from '../inputs/LabelledSelect';
-import { LabelledDateInput } from '../inputs/LabelledDateInput';
-import { LabelledTextarea } from '../inputs/LabelledTextarea';
+import {
+  LabeledDateInput,
+  LabeledSelect,
+  LabeledTextarea,
+  LabeledTextInput,
+  Loader
+} from '@giron/shared-ui-library';
 import { MovieStateModel, updateMovieState } from '@giron/data-access-redux';
 import { IMovie } from '@giron/shared-models';
 
@@ -38,10 +40,10 @@ interface PersonalInfoPanelProps {
 }
 
 const PersonalInfoPanel = ({
-  movie,
-  dispatch,
-  testName = 'PersonalInfoPanel_test',
-}: PersonalInfoPanelProps) => {
+                             movie,
+                             dispatch,
+                             testName = 'PersonalInfoPanel_test',
+                           }: PersonalInfoPanelProps) => {
   const [isMovieLoading, setIsMovieLoading] = useState(false);
 
   useEffect(() => {
@@ -95,20 +97,20 @@ const PersonalInfoPanel = ({
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
-        <Loader />
+        <Loader/>
       </div>
     );
   } else {
     content = (
       <div>
-        <LabelledTextInput
+        <LabeledTextInput
           label="Arkivnummer:"
           id="archiveNumber"
           defaultValue={moviePersonalInfo?.archiveNumber}
           callback={movieStateChanged}
         />
 
-        <LabelledSelect
+        <LabeledSelect
           label="Betyg:"
           id="grade"
           defaultValue={undefined}
@@ -119,21 +121,21 @@ const PersonalInfoPanel = ({
           multiple={false}
         />
 
-        <LabelledDateInput
+        <LabeledDateInput
           label="Datum inskaffad:"
           id="obtainDate"
           defaultValue={moviePersonalInfo?.obtainDate}
           callback={movieStateChanged}
         />
 
-        <LabelledTextInput
+        <LabeledTextInput
           label="Inköpspris:"
           id="obtainPrice"
           defaultValue={moviePersonalInfo?.obtainPrice}
           callback={movieStateChanged}
         />
 
-        <LabelledSelect
+        <LabeledSelect
           label="Valuta:"
           id="currency"
           defaultValue={undefined}
@@ -144,14 +146,14 @@ const PersonalInfoPanel = ({
           multiple={false}
         />
 
-        <LabelledTextInput
+        <LabeledTextInput
           label="Plats för inskaffning:"
           id="obtainPlace"
           defaultValue={moviePersonalInfo?.obtainPlace}
           callback={movieStateChanged}
         />
 
-        <LabelledTextarea
+        <LabeledTextarea
           label="Anteckningar:"
           id="notes"
           defaultValue={moviePersonalInfo?.notes}

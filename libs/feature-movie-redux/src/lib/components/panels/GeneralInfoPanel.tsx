@@ -3,24 +3,17 @@ import { connect } from 'react-redux';
 
 import '../movie.details.scss';
 
-import { Loader } from '@giron/shared-ui-library';
-import { LabelledTextInput } from '../inputs/LabelledTextInput';
-import { LabelledDateInput } from '../inputs/LabelledDateInput';
-import { LabelledTimeInput } from '../inputs/LabelledTimeInput';
-import { LabelledTextarea } from '../inputs/LabelledTextarea';
-import { LabelledSelect } from '../inputs/LabelledSelect';
 import {
-  BaseDataStateModel,
-  MovieStateModel,
-  updateMovieState,
-} from '@giron/data-access-redux';
+  LabeledDateInput,
+  LabeledSelect,
+  LabeledTextarea,
+  LabeledTextInput,
+  LabeledTimeInput,
+  Loader
+} from '@giron/shared-ui-library';
+import { BaseDataStateModel, MovieStateModel, updateMovieState, } from '@giron/data-access-redux';
 import { checkIfBaseDataIsLoading } from '../../utils/movie.utils';
-import {
-  IMovie,
-  MovieGenreModel,
-  NameEntityModel,
-  SelectableModel,
-} from '@giron/shared-models';
+import { IMovie, MovieGenreModel, NameEntityModel, SelectableModel, } from '@giron/shared-models';
 
 interface GeneralInfoPanelProps {
   movie: MovieStateModel;
@@ -181,9 +174,9 @@ const GeneralInfoPanel = ({
       : [];
 
     content = (
-      <div>
+      <div style={{display: 'flex', flexDirection: 'column', gap: '0.625rem'}}>
         {mainGenre && (
-          <LabelledSelect
+          <LabeledSelect
             label="Huvudgenre: *"
             id="mainGenre"
             defaultValue={undefined}
@@ -195,7 +188,7 @@ const GeneralInfoPanel = ({
           />
         )}
 
-        <LabelledSelect
+        <LabeledSelect
           label="Genrer:"
           id="additionalGenres"
           defaultValue={currentAdditionalGenreCodes}
@@ -205,35 +198,35 @@ const GeneralInfoPanel = ({
           multiple={true}
         />
 
-        <LabelledTimeInput
+        <LabeledTimeInput
           label="Speltid:"
           id="runtime"
           defaultValue={movieItem.runtime}
           callback={movieStateChanged}
         />
 
-        <LabelledDateInput
+        <LabeledDateInput
           label="Release-datum:"
           id="releaseDate"
           defaultValue={movieItem.releaseDate}
           callback={movieStateChanged}
         />
 
-        <LabelledTextInput
+        <LabeledTextInput
           label="Land:"
           id="country"
           defaultValue={movieItem.country}
           callback={movieStateChanged}
         />
 
-        <LabelledTextInput
+        <LabeledTextInput
           label="Ålder:"
           id="ageRestriction"
           defaultValue={movieItem.ageRestriction}
           callback={movieStateChanged}
         />
 
-        <LabelledSelect
+        <LabeledSelect
           label="Studior:"
           id="studios"
           defaultValue={undefined}
@@ -245,7 +238,7 @@ const GeneralInfoPanel = ({
         />
 
         {process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true' && (
-          <LabelledTextInput
+          <LabeledTextInput
             label="Lägg till ny studio:"
             id="newStudio"
             defaultValue={undefined}
@@ -253,7 +246,7 @@ const GeneralInfoPanel = ({
           />
         )}
 
-        <LabelledTextarea
+        <LabeledTextarea
           label="Beskrivning: *"
           id="description"
           defaultValue={movieItem.description}

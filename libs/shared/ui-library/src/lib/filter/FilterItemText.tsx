@@ -5,6 +5,7 @@ import { FilterItem } from './FilterItem';
 import debounce from 'lodash/debounce';
 
 type Props = {
+  id?: string;
   name: string;
   label?: string;
   helpFilterText?: string;
@@ -13,13 +14,14 @@ type Props = {
 };
 
 export const FilterItemText = ({
+  id,
   name,
   label = 'Fritext',
   helpFilterText,
   placeholder,
   valueUpdated,
 }: Props) => {
-  const headerAdditions = helpFilterText ? (
+  const labelAddition = helpFilterText ? (
     <i className="far fa-question-circle" title={helpFilterText}></i>
   ) : undefined;
 
@@ -31,21 +33,20 @@ export const FilterItemText = ({
 
   return (
     <FilterItem
+      id={id}
       label={label}
-      className="filter-body-block-freetext"
-      headerAdditions={headerAdditions}
-      filterBody={
-        <div className="filter-freetext-input-wrapper">
-          <input
-            className="filter-text-input-field"
-            type="text"
-            placeholder={placeholder}
-            name={name}
-            onChange={debouncedOnChange}
-          />
-          <i className="fa fa-search filter-freetext-magnifying-glass" />
-        </div>
-      }
-    />
+      labelAddition={labelAddition}
+    >
+      <div className="filter-freetext-input-wrapper">
+        <input
+          className="filter-text-input-field"
+          type="text"
+          placeholder={placeholder}
+          name={name}
+          onChange={debouncedOnChange}
+        />
+        <i className="fa fa-search filter-freetext-magnifying-glass"/>
+      </div>
+    </FilterItem>
   );
 };
