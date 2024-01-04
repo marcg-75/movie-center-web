@@ -24,13 +24,7 @@ export const FilterItemClear = ({ clearFilter, compactMode }: Props) => {
 
   return (
     <div>
-      {!compactMode && (
-        <FilterItem
-          label="&nbsp;"
-          className="filter-clear"
-          filterBody={filterItemBody}
-        />
-      )}
+      {!compactMode && <FilterItem label="&nbsp;">{filterItemBody}</FilterItem>}
 
       {compactMode && <div className="filter-clear">{filterItemBody}</div>}
     </div>

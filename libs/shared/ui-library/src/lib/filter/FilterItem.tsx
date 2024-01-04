@@ -1,29 +1,32 @@
 import { ReactNode } from 'react';
 
 import './filter.component.scss';
+import { LabeledInput } from '../labeled-input';
 
 type Props = {
+  id?: string;
   label: string;
-  className?: string;
-  headerAdditions?: ReactNode;
-  filterBody: ReactNode;
+  labelAddition?: ReactNode;
+  children: ReactNode;
 };
 
 export const FilterItem = ({
+  id = '',
   label,
-  className,
-  headerAdditions,
-  filterBody,
+  labelAddition,
+  children,
 }: Props) => {
   return (
-    <div className={'filter-body-block ' + className}>
-      {label && (
-        <div className="filter-body-block-title">
-          {label} {headerAdditions && headerAdditions}
-        </div>
-      )}
-
-      <div className="filter-body-block-field">{filterBody}</div>
+    <div className="filter-item">
+      <LabeledInput
+        id={id}
+        label={label}
+        labelAddition={labelAddition}
+        labelMode="bold"
+        orientation="column"
+      >
+        <div className="filter-body-block-field">{children}</div>
+      </LabeledInput>
     </div>
   );
 };

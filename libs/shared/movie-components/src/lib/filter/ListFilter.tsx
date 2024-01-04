@@ -101,15 +101,7 @@ export const ListFilter = ({
         <div className="filter-body">
           <div className="filter-parameters-container">
             {regularContent}
-
-            <div
-              className={
-                'extended-section' +
-                (isExtendedVisible ? ' extended-section-visible' : '')
-              }
-            >
-              {isExtendedVisible && extendedContent}
-            </div>
+            {isExtendedVisible && extendedContent}
           </div>
 
           <div className="filter-actions-container">

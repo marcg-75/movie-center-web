@@ -1,20 +1,13 @@
-import { ChangeEvent, ReactNode, useState } from 'react';
-import { connect } from 'react-redux';
-
 import '../movie.details.scss';
-
-import { Loader } from '@giron/shared-ui-library';
-import { LabelledTextInput } from '../inputs/LabelledTextInput';
-import { LabelledDateInput } from '../inputs/LabelledDateInput';
-import { LabelledTimeInput } from '../inputs/LabelledTimeInput';
-import { LabelledTextarea } from '../inputs/LabelledTextarea';
-import { LabelledSelect } from '../inputs/LabelledSelect';
+import { ChangeEvent, ReactNode } from 'react';
 import {
-  BaseDataStateModel,
-  MovieStateModel,
-  updateMovieState,
-} from '@giron/data-access-redux';
-import { checkIfBaseDataIsLoading } from '../../utils/movie.utils';
+  LabeledDateInput,
+  LabeledSelect,
+  LabeledTextarea,
+  LabeledTextInput,
+  LabeledTimeInput,
+  Loader,
+} from '@giron/shared-ui-library';
 import {
   IMovie,
   MovieGenreModel,
@@ -22,25 +15,27 @@ import {
   SelectableModel,
 } from '@giron/shared-models';
 
-interface GeneralInfoPanelProps {
-  movie: MovieStateModel;
-  baseData: BaseDataStateModel;
-  dispatch: (any: unknown) => void;
+type Props = {
+  movie?: IMovie;
+  genres?: SelectableModel[];
+  studios?: NameEntityModel[];
+  isLoading?: boolean;
+  onMovieChange: (movie: IMovie) => void;
+  error?: string | Error;
+  errors?: string[] | Error[];
   testName?: string;
-}
+};
 
-const GeneralInfoPanel = ({
+export const GeneralInfoPanel = ({
   movie,
-  baseData,
-  dispatch,
+  genres,
+  studios,
+  isLoading = false,
+  onMovieChange,
+  error,
+  errors,
   testName = 'GeneralInfoPanel_test',
-}: GeneralInfoPanelProps) => {
-  const [isMovieLoading] = useState(movie?.movieLoading?.loading);
-  const [isBaseDataLoading] = useState(checkIfBaseDataIsLoading(baseData));
-
-  const { movieItem, movieLoading } = movie;
-  const { genres, studios } = baseData;
-
+}: Props) => {
   const movieStateChanged = (
     event: ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -48,18 +43,12 @@ const GeneralInfoPanel = ({
   ) => {
     const { name, value } = event.target;
 
-    let cValue: string | SelectableModel | undefined = value;
+    const cValue: string | SelectableModel | undefined = value;
 
-    if (name === 'mainGenre') {
-      cValue = genres?.find((g: SelectableModel) => g.code === value);
-    }
-
-    dispatch(
-      updateMovieState({
-        ...movieItem,
-        [name]: cValue,
-      } as IMovie)
-    );
+    onMovieChange({
+      ...movie,
+      [name]: cValue,
+    } as IMovie);
   };
 
   const additionalGenresChanged = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -74,7 +63,7 @@ const GeneralInfoPanel = ({
 
       if (genre) {
         const movieGenre: MovieGenreModel = {
-          movieTitle: movieItem?.title || '',
+          movieTitle: movie?.title || '',
           genre,
           mainGenre: false, // TODO: Change this when main genre selection feature is being implemented.
         };
@@ -83,12 +72,10 @@ const GeneralInfoPanel = ({
       }
     }
 
-    dispatch(
-      updateMovieState({
-        ...movieItem,
-        genres: chosenGenres,
-      } as IMovie)
-    );
+    onMovieChange({
+      ...movie,
+      genres: chosenGenres,
+    } as IMovie);
   };
 
   const studioAdded = (event: ChangeEvent<HTMLInputElement>) => {
@@ -96,15 +83,13 @@ const GeneralInfoPanel = ({
 
     const newStudio: NameEntityModel = { name: value } as NameEntityModel;
 
-    const chosenStudios: Array<NameEntityModel> = movieItem?.studios || [];
+    const chosenStudios: Array<NameEntityModel> = movie?.studios || [];
     chosenStudios.push(newStudio);
 
-    dispatch(
-      updateMovieState({
-        ...movieItem,
-        studios: chosenStudios,
-      } as IMovie)
-    );
+    onMovieChange({
+      ...movie,
+      studios: chosenStudios,
+    } as IMovie);
   };
 
   const studiosChanged = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -122,23 +107,21 @@ const GeneralInfoPanel = ({
       }
     }
 
-    dispatch(
-      updateMovieState({
-        ...movieItem,
-        studios: chosenStudios,
-      } as IMovie)
-    );
+    onMovieChange({
+      ...movie,
+      studios: chosenStudios,
+    } as IMovie);
   };
 
   let content: ReactNode;
 
-  if (movieLoading?.errors) {
+  if (error || errors) {
     // TODO: Fyll på
     //DialogComponent.openDefaultErrorDialog(dialog, movie.movieListErrorMessages);  // TODO: Implement error dialog handling.
     //alert(movieErrorMessages);
 
-    content = <div></div>;
-  } else if (isMovieLoading || !movieItem || isBaseDataLoading) {
+    content = <div>Ett fel inträffade</div>;
+  } else if (isLoading || !movie) {
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
@@ -164,10 +147,10 @@ const GeneralInfoPanel = ({
     });
     // studioOptions?.unshift(<option key="0" value=""></option>);
 
-    const mainGenre: MovieGenreModel | undefined = movieItem.genres?.find(
+    const mainGenre: MovieGenreModel | undefined = movie.genres?.find(
       (mg) => mg.mainGenre
     );
-    const currentAdditionalGenres: MovieGenreModel[] = movieItem.genres?.filter(
+    const currentAdditionalGenres: MovieGenreModel[] = movie.genres?.filter(
       (mg) => !mg.mainGenre
     );
 
@@ -176,14 +159,14 @@ const GeneralInfoPanel = ({
         ? currentAdditionalGenres.map((mg) => mg.genre.code)
         : [];
 
-    const currentStudioIds: Array<string> = movieItem.studios
-      ? movieItem.studios.map((studio: NameEntityModel) => '' + studio.id)
+    const currentStudioIds: Array<string> = movie.studios
+      ? movie.studios.map((studio: NameEntityModel) => '' + studio.id)
       : [];
 
     content = (
-      <div>
+      <div className="panel-content">
         {mainGenre && (
-          <LabelledSelect
+          <LabeledSelect
             label="Huvudgenre: *"
             id="mainGenre"
             defaultValue={undefined}
@@ -195,7 +178,7 @@ const GeneralInfoPanel = ({
           />
         )}
 
-        <LabelledSelect
+        <LabeledSelect
           label="Genrer:"
           id="additionalGenres"
           defaultValue={currentAdditionalGenreCodes}
@@ -205,35 +188,35 @@ const GeneralInfoPanel = ({
           multiple={true}
         />
 
-        <LabelledTimeInput
+        <LabeledTimeInput
           label="Speltid:"
           id="runtime"
-          defaultValue={movieItem.runtime}
+          defaultValue={movie.runtime}
           callback={movieStateChanged}
         />
 
-        <LabelledDateInput
+        <LabeledDateInput
           label="Release-datum:"
           id="releaseDate"
-          defaultValue={movieItem.releaseDate}
+          defaultValue={movie.releaseDate}
           callback={movieStateChanged}
         />
 
-        <LabelledTextInput
+        <LabeledTextInput
           label="Land:"
           id="country"
-          defaultValue={movieItem.country}
+          defaultValue={movie.country}
           callback={movieStateChanged}
         />
 
-        <LabelledTextInput
+        <LabeledTextInput
           label="Ålder:"
           id="ageRestriction"
-          defaultValue={movieItem.ageRestriction}
+          defaultValue={movie.ageRestriction}
           callback={movieStateChanged}
         />
 
-        <LabelledSelect
+        <LabeledSelect
           label="Studior:"
           id="studios"
           defaultValue={undefined}
@@ -245,7 +228,7 @@ const GeneralInfoPanel = ({
         />
 
         {process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true' && (
-          <LabelledTextInput
+          <LabeledTextInput
             label="Lägg till ny studio:"
             id="newStudio"
             defaultValue={undefined}
@@ -253,16 +236,16 @@ const GeneralInfoPanel = ({
           />
         )}
 
-        <LabelledTextarea
+        <LabeledTextarea
           label="Beskrivning: *"
           id="description"
-          defaultValue={movieItem.description}
+          defaultValue={movie.description}
           callback={movieStateChanged}
           required={true}
         />
 
         <a
-          href={`https://www.imdb.com/title/${movieItem.imdbId}/`}
+          href={`https://www.imdb.com/title/${movie.imdbId}/`}
           target="browser1"
         >
           IMDB info
@@ -273,18 +256,3 @@ const GeneralInfoPanel = ({
 
   return <div data-test-name={testName}>{content}</div>;
 };
-
-function stateToProps({
-  movie,
-  baseData,
-}: {
-  movie: MovieStateModel;
-  baseData: BaseDataStateModel;
-}) {
-  return {
-    movie,
-    baseData,
-  };
-}
-
-export default connect(stateToProps)(GeneralInfoPanel);

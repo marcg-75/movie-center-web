@@ -1,15 +1,6 @@
-import { ChangeEvent, FormEvent, ReactNode, useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-
 import '../movie.details.scss';
-
+import { ChangeEvent, FormEvent, ReactNode, useEffect, useState } from 'react';
 import { Loader } from '@giron/shared-ui-library';
-import {
-  getActors,
-  MovieStateModel,
-  PersonStateModel,
-  updateMovieState,
-} from '@giron/data-access-redux';
 import { mapToPersonOptionElements } from './CrewPanel';
 import {
   CastAndCrewModel,
@@ -19,24 +10,29 @@ import {
   SelectableModel,
 } from '@giron/shared-models';
 
-interface CastPanelProps {
-  movie: MovieStateModel;
-  person: PersonStateModel;
-  dispatch: (any: unknown) => void;
+type Props = {
+  movie?: IMovie;
+  actors?: PersonRoleModel[];
+  persons?: NameEntityModel[];
+  isMovieLoading?: boolean;
+  isActorsLoading?: boolean;
+  isPersonsLoading?: boolean;
+  onMovieChange: (movie: IMovie) => void;
+  errors?: string[] | Error[];
   testName?: string;
-}
+};
 
-const CastPanel = ({
+export const CastPanel = ({
   movie,
-  person,
-  dispatch,
+  actors,
+  persons,
+  isMovieLoading = false,
+  isActorsLoading = false,
+  isPersonsLoading = false,
+  onMovieChange,
+  errors,
   testName = 'CastPanel_test',
-}: CastPanelProps) => {
-  const { movieItem } = movie;
-  const { persons, actors, actorsLoading, personsLoading } = person;
-
-  const [isActorsLoading, setIsActorsLoading] = useState(false);
-  const [isMovieLoading, setIsMovieLoading] = useState(false);
+}: Props) => {
   const [selectablePersons, setSelectablePersons] = useState<NameEntityModel[]>(
     []
   );
@@ -44,20 +40,8 @@ const CastPanel = ({
   const [selectedPersonName, setSelectedPersonName] = useState<string>();
 
   useEffect(() => {
-    if (
-      !isActorsLoading &&
-      ((!actorsLoading?.loading && !actorsLoading?.loaded) || !actors?.length)
-    ) {
-      setIsActorsLoading(true);
-      dispatch(getActors());
-    }
-  }, []);
-
-  useEffect(() => {
-    setIsActorsLoading(actorsLoading?.loading);
-    setIsMovieLoading(!movie?.movieLoading || movie.movieLoading.loading);
     setSelectablePersons(getSelectablePersons());
-  }, [movie, person]);
+  }, [movie, persons]);
 
   const clearSelectedPerson = () => {
     setSelectablePersons([]);
@@ -68,7 +52,7 @@ const CastPanel = ({
   const addActor = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    if (!movieItem) {
+    if (!movie) {
       return;
     }
 
@@ -80,28 +64,24 @@ const CastPanel = ({
       return;
     }
 
-    const allCurrentActors: Array<PersonRoleModel> = person.actors
-      ? person.actors
-      : [];
-    const actorsForMovie = movieItem.actors ? movieItem.actors : [];
+    const allCurrentActors: Array<PersonRoleModel> = actors ? actors : [];
+    const actorsForMovie = movie.actors ? movie.actors : [];
     const selectedActor: PersonRoleModel | undefined = allCurrentActors.find(
       (a: PersonRoleModel) => a.id === parseInt(actorPersonRoleId, 10)
     );
 
     const newActor: CastAndCrewModel = {
-      movieTitle: movieItem.title,
+      movieTitle: movie.title,
       personRole: selectedActor,
       characterName,
     } as CastAndCrewModel;
 
     actorsForMovie.push(newActor);
 
-    dispatch(
-      updateMovieState({
-        ...movieItem,
-        actors: actorsForMovie,
-      } as IMovie)
-    );
+    onMovieChange({
+      ...movie,
+      actors: actorsForMovie,
+    } as IMovie);
 
     event.currentTarget['actorPersonRoleId'].value = '';
     event.currentTarget['characterName'].value = '';
@@ -142,8 +122,6 @@ const CastPanel = ({
     event.currentTarget['newActorCharacterName'].value = '';
 
     clearSelectedPerson();
-
-    dispatch(getActors());
   };
 
   // Adds new actor (existing or completely new PERSON)
@@ -152,11 +130,11 @@ const CastPanel = ({
     personName: string,
     characterName: string
   ) => {
-    if (!movieItem || (!personId && !personName) || !characterName) {
+    if (!movie || (!personId && !personName) || !characterName) {
       return;
     }
 
-    const actors = movieItem.actors ? movieItem.actors : [];
+    const actors = movie.actors ? movie.actors : [];
 
     const person: NameEntityModel = {
       id: personId ? parseInt(personId, 10) : undefined,
@@ -173,23 +151,21 @@ const CastPanel = ({
     } as PersonRoleModel;
 
     const newActor: CastAndCrewModel = {
-      movieTitle: movieItem.title,
+      movieTitle: movie.title,
       personRole,
       characterName,
     } as CastAndCrewModel;
 
     actors.push(newActor);
 
-    dispatch(
-      updateMovieState({
-        ...movieItem,
-        actors,
-      } as IMovie)
-    );
+    onMovieChange({
+      ...movie,
+      actors,
+    } as IMovie);
   };
 
   const removeActor = (actorId: number, personName: string) => {
-    if (!movieItem) {
+    if (!movie) {
       return;
     }
 
@@ -197,7 +173,7 @@ const CastPanel = ({
       return;
     }
 
-    const actorsForMovie = movieItem.actors ? movieItem.actors : [];
+    const actorsForMovie = movie.actors ? movie.actors : [];
 
     //actorsForMovie = actorsForMovie.filter((a: CastAndCrewModel) => a.id !== actorId);
 
@@ -210,12 +186,10 @@ const CastPanel = ({
       }
     });
 
-    dispatch(
-      updateMovieState({
-        ...movieItem,
-        actors: actorsForMovie,
-      } as IMovie)
-    );
+    onMovieChange({
+      ...movie,
+      actors: actorsForMovie,
+    } as IMovie);
 
     clearSelectedPerson();
   };
@@ -223,9 +197,9 @@ const CastPanel = ({
   const getSelectablePersons = (): NameEntityModel[] => {
     let selectablePersons: NameEntityModel[] = [];
 
-    if (persons && persons.length > 0 && !!movieItem) {
-      const currentActorsInMovie: Array<CastAndCrewModel> = movieItem.actors
-        ? movieItem.actors
+    if (persons && persons.length > 0 && !!movie) {
+      const currentActorsInMovie: Array<CastAndCrewModel> = movie.actors
+        ? movie.actors
         : [];
 
       // Filtrera bort alla personer som redan är tillagda för aktuell roll.
@@ -253,20 +227,20 @@ const CastPanel = ({
 
   let content;
 
-  if (actorsLoading?.errors || personsLoading?.errors) {
+  if (errors) {
     //DialogComponent.openDefaultErrorDialog(this.dialog, movie.movieListErrorMessages);  // TODO: Implement error dialog handling.
     //alert(movieErrorMessages);
 
     content = (
       <div>
         <ul>
-          {actorsLoading?.errors?.map((m, i: number) => (
+          {errors?.map((m, i: number) => (
             <li key={i}>{m as string}</li>
           ))}
         </ul>
       </div>
     );
-  } else if (isMovieLoading || !movieItem || actorsLoading?.loading) {
+  } else if (isMovieLoading || isActorsLoading || !movie) {
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
@@ -275,8 +249,8 @@ const CastPanel = ({
     );
   } else {
     const allCurrentActors: Array<PersonRoleModel> = actors ? actors : [];
-    const currentActorsInMovie: Array<CastAndCrewModel> = movieItem.actors
-      ? movieItem.actors
+    const currentActorsInMovie: Array<CastAndCrewModel> = movie.actors
+      ? movie.actors
       : [];
 
     const castElements = currentActorsInMovie.map(
@@ -321,7 +295,7 @@ const CastPanel = ({
       process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
 
     content = (
-      <div>
+      <div className="panel-content">
         {castElements}
 
         {enableMovieInfoEdit && (
@@ -345,7 +319,7 @@ const CastPanel = ({
           <form onSubmit={(e) => addNewActor(e)} id="addNewActorForm">
             <label>Lägg till ny skådespelare:</label>
 
-            {!personsLoading || personsLoading.loading ? (
+            {isPersonsLoading ? (
               <Loader />
             ) : (
               <select
@@ -387,18 +361,3 @@ const CastPanel = ({
 
   return <div data-test-name={testName}>{content}</div>;
 };
-
-function stateToProps({
-  movie,
-  person,
-}: {
-  movie: MovieStateModel;
-  person: PersonStateModel;
-}) {
-  return {
-    movie,
-    person,
-  };
-}
-
-export default connect(stateToProps)(CastPanel);

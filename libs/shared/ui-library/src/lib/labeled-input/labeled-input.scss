@@ -1,0 +1,46 @@
+$color-grey: #cccccc;
+$color-grey-dark: #515151;
+
+.container {
+  display: flex;
+
+  &.column {
+    flex-direction: column;
+  }
+}
+
+.label {
+  display: inline-block;
+  color: $color-grey-dark;
+  font-size: 1rem;
+  letter-spacing: 0.05rem;
+  padding: 0.3rem 0 0.625rem 0;
+
+  &.label-bold {
+    font-weight: bold;
+  }
+
+  &.fixed-width {
+    min-width: 150px;
+  }
+}
+
+.text-input {
+  color: $color-grey-dark;
+  border: 1px solid $color-grey;
+  border-radius: 0.35rem;
+  font-size: 1rem;
+  font-style: normal;
+
+  + .text-input-bold {
+    font-weight: bold;
+  }
+}
+
+.text-input::placeholder {
+  color: $color-grey-dark;
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: normal;
+  letter-spacing: 0.01rem;
+}

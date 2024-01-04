@@ -1,21 +1,21 @@
-import '../movie.details.scss';
 import { FocusEvent } from 'react';
+import { LabeledInputProps } from './labeled-input.model';
+import { LabeledInput } from './LabeledInput';
 
-interface LabelledTimeInputProps {
-  label: string;
-  id: string;
+interface Props extends LabeledInputProps {
   defaultValue?: string;
   callback: (event: FocusEvent<HTMLInputElement>) => void;
-  testName?: string;
 }
 
-export const LabelledTimeInput = ({
+export const LabeledTimeInput = ({
   label,
   id,
   defaultValue,
+  labelMode,
+  orientation,
   callback,
   testName = 'LabelledTimeInput_test',
-}: LabelledTimeInputProps) => {
+}: Props) => {
   const strRuntime = defaultValue
     ? defaultValue.substring(
         defaultValue.lastIndexOf('T') + 1,
@@ -24,8 +24,13 @@ export const LabelledTimeInput = ({
     : '';
 
   return (
-    <div className="labelled-input" data-test-name={testName}>
-      <label htmlFor={id}>{label}</label>
+    <LabeledInput
+      id={id}
+      label={label}
+      labelMode={labelMode}
+      orientation={orientation}
+      testName={testName}
+    >
       <input
         className="date-input"
         type="datetime-local"
@@ -35,7 +40,9 @@ export const LabelledTimeInput = ({
         onBlur={callback}
         hidden={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'false'}
       />
-      <span hidden={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true'}>{strRuntime}</span>
-    </div>
+      <span hidden={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true'}>
+        {strRuntime}
+      </span>
+    </LabeledInput>
   );
 };
