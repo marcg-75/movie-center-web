@@ -3,13 +3,15 @@ import { ChangeEvent } from 'react';
 import { Loader } from '@giron/shared-ui-library';
 import { IMovie } from '@giron/shared-models';
 
-export const IMAGE_URL = `${process.env.NX_API_BASE_URL}image/`;
+export const IMAGE_URL = `${
+  process.env.NX_API_BASE_URL || process.env.NEXT_PUBLIC_API_BASE_URL
+}image/`;
 
 type Props = {
   movie?: IMovie;
   isLoading?: boolean;
   onMovieChange: (movie: IMovie) => void;
-  error?: string | Error;
+  error?: string | Error | unknown;
   errors?: string[] | Error[];
   testName?: string;
 };

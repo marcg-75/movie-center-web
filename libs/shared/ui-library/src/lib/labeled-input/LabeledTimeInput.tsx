@@ -2,6 +2,10 @@ import { FocusEvent } from 'react';
 import { LabeledInputProps } from './labeled-input.model';
 import { LabeledInput } from './LabeledInput';
 
+const enableMovieInfoEdit: boolean =
+  process.env.NEXT_PUBLIC_ENABLE_MOVIE_INFO_EDIT === 'true' ||
+  process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
+
 interface Props extends LabeledInputProps {
   defaultValue?: string;
   callback: (event: FocusEvent<HTMLInputElement>) => void;
@@ -38,11 +42,9 @@ export const LabeledTimeInput = ({
         name={id}
         defaultValue={defaultValue}
         onBlur={callback}
-        hidden={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'false'}
+        hidden={!enableMovieInfoEdit}
       />
-      <span hidden={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true'}>
-        {strRuntime}
-      </span>
+      <span hidden={enableMovieInfoEdit}>{strRuntime}</span>
     </LabeledInput>
   );
 };

@@ -3,6 +3,10 @@ import { ChangeEvent, ReactNode, useState } from 'react';
 import { Loader } from '@giron/shared-ui-library';
 import { IMovie } from '@giron/shared-models';
 
+const enableMovieInfoEdit: boolean =
+  process.env.NEXT_PUBLIC_ENABLE_MOVIE_INFO_EDIT === 'true' ||
+  process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
+
 const INFO_PANEL_GENERAL = 'general';
 const INFO_PANEL_CAST = 'cast';
 const INFO_PANEL_CREW = 'crew';
@@ -24,6 +28,7 @@ type Props = {
   formatPanel: ReactNode;
   coverPanel: ReactNode;
   personalInfoPanel: ReactNode;
+  error?: string | Error | unknown;
   errors?: string[] | Error[];
   testName?: string;
 };
@@ -42,6 +47,7 @@ export const MovieDetails = ({
   formatPanel,
   coverPanel,
   personalInfoPanel,
+  error,
   errors,
   testName = 'MovieDetails_test',
 }: Props) => {
@@ -81,7 +87,17 @@ export const MovieDetails = ({
 
   let content;
 
-  if (errors) {
+  if (error) {
+    content = (
+      <div>
+        <ul>
+          <li>
+            {typeof error === 'string' ? error : (error as Error).message}
+          </li>
+        </ul>
+      </div>
+    );
+  } else if (errors) {
     //DialogComponent.openDefaultErrorDialog(dialog, movie.movieListErrorMessages);  // TODO: Implement error dialog handling.
     //alert(movieErrorMessages);
     const errs = errors as string[];
@@ -212,10 +228,7 @@ export const MovieDetails = ({
           </div>
         </div>
 
-        <div
-          className="movie-action-panel"
-          hidden={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'false'}
-        >
+        <div className="movie-action-panel" hidden={!enableMovieInfoEdit}>
           <button className="btn secondary" onClick={saveMovie.bind(this)}>
             Spara
           </button>

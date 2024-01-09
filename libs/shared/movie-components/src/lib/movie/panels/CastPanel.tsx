@@ -10,6 +10,10 @@ import {
   SelectableModel,
 } from '@giron/shared-models';
 
+const enableMovieInfoEdit: boolean =
+  process.env.NEXT_PUBLIC_ENABLE_MOVIE_INFO_EDIT === 'true' ||
+  process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
+
 type Props = {
   movie?: IMovie;
   actors?: PersonRoleModel[];
@@ -18,7 +22,9 @@ type Props = {
   isActorsLoading?: boolean;
   isPersonsLoading?: boolean;
   onMovieChange: (movie: IMovie) => void;
+  error?: string | Error | unknown;
   errors?: string[] | Error[];
+  enableSelectFromAllPersons?: boolean;
   testName?: string;
 };
 
@@ -30,7 +36,9 @@ export const CastPanel = ({
   isActorsLoading = false,
   isPersonsLoading = false,
   onMovieChange,
+  error,
   errors,
+  enableSelectFromAllPersons = false,
   testName = 'CastPanel_test',
 }: Props) => {
   const [selectablePersons, setSelectablePersons] = useState<NameEntityModel[]>(
@@ -227,7 +235,17 @@ export const CastPanel = ({
 
   let content;
 
-  if (errors) {
+  if (error) {
+    content = (
+      <div>
+        <ul>
+          <li>
+            {typeof error === 'string' ? error : (error as Error).message}
+          </li>
+        </ul>
+      </div>
+    );
+  } else if (errors) {
     //DialogComponent.openDefaultErrorDialog(this.dialog, movie.movieListErrorMessages);  // TODO: Implement error dialog handling.
     //alert(movieErrorMessages);
 
@@ -263,7 +281,7 @@ export const CastPanel = ({
           </span>
           <span className="text-value">{actor.characterName}</span>
 
-          {process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true' && (
+          {enableMovieInfoEdit && (
             <button
               className="btn secondary"
               onClick={() =>
@@ -291,9 +309,6 @@ export const CastPanel = ({
     const selectablePersonOptions: ReactNode[] =
       mapToPersonOptionElements(selectablePersons);
 
-    const enableMovieInfoEdit =
-      process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
-
     content = (
       <div className="panel-content">
         {castElements}
@@ -319,18 +334,19 @@ export const CastPanel = ({
           <form onSubmit={(e) => addNewActor(e)} id="addNewActorForm">
             <label>Lägg till ny skådespelare:</label>
 
-            {isPersonsLoading ? (
-              <Loader />
-            ) : (
-              <select
-                id="newActorPersonId"
-                name="newActorPersonId"
-                onChange={(e) => updateNewActorName(e)}
-                disabled={!selectablePersons || !selectablePersons.length}
-              >
-                {selectablePersonOptions}
-              </select>
-            )}
+            {enableSelectFromAllPersons &&
+              (isPersonsLoading ? (
+                <Loader />
+              ) : (
+                <select
+                  id="newActorPersonId"
+                  name="newActorPersonId"
+                  onChange={(e) => updateNewActorName(e)}
+                  disabled={!selectablePersons || !selectablePersons.length}
+                >
+                  {selectablePersonOptions}
+                </select>
+              ))}
 
             <input
               className="text-input-field"

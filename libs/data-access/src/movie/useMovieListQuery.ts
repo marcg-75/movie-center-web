@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { createMovieListQueryString } from '@giron/shared-util-helpers';
 import { useMovieFilter } from './useMovieFilter';
 
-const PATH_PREFIX = 'movie';
+const PATH_PREFIX = 'movie/list';
 
 interface MovieListResponse {
   content: IMovie[];
@@ -31,9 +31,7 @@ export const useMovieListQuery = <T>(
   return useQuery(
     ['movies', filter, queryKey],
     async () => {
-      return await client.get<MovieListResponse>(
-        `${PATH_PREFIX}/list${queryKey}`
-      );
+      return await client.get<MovieListResponse>(`${PATH_PREFIX}${queryKey}`);
     },
     {
       select,

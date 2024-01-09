@@ -83,6 +83,9 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
 
 ## Buggar
 
+- UI
+  - Filter component responsiveness.
+
 ## Restlista
 
 - Add actor: Se till att en personRole som redan är vald inte kan väljas. (Just nu: Dubletten ignoreras vid spara.)

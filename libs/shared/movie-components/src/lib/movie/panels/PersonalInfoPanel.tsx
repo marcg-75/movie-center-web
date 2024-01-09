@@ -33,7 +33,7 @@ type Props = {
   movie?: IMovie;
   isLoading: boolean;
   onMovieChange: (movie: IMovie) => void;
-  error?: string | Error;
+  error?: string | Error | unknown;
   errors?: string[] | Error[];
   testName?: string;
 };

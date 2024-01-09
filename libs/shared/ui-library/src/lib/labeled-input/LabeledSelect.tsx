@@ -2,6 +2,10 @@ import { ChangeEvent, ReactNode } from 'react';
 import { LabeledInputProps } from './labeled-input.model';
 import { LabeledInput } from './LabeledInput';
 
+const enableMovieInfoEdit: boolean =
+  process.env.NEXT_PUBLIC_ENABLE_MOVIE_INFO_EDIT === 'true' ||
+  process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
+
 interface Props extends LabeledInputProps {
   defaultValue?: number | string | string[];
   value?: number | string | string[] | null;
@@ -40,12 +44,10 @@ export const LabeledSelect = ({
         name={id}
         required={required}
         multiple={multiple}
-        disabled={process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'false'}
+        disabled={!enableMovieInfoEdit}
         value={value}
         onChange={callback}
-        className={
-          process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true' ? '' : 'disabled'
-        }
+        className={enableMovieInfoEdit ? '' : 'disabled'}
       >
         {options}
       </select>

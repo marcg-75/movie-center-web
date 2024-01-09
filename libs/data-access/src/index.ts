@@ -1,2 +1,9 @@
-export { useGenres, useFormats } from './base-data';
-export { useMovieList, useMovieFilter } from './movie';
+export {
+  useGenres,
+  useFormats,
+  useStudios,
+  useRoles,
+  useLanguages,
+} from './base-data';
+export { useMovieList, useMovieDetails, useMovieFilter } from './movie';
+export { useActors, useCrew, useAllPersons } from './person';
