@@ -21,10 +21,14 @@ type Props = {
   studios?: NameEntityModel[];
   isLoading?: boolean;
   onMovieChange: (movie: IMovie) => void;
-  error?: string | Error;
+  error?: string | Error | unknown;
   errors?: string[] | Error[];
   testName?: string;
 };
+
+const enableMovieInfoEdit: boolean =
+  process.env.NEXT_PUBLIC_ENABLE_MOVIE_INFO_EDIT === 'true' ||
+  process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
 
 export const GeneralInfoPanel = ({
   movie,
@@ -227,7 +231,7 @@ export const GeneralInfoPanel = ({
           multiple={true}
         />
 
-        {process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true' && (
+        {enableMovieInfoEdit && (
           <LabeledTextInput
             label="Lägg till ny studio:"
             id="newStudio"

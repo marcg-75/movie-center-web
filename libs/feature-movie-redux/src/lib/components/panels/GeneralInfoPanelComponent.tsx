@@ -9,19 +9,19 @@ import { checkIfBaseDataIsLoading } from '../../utils/movie.utils';
 import { IMovie } from '@giron/shared-models';
 import { GeneralInfoPanel } from '@giron/shared-movie-components';
 
-interface GeneralInfoPanelProps {
+type Props = {
   movie: MovieStateModel;
   baseData: BaseDataStateModel;
   dispatch: (any: unknown) => void;
   testName?: string;
-}
+};
 
 const GeneralInfoPanelComponent = ({
   movie,
   baseData,
   dispatch,
   testName = 'GeneralInfoPanelComponent_test',
-}: GeneralInfoPanelProps) => {
+}: Props) => {
   const [isMovieLoading] = useState(movie?.movieLoading?.loading);
   const [isBaseDataLoading] = useState(checkIfBaseDataIsLoading(baseData));
 

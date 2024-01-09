@@ -1,5 +1,3 @@
-import { default as moment } from 'moment';
-
 import {
   CLEAR_MOVIE_ACTION_STATE,
   MOVIE_CREATE_EMPTY,
@@ -17,7 +15,7 @@ import {
   MOVIE_UPDATED,
   MOVIE_UPDATING,
 } from '../actions/movie.actions';
-import { IMovie, SelectableModel } from '@giron/shared-models';
+import { IMovie } from '@giron/shared-models';
 import { MovieStateModel } from '../models/state/movie-state.model';
 import {
   getFailedLoadingState,
@@ -25,6 +23,7 @@ import {
   loadingLoadingState,
   successLoadingState,
 } from '../models/state/loading.model';
+import { transformToInnerModel } from '@giron/shared-util-helpers';
 
 export interface McPayload {
   status?: number;
@@ -203,30 +202,4 @@ export const createErrorMessageArray = (payload: McPayload): string[] => {
   }
 
   return errorMessages;
-};
-
-const transformToInnerModel = (movieItem: IMovie): IMovie => {
-  const { runtime, releaseDate } = movieItem;
-  const { movieFormatInfo, moviePersonalInfo } = movieItem;
-  const { obtainDate } = moviePersonalInfo;
-
-  return {
-    ...movieItem,
-    runtime: runtime ? '2020-01-01T' + runtime.substring(0, 5) : undefined,
-    releaseDate: releaseDate
-      ? moment(releaseDate).format('YYYY-MM-DD')
-      : undefined,
-    movieFormatInfo: {
-      ...movieFormatInfo,
-      format: movieFormatInfo.format
-        ? movieFormatInfo.format
-        : ({} as SelectableModel),
-    },
-    moviePersonalInfo: {
-      ...moviePersonalInfo,
-      obtainDate: obtainDate
-        ? moment(obtainDate).format('YYYY-MM-DD')
-        : undefined,
-    },
-  };
 };

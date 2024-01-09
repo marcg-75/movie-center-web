@@ -10,6 +10,10 @@ import {
   SelectableModel,
 } from '@giron/shared-models';
 
+const enableMovieInfoEdit: boolean =
+  process.env.NEXT_PUBLIC_ENABLE_MOVIE_INFO_EDIT === 'true' ||
+  process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
+
 type Props = {
   movie?: IMovie;
   crew?: PersonRoleModel[];
@@ -19,7 +23,9 @@ type Props = {
   isCrewLoading?: boolean;
   isPersonsLoading?: boolean;
   onMovieChange: (movie: IMovie) => void;
+  error?: string | Error | unknown;
   errors?: string[] | Error[];
+  enableSelectFromAllPersons?: boolean;
   testName?: string;
 };
 
@@ -32,7 +38,9 @@ export const CrewPanel = ({
   isCrewLoading,
   isPersonsLoading,
   onMovieChange,
+  error,
   errors,
+  enableSelectFromAllPersons,
   testName = 'CrewPanel_test',
 }: Props) => {
   const [selectableCrewMembersForRole, setSelectableCrewMembersForRole] =
@@ -218,7 +226,7 @@ export const CrewPanel = ({
           {cac.personRole.person ? cac.personRole.person.name : 'Namn saknas'}
         </span>
 
-        {process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true' && (
+        {enableMovieInfoEdit && (
           <button
             className="btn secondary"
             onClick={() =>
@@ -307,7 +315,17 @@ export const CrewPanel = ({
 
   let content: ReactNode;
 
-  if (errors) {
+  if (error) {
+    content = (
+      <div>
+        <ul>
+          <li>
+            {typeof error === 'string' ? error : (error as Error).message}
+          </li>
+        </ul>
+      </div>
+    );
+  } else if (errors) {
     //DialogComponent.openDefaultErrorDialog(dialog, movie.movieListErrorMessages);  // TODO: Implement error dialog handling.
     //alert(movieErrorMessages);
 
@@ -397,9 +415,6 @@ export const CrewPanel = ({
       selectablePersonsForRole
     );
 
-    const enableMovieInfoEdit =
-      process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
-
     content = (
       <div className="panel-content">
         <h4>Regissör(er)</h4>
@@ -475,20 +490,22 @@ export const CrewPanel = ({
               {allCrewRoleOptions}
             </select>
 
-            {isPersonsLoading ? (
-              <Loader />
-            ) : (
-              <select
-                id="newCrewPersonId"
-                name="crewPersonId"
-                onChange={(e) => updateNewCrewName(e)}
-                disabled={
-                  !selectablePersonsForRole || !selectablePersonsForRole.length
-                }
-              >
-                {personsForRoleOptions}
-              </select>
-            )}
+            {enableSelectFromAllPersons &&
+              (isPersonsLoading ? (
+                <Loader />
+              ) : (
+                <select
+                  id="newCrewPersonId"
+                  name="crewPersonId"
+                  onChange={(e) => updateNewCrewName(e)}
+                  disabled={
+                    !selectablePersonsForRole ||
+                    !selectablePersonsForRole.length
+                  }
+                >
+                  {personsForRoleOptions}
+                </select>
+              ))}
 
             <input
               className="text-input-field"
