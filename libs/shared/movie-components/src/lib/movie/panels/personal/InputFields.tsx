@@ -166,7 +166,7 @@ export const InputFields = ({ control, moviePersonalInfo }: Props) => {
               value={
                 moviePersonalInfo.obtainDate
                   ? new Date(moviePersonalInfo.obtainDate)
-                  : undefined
+                  : null
               }
             />
           )}

@@ -39,15 +39,13 @@ export const InputFields = ({
   genres,
   studios,
 }: Props) => {
-  const [country, setCountry] = useState(movie.country || '');
-  const [ageRestriction, setAgeRestriction] = useState(
-    movie.ageRestriction || ''
-  );
-  const [description, setDescription] = useState(movie.description || '');
+  const [country, setCountry] = useState('');
+  const [ageRestriction, setAgeRestriction] = useState('');
+  const [description, setDescription] = useState('');
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [selectedStudios, setSelectedStudios] = useState<string[]>([]);
   const [newStudio, setNewStudio] = useState<string>('');
-  const [imdbId, setImdbId] = useState(movie.imdbId || '');
+  const [imdbId, setImdbId] = useState('');
 
   useEffect(() => {
     const currentAdditionalGenres: MovieGenreModel[] = movie.genres?.filter(
@@ -65,6 +63,11 @@ export const InputFields = ({
 
     setSelectedGenres(currentAdditionalGenreCodes);
     setSelectedStudios(currentStudioIds);
+
+    setCountry(movie.country || '');
+    setAgeRestriction(movie.ageRestriction || '');
+    setDescription(movie.description || '');
+    setImdbId(movie.imdbId || '');
   }, [movie]);
 
   const additionalGenresChanged = (event: SelectChangeEvent) => {
@@ -176,7 +179,7 @@ export const InputFields = ({
               {...field}
               className="date-input"
               value={
-                movie.runtime ? toDate(new Date(movie.runtime)) : undefined
+                movie.runtime ? toDate(new Date(movie.runtime)) : null
               }
               format="HH:mm"
               ampm={false}
@@ -194,7 +197,7 @@ export const InputFields = ({
               {...field}
               format="yyyy-MM-dd"
               value={
-                movie.releaseDate ? new Date(movie.releaseDate) : undefined
+                movie.releaseDate ? new Date(movie.releaseDate) : null
               }
             />
           )}
