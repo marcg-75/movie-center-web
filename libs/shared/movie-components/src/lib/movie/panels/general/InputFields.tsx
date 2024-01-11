@@ -178,9 +178,7 @@ export const InputFields = ({
             <TimePicker
               {...field}
               className="date-input"
-              value={
-                movie.runtime ? toDate(new Date(movie.runtime)) : null
-              }
+              value={movie.runtime ? toDate(new Date(movie.runtime)) : null}
               format="HH:mm"
               ampm={false}
             />
@@ -196,9 +194,7 @@ export const InputFields = ({
             <DatePicker
               {...field}
               format="yyyy-MM-dd"
-              value={
-                movie.releaseDate ? new Date(movie.releaseDate) : null
-              }
+              value={movie.releaseDate ? new Date(movie.releaseDate) : null}
             />
           )}
         />
@@ -212,7 +208,7 @@ export const InputFields = ({
             <TextField
               {...field}
               type="text"
-              defaultValue={country}
+              value={country || ''}
               onChange={(e) => {
                 onChange(e);
                 setCountry(e.target.value);
@@ -240,7 +236,7 @@ export const InputFields = ({
             <TextField
               {...field}
               type="text"
-              defaultValue={ageRestriction}
+              value={ageRestriction || ''}
               onChange={(e) => {
                 onChange(e);
                 setAgeRestriction(e.target.value);
@@ -314,7 +310,7 @@ export const InputFields = ({
             <TextareaAutosize
               {...field}
               minRows={3}
-              value={description}
+              value={description || ''}
               onChange={(e) => {
                 onChange(e);
                 setDescription(e.target.value);

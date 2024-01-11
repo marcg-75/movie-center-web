@@ -67,11 +67,11 @@ export const CoverPanel = ({
               <Controller
                 control={control}
                 name="movieFormatInfo.cover.foregroundUrl"
-                render={({ field: { ref, onChange, ...field } }) => (
+                render={({ field: { onChange, ...field } }) => (
                   <TextField
                     {...field}
                     type="text"
-                    value={foregroundUrl}
+                    value={foregroundUrl || ''}
                     onChange={(e) => {
                       onChange(e);
                       setForegroundUrl(e.target.value);
@@ -100,11 +100,11 @@ export const CoverPanel = ({
               <Controller
                 control={control}
                 name="movieFormatInfo.cover.backgroundUrl"
-                render={({ field: { ref, onChange, ...field } }) => (
+                render={({ field: { onChange, ...field } }) => (
                   <TextField
                     {...field}
                     type="text"
-                    value={backgroundUrl}
+                    value={backgroundUrl || ''}
                     onChange={(e) => {
                       onChange(e);
                       setBackgroundUrl(e.target.value);

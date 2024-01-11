@@ -174,7 +174,7 @@ export const InputFields = ({
             <TextField
               {...field}
               type="text"
-              value={upcId}
+              value={upcId || ''}
               onChange={(e) => {
                 onChange(e);
                 setUpcId(e.target.value);
@@ -221,7 +221,7 @@ export const InputFields = ({
             <TextField
               {...field}
               type="text"
-              value={discs}
+              value={discs || ''}
               onChange={(e) => {
                 onChange(e);
                 setDiscs(e.target.value);
@@ -239,7 +239,7 @@ export const InputFields = ({
             <TextField
               {...field}
               type="text"
-              value={pictureFormat}
+              value={pictureFormat || ''}
               onChange={(e) => {
                 onChange(e);
                 setPictureFormat(e.target.value);

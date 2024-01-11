@@ -30,3 +30,11 @@ export const transformToInnerModel = (movieItem: IMovie): IMovie => {
     },
   };
 };
+
+export const removeUndefinedValuesFromObject = <T>(obj: T) => {
+  if (!obj) {
+    return;
+  }
+  // @ts-ignore
+  Object.keys(obj).forEach((key) => obj[key] === undefined && delete obj[key]);
+};

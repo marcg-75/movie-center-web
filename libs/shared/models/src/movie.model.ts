@@ -15,19 +15,19 @@ export interface IMovie {
   country: string;
   ageRestriction: string;
   imdbId?: string;
-  studios: Array<NameEntityModel>;
+  studios: NameEntityModel[];
 
-  actors: Array<CastAndCrewModel>;
-  directors: Array<CastAndCrewModel>;
-  producers: Array<CastAndCrewModel>;
-  music: Array<CastAndCrewModel>;
-  writers: Array<CastAndCrewModel>;
-  casters: Array<CastAndCrewModel>;
-  editors: Array<CastAndCrewModel>;
-  cinematography: Array<CastAndCrewModel>;
-  sound: Array<CastAndCrewModel>;
-  art: Array<CastAndCrewModel>;
-  otherRoles: Array<CastAndCrewModel>;
+  actors: CastAndCrewModel[];
+  directors: CastAndCrewModel[];
+  producers: CastAndCrewModel[];
+  music: CastAndCrewModel[];
+  writers: CastAndCrewModel[];
+  casters: CastAndCrewModel[];
+  editors: CastAndCrewModel[];
+  cinematography: CastAndCrewModel[];
+  sound: CastAndCrewModel[];
+  art: CastAndCrewModel[];
+  otherRoles: CastAndCrewModel[];
 
   movieFormatInfo: MovieFormatInfo;
   moviePersonalInfo: MoviePersonalInfo;
@@ -66,8 +66,8 @@ export interface MovieFormatInfo {
   discs: number;
   pictureFormat: string;
   system: string;
-  audioLanguages: Array<LanguageModel>;
-  subtitles: Array<LanguageModel>;
+  audioLanguages: LanguageModel[];
+  subtitles: LanguageModel[];
 }
 
 export interface MoviePersonalInfo {

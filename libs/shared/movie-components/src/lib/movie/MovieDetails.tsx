@@ -131,7 +131,7 @@ export const MovieDetails = ({
             <TextField
               {...field}
               type="text"
-              value={title}
+              value={title || ''}
               onChange={(e) => {
                 onChange(e);
                 setTitle(e.target.value);

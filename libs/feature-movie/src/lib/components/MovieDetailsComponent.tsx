@@ -15,6 +15,7 @@ import { CrewPanelComponent } from './panels/CrewPanelComponent';
 import { PersonalInfoPanelComponent } from './panels/PersonalInfoPanelComponent';
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
+import { removeUndefinedValuesFromObject } from '@giron/shared-util-helpers';
 
 type Props = {
   movieId: number;
@@ -41,9 +42,11 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
     formState: { errors: validationErrors },
     reset,
     setValue,
-  } = useForm<IMovie>({
-    defaultValues: movieDetails,
-  });
+    getValues,
+  } = useForm<IMovie>();
+  //   {
+  //   defaultValues: movieDetails,
+  // }
 
   const createMovieMutation = useCreateMovieMutation();
   const updateMovieMutation = useUpdateMovieMutation();
@@ -53,32 +56,42 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
       return;
     }
 
+    // Remove properties with undefined or null values. This since the change set sets undefined for all unchanged properties.
+    removeUndefinedValuesFromObject(movieChanges);
+    removeUndefinedValuesFromObject(movieChanges.movieFormatInfo);
+    removeUndefinedValuesFromObject(movieChanges.moviePersonalInfo);
+
     setIsSaving(true);
 
-    alert('Saving movie. Changes: ' + JSON.stringify(movieChanges));
+    // alert('Saving movie. Changes: ' + JSON.stringify(movieChanges));
 
     const updatedMovie: IMovie = {
       ...movieDetails,
       ...movieChanges,
     };
-
-    if (!movieChanges.id || movieChanges.id === 0) {
-      movieChanges.id = undefined;
-      // TODO: useCreateMovieMutation
+    debugger;
+    if (!updatedMovie.id || updatedMovie.id === 0) {
+      updatedMovie.id = undefined;
+      // createMovieMutation.mutate(updatedMovie);
     } else {
-      // TODO: useUpdateMovieMutation
+      // updateMovieMutation.mutate(updatedMovie);
     }
 
     setIsSaving(false);
-    router.push('/');
+    // router.push('/');
   };
+
+  // const removeUndefinedValuesFromObject = <T>(obj: T) => {
+  //   // @ts-ignore
+  //   Object.keys(obj).forEach((key) => obj[key] === undefined && delete obj[key]);
+  // };
 
   const onReset = () => {
     reset();
   };
 
   return (
-    <form onSubmit={handleSubmit((m: IMovie) => onSave(m))}>
+    <form onSubmit={handleSubmit(onSave)}>
       <MovieDetails
         movie={movieDetails}
         isLoading={isMovieLoading || isSaving}

@@ -25,7 +25,7 @@ const gradeOptions: SelectableModel[] = GRADES.map((g) => ({
   name: g,
 }));
 
-const CURRENCIES: string[] = ['SEK', 'EUR', 'NOK', 'DKK', 'GBP', 'USD'];
+const CURRENCIES: string[] = ['', 'SEK', 'EUR', 'NOK', 'DKK', 'GBP', 'USD'];
 const currencyOptions: SelectableModel[] = CURRENCIES.map((c) => ({
   code: c,
   name: c,
@@ -99,7 +99,7 @@ export const InputFields = ({ control, moviePersonalInfo }: Props) => {
             <TextField
               {...field}
               type="text"
-              value={archiveNumber}
+              value={archiveNumber || ''}
               onChange={(e) => {
                 onChange(e);
                 setArchiveNumber(e.target.value);
@@ -188,7 +188,7 @@ export const InputFields = ({ control, moviePersonalInfo }: Props) => {
             <TextField
               {...field}
               type="text"
-              value={obtainPrice}
+              value={obtainPrice || ''}
               onChange={(e) => {
                 onChange(e);
                 setObtainPrice(e.target.value);
@@ -252,7 +252,7 @@ export const InputFields = ({ control, moviePersonalInfo }: Props) => {
             <TextField
               {...field}
               type="text"
-              value={obtainPlace}
+              value={obtainPlace || ''}
               onChange={(e) => {
                 onChange(e);
                 setObtainPlace(e.target.value);
@@ -278,7 +278,7 @@ export const InputFields = ({ control, moviePersonalInfo }: Props) => {
             <TextareaAutosize
               {...field}
               minRows={3}
-              value={notes}
+              value={notes || ''}
               onChange={(e) => {
                 onChange(e);
                 setNotes(e.target.value);
