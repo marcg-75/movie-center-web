@@ -1,8 +1,9 @@
 import './movie.details.scss';
 import { ChangeEvent, MouseEvent, ReactNode, useState } from 'react';
-import { Loader } from '@giron/shared-ui-library';
+import { LabeledInput, Loader } from '@giron/shared-ui-library';
 import { IMovie } from '@giron/shared-models';
-import { Control } from 'react-hook-form';
+import { Control, Controller } from 'react-hook-form';
+import { TextField } from '@mui/material';
 
 const enableMovieInfoEdit: boolean =
   process.env.NEXT_PUBLIC_ENABLE_MOVIE_INFO_EDIT === 'true' ||
@@ -19,9 +20,6 @@ type Props = {
   movie?: IMovie;
   isLoading?: boolean;
   isCreateMode?: boolean;
-  onCreateMovie: (movie: IMovie) => void;
-  onUpdateMovie: (movie: IMovie) => void;
-  onMovieTitleChange: (movie: IMovie) => void;
   onReset: () => void;
   onGoToList: () => void;
   control: Control<IMovie>;
@@ -40,9 +38,6 @@ export const MovieDetails = ({
   movie,
   isLoading = false,
   isCreateMode = false,
-  onCreateMovie,
-  onUpdateMovie,
-  onMovieTitleChange,
   onReset,
   onGoToList,
   control,
@@ -57,23 +52,7 @@ export const MovieDetails = ({
   testName = 'MovieDetails_test',
 }: Props) => {
   const [activePanel, setActivePanel] = useState(PANEL_GENERAL);
-
-  const onSave = (movie: IMovie) => {
-    if (!movie) {
-      return;
-    }
-
-    alert('Saving movie: ' + JSON.stringify(movie));
-
-    if (!movie.id || movie.id === 0) {
-      delete movie.id;
-      onCreateMovie(movie);
-    } else {
-      onUpdateMovie(movie);
-    }
-
-    onGoToList();
-  };
+  const [title, setTitle] = useState(movie?.title || '');
 
   const onResetMovie = (e: MouseEvent) => {
     e.preventDefault();
@@ -102,10 +81,10 @@ export const MovieDetails = ({
   const movieStateChanged = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
 
-    onMovieTitleChange({
-      ...movie,
-      [name]: value,
-    } as IMovie);
+    // onMovieTitleChange({
+    //   ...movie,
+    //   [name]: value,
+    // } as IMovie);
   };
 
   const onChangePanel = (e: MouseEvent, activePanel: string) => {
@@ -136,7 +115,7 @@ export const MovieDetails = ({
         )}
       </MoviePageLayout>
     );
-  } else if (isLoading || !movie) {
+  } else if (isLoading || (!movie && !isCreateMode)) {
     return (
       <MoviePageLayout testName={testName}>
         <Loader />
@@ -144,21 +123,26 @@ export const MovieDetails = ({
     );
   } else {
     const titleElem = isCreateMode ? (
-      <div className="labelled-input">
-        <label htmlFor="title">Filmtitel: *</label>
-        <input
-          className="text-input-field"
-          type="text"
-          placeholder="Ange filmtitel"
-          id="title"
+      <LabeledInput htmlFor="title" label="Filmtitel: *">
+        <Controller
+          control={control}
           name="title"
-          defaultValue={movie.title}
-          required={true}
-          onBlur={movieStateChanged}
+          render={({ field: { onChange, ...field } }) => (
+            <TextField
+              {...field}
+              type="text"
+              value={title}
+              onChange={(e) => {
+                onChange(e);
+                setTitle(e.target.value);
+              }}
+              required={true}
+            />
+          )}
         />
-      </div>
+      </LabeledInput>
     ) : (
-      <h2>{movie.title}</h2>
+      <h2>{movie?.title}</h2>
     );
 
     const menuItems = (

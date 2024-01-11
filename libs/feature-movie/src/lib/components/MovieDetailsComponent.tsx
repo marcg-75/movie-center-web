@@ -1,7 +1,11 @@
 'use client';
 import { IMovie } from '@giron/shared-models';
 import { MovieDetails } from '@giron/shared-movie-components';
-import { useMovieDetails } from '@giron/data-access';
+import {
+  useCreateMovieMutation,
+  useMovieDetails,
+  useUpdateMovieMutation,
+} from '@giron/data-access';
 import { GeneralInfoPanelComponent } from './panels/GeneralInfoPanelComponent';
 import { useRouter } from 'next/navigation';
 import { CoverPanelComponent } from './panels/CoverPanelComponent';
@@ -10,7 +14,7 @@ import { CastPanelComponent } from './panels/CastPanelComponent';
 import { CrewPanelComponent } from './panels/CrewPanelComponent';
 import { PersonalInfoPanelComponent } from './panels/PersonalInfoPanelComponent';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Props = {
   movieId: number;
@@ -18,9 +22,18 @@ type Props = {
 };
 
 export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
+  const [movieDetails, setMovieDetails] = useState<IMovie>(
+    {} as unknown as IMovie
+  );
   const [isSaving, setIsSaving] = useState(false);
   const router = useRouter();
   const { movie, isMovieLoading, error } = useMovieDetails(movieId);
+
+  useEffect(() => {
+    if (movie) {
+      setMovieDetails(movie);
+    }
+  }, [movie]);
 
   const {
     control,
@@ -29,8 +42,11 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
     reset,
     setValue,
   } = useForm<IMovie>({
-    defaultValues: movie,
+    defaultValues: movieDetails,
   });
+
+  const createMovieMutation = useCreateMovieMutation();
+  const updateMovieMutation = useUpdateMovieMutation();
 
   const onSave = (movieChanges: IMovie) => {
     if (!movieChanges) {
@@ -42,7 +58,7 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
     alert('Saving movie. Changes: ' + JSON.stringify(movieChanges));
 
     const updatedMovie: IMovie = {
-      ...movie,
+      ...movieDetails,
       ...movieChanges,
     };
 
@@ -61,19 +77,12 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
     reset();
   };
 
-  const notYetImplemented = (movie: IMovie) => {
-    console.log('Invoking a not yet implemented method.');
-  };
-
   return (
     <form onSubmit={handleSubmit((m: IMovie) => onSave(m))}>
       <MovieDetails
-        movie={movie}
+        movie={movieDetails}
         isLoading={isMovieLoading || isSaving}
         isCreateMode={movieId === 0}
-        onCreateMovie={notYetImplemented}
-        onUpdateMovie={notYetImplemented}
-        onMovieTitleChange={notYetImplemented}
         onReset={onReset}
         onGoToList={() => router.push('/')}
         control={control}
@@ -81,21 +90,21 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
           <GeneralInfoPanelComponent
             control={control}
             setValue={setValue}
-            movie={movie}
+            movie={movieDetails}
             isMovieLoading={isMovieLoading}
           />
         }
         castPanel={
           <CastPanelComponent
             setValue={setValue}
-            movie={movie}
+            movie={movieDetails}
             isMovieLoading={isMovieLoading}
           />
         }
         crewPanel={
           <CrewPanelComponent
             setValue={setValue}
-            movie={movie}
+            movie={movieDetails}
             isMovieLoading={isMovieLoading}
           />
         }
@@ -103,21 +112,21 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
           <FormatPanelComponent
             control={control}
             setValue={setValue}
-            movie={movie}
+            movieFormatInfo={movieDetails.movieFormatInfo}
             isMovieLoading={isMovieLoading}
           />
         }
         coverPanel={
           <CoverPanelComponent
             control={control}
-            movie={movie}
+            movieFormatInfo={movieDetails.movieFormatInfo}
             isMovieLoading={isMovieLoading}
           />
         }
         personalInfoPanel={
           <PersonalInfoPanelComponent
             control={control}
-            movie={movie}
+            moviePersonalInfo={movieDetails.moviePersonalInfo}
             isMovieLoading={isMovieLoading}
           />
         }

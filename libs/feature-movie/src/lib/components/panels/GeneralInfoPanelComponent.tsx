@@ -4,7 +4,7 @@ import { useGenres, useStudios } from '@giron/data-access';
 import { Control, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 
 type Props = {
-  movie?: IMovie;
+  movie: IMovie;
   isMovieLoading: boolean;
   control: Control<IMovie>;
   setValue: UseFormSetValue<IMovie>;

@@ -1,18 +1,12 @@
 import '../../movie.details.scss';
 import { ReactNode } from 'react';
 import { Loader } from '@giron/shared-ui-library';
-import {
-  CastAndCrewModel,
-  IMovie,
-  NameEntityModel,
-  RoleEnum,
-  SelectableModel,
-} from '@giron/shared-models';
-import { Control, UseFormRegister, UseFormSetValue } from 'react-hook-form';
+import { IMovie, NameEntityModel, SelectableModel } from '@giron/shared-models';
+import { Control, UseFormSetValue } from 'react-hook-form';
 import { InputFields } from './InputFields';
 
 type Props = {
-  movie?: IMovie;
+  movie: IMovie;
   genres?: SelectableModel[];
   studios?: NameEntityModel[];
   isLoading?: boolean;
@@ -42,7 +36,7 @@ export const GeneralInfoPanel = ({
     //alert(movieErrorMessages);
 
     content = <div>Ett fel inträffade</div>;
-  } else if (isLoading || !movie) {
+  } else if (isLoading) {
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>

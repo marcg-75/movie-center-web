@@ -199,7 +199,7 @@ export const CrewPanel = ({
         </ul>
       </div>
     );
-  } else if (isMovieLoading || !movie || isCrewLoading || isPersonsLoading) {
+  } else if (isMovieLoading || isCrewLoading || isPersonsLoading) {
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>

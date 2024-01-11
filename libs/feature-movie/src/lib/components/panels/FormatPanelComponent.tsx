@@ -1,10 +1,10 @@
-import { IMovie } from '@giron/shared-models';
+import { IMovie, MovieFormatInfo } from '@giron/shared-models';
 import { FormatPanel } from '@giron/shared-movie-components';
 import { useFormats, useLanguages } from '@giron/data-access';
 import { Control, UseFormSetValue } from 'react-hook-form';
 
 type Props = {
-  movie?: IMovie;
+  movieFormatInfo?: MovieFormatInfo;
   isMovieLoading: boolean;
   control: Control<IMovie>;
   setValue: UseFormSetValue<IMovie>;
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export const FormatPanelComponent = ({
-  movie,
+  movieFormatInfo = {} as MovieFormatInfo,
   isMovieLoading,
   control,
   setValue,
@@ -25,7 +25,7 @@ export const FormatPanelComponent = ({
     <FormatPanel
       control={control}
       setValue={setValue}
-      movie={movie}
+      movieFormatInfo={movieFormatInfo}
       formats={formats}
       languages={languages}
       isLoading={isMovieLoading || isFormatsLoading || isLanguagesLoading}

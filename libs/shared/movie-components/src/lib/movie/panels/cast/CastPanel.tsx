@@ -116,7 +116,7 @@ export const CastPanel = ({
         </ul>
       </div>
     );
-  } else if (isMovieLoading || isActorsLoading || !movie) {
+  } else if (isMovieLoading || isActorsLoading) {
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>

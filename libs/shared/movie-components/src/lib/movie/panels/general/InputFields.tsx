@@ -8,12 +8,7 @@ import {
   TextField,
 } from '@mui/material';
 import { DatePicker, TimePicker } from '@mui/x-date-pickers';
-import {
-  Control,
-  Controller,
-  UseFormRegister,
-  UseFormSetValue,
-} from 'react-hook-form';
+import { Control, Controller, UseFormSetValue } from 'react-hook-form';
 import { toDate } from 'date-fns';
 import {
   IMovie,
@@ -52,6 +47,7 @@ export const InputFields = ({
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [selectedStudios, setSelectedStudios] = useState<string[]>([]);
   const [newStudio, setNewStudio] = useState<string>('');
+  const [imdbId, setImdbId] = useState(movie.imdbId || '');
 
   useEffect(() => {
     const currentAdditionalGenres: MovieGenreModel[] = movie.genres?.filter(
@@ -326,9 +322,32 @@ export const InputFields = ({
         />
       </LabeledInput>
 
-      <a href={`https://www.imdb.com/title/${movie.imdbId}/`} target="browser1">
-        IMDB info
-      </a>
+      {movie.imdbId ? (
+        <a
+          href={`https://www.imdb.com/title/${movie.imdbId}/`}
+          target="browser1"
+        >
+          IMDB info
+        </a>
+      ) : (
+        <LabeledInput htmlFor="imdbId" label="IMDB Id:">
+          <Controller
+            control={control}
+            name="imdbId"
+            render={({ field: { onChange, ...field } }) => (
+              <TextField
+                {...field}
+                type="text"
+                defaultValue={imdbId}
+                onChange={(e) => {
+                  onChange(e);
+                  setImdbId(e.target.value);
+                }}
+              />
+            )}
+          />
+        </LabeledInput>
+      )}
     </>
   );
 };

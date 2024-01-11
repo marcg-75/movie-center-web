@@ -1,11 +1,16 @@
 import '../../movie.details.scss';
 import { Loader } from '@giron/shared-ui-library';
-import { IMovie, LanguageModel, SelectableModel } from '@giron/shared-models';
+import {
+  IMovie,
+  LanguageModel,
+  MovieFormatInfo,
+  SelectableModel,
+} from '@giron/shared-models';
 import { Control, UseFormSetValue } from 'react-hook-form';
 import { InputFields } from './InputFields';
 
 type Props = {
-  movie?: IMovie;
+  movieFormatInfo: MovieFormatInfo;
   formats?: SelectableModel[];
   languages?: LanguageModel[];
   isLoading?: boolean;
@@ -17,7 +22,7 @@ type Props = {
 };
 
 export const FormatPanel = ({
-  movie,
+  movieFormatInfo,
   formats,
   languages,
   isLoading = false,
@@ -35,7 +40,7 @@ export const FormatPanel = ({
     //alert(movieErrorMessages);
 
     content = <div>Ett fel inträffade</div>;
-  } else if (isLoading || !movie || !movie?.movieFormatInfo?.format) {
+  } else if (isLoading) {
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
@@ -48,7 +53,7 @@ export const FormatPanel = ({
         <InputFields
           control={control}
           setValue={setValue}
-          movieFormatInfo={movie?.movieFormatInfo}
+          movieFormatInfo={movieFormatInfo}
           formats={formats}
           languages={languages}
         />

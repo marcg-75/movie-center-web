@@ -46,7 +46,7 @@ export const InputFields = ({
   formats,
   languages,
 }: Props) => {
-  const [format, setFormat] = useState(movieFormatInfo.format.code || '');
+  const [format, setFormat] = useState(movieFormatInfo.format?.code || '');
   const [upcId, setUpcId] = useState(movieFormatInfo.upcId || '');
   const [region, setRegion] = useState<string>(
     movieFormatInfo.region ? `${movieFormatInfo.region}` : ''
@@ -63,13 +63,13 @@ export const InputFields = ({
 
   useEffect(() => {
     const currentAudioLanguageIds: string[] =
-      movieFormatInfo?.audioLanguages.map(
+      movieFormatInfo?.audioLanguages?.map(
         (lang: LanguageModel) => '' + lang.id
-      );
+      ) || [];
 
-    const currentSubtitleIds: string[] = movieFormatInfo?.subtitles.map(
-      (lang: LanguageModel) => '' + lang.id
-    );
+    const currentSubtitleIds: string[] =
+      movieFormatInfo?.subtitles?.map((lang: LanguageModel) => '' + lang.id) ||
+      [];
 
     setSelectedAudio(currentAudioLanguageIds);
     setSelectedSubtitles(currentSubtitleIds);
@@ -140,7 +140,7 @@ export const InputFields = ({
         <Controller
           control={control}
           name="movieFormatInfo.format"
-          render={({ field: { ref, onChange, ...field } }) => (
+          render={({ field: { onChange, ...field } }) => (
             <Select
               {...field}
               value={format}
@@ -170,7 +170,7 @@ export const InputFields = ({
         <Controller
           control={control}
           name="movieFormatInfo.upcId"
-          render={({ field: { ref, onChange, ...field } }) => (
+          render={({ field: { onChange, ...field } }) => (
             <TextField
               {...field}
               type="text"
@@ -188,7 +188,7 @@ export const InputFields = ({
         <Controller
           control={control}
           name="movieFormatInfo.region"
-          render={({ field: { ref, onChange, ...field } }) => (
+          render={({ field: { onChange, ...field } }) => (
             <Select
               {...field}
               value={region}
@@ -217,11 +217,10 @@ export const InputFields = ({
         <Controller
           control={control}
           name="movieFormatInfo.discs"
-          render={({ field: { ref, onChange, ...field } }) => (
+          render={({ field: { onChange, ...field } }) => (
             <TextField
               {...field}
               type="text"
-              ref={ref}
               value={discs}
               onChange={(e) => {
                 onChange(e);
@@ -236,11 +235,10 @@ export const InputFields = ({
         <Controller
           control={control}
           name="movieFormatInfo.pictureFormat"
-          render={({ field: { ref, onChange, ...field } }) => (
+          render={({ field: { onChange, ...field } }) => (
             <TextField
               {...field}
               type="text"
-              ref={ref}
               value={pictureFormat}
               onChange={(e) => {
                 onChange(e);
@@ -255,7 +253,7 @@ export const InputFields = ({
         <Controller
           control={control}
           name="movieFormatInfo.system"
-          render={({ field: { ref, onChange, ...field } }) => (
+          render={({ field: { onChange, ...field } }) => (
             <Select
               {...field}
               value={system}
@@ -284,7 +282,7 @@ export const InputFields = ({
         <Controller
           control={control}
           name="movieFormatInfo.audioLanguages"
-          render={({ field: { ref, ...field } }) => (
+          render={({ field: { ...field } }) => (
             <Select
               {...field}
               multiple={true}
@@ -311,7 +309,7 @@ export const InputFields = ({
         <Controller
           control={control}
           name="movieFormatInfo.subtitles"
-          render={({ field: { ref, ...field } }) => (
+          render={({ field: { ...field } }) => (
             <Select
               {...field}
               multiple={true}

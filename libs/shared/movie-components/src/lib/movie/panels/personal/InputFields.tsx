@@ -33,15 +33,10 @@ const currencyOptions: SelectableModel[] = CURRENCIES.map((c) => ({
 
 type Props = {
   control: Control<IMovie>;
-  setValue: UseFormSetValue<IMovie>;
   moviePersonalInfo: MoviePersonalInfo;
 };
 
-export const InputFields = ({
-  control,
-  setValue,
-  moviePersonalInfo,
-}: Props) => {
+export const InputFields = ({ control, moviePersonalInfo }: Props) => {
   const [archiveNumber, setArchiveNumber] = useState(
     moviePersonalInfo.archiveNumber ? `${moviePersonalInfo.archiveNumber}` : ''
   );
@@ -100,11 +95,10 @@ export const InputFields = ({
         <Controller
           control={control}
           name="moviePersonalInfo.archiveNumber"
-          render={({ field: { ref, onChange, ...field } }) => (
+          render={({ field: { onChange, ...field } }) => (
             <TextField
               {...field}
               type="text"
-              ref={ref}
               value={archiveNumber}
               onChange={(e) => {
                 onChange(e);
@@ -129,10 +123,9 @@ export const InputFields = ({
         <Controller
           control={control}
           name="moviePersonalInfo.grade"
-          render={({ field: { ref, onChange, ...field } }) => (
+          render={({ field: { onChange, ...field } }) => (
             <Select
               {...field}
-              ref={ref}
               value={grade}
               onChange={(e) => {
                 onChange(e);
@@ -166,7 +159,7 @@ export const InputFields = ({
         <Controller
           control={control}
           name="moviePersonalInfo.obtainDate"
-          render={({ field: { ref, ...field } }) => (
+          render={({ field: { ...field } }) => (
             <DatePicker
               {...field}
               format="yyyy-MM-dd"
@@ -175,7 +168,6 @@ export const InputFields = ({
                   ? new Date(moviePersonalInfo.obtainDate)
                   : undefined
               }
-              ref={ref}
             />
           )}
         />
@@ -192,11 +184,10 @@ export const InputFields = ({
         <Controller
           control={control}
           name="moviePersonalInfo.obtainPrice"
-          render={({ field: { ref, onChange, ...field } }) => (
+          render={({ field: { onChange, ...field } }) => (
             <TextField
               {...field}
               type="text"
-              ref={ref}
               value={obtainPrice}
               onChange={(e) => {
                 onChange(e);
@@ -221,10 +212,9 @@ export const InputFields = ({
         <Controller
           control={control}
           name="moviePersonalInfo.currency"
-          render={({ field: { ref, onChange, ...field } }) => (
+          render={({ field: { onChange, ...field } }) => (
             <Select
               {...field}
-              ref={ref}
               value={currency}
               onChange={(e) => {
                 onChange(e);
@@ -258,11 +248,10 @@ export const InputFields = ({
         <Controller
           control={control}
           name="moviePersonalInfo.obtainPlace"
-          render={({ field: { ref, onChange, ...field } }) => (
+          render={({ field: { onChange, ...field } }) => (
             <TextField
               {...field}
               type="text"
-              ref={ref}
               value={obtainPlace}
               onChange={(e) => {
                 onChange(e);
@@ -285,11 +274,10 @@ export const InputFields = ({
         <Controller
           control={control}
           name="moviePersonalInfo.notes"
-          render={({ field: { ref, onChange, ...field } }) => (
+          render={({ field: { onChange, ...field } }) => (
             <TextareaAutosize
               {...field}
               minRows={3}
-              ref={ref}
               value={notes}
               onChange={(e) => {
                 onChange(e);

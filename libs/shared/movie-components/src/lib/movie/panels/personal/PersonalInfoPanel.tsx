@@ -1,26 +1,22 @@
 import '../../movie.details.scss';
 import { Loader } from '@giron/shared-ui-library';
-import { IMovie } from '@giron/shared-models';
+import { IMovie, MoviePersonalInfo } from '@giron/shared-models';
 import { Control, UseFormSetValue } from 'react-hook-form';
 import { InputFields } from './InputFields';
 
 type Props = {
-  movie?: IMovie;
+  moviePersonalInfo: MoviePersonalInfo;
   isLoading: boolean;
-  onMovieChange: (movie: IMovie) => void;
   control: Control<IMovie>;
-  setValue: UseFormSetValue<IMovie>;
   error?: string | Error | unknown;
   errors?: string[] | Error[];
   testName?: string;
 };
 
 export const PersonalInfoPanel = ({
-  movie,
+  moviePersonalInfo,
   isLoading = false,
-  onMovieChange,
   control,
-  setValue,
   error,
   errors,
   testName = 'PersonalInfoPanel_test',
@@ -33,7 +29,7 @@ export const PersonalInfoPanel = ({
     //alert(movieErrorMessages);
 
     content = <div>Ett fel inträffade</div>;
-  } else if (isLoading || !movie) {
+  } else if (isLoading) {
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
@@ -43,11 +39,7 @@ export const PersonalInfoPanel = ({
   } else {
     content = (
       <div className="panel-content">
-        <InputFields
-          control={control}
-          setValue={setValue}
-          moviePersonalInfo={movie?.moviePersonalInfo}
-        />
+        <InputFields control={control} moviePersonalInfo={moviePersonalInfo} />
       </div>
     );
   }
