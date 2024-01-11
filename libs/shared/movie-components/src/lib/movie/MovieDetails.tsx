@@ -1,18 +1,19 @@
 import './movie.details.scss';
-import { ChangeEvent, ReactNode, useState } from 'react';
+import { ChangeEvent, MouseEvent, ReactNode, useState } from 'react';
 import { Loader } from '@giron/shared-ui-library';
 import { IMovie } from '@giron/shared-models';
+import { Control } from 'react-hook-form';
 
 const enableMovieInfoEdit: boolean =
   process.env.NEXT_PUBLIC_ENABLE_MOVIE_INFO_EDIT === 'true' ||
   process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
 
-const INFO_PANEL_GENERAL = 'general';
-const INFO_PANEL_CAST = 'cast';
-const INFO_PANEL_CREW = 'crew';
-const INFO_PANEL_FORMAT = 'format';
-const INFO_PANEL_COVER = 'cover';
-const INFO_PANEL_PERSONAL = 'personal';
+const PANEL_GENERAL = 'general';
+const PANEL_CAST = 'cast';
+const PANEL_CREW = 'crew';
+const PANEL_FORMAT = 'format';
+const PANEL_COVER = 'cover';
+const PANEL_PERSONAL = 'personal';
 
 type Props = {
   movie?: IMovie;
@@ -21,7 +22,9 @@ type Props = {
   onCreateMovie: (movie: IMovie) => void;
   onUpdateMovie: (movie: IMovie) => void;
   onMovieTitleChange: (movie: IMovie) => void;
-  onCancel: () => void;
+  onReset: () => void;
+  onGoToList: () => void;
+  control: Control<IMovie>;
   generalInfoPanel: ReactNode;
   castPanel: ReactNode;
   crewPanel: ReactNode;
@@ -40,7 +43,9 @@ export const MovieDetails = ({
   onCreateMovie,
   onUpdateMovie,
   onMovieTitleChange,
-  onCancel,
+  onReset,
+  onGoToList,
+  control,
   generalInfoPanel,
   castPanel,
   crewPanel,
@@ -51,9 +56,9 @@ export const MovieDetails = ({
   errors,
   testName = 'MovieDetails_test',
 }: Props) => {
-  const [activeInfoPanel, setActiveInfoPanel] = useState(INFO_PANEL_GENERAL);
+  const [activePanel, setActivePanel] = useState(PANEL_GENERAL);
 
-  const saveMovie = () => {
+  const onSave = (movie: IMovie) => {
     if (!movie) {
       return;
     }
@@ -66,14 +71,32 @@ export const MovieDetails = ({
     } else {
       onUpdateMovie(movie);
     }
+
+    onGoToList();
   };
 
-  const cancel = () => {
+  const onResetMovie = (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (
+      !window.confirm('Vill du ta bort alla gjorda ändringar av denna film?')
+    ) {
+      return;
+    }
+
+    onReset();
+  };
+
+  const onCancel = (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
     if (!window.confirm('Vill du avbryta redigeringen av denna film?')) {
       return;
     }
 
-    onCancel();
+    onGoToList();
   };
 
   const movieStateChanged = (event: ChangeEvent<HTMLInputElement>) => {
@@ -85,38 +108,39 @@ export const MovieDetails = ({
     } as IMovie);
   };
 
-  let content;
+  const onChangePanel = (e: MouseEvent, activePanel: string) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-  if (error) {
-    content = (
-      <div>
-        <ul>
-          <li>
-            {typeof error === 'string' ? error : (error as Error).message}
-          </li>
-        </ul>
-      </div>
-    );
-  } else if (errors) {
+    setActivePanel(activePanel);
+  };
+
+  if (error || errors) {
     //DialogComponent.openDefaultErrorDialog(dialog, movie.movieListErrorMessages);  // TODO: Implement error dialog handling.
     //alert(movieErrorMessages);
-    const errs = errors as string[];
 
-    content = (
-      <div>
-        <ul>
-          {errs.map((m: string, i: number) => (
-            <li key={i}>{m}</li>
-          ))}
-        </ul>
-      </div>
+    return (
+      <MoviePageLayout testName={testName}>
+        {!!error && (
+          <div>
+            {typeof error === 'string' ? error : (error as Error).message}
+          </div>
+        )}
+
+        {errors && (
+          <ul>
+            {(errors as string[]).map((m: string, i: number) => (
+              <li key={i}>{m}</li>
+            ))}
+          </ul>
+        )}
+      </MoviePageLayout>
     );
   } else if (isLoading || !movie) {
-    // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
-    content = (
-      <div>
+    return (
+      <MoviePageLayout testName={testName}>
         <Loader />
-      </div>
+      </MoviePageLayout>
     );
   } else {
     const titleElem = isCreateMode ? (
@@ -137,115 +161,161 @@ export const MovieDetails = ({
       <h2>{movie.title}</h2>
     );
 
-    content = (
-      <div className="panel-container">
-        <div className="movie-title-panel">{titleElem}</div>
+    const menuItems = (
+      <>
+        <button
+          className={
+            'movie-menu-link-box ' +
+            (activePanel === PANEL_GENERAL ? 'active' : '')
+          }
+          onClick={(e) => onChangePanel(e, PANEL_GENERAL)}
+        >
+          Generell information
+        </button>
+        <button
+          className={
+            'movie-menu-link-box ' +
+            (activePanel === PANEL_CAST ? 'active' : '')
+          }
+          onClick={(e) => onChangePanel(e, PANEL_CAST)}
+        >
+          Rollbesättning
+        </button>
+        <button
+          className={
+            'movie-menu-link-box ' +
+            (activePanel === PANEL_CREW ? 'active' : '')
+          }
+          onClick={(e) => onChangePanel(e, PANEL_CREW)}
+        >
+          Filmteam
+        </button>
+        <button
+          className={
+            'movie-menu-link-box ' +
+            (activePanel === PANEL_FORMAT ? 'active' : '')
+          }
+          onClick={(e) => onChangePanel(e, PANEL_FORMAT)}
+        >
+          Media & Format
+        </button>
+        <button
+          className={
+            'movie-menu-link-box ' +
+            (activePanel === PANEL_COVER ? 'active' : '')
+          }
+          onClick={(e) => onChangePanel(e, PANEL_COVER)}
+        >
+          Omslagsbilder
+        </button>
+        <button
+          className={
+            'movie-menu-link-box ' +
+            (activePanel === PANEL_PERSONAL ? 'active' : '')
+          }
+          onClick={(e) => onChangePanel(e, PANEL_PERSONAL)}
+        >
+          Personlig information
+        </button>
+      </>
+    );
 
-        <div className="movie-details-panel-container">
-          <div className="movie-menu-panel">
-            <div className="movie-menu-links">
-              <button
-                className={
-                  'movie-menu-link-box ' +
-                  (activeInfoPanel === INFO_PANEL_GENERAL ? 'active' : '')
-                }
-                onClick={() => setActiveInfoPanel(INFO_PANEL_GENERAL)}
-              >
-                Generell information
-              </button>
-              <button
-                className={
-                  'movie-menu-link-box ' +
-                  (activeInfoPanel === INFO_PANEL_CAST ? 'active' : '')
-                }
-                onClick={() => setActiveInfoPanel(INFO_PANEL_CAST)}
-              >
-                Rollbesättning
-              </button>
-              <button
-                className={
-                  'movie-menu-link-box ' +
-                  (activeInfoPanel === INFO_PANEL_CREW ? 'active' : '')
-                }
-                onClick={() => setActiveInfoPanel(INFO_PANEL_CREW)}
-              >
-                Filmteam
-              </button>
-              <button
-                className={
-                  'movie-menu-link-box ' +
-                  (activeInfoPanel === INFO_PANEL_FORMAT ? 'active' : '')
-                }
-                onClick={() => setActiveInfoPanel(INFO_PANEL_FORMAT)}
-              >
-                Media & Format
-              </button>
-              <button
-                className={
-                  'movie-menu-link-box ' +
-                  (activeInfoPanel === INFO_PANEL_COVER ? 'active' : '')
-                }
-                onClick={() => setActiveInfoPanel(INFO_PANEL_COVER)}
-              >
-                Omslagsbilder
-              </button>
-              <button
-                className={
-                  'movie-menu-link-box ' +
-                  (activeInfoPanel === INFO_PANEL_PERSONAL ? 'active' : '')
-                }
-                onClick={() => setActiveInfoPanel(INFO_PANEL_PERSONAL)}
-              >
-                Personlig information
-              </button>
-            </div>
-          </div>
+    const actionItems = (
+      <>
+        <input type="submit" className="btn secondary" value="Spara" />
 
-          <div className={'movie-details-panel ' + activeInfoPanel}>
-            {activeInfoPanel === INFO_PANEL_GENERAL && (
+        {/*react-hook-form reset doesn't work on all fields at the moment.*/}
+        {/*<button className="btn secondary" onClick={(e: MouseEvent) => onResetMovie(e)}>*/}
+        {/*  Ångra*/}
+        {/*</button>*/}
+
+        <button
+          className="btn secondary"
+          onClick={(e: MouseEvent) => onCancel(e)}
+        >
+          Avbryt
+        </button>
+      </>
+    );
+    return (
+      <MoviePageLayout testName={testName}>
+        <MovieDetailsLayout
+          titleElement={titleElem}
+          menuItems={menuItems}
+          actionItems={actionItems}
+        >
+          <div className={'movie-details-panel ' + activePanel}>
+            {activePanel === PANEL_GENERAL && (
               <div className="general-info">{generalInfoPanel}</div>
             )}
 
-            {activeInfoPanel === INFO_PANEL_CAST && (
+            {activePanel === PANEL_CAST && (
               <div className="cast-info">{castPanel}</div>
             )}
 
-            {activeInfoPanel === INFO_PANEL_CREW && (
+            {activePanel === PANEL_CREW && (
               <div className="crew-info">{crewPanel}</div>
             )}
 
-            {activeInfoPanel === INFO_PANEL_FORMAT && (
+            {activePanel === PANEL_FORMAT && (
               <div className="format-info">{formatPanel}</div>
             )}
 
-            {activeInfoPanel === INFO_PANEL_COVER && (
+            {activePanel === PANEL_COVER && (
               <div className="cover-info">{coverPanel}</div>
             )}
 
-            {activeInfoPanel === INFO_PANEL_PERSONAL && (
+            {activePanel === PANEL_PERSONAL && (
               <div className="personal-info">{personalInfoPanel}</div>
             )}
           </div>
-        </div>
-
-        <div className="movie-action-panel" hidden={!enableMovieInfoEdit}>
-          <button className="btn secondary" onClick={saveMovie.bind(this)}>
-            Spara
-          </button>
-
-          <button className="btn secondary" onClick={cancel.bind(this)}>
-            Avbryt
-          </button>
-        </div>
-      </div>
+        </MovieDetailsLayout>
+      </MoviePageLayout>
     );
   }
+};
 
-  //<HeaderComponent />
+type MoviePageLayoutProps = {
+  children: ReactNode;
+  testName?: string;
+};
+
+const MoviePageLayout = ({ children, testName }: MoviePageLayoutProps) => {
   return (
-    <div>
-      <div className="main-page-container" data-test-name={testName}>
-        {content}
+    //<HeaderComponent />
+    <div className="main-page-container" data-test-name={testName}>
+      {children}
+    </div>
+  );
+};
+
+type MovieDetailsLayoutProps = {
+  titleElement: ReactNode;
+  menuItems: ReactNode;
+  actionItems: ReactNode;
+  children: ReactNode;
+};
+
+const MovieDetailsLayout = ({
+  titleElement,
+  menuItems,
+  actionItems,
+  children,
+}: MovieDetailsLayoutProps) => {
+  return (
+    <div className="panel-container">
+      <div className="movie-title-panel">{titleElement}</div>
+
+      <div className="movie-details-panel-container">
+        <div className="movie-menu-panel">
+          <div className="movie-menu-links">{menuItems}</div>
+        </div>
+
+        {children}
+      </div>
+
+      <div className="movie-action-panel" hidden={!enableMovieInfoEdit}>
+        {actionItems}
       </div>
     </div>
   );

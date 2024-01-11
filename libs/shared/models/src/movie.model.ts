@@ -9,7 +9,7 @@ export interface IMovie {
   title: string;
   originalTitle?: string;
   description: string;
-  genres: Array<MovieGenreModel>;
+  genres: MovieGenreModel[];
   runtime?: string;
   releaseDate?: string;
   country: string;

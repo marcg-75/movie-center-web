@@ -1,11 +1,13 @@
 import { IMovie } from '@giron/shared-models';
 import { CrewPanel } from '@giron/shared-movie-components';
 import { useAllPersons, useCrew, useRoles } from '@giron/data-access';
+import { Control, UseFormSetValue } from 'react-hook-form';
 
 type Props = {
   movie?: IMovie;
   isMovieLoading: boolean;
   loadAllPersons?: boolean;
+  setValue: UseFormSetValue<IMovie>;
   testName?: string;
 };
 
@@ -13,6 +15,7 @@ export const CrewPanelComponent = ({
   movie,
   isMovieLoading,
   loadAllPersons = false,
+  setValue,
   testName = 'CrewPanelComponent_test',
 }: Props) => {
   const { crew, isCrewLoading, error: crewError } = useCrew();
@@ -23,12 +26,9 @@ export const CrewPanelComponent = ({
   } = useAllPersons(loadAllPersons);
   const { roles, isRolesLoading, error: rolesError } = useRoles();
 
-  const notYetImplemented = (movie: IMovie) => {
-    console.log('Invoking a not yet implemented method.');
-  };
-
   return (
     <CrewPanel
+      setValue={setValue}
       movie={movie}
       crew={crew}
       persons={persons}
@@ -36,7 +36,6 @@ export const CrewPanelComponent = ({
       isMovieLoading={isMovieLoading || isRolesLoading}
       isCrewLoading={isCrewLoading}
       isPersonsLoading={isPersonsLoading}
-      onMovieChange={notYetImplemented}
       error={crewError || personsError || rolesError}
       enableSelectFromAllPersons={loadAllPersons}
       testName={testName}

@@ -1,7 +1,9 @@
 import './labeled-input.scss';
-import { FocusEvent } from 'react';
 import { LabeledInputProps } from './labeled-input.model';
 import { LabeledInput } from './LabeledInput';
+import { Controller } from 'react-hook-form';
+import { TextField } from '@mui/material';
+import { FocusEvent } from 'react';
 
 const enableMovieInfoEdit: boolean =
   process.env.NEXT_PUBLIC_ENABLE_MOVIE_INFO_EDIT === 'true' ||
@@ -15,31 +17,47 @@ interface Props extends LabeledInputProps {
 
 export const LabeledTextInput = ({
   label,
-  id,
+  htmlFor,
+  name,
   defaultValue,
   placeholder,
   labelMode,
   orientation,
+  control,
+  required = false,
+  requiredText,
+  rules = {},
   callback,
   testName = 'LabelledTextInput_test',
-}: Props) => (
-  <LabeledInput
-    id={id}
-    label={label}
-    labelMode={labelMode}
-    orientation={orientation}
-    testName={testName}
-  >
-    <input
-      className="text-input"
-      type="text"
-      id={id}
-      placeholder={placeholder}
-      name={id}
-      defaultValue={defaultValue}
-      onBlur={callback}
-      hidden={!enableMovieInfoEdit}
-    />
-    <span hidden={enableMovieInfoEdit}>{defaultValue}</span>
-  </LabeledInput>
-);
+}: Props) => {
+  return (
+    <LabeledInput
+      htmlFor={htmlFor}
+      label={label}
+      labelMode={labelMode}
+      orientation={orientation}
+      testName={testName}
+    >
+      <Controller
+        control={control}
+        name={name}
+        render={({ field: { ref, ...field } }) => (
+          <TextField
+            {...field}
+            type="text"
+            id={htmlFor}
+            placeholder={placeholder}
+            required={required}
+            value={defaultValue}
+            onBlur={callback}
+            hidden={!enableMovieInfoEdit}
+          />
+        )}
+        rules={{
+          ...rules,
+          required: requiredText,
+        }}
+      />
+    </LabeledInput>
+  );
+};

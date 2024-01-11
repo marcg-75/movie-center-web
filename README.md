@@ -66,6 +66,9 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
   - Use `Emotion/Tailwind`.
   - Use `Material UI` components where it makes sense. Use MUI for the dialogs too, if possible.
   - Use `react-hook-form` for the movie details form (will force the Redux based app to use the same).
+- Admin flows:
+  - Add studios. New endpoint required.
+  - Add languages. New endpoint required.
 - Error handling.
 - Möjlighet att ladda upp bild-filer för omslagsbilder.
 - Hämta filmdata från OMDB (eller andra källor):

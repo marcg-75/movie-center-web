@@ -1,56 +1,98 @@
-import { ChangeEvent, ReactNode } from 'react';
 import { LabeledInputProps } from './labeled-input.model';
 import { LabeledInput } from './LabeledInput';
+import { Controller } from 'react-hook-form';
+import { Box, Chip, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { SelectableModel } from '@giron/shared-models';
+import { ReactNode } from 'react';
 
-const enableMovieInfoEdit: boolean =
-  process.env.NEXT_PUBLIC_ENABLE_MOVIE_INFO_EDIT === 'true' ||
-  process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
 
 interface Props extends LabeledInputProps {
-  defaultValue?: number | string | string[];
-  value?: number | string | string[] | null;
-  options: ReactNode;
-  callback: (event: ChangeEvent<HTMLSelectElement>) => void;
+  defaultValue?: string | string[];
+  value?: string | string[];
+  options?: SelectableModel[];
+  callback?: (event: SelectChangeEvent) => void;
   multiple: boolean;
 }
 
 export const LabeledSelect = ({
   label,
-  id,
+  htmlFor,
+  name,
   defaultValue,
   value = defaultValue,
   labelMode,
   orientation,
   options,
   callback,
-  required = false,
   multiple,
+  control,
+  required = false,
+  requiredText,
+  rules = {},
   testName = 'LabelledSelect_test',
 }: Props) => {
-  if (!value) {
-    value = multiple ? [] : '';
-  }
+  const mapMultipleSelectionToChips = (
+    selected: string | string[]
+  ): string | ReactNode[] => {
+    if (typeof selected === 'string') {
+      const option = options?.find((op) => op.code === selected);
+      return option?.name || selected;
+    }
+    return selected.map((value, idx) => {
+      const option = options?.find((op) => op.code === value);
+      return <Chip key={idx} label={option?.name} />;
+    });
+  };
 
   return (
     <LabeledInput
-      id={id}
+      htmlFor={htmlFor}
       label={label}
       labelMode={labelMode}
       orientation={orientation}
       testName={testName}
     >
-      <select
-        id={id}
-        name={id}
-        required={required}
-        multiple={multiple}
-        disabled={!enableMovieInfoEdit}
-        value={value}
-        onChange={callback}
-        className={enableMovieInfoEdit ? '' : 'disabled'}
-      >
-        {options}
-      </select>
+      <Controller
+        control={control}
+        name={name}
+        render={({ field: { ref, ...field } }) => (
+          <Select
+            {...field}
+            id={htmlFor}
+            name={name}
+            required={required}
+            multiple={multiple}
+            value={value}
+            onChange={callback && callback}
+            renderValue={(selected) => (
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                {mapMultipleSelectionToChips(selected)}
+              </Box>
+            )}
+            MenuProps={MenuProps}
+          >
+            {options?.map((option, index) => (
+              <MenuItem key={index} value={option.code}>
+                {option.name}
+              </MenuItem>
+            ))}
+          </Select>
+        )}
+        rules={{
+          ...rules,
+          required: requiredText,
+        }}
+      />
     </LabeledInput>
   );
 };

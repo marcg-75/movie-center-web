@@ -2,6 +2,7 @@ import '../movie.details.scss';
 import { ChangeEvent } from 'react';
 import { Loader } from '@giron/shared-ui-library';
 import { IMovie } from '@giron/shared-models';
+import { Control } from 'react-hook-form';
 
 export const IMAGE_URL = `${
   process.env.NX_API_BASE_URL || process.env.NEXT_PUBLIC_API_BASE_URL
@@ -11,6 +12,7 @@ type Props = {
   movie?: IMovie;
   isLoading?: boolean;
   onMovieChange: (movie: IMovie) => void;
+  control: Control<IMovie>;
   error?: string | Error | unknown;
   errors?: string[] | Error[];
   testName?: string;
@@ -22,6 +24,7 @@ export const CoverPanel = ({
   movie,
   isLoading = false,
   onMovieChange,
+  control,
   error,
   errors,
   testName = 'CoverPanel_test',

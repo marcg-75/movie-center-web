@@ -1,0 +1,304 @@
+import { Control, Controller, UseFormSetValue } from 'react-hook-form';
+import {
+  IMovie,
+  MoviePersonalInfo,
+  SelectableModel,
+} from '@giron/shared-models';
+import { LabeledInput } from '@giron/shared-ui-library';
+import { ChangeEvent, useState } from 'react';
+import {
+  Box,
+  MenuItem,
+  Select,
+  TextareaAutosize,
+  TextField,
+} from '@mui/material';
+import { DatePicker } from '@mui/x-date-pickers';
+import {
+  mapMultipleSelectionToChips,
+  SelectMenuProps,
+} from '@giron/shared-util-helpers';
+
+const GRADES = ['', '5', '4.5', '4', '3.5', '3', '2.5', '2', '1.5', '1'];
+const gradeOptions: SelectableModel[] = GRADES.map((g) => ({
+  code: g,
+  name: g,
+}));
+
+const CURRENCIES: string[] = ['SEK', 'EUR', 'NOK', 'DKK', 'GBP', 'USD'];
+const currencyOptions: SelectableModel[] = CURRENCIES.map((c) => ({
+  code: c,
+  name: c,
+}));
+
+type Props = {
+  control: Control<IMovie>;
+  setValue: UseFormSetValue<IMovie>;
+  moviePersonalInfo: MoviePersonalInfo;
+};
+
+export const InputFields = ({
+  control,
+  setValue,
+  moviePersonalInfo,
+}: Props) => {
+  const [archiveNumber, setArchiveNumber] = useState(
+    moviePersonalInfo.archiveNumber ? `${moviePersonalInfo.archiveNumber}` : ''
+  );
+  const [grade, setGrade] = useState(
+    moviePersonalInfo.grade ? `${moviePersonalInfo.grade}` : ''
+  );
+  const [obtainPrice, setObtainPrice] = useState(
+    moviePersonalInfo.obtainPrice ? `${moviePersonalInfo.obtainPrice}` : ''
+  );
+  const [currency, setCurrency] = useState(moviePersonalInfo.currency || '');
+  const [obtainPlace, setObtainPlace] = useState(
+    moviePersonalInfo.obtainPlace || ''
+  );
+  const [notes, setNotes] = useState(moviePersonalInfo.notes || '');
+
+  const movieStateChanged = (
+    event: ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    const { name, value } = event.target;
+
+    let cValue: number | string = value;
+
+    if (name === 'grade') {
+      cValue = parseFloat(value);
+    } else if (name === 'obtainPrice') {
+      cValue = parseFloat(value);
+
+      if (isNaN(cValue)) {
+        alert('Pris måste vara ett tal.');
+        event.target.value = '';
+        return;
+      }
+    }
+
+    // onMovieChange({
+    //   ...movie,
+    //   moviePersonalInfo: {
+    //     ...moviePersonalInfo,
+    //     [name]: cValue,
+    //   },
+    // } as IMovie);
+  };
+
+  return (
+    <>
+      {/*<LabeledTextInput*/}
+      {/*  control={control}*/}
+      {/*  label="Arkivnummer:"*/}
+      {/*  id="archiveNumber"*/}
+      {/*  defaultValue={moviePersonalInfo?.archiveNumber || undefined}*/}
+      {/*/>*/}
+
+      <LabeledInput htmlFor="archiveNumber" label="Arkivnummer:">
+        <Controller
+          control={control}
+          name="moviePersonalInfo.archiveNumber"
+          render={({ field: { ref, onChange, ...field } }) => (
+            <TextField
+              {...field}
+              type="text"
+              ref={ref}
+              value={archiveNumber}
+              onChange={(e) => {
+                onChange(e);
+                setArchiveNumber(e.target.value);
+              }}
+            />
+          )}
+        />
+      </LabeledInput>
+
+      {/*<LabeledSelect*/}
+      {/*  control={control}*/}
+      {/*  label="Betyg:"*/}
+      {/*  id="grade"*/}
+      {/*  value={moviePersonalInfo?.grade ? moviePersonalInfo.grade.toString() : ''}*/}
+      {/*  options={gradeOptions}*/}
+      {/*  required={false}*/}
+      {/*  multiple={false}*/}
+      {/*/>*/}
+
+      <LabeledInput htmlFor="grade" label="Betyg:">
+        <Controller
+          control={control}
+          name="moviePersonalInfo.grade"
+          render={({ field: { ref, onChange, ...field } }) => (
+            <Select
+              {...field}
+              ref={ref}
+              value={grade}
+              onChange={(e) => {
+                onChange(e);
+                setGrade(e.target.value);
+              }}
+              renderValue={(selected) => (
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                  {mapMultipleSelectionToChips(selected, gradeOptions)}
+                </Box>
+              )}
+              MenuProps={SelectMenuProps}
+            >
+              {gradeOptions?.map((option, index) => (
+                <MenuItem key={index} value={option.code}>
+                  {option.name}
+                </MenuItem>
+              ))}
+            </Select>
+          )}
+        />
+      </LabeledInput>
+
+      {/*<LabeledDateInput*/}
+      {/*  control={control}*/}
+      {/*  label="Datum inskaffad:"*/}
+      {/*  id="obtainDate"*/}
+      {/*  defaultValue={moviePersonalInfo?.obtainDate}*/}
+      {/*/>*/}
+
+      <LabeledInput htmlFor="obtainDate" label="Datum inskaffad:">
+        <Controller
+          control={control}
+          name="moviePersonalInfo.obtainDate"
+          render={({ field: { ref, ...field } }) => (
+            <DatePicker
+              {...field}
+              format="yyyy-MM-dd"
+              value={
+                moviePersonalInfo.obtainDate
+                  ? new Date(moviePersonalInfo.obtainDate)
+                  : undefined
+              }
+              ref={ref}
+            />
+          )}
+        />
+      </LabeledInput>
+
+      {/*<LabeledTextInput*/}
+      {/*  control={control}*/}
+      {/*  label="Inköpspris:"*/}
+      {/*  id="obtainPrice"*/}
+      {/*  defaultValue={moviePersonalInfo?.obtainPrice}*/}
+      {/*/>*/}
+
+      <LabeledInput htmlFor="obtainPrice" label="Inköpspris:">
+        <Controller
+          control={control}
+          name="moviePersonalInfo.obtainPrice"
+          render={({ field: { ref, onChange, ...field } }) => (
+            <TextField
+              {...field}
+              type="text"
+              ref={ref}
+              value={obtainPrice}
+              onChange={(e) => {
+                onChange(e);
+                setObtainPrice(e.target.value);
+              }}
+            />
+          )}
+        />
+      </LabeledInput>
+
+      {/*<LabeledSelect*/}
+      {/*  control={control}*/}
+      {/*  label="Valuta:"*/}
+      {/*  id="currency"*/}
+      {/*  value={moviePersonalInfo?.currency}*/}
+      {/*  options={currencyOptions}*/}
+      {/*  required={false}*/}
+      {/*  multiple={false}*/}
+      {/*/>*/}
+
+      <LabeledInput htmlFor="currency" label="Betyg:">
+        <Controller
+          control={control}
+          name="moviePersonalInfo.currency"
+          render={({ field: { ref, onChange, ...field } }) => (
+            <Select
+              {...field}
+              ref={ref}
+              value={currency}
+              onChange={(e) => {
+                onChange(e);
+                setCurrency(e.target.value);
+              }}
+              renderValue={(selected) => (
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                  {mapMultipleSelectionToChips(selected, currencyOptions)}
+                </Box>
+              )}
+              MenuProps={SelectMenuProps}
+            >
+              {currencyOptions?.map((option, index) => (
+                <MenuItem key={index} value={option.code}>
+                  {option.name}
+                </MenuItem>
+              ))}
+            </Select>
+          )}
+        />
+      </LabeledInput>
+
+      {/*<LabeledTextInput*/}
+      {/*  control={control}*/}
+      {/*  label="Plats för inskaffning:"*/}
+      {/*  id="obtainPlace"*/}
+      {/*  defaultValue={moviePersonalInfo?.obtainPlace}*/}
+      {/*/>*/}
+
+      <LabeledInput htmlFor="obtainPlace" label="Plats för inskaffning:">
+        <Controller
+          control={control}
+          name="moviePersonalInfo.obtainPlace"
+          render={({ field: { ref, onChange, ...field } }) => (
+            <TextField
+              {...field}
+              type="text"
+              ref={ref}
+              value={obtainPlace}
+              onChange={(e) => {
+                onChange(e);
+                setObtainPlace(e.target.value);
+              }}
+            />
+          )}
+        />
+      </LabeledInput>
+
+      {/*<LabeledTextarea*/}
+      {/*  control={control}*/}
+      {/*  label="Anteckningar:"*/}
+      {/*  id="notes"*/}
+      {/*  defaultValue={moviePersonalInfo?.notes}*/}
+      {/*  required={false}*/}
+      {/*/>*/}
+
+      <LabeledInput htmlFor="notes" label="Anteckningar:">
+        <Controller
+          control={control}
+          name="moviePersonalInfo.notes"
+          render={({ field: { ref, onChange, ...field } }) => (
+            <TextareaAutosize
+              {...field}
+              minRows={3}
+              ref={ref}
+              value={notes}
+              onChange={(e) => {
+                onChange(e);
+                setNotes(e.target.value);
+              }}
+            />
+          )}
+        />
+      </LabeledInput>
+    </>
+  );
+};

@@ -1,23 +1,24 @@
-import { FocusEvent } from 'react';
 import { LabeledInputProps } from './labeled-input.model';
 import { LabeledInput } from './LabeledInput';
-
-const enableMovieInfoEdit: boolean =
-  process.env.NEXT_PUBLIC_ENABLE_MOVIE_INFO_EDIT === 'true' ||
-  process.env.NX_ENABLE_MOVIE_INFO_EDIT === 'true';
+import { Controller } from 'react-hook-form';
+import { TimeField } from '@mui/x-date-pickers';
+import { toDate } from 'date-fns';
 
 interface Props extends LabeledInputProps {
   defaultValue?: string;
-  callback: (event: FocusEvent<HTMLInputElement>) => void;
 }
 
 export const LabeledTimeInput = ({
   label,
-  id,
+  name,
+  htmlFor,
   defaultValue,
   labelMode,
   orientation,
-  callback,
+  required = false,
+  requiredText,
+  control,
+  rules = {},
   testName = 'LabelledTimeInput_test',
 }: Props) => {
   const strRuntime = defaultValue
@@ -27,24 +28,33 @@ export const LabeledTimeInput = ({
       )
     : '';
 
+  const runtime = defaultValue ? toDate(new Date(defaultValue)) : undefined;
+
   return (
     <LabeledInput
-      id={id}
+      htmlFor={htmlFor}
       label={label}
       labelMode={labelMode}
       orientation={orientation}
       testName={testName}
     >
-      <input
-        className="date-input"
-        type="datetime-local"
-        id={id}
-        name={id}
-        defaultValue={defaultValue}
-        onBlur={callback}
-        hidden={!enableMovieInfoEdit}
+      <Controller
+        control={control}
+        name={name}
+        render={({ field: { ref, ...field } }) => (
+          <TimeField
+            {...field}
+            className="date-input"
+            value={runtime}
+            format="HH:mm"
+            required={required}
+          />
+        )}
+        rules={{
+          ...rules,
+          required: requiredText,
+        }}
       />
-      <span hidden={enableMovieInfoEdit}>{strRuntime}</span>
     </LabeledInput>
   );
 };

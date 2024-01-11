@@ -8,13 +8,13 @@ interface Props extends LabeledInputProps {
 }
 
 export const LabeledInput = ({
-  id,
+  htmlFor,
   label,
   labelAddition,
   labelMode = 'light',
   orientation = 'row',
   children,
-  testName,
+  testName = `${htmlFor}_input_test`,
 }: Props) => {
   const rootClassName = cn('container', {
     column: orientation === 'column',
@@ -27,7 +27,7 @@ export const LabeledInput = ({
 
   return (
     <div className={rootClassName} data-test-name={testName}>
-      <label className={labelClassName} htmlFor={id}>
+      <label className={labelClassName} htmlFor={htmlFor}>
         {label} {labelAddition}
       </label>
       {children}
