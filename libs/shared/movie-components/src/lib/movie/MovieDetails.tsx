@@ -21,7 +21,7 @@ type Props = {
   isLoading?: boolean;
   isCreateMode?: boolean;
   onReset: () => void;
-  onGoToList: () => void;
+  onCancel: () => void;
   control: Control<IMovie>;
   generalInfoPanel: ReactNode;
   castPanel: ReactNode;
@@ -35,22 +35,22 @@ type Props = {
 };
 
 export const MovieDetails = ({
-  movie,
-  isLoading = false,
-  isCreateMode = false,
-  onReset,
-  onGoToList,
-  control,
-  generalInfoPanel,
-  castPanel,
-  crewPanel,
-  formatPanel,
-  coverPanel,
-  personalInfoPanel,
-  error,
-  errors,
-  testName = 'MovieDetails_test',
-}: Props) => {
+                               movie,
+                               isLoading = false,
+                               isCreateMode = false,
+                               onReset,
+                               onCancel,
+                               control,
+                               generalInfoPanel,
+                               castPanel,
+                               crewPanel,
+                               formatPanel,
+                               coverPanel,
+                               personalInfoPanel,
+                               error,
+                               errors,
+                               testName = 'MovieDetails_test',
+                             }: Props) => {
   const [activePanel, setActivePanel] = useState(PANEL_GENERAL);
   const [title, setTitle] = useState(movie?.title || '');
 
@@ -67,15 +67,11 @@ export const MovieDetails = ({
     onReset();
   };
 
-  const onCancel = (e: MouseEvent) => {
+  const onCancelEdit = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
-    if (!window.confirm('Vill du avbryta redigeringen av denna film?')) {
-      return;
-    }
-
-    onGoToList();
+    onCancel();
   };
 
   const movieStateChanged = (event: ChangeEvent<HTMLInputElement>) => {
@@ -118,7 +114,7 @@ export const MovieDetails = ({
   } else if (isLoading || (!movie && !isCreateMode)) {
     return (
       <MoviePageLayout testName={testName}>
-        <Loader />
+        <Loader/>
       </MoviePageLayout>
     );
   } else {
@@ -127,18 +123,27 @@ export const MovieDetails = ({
         <Controller
           control={control}
           name="title"
-          render={({ field: { onChange, ...field } }) => (
-            <TextField
-              {...field}
-              type="text"
-              value={title || ''}
-              onChange={(e) => {
-                onChange(e);
-                setTitle(e.target.value);
-              }}
-              required={true}
-            />
+          render={({ field: { onChange, ...field }, fieldState: { error } }) => (
+            <>
+              <TextField
+                {...field}
+                type="text"
+                className="mat-input-required"
+                value={title || ''}
+                onChange={(e) => {
+                  onChange(e);
+                  setTitle(e.target.value);
+                }}
+              />
+
+              <div style={{marginLeft: '0.5rem'}}>
+                {error?.message && (
+                  <small className="text-red-500" style={{ color: 'red' }}>{error.message}</small>
+                )}
+              </div>
+            </>
           )}
+          rules={{ required: 'Filmtiteln är tom' }}
         />
       </LabeledInput>
     ) : (
@@ -206,7 +211,7 @@ export const MovieDetails = ({
 
     const actionItems = (
       <>
-        <input type="submit" className="btn secondary" value="Spara" />
+        <input type="submit" className="btn secondary" value="Spara"/>
 
         {/*react-hook-form reset doesn't work on all fields at the moment.*/}
         {/*<button className="btn secondary" onClick={(e: MouseEvent) => onResetMovie(e)}>*/}
@@ -215,7 +220,7 @@ export const MovieDetails = ({
 
         <button
           className="btn secondary"
-          onClick={(e: MouseEvent) => onCancel(e)}
+          onClick={(e: MouseEvent) => onCancelEdit(e)}
         >
           Avbryt
         </button>
@@ -281,11 +286,11 @@ type MovieDetailsLayoutProps = {
 };
 
 const MovieDetailsLayout = ({
-  titleElement,
-  menuItems,
-  actionItems,
-  children,
-}: MovieDetailsLayoutProps) => {
+                              titleElement,
+                              menuItems,
+                              actionItems,
+                              children,
+                            }: MovieDetailsLayoutProps) => {
   return (
     <div className="panel-container">
       <div className="movie-title-panel">{titleElement}</div>

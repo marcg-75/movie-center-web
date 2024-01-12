@@ -208,7 +208,7 @@ export const InputFields = ({ control, moviePersonalInfo }: Props) => {
       {/*  multiple={false}*/}
       {/*/>*/}
 
-      <LabeledInput htmlFor="currency" label="Betyg:">
+      <LabeledInput htmlFor="currency" label="Valuta:">
         <Controller
           control={control}
           name="moviePersonalInfo.currency"

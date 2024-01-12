@@ -1,11 +1,7 @@
 'use client';
 import { IMovie } from '@giron/shared-models';
 import { MovieDetails } from '@giron/shared-movie-components';
-import {
-  useCreateMovieMutation,
-  useMovieDetails,
-  useUpdateMovieMutation,
-} from '@giron/data-access';
+import { useCreateMovieMutation, useMovieDetails, useUpdateMovieMutation, } from '@giron/data-access';
 import { GeneralInfoPanelComponent } from './panels/GeneralInfoPanelComponent';
 import { useRouter } from 'next/navigation';
 import { CoverPanelComponent } from './panels/CoverPanelComponent';
@@ -16,6 +12,7 @@ import { PersonalInfoPanelComponent } from './panels/PersonalInfoPanelComponent'
 import { useForm } from 'react-hook-form';
 import { useEffect, useState } from 'react';
 import { removeUndefinedValuesFromObject } from '@giron/shared-util-helpers';
+import { format } from 'date-fns';
 
 type Props = {
   movieId: number;
@@ -39,7 +36,7 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
   const {
     control,
     handleSubmit,
-    formState: { errors: validationErrors },
+    formState: { isDirty },
     reset,
     setValue,
     getValues,
@@ -63,22 +60,33 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
 
     setIsSaving(true);
 
-    // alert('Saving movie. Changes: ' + JSON.stringify(movieChanges));
-
     const updatedMovie: IMovie = {
       ...movieDetails,
       ...movieChanges,
+      movieFormatInfo: {
+        ...movieDetails.movieFormatInfo,
+        ...movieChanges.movieFormatInfo,
+      },
+      moviePersonalInfo: {
+        ...movieDetails.moviePersonalInfo,
+        ...movieChanges.moviePersonalInfo,
+      }
     };
-    debugger;
+
+    // Reformat runtime, since TimePicker makes it a long date string.
+    if (updatedMovie.runtime) {
+      updatedMovie.runtime = format(new Date(updatedMovie.runtime), 'HH:mm:ss');
+    }
+
     if (!updatedMovie.id || updatedMovie.id === 0) {
       updatedMovie.id = undefined;
-      // createMovieMutation.mutate(updatedMovie);
+      createMovieMutation.mutate(updatedMovie);
     } else {
-      // updateMovieMutation.mutate(updatedMovie);
+      updateMovieMutation.mutate(updatedMovie);
     }
 
     setIsSaving(false);
-    // router.push('/');
+    router.push('/');
   };
 
   // const removeUndefinedValuesFromObject = <T>(obj: T) => {
@@ -90,6 +98,15 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
     reset();
   };
 
+  const onCancel = () => {
+
+    if (isDirty && !window.confirm('Vill du avbryta redigeringen av denna film?')) {
+      return;
+    }
+
+    router.push('/')
+  };
+
   return (
     <form onSubmit={handleSubmit(onSave)}>
       <MovieDetails
@@ -97,7 +114,7 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
         isLoading={isMovieLoading || isSaving}
         isCreateMode={movieId === 0}
         onReset={onReset}
-        onGoToList={() => router.push('/')}
+        onCancel={onCancel}
         control={control}
         generalInfoPanel={
           <GeneralInfoPanelComponent

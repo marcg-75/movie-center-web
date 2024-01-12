@@ -38,7 +38,7 @@ export const useCreateMovieMutation = () => {
         );
       }
 
-      return await client.post<IMovie>(`${PATH_PREFIX}/${movie.id}`, {
+      return await client.post<IMovie>(`${PATH_PREFIX}`, {
         body: movie,
       });
     },

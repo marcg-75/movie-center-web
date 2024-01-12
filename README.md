@@ -67,33 +67,36 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
   - Use `Material UI` components where it makes sense. Use MUI for the dialogs too, if possible.
   - Use `react-hook-form` for the movie details form (will force the Redux based app to use the same).
 - Admin flows:
-  - Add studios. New endpoint required.
-  - Add languages. New endpoint required.
+  - CRUD studios. New endpoint required.
+  - CRUD languages. New endpoint required.
 - Error handling.
-- Möjlighet att ladda upp bild-filer för omslagsbilder.
-- Hämta filmdata från OMDB (eller andra källor):
-  o URL och API (inkl. ev. nyckel)
-  o Mappning extern modell till intern modell.
-  o Anropa BE för att skapa / uppdatera filmdata.
-- Kolla kvarvarande TODO-punkter i FE & BE.
-- Städa och optimera kod
-- Skriv tester (frontend & backend)
+- Feature to upload cover image files.
+- Fetch movie data from OMDB (or other source):
+  - URL and API (incl. possible key).
+  - Map external model to internal model.
+  - Call BE to create / update movie data.
+- Check remaining ToDo comments in FE & BE.
+- Clean and optimize code.
+- Write tests (frontend & backend).
 
 ### UX
 
-- Bestäm färgprofil
-- Ta fram designskisser på de olika vyerna (allt eftersom)
+- Create colour profile.
+- Make design sketches for the various views (as we go).
 
-## Buggar
+## Bugs
 
+- Functionality
+  - Field validations only done for the visible fields.
+  - Fields visually emptied when moving between tabs. The values remain in the form model though. Might be related to the bug above.
+  - Saving new actor (via `AddNewActor`) gives an error in backend: `deleted instance passed to merge: [se.giron.moviecenter.model.entity.CastAndCrew#<null>]`.
+  - Saving new crew member (via `AddNewCrewMember`) gives an error in backend: `deleted instance passed to merge: [se.giron.moviecenter.model.entity.CastAndCrew#<null>]`.
 - UI
   - Filter component responsiveness.
 
-## Restlista
+## Rest list
 
-- Add actor: Se till att en personRole som redan är vald inte kan väljas. (Just nu: Dubletten ignoreras vid spara.)
 - Add new actor: Eget flöde för att lägga till (sökdialog där både ny och befintlig person hanteras). Förhindra att det skapas person-dubbletter i person-db-tabellen.
 - Add new crew member: Eget flöde för att lägga till (sökdialog där både ny och befintlig person hanteras). Förhindra att det skapas person-dubbletter i person-db-tabellen.
 - Introducera GraphQL & Aurora.
-- Admin-vy med bl.a. möjlighet att redigera (lägga till och ta bort) språk.
-- Sök-funktion för omslagsbilder till en film (Googles sök-API?)
+- (Sök-funktion för omslagsbilder till en film (Googles sök-API?))

@@ -1,23 +1,9 @@
 import { Control, Controller, UseFormSetValue } from 'react-hook-form';
-import {
-  IMovie,
-  LanguageModel,
-  MovieFormatInfo,
-  SelectableModel,
-} from '@giron/shared-models';
+import { IMovie, LanguageModel, MovieFormatInfo, SelectableModel, } from '@giron/shared-models';
 import { LabeledInput } from '@giron/shared-ui-library';
-import {
-  Box,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-  TextField,
-} from '@mui/material';
+import { Box, MenuItem, Select, SelectChangeEvent, TextField, } from '@mui/material';
 import { useEffect, useState } from 'react';
-import {
-  mapMultipleSelectionToChips,
-  SelectMenuProps,
-} from '@giron/shared-util-helpers';
+import { mapMultipleSelectionToChips, SelectMenuProps, } from '@giron/shared-util-helpers';
 
 const REGIONS = ['', '1', '2', '3', '4', '5', '6'];
 const regionOptions: SelectableModel[] = REGIONS.map((r) => ({
@@ -40,13 +26,13 @@ type Props = {
 };
 
 export const InputFields = ({
-  control,
-  setValue,
-  movieFormatInfo,
-  formats,
-  languages,
-}: Props) => {
-  const [format, setFormat] = useState(movieFormatInfo.format?.code || '');
+                              control,
+                              setValue,
+                              movieFormatInfo,
+                              formats,
+                              languages,
+                            }: Props) => {
+  const [selectedFormat, setSelectedFormat] = useState(movieFormatInfo.format?.code || '');
   const [upcId, setUpcId] = useState(movieFormatInfo.upcId || '');
   const [region, setRegion] = useState<string>(
     movieFormatInfo.region ? `${movieFormatInfo.region}` : ''
@@ -81,6 +67,19 @@ export const InputFields = ({
       name: l.nameSwedish,
     })
   );
+
+  const formatChanged = (event: SelectChangeEvent) => {
+    const { value } = event.target;
+
+    const chosenFormat: SelectableModel | undefined = formats?.find(
+      (f: SelectableModel) => f.code === value
+    );
+
+    if (chosenFormat) {
+      setSelectedFormat(value);
+      setValue('movieFormatInfo.format', chosenFormat);
+    }
+  };
 
   const audioLanguagesChanged = (event: SelectChangeEvent) => {
     const { chosenLanguages, selectedOptions } = getSelectedLanguages(event);
@@ -140,29 +139,35 @@ export const InputFields = ({
         <Controller
           control={control}
           name="movieFormatInfo.format"
-          render={({ field: { onChange, ...field } }) => (
-            <Select
-              {...field}
-              value={format}
-              required={true}
-              onChange={(e) => {
-                onChange(e);
-                setFormat(e.target.value);
-              }}
-              renderValue={(selected) => (
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                  {mapMultipleSelectionToChips(selected, formats)}
-                </Box>
-              )}
-              MenuProps={SelectMenuProps}
-            >
-              {formats?.map((option, index) => (
-                <MenuItem key={index} value={option.code}>
-                  {option.name}
-                </MenuItem>
-              ))}
-            </Select>
+          render={({ field: { onChange, ...field }, fieldState: { error } }) => (
+            <>
+              <Select
+                {...field}
+                className="mat-select-required"
+                value={selectedFormat}
+                onChange={formatChanged}
+                renderValue={(selected) => (
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                    {mapMultipleSelectionToChips(selected, formats)}
+                  </Box>
+                )}
+                MenuProps={SelectMenuProps}
+              >
+                {formats?.map((option, index) => (
+                  <MenuItem key={index} value={option.code}>
+                    {option.name}
+                  </MenuItem>
+                ))}
+              </Select>
+
+              <div style={{marginLeft: '0.5rem', display: 'flex', alignItems: 'center'}}>
+                {error?.message && (
+                  <small className="text-red-500" style={{ color: 'red' }}>{error.message}</small>
+                )}
+              </div>
+            </>
           )}
+          rules={{ required: 'Format är inte angivet' }}
         />
       </LabeledInput>
 
