@@ -8,20 +8,20 @@ interface Props extends LabeledInputProps {
 }
 
 export const LabeledTimeInput = ({
-                                   label,
-                                   name,
-                                   htmlFor,
-                                   defaultValue,
-                                   labelMode,
-                                   orientation,
-                                   required = false,
-                                   testName = 'LabelledTimeInput_test',
-                                 }: Props) => {
+  label,
+  name,
+  htmlFor,
+  defaultValue,
+  labelMode,
+  orientation,
+  required = false,
+  testName = 'LabelledTimeInput_test',
+}: Props) => {
   const strRuntime = defaultValue
     ? defaultValue.substring(
-      defaultValue.lastIndexOf('T') + 1,
-      defaultValue.length
-    )
+        defaultValue.lastIndexOf('T') + 1,
+        defaultValue.length
+      )
     : '';
 
   const runtime = defaultValue ? toDate(new Date(defaultValue)) : undefined;

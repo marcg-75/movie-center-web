@@ -89,7 +89,7 @@ export const getMovieById = (movieId: number) =>
 export const createMovie = (movie: IMovie) =>
   createAction({
     endpoint: `${BASE_URL}`,
-    body: JSON.stringify(transformToOuterModel(movie)),
+    body: JSON.stringify(movie),
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     types: [MOVIE_CREATING, MOVIE_CREATED, MOVIE_CREATE_ERROR],
@@ -98,7 +98,7 @@ export const createMovie = (movie: IMovie) =>
 export const updateMovie = (movie: IMovie) =>
   createAction({
     endpoint: `${BASE_URL}/${movie.id}`,
-    body: JSON.stringify(transformToOuterModel(movie)),
+    body: JSON.stringify(movie),
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     types: [MOVIE_UPDATING, MOVIE_UPDATED, MOVIE_UPDATE_ERROR],
@@ -175,15 +175,4 @@ export const clearFilterAndReloadMovies = () => {
     dispatch(clearFilter());
     return dispatch(getMovies(DEFAULT_FILTER));
   };
-};
-
-const transformToOuterModel = (movie: IMovie): IMovie => {
-  const runtime = movie.runtime;
-
-  if (runtime) {
-    //movie.runtime = runtime.substring(11, 16);
-    movie.runtime =
-      runtime.substring(runtime.lastIndexOf('T') + 1, runtime.length) + ':00';
-  }
-  return movie;
 };

@@ -72,6 +72,7 @@ export const InputFields = ({
     setCountry(movie.country || '');
     setAgeRestriction(movie.ageRestriction || '');
     setDescription(movie.description || '');
+    setValue('description', movie.description || '');
     setImdbId(movie.imdbId || '');
   }, [movie]);
 

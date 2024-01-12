@@ -1,10 +1,23 @@
 import { Control, Controller } from 'react-hook-form';
-import { IMovie, MoviePersonalInfo, SelectableModel, } from '@giron/shared-models';
+import {
+  IMovie,
+  MoviePersonalInfo,
+  SelectableModel,
+} from '@giron/shared-models';
 import { LabeledInput } from '@giron/shared-ui-library';
 import { useState } from 'react';
-import { Box, MenuItem, Select, TextareaAutosize, TextField, } from '@mui/material';
+import {
+  Box,
+  MenuItem,
+  Select,
+  TextareaAutosize,
+  TextField,
+} from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
-import { mapMultipleSelectionToChips, SelectMenuProps, } from '@giron/shared-util-helpers';
+import {
+  mapMultipleSelectionToChips,
+  SelectMenuProps,
+} from '@giron/shared-util-helpers';
 
 const GRADES = ['', '5', '4.5', '4', '3.5', '3', '2.5', '2', '1.5', '1'];
 const gradeOptions: SelectableModel[] = GRADES.map((g) => ({

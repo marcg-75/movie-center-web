@@ -7,14 +7,14 @@ interface Props extends LabeledInputProps {
 }
 
 export const LabeledDateInput = ({
-                                   label,
-                                   htmlFor,
-                                   name,
-                                   defaultValue,
-                                   labelMode,
-                                   orientation,
-                                   testName = 'LabelledDateInput_test',
-                                 }: Props) => {
+  label,
+  htmlFor,
+  name,
+  defaultValue,
+  labelMode,
+  orientation,
+  testName = 'LabelledDateInput_test',
+}: Props) => {
   const date = defaultValue ? new Date(defaultValue) : undefined;
 
   return (
@@ -25,7 +25,7 @@ export const LabeledDateInput = ({
       orientation={orientation}
       testName={testName}
     >
-      <DatePicker name={name} format="yyyy-MM-dd" value={date}/>
+      <DatePicker name={name} format="yyyy-MM-dd" value={date} />
     </LabeledInput>
   );
 };

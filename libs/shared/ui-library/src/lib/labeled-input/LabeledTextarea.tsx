@@ -7,15 +7,15 @@ interface Props extends LabeledInputProps {
 }
 
 export const LabeledTextarea = ({
-                                  label,
-                                  htmlFor,
-                                  name,
-                                  defaultValue,
-                                  labelMode,
-                                  orientation = 'column',
-                                  required = false,
-                                  testName = 'LabelledTextarea_test',
-                                }: Props) => (
+  label,
+  htmlFor,
+  name,
+  defaultValue,
+  labelMode,
+  orientation = 'column',
+  required = false,
+  testName = 'LabelledTextarea_test',
+}: Props) => (
   <LabeledInput
     htmlFor={htmlFor}
     label={label}

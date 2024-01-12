@@ -24,19 +24,19 @@ interface Props extends LabeledInputProps {
 }
 
 export const LabeledSelect = ({
-                                label,
-                                htmlFor,
-                                name,
-                                defaultValue,
-                                value = defaultValue,
-                                labelMode,
-                                orientation,
-                                options,
-                                callback,
-                                multiple,
-                                required = false,
-                                testName = 'LabelledSelect_test',
-                              }: Props) => {
+  label,
+  htmlFor,
+  name,
+  defaultValue,
+  value = defaultValue,
+  labelMode,
+  orientation,
+  options,
+  callback,
+  multiple,
+  required = false,
+  testName = 'LabelledSelect_test',
+}: Props) => {
   const mapMultipleSelectionToChips = (
     selected: string | string[]
   ): string | ReactNode[] => {
@@ -46,7 +46,7 @@ export const LabeledSelect = ({
     }
     return selected.map((value, idx) => {
       const option = options?.find((op) => op.code === value);
-      return <Chip key={idx} label={option?.name}/>;
+      return <Chip key={idx} label={option?.name} />;
     });
   };
 

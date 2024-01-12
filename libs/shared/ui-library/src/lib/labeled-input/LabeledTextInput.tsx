@@ -15,17 +15,17 @@ interface Props extends LabeledInputProps {
 }
 
 export const LabeledTextInput = ({
-                                   label,
-                                   htmlFor,
-                                   name,
-                                   defaultValue,
-                                   placeholder,
-                                   labelMode,
-                                   orientation,
-                                   required = false,
-                                   callback,
-                                   testName = 'LabelledTextInput_test',
-                                 }: Props) => {
+  label,
+  htmlFor,
+  name,
+  defaultValue,
+  placeholder,
+  labelMode,
+  orientation,
+  required = false,
+  callback,
+  testName = 'LabelledTextInput_test',
+}: Props) => {
   return (
     <LabeledInput
       htmlFor={htmlFor}

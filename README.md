@@ -91,6 +91,7 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
   - Fields visually emptied when moving between tabs. The values remain in the form model though. Might be related to the bug above.
   - Saving new actor (via `AddNewActor`) gives an error in backend: `deleted instance passed to merge: [se.giron.moviecenter.model.entity.CastAndCrew#<null>]`.
   - Saving new crew member (via `AddNewCrewMember`) gives an error in backend: `deleted instance passed to merge: [se.giron.moviecenter.model.entity.CastAndCrew#<null>]`.
+  - Still at least one field that goes from uncontrolled to controlled.
 - UI
   - Filter component responsiveness.
 

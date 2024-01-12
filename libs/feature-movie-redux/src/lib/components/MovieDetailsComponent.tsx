@@ -19,11 +19,13 @@ import {
   loadStudios,
   MovieStateModel,
   updateMovie,
-  updateMovieState,
 } from '@giron/data-access-redux';
 import { checkIfBaseDataIsLoading } from '../utils/movie.utils';
 import { IMovie } from '@giron/shared-models';
 import { MovieDetails } from '@giron/shared-movie-components';
+import { useForm } from 'react-hook-form';
+import { removeUndefinedValuesFromObject } from '@giron/shared-util-helpers';
+import { format } from 'date-fns';
 
 interface MovieProps {
   movie: MovieStateModel;
@@ -45,6 +47,7 @@ const MovieDetailsComponent = ({
   const [movieId, setMovieId] = useState<number>();
   const [isMovieLoading] = useState(movie?.movieLoading?.loading);
   const [isBaseDataLoading] = useState(checkIfBaseDataIsLoading(baseData));
+  const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     const { pathname } = location;
@@ -86,24 +89,95 @@ const MovieDetailsComponent = ({
 
   const { movieItem, movieLoading } = movie;
 
+  const {
+    control,
+    handleSubmit,
+    formState: { isDirty },
+    reset,
+    setValue,
+    getValues,
+  } = useForm<IMovie>();
+  //   {
+  //   defaultValues: movieItem,
+  // }
+
+  const onSave = (movieChanges: IMovie) => {
+    if (!movieChanges) {
+      return;
+    }
+
+    // Remove properties with undefined or null values. This since the change set sets undefined for all unchanged properties.
+    removeUndefinedValuesFromObject(movieChanges);
+    removeUndefinedValuesFromObject(movieChanges.movieFormatInfo);
+    removeUndefinedValuesFromObject(movieChanges.moviePersonalInfo);
+
+    setIsSaving(true);
+
+    const updatedMovie: IMovie = {
+      ...movieItem,
+      ...movieChanges,
+      movieFormatInfo: {
+        ...movieItem?.movieFormatInfo,
+        ...movieChanges.movieFormatInfo,
+      },
+      moviePersonalInfo: {
+        ...movieItem?.moviePersonalInfo,
+        ...movieChanges.moviePersonalInfo,
+      },
+    };
+
+    // Reformat runtime, since TimePicker makes it a long date string.
+    if (updatedMovie.runtime) {
+      updatedMovie.runtime = format(new Date(updatedMovie.runtime), 'HH:mm:ss');
+    }
+
+    if (!updatedMovie.id || updatedMovie.id === 0) {
+      updatedMovie.id = undefined;
+      dispatch(createMovie(updatedMovie));
+    } else {
+      dispatch(updateMovie(updatedMovie));
+    }
+
+    setIsSaving(false);
+    history.push('/');
+  };
+
+  const onReset = () => {
+    reset();
+  };
+
+  const onCancel = () => {
+    if (
+      isDirty &&
+      !window.confirm('Vill du avbryta redigeringen av denna film?')
+    ) {
+      return;
+    }
+
+    history.push('/');
+  };
+
   return (
-    <MovieDetails
-      movie={movieItem}
-      isLoading={isMovieLoading || isBaseDataLoading}
-      isCreateMode={movieId === 0}
-      onCreateMovie={(movie: IMovie) => dispatch(createMovie(movie))}
-      onUpdateMovie={(movie: IMovie) => dispatch(updateMovie(movie))}
-      onMovieTitleChange={(movie: IMovie) => dispatch(updateMovieState(movie))}
-      onCancel={() => history.goBack()}
-      generalInfoPanel={<GeneralInfoPanel />}
-      castPanel={<CastPanel />}
-      crewPanel={<CrewPanel />}
-      formatPanel={<FormatPanel />}
-      coverPanel={<CoverPanel />}
-      personalInfoPanel={<PersonalInfoPanel />}
-      errors={movieLoading?.errors}
-      testName={testName}
-    />
+    <form onSubmit={handleSubmit(onSave)}>
+      <MovieDetails
+        control={control}
+        movie={movieItem}
+        isLoading={isMovieLoading || isBaseDataLoading || isSaving}
+        isCreateMode={movieId === 0}
+        onReset={onReset}
+        onCancel={onCancel}
+        generalInfoPanel={
+          <GeneralInfoPanel control={control} setValue={setValue} />
+        }
+        castPanel={<CastPanel setValue={setValue} />}
+        crewPanel={<CrewPanel setValue={setValue} />}
+        formatPanel={<FormatPanel control={control} setValue={setValue} />}
+        coverPanel={<CoverPanel control={control} />}
+        personalInfoPanel={<PersonalInfoPanel control={control} />}
+        errors={movieLoading?.errors}
+        testName={testName}
+      />
+    </form>
   );
 };
 

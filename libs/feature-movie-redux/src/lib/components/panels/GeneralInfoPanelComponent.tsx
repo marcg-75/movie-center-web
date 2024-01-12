@@ -1,25 +1,24 @@
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import {
-  BaseDataStateModel,
-  MovieStateModel,
-  updateMovieState,
-} from '@giron/data-access-redux';
+import { BaseDataStateModel, MovieStateModel } from '@giron/data-access-redux';
 import { checkIfBaseDataIsLoading } from '../../utils/movie.utils';
 import { IMovie } from '@giron/shared-models';
 import { GeneralInfoPanel } from '@giron/shared-movie-components';
+import { Control, UseFormSetValue } from 'react-hook-form';
 
 type Props = {
   movie: MovieStateModel;
   baseData: BaseDataStateModel;
-  dispatch: (any: unknown) => void;
+  control: Control<IMovie>;
+  setValue: UseFormSetValue<IMovie>;
   testName?: string;
 };
 
 const GeneralInfoPanelComponent = ({
   movie,
   baseData,
-  dispatch,
+  control,
+  setValue,
   testName = 'GeneralInfoPanelComponent_test',
 }: Props) => {
   const [isMovieLoading] = useState(movie?.movieLoading?.loading);
@@ -29,15 +28,20 @@ const GeneralInfoPanelComponent = ({
   const { genres, studios } = baseData;
 
   return (
-    <GeneralInfoPanel
-      movie={movieItem}
-      genres={genres}
-      studios={studios}
-      onMovieChange={(movie: IMovie) => dispatch(updateMovieState(movie))}
-      isLoading={isMovieLoading || isBaseDataLoading}
-      errors={movieLoading.errors}
-      testName={testName}
-    />
+    <>
+      {movieItem && (
+        <GeneralInfoPanel
+          control={control}
+          setValue={setValue}
+          movie={movieItem}
+          genres={genres}
+          studios={studios}
+          isLoading={isMovieLoading || isBaseDataLoading}
+          errors={movieLoading.errors}
+          testName={testName}
+        />
+      )}
+    </>
   );
 };
 

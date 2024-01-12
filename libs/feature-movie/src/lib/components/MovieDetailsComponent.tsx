@@ -93,11 +93,6 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
     router.push('/');
   };
 
-  // const removeUndefinedValuesFromObject = <T>(obj: T) => {
-  //   // @ts-ignore
-  //   Object.keys(obj).forEach((key) => obj[key] === undefined && delete obj[key]);
-  // };
-
   const onReset = () => {
     reset();
   };
@@ -116,12 +111,12 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
   return (
     <form onSubmit={handleSubmit(onSave)}>
       <MovieDetails
+        control={control}
         movie={movieDetails}
         isLoading={isMovieLoading || isSaving}
         isCreateMode={movieId === 0}
         onReset={onReset}
         onCancel={onCancel}
-        control={control}
         generalInfoPanel={
           <GeneralInfoPanelComponent
             control={control}
