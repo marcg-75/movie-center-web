@@ -97,24 +97,23 @@ export const InputFields = ({
     }
   };
 
-  const audioLanguagesChanged = (event: SelectChangeEvent) => {
-    const { chosenLanguages, selectedOptions } = getSelectedLanguages(event);
+  const audioLanguagesChanged = (value: string | string[]) => {
+    const { chosenLanguages, selectedOptions } = getSelectedLanguages(value);
 
     setSelectedAudio(selectedOptions);
     setValue('movieFormatInfo.audioLanguages', chosenLanguages);
   };
 
-  const subtitlesChanged = (event: SelectChangeEvent) => {
-    const { chosenLanguages, selectedOptions } = getSelectedLanguages(event);
+  const subtitlesChanged = (value: string | string[]) => {
+    const { chosenLanguages, selectedOptions } = getSelectedLanguages(value);
 
     setSelectedSubtitles(selectedOptions);
     setValue('movieFormatInfo.subtitles', chosenLanguages);
   };
 
   const getSelectedLanguages = (
-    event: SelectChangeEvent
+    value: string | string[]
   ): { chosenLanguages: LanguageModel[]; selectedOptions: string[] } => {
-    const { value } = event.target;
     const chosenLanguages: LanguageModel[] = [];
 
     const selectedOptions =
@@ -319,7 +318,7 @@ export const InputFields = ({
               {...field}
               multiple={true}
               value={selectedAudio}
-              onChange={audioLanguagesChanged}
+              onChange={(e) => audioLanguagesChanged(e.target.value)}
               renderValue={(selected) => (
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                   {mapMultipleSelectionToChips(selected, languageOptions)}
@@ -346,7 +345,7 @@ export const InputFields = ({
               {...field}
               multiple={true}
               value={selectedSubtitles}
-              onChange={subtitlesChanged}
+              onChange={(e) => subtitlesChanged(e.target.value)}
               renderValue={(selected) => (
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                   {mapMultipleSelectionToChips(selected, languageOptions)}

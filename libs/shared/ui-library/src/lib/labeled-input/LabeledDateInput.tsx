@@ -1,6 +1,5 @@
 import { LabeledInputProps } from './labeled-input.model';
 import { LabeledInput } from './LabeledInput';
-import { Controller } from 'react-hook-form';
 import { DatePicker } from '@mui/x-date-pickers';
 
 interface Props extends LabeledInputProps {
@@ -8,18 +7,14 @@ interface Props extends LabeledInputProps {
 }
 
 export const LabeledDateInput = ({
-  label,
-  htmlFor,
-  name,
-  defaultValue,
-  labelMode,
-  orientation,
-  control,
-  required = false,
-  requiredText,
-  rules = {},
-  testName = 'LabelledDateInput_test',
-}: Props) => {
+                                   label,
+                                   htmlFor,
+                                   name,
+                                   defaultValue,
+                                   labelMode,
+                                   orientation,
+                                   testName = 'LabelledDateInput_test',
+                                 }: Props) => {
   const date = defaultValue ? new Date(defaultValue) : undefined;
 
   return (
@@ -30,17 +25,7 @@ export const LabeledDateInput = ({
       orientation={orientation}
       testName={testName}
     >
-      <Controller
-        control={control}
-        name={name}
-        render={({ field: { ref, ...field } }) => (
-          <DatePicker {...field} name={name} format="yyyy-MM-dd" value={date} />
-        )}
-        rules={{
-          ...rules,
-          required: requiredText,
-        }}
-      />
+      <DatePicker name={name} format="yyyy-MM-dd" value={date}/>
     </LabeledInput>
   );
 };

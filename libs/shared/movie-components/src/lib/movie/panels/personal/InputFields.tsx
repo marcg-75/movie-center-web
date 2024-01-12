@@ -1,23 +1,10 @@
-import { Control, Controller, UseFormSetValue } from 'react-hook-form';
-import {
-  IMovie,
-  MoviePersonalInfo,
-  SelectableModel,
-} from '@giron/shared-models';
+import { Control, Controller } from 'react-hook-form';
+import { IMovie, MoviePersonalInfo, SelectableModel, } from '@giron/shared-models';
 import { LabeledInput } from '@giron/shared-ui-library';
-import { ChangeEvent, useState } from 'react';
-import {
-  Box,
-  MenuItem,
-  Select,
-  TextareaAutosize,
-  TextField,
-} from '@mui/material';
+import { useState } from 'react';
+import { Box, MenuItem, Select, TextareaAutosize, TextField, } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers';
-import {
-  mapMultipleSelectionToChips,
-  SelectMenuProps,
-} from '@giron/shared-util-helpers';
+import { mapMultipleSelectionToChips, SelectMenuProps, } from '@giron/shared-util-helpers';
 
 const GRADES = ['', '5', '4.5', '4', '3.5', '3', '2.5', '2', '1.5', '1'];
 const gradeOptions: SelectableModel[] = GRADES.map((g) => ({
@@ -51,36 +38,6 @@ export const InputFields = ({ control, moviePersonalInfo }: Props) => {
     moviePersonalInfo.obtainPlace || ''
   );
   const [notes, setNotes] = useState(moviePersonalInfo.notes || '');
-
-  const movieStateChanged = (
-    event: ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    const { name, value } = event.target;
-
-    let cValue: number | string = value;
-
-    if (name === 'grade') {
-      cValue = parseFloat(value);
-    } else if (name === 'obtainPrice') {
-      cValue = parseFloat(value);
-
-      if (isNaN(cValue)) {
-        alert('Pris måste vara ett tal.');
-        event.target.value = '';
-        return;
-      }
-    }
-
-    // onMovieChange({
-    //   ...movie,
-    //   moviePersonalInfo: {
-    //     ...moviePersonalInfo,
-    //     [name]: cValue,
-    //   },
-    // } as IMovie);
-  };
 
   return (
     <>

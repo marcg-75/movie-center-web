@@ -75,8 +75,7 @@ export const InputFields = ({
     setImdbId(movie.imdbId || '');
   }, [movie]);
 
-  const additionalGenresChanged = (event: SelectChangeEvent) => {
-    const { value } = event.target;
+  const additionalGenresChanged = (value: string | string[]) => {
     const chosenGenres: MovieGenreModel[] = [];
 
     const selectedOptions =
@@ -116,8 +115,7 @@ export const InputFields = ({
     setNewStudio('');
   };
 
-  const studiosChanged = (event: SelectChangeEvent) => {
-    const { value } = event.target;
+  const studiosChanged = (value: string | string[]) => {
     const chosenStudios: NameEntityModel[] = [];
 
     const selectedOptions =
@@ -157,7 +155,7 @@ export const InputFields = ({
               {...field}
               multiple={true}
               value={selectedGenres}
-              onChange={additionalGenresChanged}
+              onChange={(e) => additionalGenresChanged(e.target.value)}
               renderValue={(selected) => (
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                   {mapMultipleSelectionToChips(selected, genres)}
@@ -270,7 +268,7 @@ export const InputFields = ({
               {...field}
               multiple={true}
               value={selectedStudios}
-              onChange={studiosChanged}
+              onChange={(e) => studiosChanged(e.target.value)}
               renderValue={(selected) => (
                 <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                   {mapMultipleSelectionToChips(selected, studioOptions)}
