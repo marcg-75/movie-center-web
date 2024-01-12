@@ -1,7 +1,11 @@
 'use client';
 import { IMovie } from '@giron/shared-models';
 import { MovieDetails } from '@giron/shared-movie-components';
-import { useCreateMovieMutation, useMovieDetails, useUpdateMovieMutation, } from '@giron/data-access';
+import {
+  useCreateMovieMutation,
+  useMovieDetails,
+  useUpdateMovieMutation,
+} from '@giron/data-access';
 import { GeneralInfoPanelComponent } from './panels/GeneralInfoPanelComponent';
 import { useRouter } from 'next/navigation';
 import { CoverPanelComponent } from './panels/CoverPanelComponent';
@@ -70,7 +74,7 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
       moviePersonalInfo: {
         ...movieDetails.moviePersonalInfo,
         ...movieChanges.moviePersonalInfo,
-      }
+      },
     };
 
     // Reformat runtime, since TimePicker makes it a long date string.
@@ -99,12 +103,14 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
   };
 
   const onCancel = () => {
-
-    if (isDirty && !window.confirm('Vill du avbryta redigeringen av denna film?')) {
+    if (
+      isDirty &&
+      !window.confirm('Vill du avbryta redigeringen av denna film?')
+    ) {
       return;
     }
 
-    router.push('/')
+    router.push('/');
   };
 
   return (

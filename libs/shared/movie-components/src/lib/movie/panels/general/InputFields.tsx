@@ -1,11 +1,31 @@
 import { FocusEvent, useEffect, useState } from 'react';
-import { Box, MenuItem, Select, SelectChangeEvent, TextareaAutosize, TextField, } from '@mui/material';
+import {
+  Box,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  TextareaAutosize,
+  TextField,
+} from '@mui/material';
 import { DatePicker, TimePicker } from '@mui/x-date-pickers';
-import { Control, Controller, FieldErrors, UseFormSetValue } from 'react-hook-form';
+import {
+  Control,
+  Controller,
+  FieldErrors,
+  UseFormSetValue,
+} from 'react-hook-form';
 import { toDate } from 'date-fns';
-import { IMovie, MovieGenreModel, NameEntityModel, SelectableModel, } from '@giron/shared-models';
+import {
+  IMovie,
+  MovieGenreModel,
+  NameEntityModel,
+  SelectableModel,
+} from '@giron/shared-models';
 import { LabeledInput } from '@giron/shared-ui-library';
-import { mapMultipleSelectionToChips, SelectMenuProps, } from '@giron/shared-util-helpers';
+import {
+  mapMultipleSelectionToChips,
+  SelectMenuProps,
+} from '@giron/shared-util-helpers';
 
 type Props = {
   control: Control<IMovie>;
@@ -291,7 +311,10 @@ export const InputFields = ({
         <Controller
           control={control}
           name="description"
-          render={({ field: { onChange, ...field }, fieldState: { error } }) => (
+          render={({
+            field: { onChange, ...field },
+            fieldState: { error },
+          }) => (
             <>
               <TextareaAutosize
                 {...field}
@@ -306,7 +329,9 @@ export const InputFields = ({
 
               <div>
                 {error?.message && (
-                  <small className="text-red-500" style={{ color: 'red' }}>{error.message}</small>
+                  <small className="text-red-500" style={{ color: 'red' }}>
+                    {error.message}
+                  </small>
                 )}
               </div>
             </>
@@ -315,33 +340,32 @@ export const InputFields = ({
         />
       </LabeledInput>
 
-      {
-        movie.imdbId ? (
-          <a
-            href={`https://www.imdb.com/title/${movie.imdbId}/`}
-            target="browser1"
-          >
-            IMDB info
-          </a>
-        ) : (
-          <LabeledInput htmlFor="imdbId" label="IMDB Id:">
-            <Controller
-              control={control}
-              name="imdbId"
-              render={({ field: { onChange, ...field } }) => (
-                <TextField
-                  {...field}
-                  type="text"
-                  defaultValue={imdbId}
-                  onChange={(e) => {
-                    onChange(e);
-                    setImdbId(e.target.value);
-                  }}
-                />
-              )}
-            />
-          </LabeledInput>
-        )}
+      {movie.imdbId ? (
+        <a
+          href={`https://www.imdb.com/title/${movie.imdbId}/`}
+          target="browser1"
+        >
+          IMDB info
+        </a>
+      ) : (
+        <LabeledInput htmlFor="imdbId" label="IMDB Id:">
+          <Controller
+            control={control}
+            name="imdbId"
+            render={({ field: { onChange, ...field } }) => (
+              <TextField
+                {...field}
+                type="text"
+                defaultValue={imdbId}
+                onChange={(e) => {
+                  onChange(e);
+                  setImdbId(e.target.value);
+                }}
+              />
+            )}
+          />
+        </LabeledInput>
+      )}
     </>
   );
 };

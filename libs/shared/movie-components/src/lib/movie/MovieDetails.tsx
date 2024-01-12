@@ -35,22 +35,22 @@ type Props = {
 };
 
 export const MovieDetails = ({
-                               movie,
-                               isLoading = false,
-                               isCreateMode = false,
-                               onReset,
-                               onCancel,
-                               control,
-                               generalInfoPanel,
-                               castPanel,
-                               crewPanel,
-                               formatPanel,
-                               coverPanel,
-                               personalInfoPanel,
-                               error,
-                               errors,
-                               testName = 'MovieDetails_test',
-                             }: Props) => {
+  movie,
+  isLoading = false,
+  isCreateMode = false,
+  onReset,
+  onCancel,
+  control,
+  generalInfoPanel,
+  castPanel,
+  crewPanel,
+  formatPanel,
+  coverPanel,
+  personalInfoPanel,
+  error,
+  errors,
+  testName = 'MovieDetails_test',
+}: Props) => {
   const [activePanel, setActivePanel] = useState(PANEL_GENERAL);
   const [title, setTitle] = useState(movie?.title || '');
 
@@ -114,7 +114,7 @@ export const MovieDetails = ({
   } else if (isLoading || (!movie && !isCreateMode)) {
     return (
       <MoviePageLayout testName={testName}>
-        <Loader/>
+        <Loader />
       </MoviePageLayout>
     );
   } else {
@@ -123,7 +123,10 @@ export const MovieDetails = ({
         <Controller
           control={control}
           name="title"
-          render={({ field: { onChange, ...field }, fieldState: { error } }) => (
+          render={({
+            field: { onChange, ...field },
+            fieldState: { error },
+          }) => (
             <>
               <TextField
                 {...field}
@@ -136,9 +139,11 @@ export const MovieDetails = ({
                 }}
               />
 
-              <div style={{marginLeft: '0.5rem'}}>
+              <div style={{ marginLeft: '0.5rem' }}>
                 {error?.message && (
-                  <small className="text-red-500" style={{ color: 'red' }}>{error.message}</small>
+                  <small className="text-red-500" style={{ color: 'red' }}>
+                    {error.message}
+                  </small>
                 )}
               </div>
             </>
@@ -211,7 +216,7 @@ export const MovieDetails = ({
 
     const actionItems = (
       <>
-        <input type="submit" className="btn secondary" value="Spara"/>
+        <input type="submit" className="btn secondary" value="Spara" />
 
         {/*react-hook-form reset doesn't work on all fields at the moment.*/}
         {/*<button className="btn secondary" onClick={(e: MouseEvent) => onResetMovie(e)}>*/}
@@ -286,11 +291,11 @@ type MovieDetailsLayoutProps = {
 };
 
 const MovieDetailsLayout = ({
-                              titleElement,
-                              menuItems,
-                              actionItems,
-                              children,
-                            }: MovieDetailsLayoutProps) => {
+  titleElement,
+  menuItems,
+  actionItems,
+  children,
+}: MovieDetailsLayoutProps) => {
   return (
     <div className="panel-container">
       <div className="movie-title-panel">{titleElement}</div>
