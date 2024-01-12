@@ -17,13 +17,6 @@ export const LabeledTimeInput = ({
   required = false,
   testName = 'LabelledTimeInput_test',
 }: Props) => {
-  const strRuntime = defaultValue
-    ? defaultValue.substring(
-        defaultValue.lastIndexOf('T') + 1,
-        defaultValue.length
-      )
-    : '';
-
   const runtime = defaultValue ? toDate(new Date(defaultValue)) : undefined;
 
   return (

@@ -1,7 +1,7 @@
 import { IMovie } from '@giron/shared-models';
 import { CrewPanel } from '@giron/shared-movie-components';
 import { useAllPersons, useCrew, useRoles } from '@giron/data-access';
-import { Control, UseFormSetValue } from 'react-hook-form';
+import { UseFormSetValue } from 'react-hook-form';
 
 type Props = {
   movie?: IMovie;

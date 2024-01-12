@@ -95,7 +95,6 @@ const MovieDetailsComponent = ({
     formState: { isDirty },
     reset,
     setValue,
-    getValues,
   } = useForm<IMovie>();
   //   {
   //   defaultValues: movieItem,

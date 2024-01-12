@@ -1,7 +1,7 @@
 import '../../movie.details.scss';
 import { Loader } from '@giron/shared-ui-library';
 import { IMovie, MoviePersonalInfo } from '@giron/shared-models';
-import { Control, UseFormSetValue } from 'react-hook-form';
+import { Control } from 'react-hook-form';
 import { InputFields } from './InputFields';
 
 type Props = {

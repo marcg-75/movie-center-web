@@ -1,5 +1,5 @@
 import './movie.details.scss';
-import { ChangeEvent, MouseEvent, ReactNode, useState } from 'react';
+import { MouseEvent, ReactNode, useState } from 'react';
 import { LabeledInput, Loader } from '@giron/shared-ui-library';
 import { IMovie } from '@giron/shared-models';
 import { Control, Controller } from 'react-hook-form';
@@ -72,15 +72,6 @@ export const MovieDetails = ({
     e.stopPropagation();
 
     onCancel();
-  };
-
-  const movieStateChanged = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-
-    // onMovieTitleChange({
-    //   ...movie,
-    //   [name]: value,
-    // } as IMovie);
   };
 
   const onChangePanel = (e: MouseEvent, activePanel: string) => {
@@ -219,9 +210,14 @@ export const MovieDetails = ({
         <input type="submit" className="btn secondary" value="Spara" />
 
         {/*react-hook-form reset doesn't work on all fields at the moment.*/}
-        {/*<button className="btn secondary" onClick={(e: MouseEvent) => onResetMovie(e)}>*/}
-        {/*  Ångra*/}
-        {/*</button>*/}
+        <button
+          className="btn secondary"
+          onClick={(e: MouseEvent) => onResetMovie(e)}
+          disabled={true}
+          style={{ display: 'none' }}
+        >
+          Ångra
+        </button>
 
         <button
           className="btn secondary"

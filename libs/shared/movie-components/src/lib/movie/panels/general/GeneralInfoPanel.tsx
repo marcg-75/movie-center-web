@@ -2,7 +2,7 @@ import '../../movie.details.scss';
 import { ReactNode } from 'react';
 import { Loader } from '@giron/shared-ui-library';
 import { IMovie, NameEntityModel, SelectableModel } from '@giron/shared-models';
-import { Control, FieldErrors, UseFormSetValue } from 'react-hook-form';
+import { Control, UseFormSetValue } from 'react-hook-form';
 import { InputFields } from './InputFields';
 
 type Props = {

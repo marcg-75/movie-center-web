@@ -3,17 +3,11 @@ import {
   Box,
   MenuItem,
   Select,
-  SelectChangeEvent,
   TextareaAutosize,
   TextField,
 } from '@mui/material';
 import { DatePicker, TimePicker } from '@mui/x-date-pickers';
-import {
-  Control,
-  Controller,
-  FieldErrors,
-  UseFormSetValue,
-} from 'react-hook-form';
+import { Control, Controller, UseFormSetValue } from 'react-hook-form';
 import { toDate } from 'date-fns';
 import {
   IMovie,

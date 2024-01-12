@@ -21,10 +21,6 @@ export const GeneralInfoPanelComponent = ({
   const { genres, isGenresLoading } = useGenres();
   const { studios, isStudiosLoading } = useStudios();
 
-  const notYetImplemented = (movie: IMovie) => {
-    console.log('Invoking a not yet implemented method.');
-  };
-
   return (
     <GeneralInfoPanel
       control={control}

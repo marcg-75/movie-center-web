@@ -15,10 +15,6 @@ export const CoverPanelComponent = ({
   control,
   testName = 'CoverPanelComponent_test',
 }: Props) => {
-  const notYetImplemented = (movie: IMovie) => {
-    console.log('Invoking a not yet implemented method.');
-  };
-
   return (
     <CoverPanel
       control={control}

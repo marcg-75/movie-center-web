@@ -1,6 +1,6 @@
 import { LabeledInputProps } from './labeled-input.model';
 import { LabeledInput } from './LabeledInput';
-import { Box, Chip, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { Box, Chip, MenuItem, Select } from '@mui/material';
 import { SelectableModel } from '@giron/shared-models';
 import { ReactNode } from 'react';
 

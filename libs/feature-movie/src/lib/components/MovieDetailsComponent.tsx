@@ -43,7 +43,6 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
     formState: { isDirty },
     reset,
     setValue,
-    getValues,
   } = useForm<IMovie>();
   //   {
   //   defaultValues: movieDetails,
