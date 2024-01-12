@@ -7,6 +7,8 @@ import configureStore from './store';
 import App from './components/App';
 import MovieList from '@giron/feature-movie-list-redux';
 import Movie from '@giron/feature-movie-redux';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers';
 
 // TODO: Currently not in use. Possibly a move to Next.js is required.
 
@@ -33,15 +35,17 @@ const root = ReactDOM.createRoot(
 root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <Router>
-        <App>
-          <Switch>
-            {routes.map((route, i) => (
-              <Route path={route.path} component={route.component} key={i} />
-            ))}
-          </Switch>
-        </App>
-      </Router>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <Router>
+          <App>
+            <Switch>
+              {routes.map((route, i) => (
+                <Route path={route.path} component={route.component} key={i} />
+              ))}
+            </Switch>
+          </App>
+        </Router>
+      </LocalizationProvider>
     </PersistGate>
   </Provider>
 );

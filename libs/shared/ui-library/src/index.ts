@@ -5,5 +5,6 @@ export {
   LabeledSelect,
   LabeledDateInput,
   LabeledTimeInput,
+  LabeledInput,
 } from './lib/labeled-input';
 export { Loader } from './lib/loader/Loader';

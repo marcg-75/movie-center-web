@@ -5,14 +5,16 @@ import {
   loadFormats,
   loadLanguages,
   MovieStateModel,
-  updateMovieState,
 } from '@giron/data-access-redux';
-import { IMovie } from '@giron/shared-models';
+import { IMovie, MovieFormatInfo } from '@giron/shared-models';
 import { FormatPanel } from '@giron/shared-movie-components';
+import { Control, UseFormSetValue } from 'react-hook-form';
 
 interface FormatPanelProps {
   movie: MovieStateModel;
   baseData: BaseDataStateModel;
+  control: Control<IMovie>;
+  setValue: UseFormSetValue<IMovie>;
   dispatch: (any: unknown) => void;
   testName?: string;
 }
@@ -20,6 +22,8 @@ interface FormatPanelProps {
 const FormatPanelComponent = ({
   movie,
   baseData,
+  control,
+  setValue,
   dispatch,
   testName = 'FormatPanelComponent_test',
 }: FormatPanelProps) => {
@@ -45,11 +49,12 @@ const FormatPanelComponent = ({
 
   return (
     <FormatPanel
-      movie={movieItem}
+      control={control}
+      setValue={setValue}
+      movieFormatInfo={movieItem?.movieFormatInfo || ({} as MovieFormatInfo)}
       formats={formats}
       languages={languages}
       isLoading={isMovieLoading || isBaseDataLoading}
-      onMovieChange={(movie: IMovie) => dispatch(updateMovieState(movie))}
       errors={movieLoading?.errors}
       testName={testName}
     />

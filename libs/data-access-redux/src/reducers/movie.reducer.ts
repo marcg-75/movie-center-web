@@ -173,6 +173,7 @@ export const movieReducer = (
     case CLEAR_MOVIE_ACTION_STATE:
       return {
         ...state,
+        movieItem: {} as IMovie,
         movieLoading: initialLoadingState,
         movieCreated: false,
         movieUpdated: false,

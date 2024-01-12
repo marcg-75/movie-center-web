@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { MovieStateModel, updateMovieState } from '@giron/data-access-redux';
-import { IMovie } from '@giron/shared-models';
+import { MovieStateModel } from '@giron/data-access-redux';
+import { IMovie, MoviePersonalInfo } from '@giron/shared-models';
 import { PersonalInfoPanel } from '@giron/shared-movie-components';
+import { Control } from 'react-hook-form';
 
 interface PersonalInfoPanelProps {
   movie: MovieStateModel;
-  dispatch: (any: unknown) => void;
+  control: Control<IMovie>;
   testName?: string;
 }
 
 const PersonalInfoPanelComponent = ({
   movie,
-  dispatch,
+  control,
   testName = 'PersonalInfoPanelComponent_test',
 }: PersonalInfoPanelProps) => {
   const [isMovieLoading, setIsMovieLoading] = useState(false);
@@ -25,9 +26,11 @@ const PersonalInfoPanelComponent = ({
 
   return (
     <PersonalInfoPanel
-      movie={movieItem}
+      control={control}
+      moviePersonalInfo={
+        movieItem?.moviePersonalInfo || ({} as MoviePersonalInfo)
+      }
       isLoading={isMovieLoading}
-      onMovieChange={(movie: IMovie) => dispatch(updateMovieState(movie))}
       errors={movieLoading?.errors}
       testName={testName}
     />

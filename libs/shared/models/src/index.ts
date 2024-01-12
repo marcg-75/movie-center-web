@@ -12,4 +12,5 @@ export { Filter } from './Filter';
 export { MovieFilter } from './MovieFilter';
 export { FilterType, FilterSettings } from './FilterSettingsModel';
 export { SortModel } from './SortModel';
+export { RoleEnum } from './RoleEnum';
 export { movieToString } from './movie.model';

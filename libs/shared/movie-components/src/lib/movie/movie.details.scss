@@ -39,28 +39,34 @@
   padding: 1rem;
 
   > div {
-    display: none;
+    //display: none;
+    opacity: 0;
   }
 }
 
 .movie-details-panel.general > .general-info {
-  display: block;
+  //display: block;
+  opacity: 1;
 }
 
 .movie-details-panel.cast > .cast-info {
-  display: block;
+  //display: block;
+  opacity: 1;
 }
 
 .movie-details-panel.crew > .crew-info {
-  display: block;
+  //display: block;
+  opacity: 1;
 }
 
 .movie-details-panel.format > .format-info {
-  display: block;
+  //display: block;
+  opacity: 1;
 }
 
 .movie-details-panel.cover > .cover-info {
-  display: block;
+  //display: block;
+  opacity: 1;
 
   .cover-panel {
     img.cover-image {
@@ -70,7 +76,8 @@
 }
 
 .movie-details-panel.personal > .personal-info {
-  display: block;
+  //display: block;
+  opacity: 1;
 }
 
 .movie-action-panel {

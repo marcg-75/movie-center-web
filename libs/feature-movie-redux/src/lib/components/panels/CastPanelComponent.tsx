@@ -4,14 +4,15 @@ import {
   getActors,
   MovieStateModel,
   PersonStateModel,
-  updateMovieState,
 } from '@giron/data-access-redux';
 import { IMovie } from '@giron/shared-models';
 import { CastPanel } from '@giron/shared-movie-components';
+import { UseFormSetValue } from 'react-hook-form';
 
 interface CastPanelProps {
   movie: MovieStateModel;
   person: PersonStateModel;
+  setValue: UseFormSetValue<IMovie>;
   dispatch: (any: unknown) => void;
   testName?: string;
 }
@@ -19,6 +20,7 @@ interface CastPanelProps {
 const CastPanelComponent = ({
   movie,
   person,
+  setValue,
   dispatch,
   testName = 'CastPanelComponent_test',
 }: CastPanelProps) => {
@@ -45,13 +47,13 @@ const CastPanelComponent = ({
 
   return (
     <CastPanel
+      setValue={setValue}
       movie={movieItem}
       actors={actors}
       persons={persons}
       isMovieLoading={isMovieLoading}
       isActorsLoading={isActorsLoading}
       isPersonsLoading={personsLoading?.loading}
-      onMovieChange={(movie: IMovie) => dispatch(updateMovieState(movie))}
       errors={actorsLoading?.errors}
       testName={testName}
     />

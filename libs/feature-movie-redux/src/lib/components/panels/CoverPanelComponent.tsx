@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { MovieStateModel, updateMovieState } from '@giron/data-access-redux';
-import { IMovie } from '@giron/shared-models';
+import { MovieStateModel } from '@giron/data-access-redux';
+import { IMovie, MovieFormatInfo } from '@giron/shared-models';
 import { CoverPanel } from '@giron/shared-movie-components';
+import { Control } from 'react-hook-form';
 
 interface CoverPanelProps {
   movie: MovieStateModel;
-  dispatch: (any: unknown) => void;
+  control: Control<IMovie>;
   testName?: string;
 }
 
 const CoverPanelComponent = ({
   movie,
-  dispatch,
+  control,
   testName = 'CoverPanelComponent_test',
 }: CoverPanelProps) => {
   const [isMovieLoading, setIsMovieLoading] = useState(false);
@@ -25,9 +26,9 @@ const CoverPanelComponent = ({
 
   return (
     <CoverPanel
-      movie={movieItem}
+      control={control}
+      movieFormatInfo={movieItem?.movieFormatInfo || ({} as MovieFormatInfo)}
       isLoading={isMovieLoading}
-      onMovieChange={(movie: IMovie) => dispatch(updateMovieState(movie))}
       errors={movieLoading.errors}
       testName={testName}
     />

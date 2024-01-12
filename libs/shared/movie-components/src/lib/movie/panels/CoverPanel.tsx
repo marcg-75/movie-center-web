@@ -1,16 +1,18 @@
 import '../movie.details.scss';
-import { ChangeEvent } from 'react';
+import { useState } from 'react';
 import { Loader } from '@giron/shared-ui-library';
-import { IMovie } from '@giron/shared-models';
+import { CoverModel, IMovie, MovieFormatInfo } from '@giron/shared-models';
+import { Control, Controller } from 'react-hook-form';
+import { TextField } from '@mui/material';
 
 export const IMAGE_URL = `${
   process.env.NX_API_BASE_URL || process.env.NEXT_PUBLIC_API_BASE_URL
 }image/`;
 
 type Props = {
-  movie?: IMovie;
+  movieFormatInfo: MovieFormatInfo;
   isLoading?: boolean;
-  onMovieChange: (movie: IMovie) => void;
+  control: Control<IMovie>;
   error?: string | Error | unknown;
   errors?: string[] | Error[];
   testName?: string;
@@ -19,30 +21,16 @@ type Props = {
 // TODO: Slå kanske ihop med format-panelen (cover-info till höger i så fall).
 
 export const CoverPanel = ({
-  movie,
+  movieFormatInfo,
   isLoading = false,
-  onMovieChange,
+  control,
   error,
   errors,
   testName = 'CoverPanel_test',
 }: Props) => {
-  const movieFormatInfo = movie?.movieFormatInfo;
-  const cover = movieFormatInfo ? movieFormatInfo.cover : undefined;
-
-  const movieStateChanged = (event: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-
-    onMovieChange({
-      ...movie,
-      movieFormatInfo: {
-        ...movieFormatInfo,
-        cover: {
-          ...cover,
-          [name]: value, // cValue
-        },
-      },
-    } as IMovie);
-  };
+  const [cover] = useState<CoverModel>(movieFormatInfo.cover || {});
+  const [foregroundUrl, setForegroundUrl] = useState(cover.foregroundUrl || '');
+  const [backgroundUrl, setBackgroundUrl] = useState(cover.backgroundUrl || '');
 
   let content;
 
@@ -52,7 +40,7 @@ export const CoverPanel = ({
     //alert(movieErrorMessages);
 
     content = <div>Ett fel inträffade</div>;
-  } else if (isLoading || !movie || !cover) {
+  } else if (isLoading) {
     // <loading-content [isLoading]="isLoading || isSaving" [showOverlay]="isSaving" loaderClass="fixed-loader" [loaderText]="isLoading ? 'Hämtar huvudman...' : 'Sparar huvudmannen...'">
     content = (
       <div>
@@ -75,13 +63,21 @@ export const CoverPanel = ({
               {cover.foregroundUrl && (
                 <img src={cover.foregroundUrl} alt="Förgrundsbild" />
               )}
-              <input
-                className="text-input-field"
-                type="text"
-                id="foregroundUrl"
-                name="foregroundUrl"
-                defaultValue={cover.foregroundUrl}
-                onBlur={movieStateChanged}
+
+              <Controller
+                control={control}
+                name="movieFormatInfo.cover.foregroundUrl"
+                render={({ field: { onChange, ...field } }) => (
+                  <TextField
+                    {...field}
+                    type="text"
+                    value={foregroundUrl || ''}
+                    onChange={(e) => {
+                      onChange(e);
+                      setForegroundUrl(e.target.value);
+                    }}
+                  />
+                )}
               />
             </>
           )}
@@ -100,13 +96,21 @@ export const CoverPanel = ({
               {cover.backgroundUrl && (
                 <img src={cover.backgroundUrl} alt="Bakgrundsbild" />
               )}
-              <input
-                className="text-input-field"
-                type="text"
-                id="backgroundUrl"
-                name="backgroundUrl"
-                defaultValue={cover.backgroundUrl}
-                onBlur={movieStateChanged}
+
+              <Controller
+                control={control}
+                name="movieFormatInfo.cover.backgroundUrl"
+                render={({ field: { onChange, ...field } }) => (
+                  <TextField
+                    {...field}
+                    type="text"
+                    value={backgroundUrl || ''}
+                    onChange={(e) => {
+                      onChange(e);
+                      setBackgroundUrl(e.target.value);
+                    }}
+                  />
+                )}
               />
             </>
           )}

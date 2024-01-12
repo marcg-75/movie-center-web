@@ -30,3 +30,11 @@ export const transformToInnerModel = (movieItem: IMovie): IMovie => {
     },
   };
 };
+
+export const removeUndefinedValuesFromObject = <T>(obj: T) => {
+  if (!obj) {
+    return;
+  }
+  // @ts-expect-error This error is falsy and doesn't prevent the execution.
+  Object.keys(obj).forEach((key) => obj[key] === undefined && delete obj[key]);
+};

@@ -5,15 +5,16 @@ import {
   getCrew,
   MovieStateModel,
   PersonStateModel,
-  updateMovieState,
 } from '@giron/data-access-redux';
 import { IMovie } from '@giron/shared-models';
 import { CrewPanel } from '@giron/shared-movie-components';
+import { UseFormSetValue } from 'react-hook-form';
 
 interface CrewPanelProps {
   movie: MovieStateModel;
   person: PersonStateModel;
   baseData: BaseDataStateModel;
+  setValue: UseFormSetValue<IMovie>;
   dispatch: (any: unknown) => void;
   testName?: string;
 }
@@ -22,6 +23,7 @@ const CrewPanelComponent = ({
   movie,
   person,
   baseData,
+  setValue,
   dispatch,
   testName = 'CrewPanelComponent_test',
 }: CrewPanelProps) => {
@@ -49,6 +51,7 @@ const CrewPanelComponent = ({
 
   return (
     <CrewPanel
+      setValue={setValue}
       movie={movieItem}
       crew={crew}
       persons={persons}
@@ -56,7 +59,6 @@ const CrewPanelComponent = ({
       isMovieLoading={isMovieLoading}
       isCrewLoading={crewLoading?.loading}
       isPersonsLoading={personsLoading?.loading}
-      onMovieChange={(movie: IMovie) => dispatch(updateMovieState(movie))}
       errors={crewLoading?.errors}
       testName={testName}
     />

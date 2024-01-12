@@ -19,7 +19,7 @@ export const FilterItem = ({
   return (
     <div className="filter-item">
       <LabeledInput
-        id={id}
+        htmlFor={id}
         label={label}
         labelAddition={labelAddition}
         labelMode="bold"
