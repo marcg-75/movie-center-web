@@ -12,6 +12,7 @@ import {
   BaseDataStateModel,
   clearMovieActionState,
   createMovie,
+  deleteMovie,
   getAllPersons,
   getEmptyMovie,
   getMovieById,
@@ -47,9 +48,11 @@ const MovieDetailsComponent = ({
   const [movieId, setMovieId] = useState<number>();
   const [isMovieLoading] = useState(movie?.movieLoading?.loading);
   const [isBaseDataLoading] = useState(checkIfBaseDataIsLoading(baseData));
-  const [isSaving, setIsSaving] = useState(false);
+  const [isInitDone, setIsInitDone] = useState(false);
 
   useEffect(() => {
+    setIsInitDone(false);
+
     const { pathname } = location;
     const movieId = parseInt(
       pathname.substring(pathname.lastIndexOf('/') + 1, pathname.length),
@@ -73,12 +76,14 @@ const MovieDetailsComponent = ({
     } else {
       dispatch(getMovieById(movieId));
     }
+
+    setIsInitDone(true);
   }, []);
 
   useEffect(() => {
-    const { movieCreated, movieUpdated } = movie;
+    const { movieCreated, movieUpdated, movieDeleted } = movie;
 
-    if (movieCreated || movieUpdated) {
+    if (isInitDone && (movieCreated || movieUpdated || movieDeleted)) {
       // Clear action state
       dispatch(clearMovieActionState());
 
@@ -110,8 +115,6 @@ const MovieDetailsComponent = ({
     removeUndefinedValuesFromObject(movieChanges.movieFormatInfo);
     removeUndefinedValuesFromObject(movieChanges.moviePersonalInfo);
 
-    setIsSaving(true);
-
     const updatedMovie: IMovie = {
       ...movieItem,
       ...movieChanges,
@@ -137,7 +140,6 @@ const MovieDetailsComponent = ({
       dispatch(updateMovie(updatedMovie));
     }
 
-    setIsSaving(false);
     history.push('/');
   };
 
@@ -156,13 +158,26 @@ const MovieDetailsComponent = ({
     history.push('/');
   };
 
+  const onDelete = (movieId: number) => {
+    if (
+      !window.confirm(
+        'Vill du verkligen radera denna film? Det går inte att ångra sig efteråt.'
+      )
+    ) {
+      return;
+    }
+
+    dispatch(deleteMovie(movieId));
+  };
+
   return (
     <form onSubmit={handleSubmit(onSave)}>
       <MovieDetails
         control={control}
         movie={movieItem}
-        isLoading={isMovieLoading || isBaseDataLoading || isSaving}
+        isLoading={isMovieLoading || isBaseDataLoading}
         isCreateMode={movieId === 0}
+        onDelete={onDelete}
         onReset={onReset}
         onCancel={onCancel}
         generalInfoPanel={

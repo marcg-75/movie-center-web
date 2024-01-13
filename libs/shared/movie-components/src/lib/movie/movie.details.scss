@@ -39,33 +39,27 @@
   padding: 1rem;
 
   > div {
-    //display: none;
     opacity: 0;
   }
 }
 
 .movie-details-panel.general > .general-info {
-  //display: block;
   opacity: 1;
 }
 
 .movie-details-panel.cast > .cast-info {
-  //display: block;
   opacity: 1;
 }
 
 .movie-details-panel.crew > .crew-info {
-  //display: block;
   opacity: 1;
 }
 
 .movie-details-panel.format > .format-info {
-  //display: block;
   opacity: 1;
 }
 
 .movie-details-panel.cover > .cover-info {
-  //display: block;
   opacity: 1;
 
   .cover-panel {
@@ -76,11 +70,18 @@
 }
 
 .movie-details-panel.personal > .personal-info {
-  //display: block;
   opacity: 1;
 }
 
 .movie-action-panel {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+
+  > div {
+    display: flex;
+    gap: 1rem;
+  }
 }
 
 .labelled-input > label {

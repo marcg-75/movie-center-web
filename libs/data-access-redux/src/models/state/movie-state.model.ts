@@ -13,4 +13,5 @@ export interface MovieStateModel {
   movieLoading: LoadingState;
   movieCreated: boolean;
   movieUpdated: boolean;
+  movieDeleted: boolean;
 }

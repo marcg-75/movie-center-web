@@ -20,6 +20,7 @@ type Props = {
   movie?: IMovie;
   isLoading?: boolean;
   isCreateMode?: boolean;
+  onDelete: (movieId: number) => void;
   onReset: () => void;
   onCancel: () => void;
   control: Control<IMovie>;
@@ -38,6 +39,7 @@ export const MovieDetails = ({
   movie,
   isLoading = false,
   isCreateMode = false,
+  onDelete,
   onReset,
   onCancel,
   control,
@@ -72,6 +74,15 @@ export const MovieDetails = ({
     e.stopPropagation();
 
     onCancel();
+  };
+
+  const onDeleteMovie = (e: MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (movie?.id) {
+      onDelete(movie.id);
+    }
   };
 
   const onChangePanel = (e: MouseEvent, activePanel: string) => {
@@ -205,26 +216,37 @@ export const MovieDetails = ({
       </>
     );
 
-    const actionItems = (
+    const actionItems: ReactNode = (
       <>
-        <input type="submit" className="btn secondary" value="Spara" />
+        <div>
+          <input type="submit" className="btn secondary" value="Spara" />
 
-        {/*react-hook-form reset doesn't work on all fields at the moment.*/}
-        <button
-          className="btn secondary"
-          onClick={(e: MouseEvent) => onResetMovie(e)}
-          disabled={true}
-          style={{ display: 'none' }}
-        >
-          Ångra
-        </button>
+          {/*react-hook-form reset doesn't work on all fields at the moment.*/}
+          <button
+            className="btn secondary"
+            onClick={(e: MouseEvent) => onResetMovie(e)}
+            disabled={true}
+            style={{ display: 'none' }}
+          >
+            Ångra
+          </button>
 
-        <button
-          className="btn secondary"
-          onClick={(e: MouseEvent) => onCancelEdit(e)}
-        >
-          Avbryt
-        </button>
+          <button
+            className="btn secondary"
+            onClick={(e: MouseEvent) => onCancelEdit(e)}
+          >
+            Avbryt
+          </button>
+        </div>
+
+        {!isCreateMode && (
+          <button
+            className="btn secondary"
+            onClick={(e: MouseEvent) => onDeleteMovie(e)}
+          >
+            Radera film
+          </button>
+        )}
       </>
     );
     return (

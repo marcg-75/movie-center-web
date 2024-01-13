@@ -3,6 +3,7 @@ import { IMovie } from '@giron/shared-models';
 import { MovieDetails } from '@giron/shared-movie-components';
 import {
   useCreateMovieMutation,
+  useDeleteMovieMutation,
   useMovieDetails,
   useUpdateMovieMutation,
 } from '@giron/data-access';
@@ -27,15 +28,23 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
   const [movieDetails, setMovieDetails] = useState<IMovie>(
     {} as unknown as IMovie
   );
-  const [isSaving, setIsSaving] = useState(false);
   const router = useRouter();
-  const { movie, isMovieLoading, error } = useMovieDetails(movieId);
+  const {
+    movie,
+    isMovieLoading,
+    error: movieLoadingError,
+  } = useMovieDetails(movieId);
+  const [error, setError] = useState<unknown>();
 
   useEffect(() => {
     if (movie) {
       setMovieDetails(movie);
     }
   }, [movie]);
+
+  useEffect(() => {
+    setError(movieLoadingError);
+  }, [movieLoadingError]);
 
   const {
     control,
@@ -48,10 +57,16 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
   //   defaultValues: movieDetails,
   // }
 
-  const createMovieMutation = useCreateMovieMutation();
-  const updateMovieMutation = useUpdateMovieMutation();
+  const { mutate: createMovieMutate, isLoading: isCreatingMovie } =
+    useCreateMovieMutation();
+  const { mutate: updateMovieMutate, isLoading: isUpdatingMovie } =
+    useUpdateMovieMutation();
+  const { mutate: deleteMovieMutate, isLoading: isDeletingMovie } =
+    useDeleteMovieMutation();
 
   const onSave = (movieChanges: IMovie) => {
+    setError(undefined);
+
     if (!movieChanges) {
       return;
     }
@@ -60,8 +75,6 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
     removeUndefinedValuesFromObject(movieChanges);
     removeUndefinedValuesFromObject(movieChanges.movieFormatInfo);
     removeUndefinedValuesFromObject(movieChanges.moviePersonalInfo);
-
-    setIsSaving(true);
 
     const updatedMovie: IMovie = {
       ...movieDetails,
@@ -83,13 +96,16 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
 
     if (!updatedMovie.id || updatedMovie.id === 0) {
       updatedMovie.id = undefined;
-      createMovieMutation.mutate(updatedMovie);
+      createMovieMutate(updatedMovie, {
+        onSuccess: () => router.push('/'),
+        onError: (error) => setError(error),
+      });
     } else {
-      updateMovieMutation.mutate(updatedMovie);
+      updateMovieMutate(updatedMovie, {
+        onSuccess: () => router.push('/'),
+        onError: (error) => setError(error),
+      });
     }
-
-    setIsSaving(false);
-    router.push('/');
   };
 
   const onReset = () => {
@@ -107,13 +123,36 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
     router.push('/');
   };
 
+  const onDelete = (movieId: number) => {
+    setError(undefined);
+
+    if (
+      !window.confirm(
+        'Vill du verkligen radera denna film? Det går inte att ångra sig efteråt.'
+      )
+    ) {
+      return;
+    }
+
+    deleteMovieMutate(movieId, {
+      onSuccess: () => router.push('/'),
+      onError: (error) => setError(error),
+    });
+  };
+
   return (
     <form onSubmit={handleSubmit(onSave)}>
       <MovieDetails
         control={control}
         movie={movieDetails}
-        isLoading={isMovieLoading || isSaving}
+        isLoading={
+          isMovieLoading ||
+          isCreatingMovie ||
+          isUpdatingMovie ||
+          isDeletingMovie
+        }
         isCreateMode={movieId === 0}
+        onDelete={onDelete}
         onReset={onReset}
         onCancel={onCancel}
         generalInfoPanel={

@@ -141,30 +141,48 @@ export const InputFields = ({
 
   return (
     <>
-      <LabeledInput htmlFor="genres" label="Genrer:">
+      <LabeledInput htmlFor="genres" label="Genrer: *">
         <Controller
           control={control}
           name="genres"
-          render={({ field: { ...field } }) => (
-            <Select
-              {...field}
-              multiple={true}
-              value={selectedGenres}
-              onChange={(e) => additionalGenresChanged(e.target.value)}
-              renderValue={(selected) => (
-                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                  {mapMultipleSelectionToChips(selected, genres)}
-                </Box>
-              )}
-              MenuProps={SelectMenuProps}
-            >
-              {genres?.map((option, index) => (
-                <MenuItem key={index} value={option.code}>
-                  {option.name}
-                </MenuItem>
-              ))}
-            </Select>
+          render={({ field: { ...field }, fieldState: { error } }) => (
+            <>
+              <Select
+                {...field}
+                className="mat-select-required"
+                multiple={true}
+                value={selectedGenres}
+                onChange={(e) => additionalGenresChanged(e.target.value)}
+                renderValue={(selected) => (
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                    {mapMultipleSelectionToChips(selected, genres)}
+                  </Box>
+                )}
+                MenuProps={SelectMenuProps}
+              >
+                {genres?.map((option, index) => (
+                  <MenuItem key={index} value={option.code}>
+                    {option.name}
+                  </MenuItem>
+                ))}
+              </Select>
+
+              <div
+                style={{
+                  marginLeft: '0.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}
+              >
+                {error?.message && (
+                  <small className="text-red-500" style={{ color: 'red' }}>
+                    {error.message}
+                  </small>
+                )}
+              </div>
+            </>
           )}
+          rules={{ required: 'Genre är inte angiven' }}
         />
       </LabeledInput>
 

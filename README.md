@@ -62,14 +62,14 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
 ## Krav
 
 - Create a Next.js app that uses the same presentational components as the Redux based app.
-  - Use `ReactQuery`.
+  - (done) Use `ReactQuery`.
   - Use `Emotion/Tailwind`.
   - Use `Material UI` components where it makes sense. Use MUI for the dialogs too, if possible.
-  - Use `react-hook-form` for the movie details form (will force the Redux based app to use the same).
+  - (done) Use `react-hook-form` for the movie details form (will force the Redux based app to use the same).
 - Admin flows:
   - CRUD studios. New endpoint required.
   - CRUD languages. New endpoint required.
-- Error handling.
+- Improve error handling.
 - Feature to upload cover image files.
 - Fetch movie data from OMDB (or other source):
   - URL and API (incl. possible key).
