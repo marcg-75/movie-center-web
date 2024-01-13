@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
 import configureStore from './store';
 import App from './components/App';
 import MovieList from '@giron/feature-movie-list-redux';
@@ -19,12 +18,9 @@ const routes = [
   { path: '', component: MovieList },
 ];
 
-const { store, persistor } = configureStore();
+const { store /*, persistor*/ } = configureStore();
 
 //errorLogger();
-
-//store.dispatch(loadAllRbcs());
-//store.dispatch(loadUserInfo());
 
 //injectGlobal`${theme.skins.Global(theme, process.env.NODE_ENV)}`; // eslint-disable-line no-unused-expressions
 
@@ -34,38 +30,19 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <Router>
-          <App>
-            <Switch>
-              {routes.map((route, i) => (
-                <Route path={route.path} component={route.component} key={i} />
-              ))}
-            </Switch>
-          </App>
-        </Router>
-      </LocalizationProvider>
-    </PersistGate>
+    {/*PersistGate commented out since persisting data leads to exceeded storage quota in this app*/}
+    {/*<PersistGate loading={null} persistor={persistor}>*/}
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <Router>
+        <App>
+          <Switch>
+            {routes.map((route, i) => (
+              <Route path={route.path} component={route.component} key={i} />
+            ))}
+          </Switch>
+        </App>
+      </Router>
+    </LocalizationProvider>
+    {/*</PersistGate>*/}
   </Provider>
 );
-
-// root.render(
-//     <React.StrictMode>
-//         {/*<ThemeProvider theme={theme}>*/}
-//         <Provider store={store}>
-//             <PersistGate loading={null} persistor={persistor}>
-//                 <Router>
-//                     <App>
-//                         <Switch>
-//                             {routes.map((route, i) => (
-//                                 <Route path={route.path} component={route.component} key={i} />
-//                             ))}
-//                         </Switch>
-//                     </App>
-//                 </Router>
-//             </PersistGate>
-//         </Provider>,
-//         {/*</ThemeProvider>*/}
-//     </React.StrictMode>
-// );

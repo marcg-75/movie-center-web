@@ -47,6 +47,7 @@ export const movieReducer = (
     movieLoading: initialLoadingState,
     movieCreated: false,
     movieUpdated: false,
+    movieDeleted: false,
   },
   { type, payload, movieItem }: MovieActionProps
 ) => {
@@ -149,12 +150,14 @@ export const movieReducer = (
       return {
         ...state,
         movieLoading: loadingLoadingState,
+        movieDeleted: false,
       };
     case MOVIE_DELETED:
       return {
         ...state,
         movieItem: undefined,
         movieLoading: successLoadingState,
+        movieDeleted: true,
       };
     case MOVIE_DELETE_ERROR:
       // TODO: Implementera felhantering
@@ -169,6 +172,7 @@ export const movieReducer = (
       return {
         ...state,
         movieLoading: getFailedLoadingState(undefined, deleteErrorMessages),
+        movieDeleted: false,
       };
     case CLEAR_MOVIE_ACTION_STATE:
       return {
@@ -177,6 +181,7 @@ export const movieReducer = (
         movieLoading: initialLoadingState,
         movieCreated: false,
         movieUpdated: false,
+        movieDeleted: false,
       };
     default:
       return state;

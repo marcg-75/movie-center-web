@@ -7,7 +7,7 @@ import {
 import { buildPath, buildQueryString } from './fetch-utils';
 
 export class BackendClient {
-  private MAX_RETRIES = 1;
+  private MAX_RETRIES = 3;
 
   private baseUrl = process.env['NEXT_PUBLIC_API_BASE_URL'] || '/';
 

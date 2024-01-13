@@ -88,7 +88,7 @@ export const useDeleteMovieMutation = () => {
         throw new Error('Can not delete movie. Movie Id is missing.');
       }
 
-      return await client.delete<void>(`${PATH_PREFIX}/${movieId}`);
+      return await client.delete<boolean>(`${PATH_PREFIX}/${movieId}`);
     },
     {
       onSuccess: () => {
