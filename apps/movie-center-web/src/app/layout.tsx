@@ -1,4 +1,5 @@
-// import './global.css';
+import '@giron/shared-ui-library/variables.css';
+import '@giron/shared-ui-library/styles.css';
 import Providers from './providers';
 
 export default function RootLayout({
