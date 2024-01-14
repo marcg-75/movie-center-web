@@ -72,21 +72,21 @@ export const MovieList = ({
                   }
                 >
                   <div className="list-create-link-icon">
-                    <i className="fas fa-plus-circle orange"></i>
+                    <i className="text-pink-600 fas fa-plus-circle"></i>
                   </div>{' '}
                   <div className="list-create-link-text">Lägg till ny film</div>
                 </div>
               </div>
 
               {movies && movies.length > 0 && (
-                <table className="mat-elevation-z8 authority-list-table mat-table">
+                <table className="text-body-small mat-elevation-z8 authority-list-table mat-table">
                   <thead>
-                    <tr className="mat-header-row">
+                    <tr className="font-bold text-left mat-header-row">
                       <th
                         onClick={() => changeSortOrder('title')}
-                        className="sortable mat-header-cell cdk-column-name mat-column-name"
+                        className="bg-blue-900 sticky pl-6 sortable mat-header-cell cdk-column-name mat-column-name"
                       >
-                        <span className="icon-texts">Film</span>
+                        <span>Film</span>
                         <span>
                           {sort.sortOrder === 'title' && (
                             <i
@@ -95,14 +95,14 @@ export const MovieList = ({
                           )}
                         </span>
                       </th>
-                      <th className="hide-small-screen mat-header-cell cdk-column-name mat-column-name">
-                        <span className="icon-texts">Genre</span>
+                      <th className="bg-blue-900 sticky text-left px-1 hide-small-screen mat-header-cell cdk-column-name mat-column-name">
+                        <span>Genre</span>
                       </th>
                       <th
                         onClick={() => changeSortOrder('grade')}
-                        className="sortable mat-header-cell cdk-column-name mat-column-name"
+                        className="bg-blue-900 text-left sticky px-1 sortable mat-header-cell cdk-column-name mat-column-name"
                       >
-                        <span className="icon-texts">Betyg</span>
+                        <span>Betyg</span>
                         <span>
                           {sort.sortOrder === 'grade' && (
                             <i
@@ -117,21 +117,24 @@ export const MovieList = ({
                   <tbody>
                     {movies.map((element: IMovie, i: number) => {
                       return (
-                        <tr className="clickable mat-row" key={i}>
+                        <tr
+                          className="text-left [&:nth-child(even)]:bg-blue-50 hover:bg-blue-100 hover:[&:nth-child(even)]:bg-blue-100 clickable mat-row"
+                          key={i}
+                        >
                           <td
-                            className="mat-cell cdk-column-name mat-column-name"
+                            className="pl-6 mat-cell cdk-column-name mat-column-name"
                             onClick={() => goToMovie(element.id)}
                           >
                             {element.title}
                           </td>
                           <td
-                            className="mat-cell cdk-column-genre mat-column-genre hide-small-screen"
+                            className="text-left px-1 mat-cell cdk-column-genre mat-column-genre hide-small-screen"
                             onClick={() => goToMovie(element.id)}
                           >
                             {getMovieGenres(element)}
                           </td>
                           <td
-                            className="mat-cell cdk-column-grade mat-column-grade"
+                            className="text-left px-1 mat-cell cdk-column-grade mat-column-grade"
                             onClick={() => goToMovie(element.id)}
                           >
                             {element.moviePersonalInfo
@@ -153,7 +156,7 @@ export const MovieList = ({
               <span className="icons app-link-with-icon">
                 <i className="app-icon fas fa-chevron-circle-up back-to-top"></i>
               </span>
-              <span className="icon-texts app-text middle-panel-navigate-bottom-to-top-text">
+              <span className="text-body-small font-bold app-text middle-panel-navigate-bottom-to-top-text">
                 Tillbaka till toppen
               </span>
             </div>

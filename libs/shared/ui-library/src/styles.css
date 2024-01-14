@@ -12,6 +12,7 @@ html {
 }
 body {
   margin: 0;
+  padding: 0 !important; /* MUI select adds a padding to the body when expanded. */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -25,4 +26,19 @@ body {
     margin: 0;
     -moz-appearance: textfield !important;
   }
+}
+
+input[type='text']::placeholder {
+  font-style: italic;
+  letter-spacing: 0.01rem;
+}
+
+/*
+     Ugly hacks to override built-in MUI component styling. (The proposed way to style MUI with Tailwind didn't work.)
+     TODO Better: Use HeadlessUI (or custom) components instead of MUI when Tailwind styling is to be used.
+ */
+.filter-select .MuiSelect-select {
+  font-size: 1rem !important;
+  font-family: 'PT Sans', 'Helvetica Neue', sans-serif !important;
+  padding: 0.6rem 2rem 0.6rem 0.5rem !important;
 }

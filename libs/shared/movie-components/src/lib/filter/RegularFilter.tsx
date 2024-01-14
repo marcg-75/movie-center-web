@@ -3,8 +3,13 @@ import {
   MovieFilter,
   SelectableModel,
 } from '@giron/shared-models';
-import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FilterItem, FilterItemText, Loader } from '@giron/shared-ui-library';
+import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import {
+  mapMultipleSelectionToText,
+  SelectMenuProps,
+} from '@giron/shared-util-helpers';
 
 const helpFilterFreetext =
   'Du kan välja att filtrera på filmens titel, genre eller annat. Tryck sedan på ' +
@@ -35,13 +40,13 @@ export const RegularFilter = ({
     }
   }, [filter, genres, isLoading]);
 
-  const genreChangeHandler = (e: ChangeEvent<HTMLSelectElement>): void => {
+  const genreChangeHandler = (event: SelectChangeEvent): void => {
     const filterCopy: MovieModelFilter = Object.assign(
       {},
       filter
     ) as MovieModelFilter;
 
-    filterCopy.genreCode = e.target.value || undefined;
+    filterCopy.genreCode = event.target.value || undefined;
 
     if (filterChanged) {
       filterChanged(filterCopy);
@@ -68,16 +73,6 @@ export const RegularFilter = ({
     }
   };
 
-  const selectableGenreItems: ReactNode[] = filterGenresToSelect.map(
-    (option, i) => {
-      return (
-        <option key={i} value={option.code}>
-          {option.name}
-        </option>
-      );
-    }
-  );
-
   return isLoading ? (
     <div>
       <Loader />
@@ -93,13 +88,26 @@ export const RegularFilter = ({
       />
 
       <FilterItem id="genre-filter" label="Genre">
-        <select
-          name="genreCode"
+        <Select
+          className="bg-white filter-select"
           value={filter.genreCode}
           onChange={genreChangeHandler}
+          renderValue={(selected) =>
+            mapMultipleSelectionToText(selected, filterGenresToSelect)
+          }
+          MenuProps={SelectMenuProps}
+          slotProps={{
+            input: {
+              className: 'text-body-medium py-2 pr-8 pl-2',
+            },
+          }}
         >
-          {selectableGenreItems}
-        </select>
+          {filterGenresToSelect?.map((option, index) => (
+            <MenuItem key={index} value={option.code}>
+              {option.name}
+            </MenuItem>
+          ))}
+        </Select>
       </FilterItem>
 
       <FilterItemText

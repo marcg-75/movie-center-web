@@ -1,4 +1,3 @@
-import './filter.component.scss';
 import { FilterItem } from './FilterItem';
 
 type Props = {
@@ -15,9 +14,9 @@ export const FilterItemClear = ({ clearFilter, compactMode }: Props) => {
 
   const filterItemBody = (
     <button onClick={() => clear()}>
-      <p className="filter-action-text">
-        <i className="fas fa-eraser filter-action-icon" />
-        Rensa filtrering
+      <p className="text-[#007d7a] text-label-medium font-bold whitespace-nowrap mt-2.5 filter-action-text">
+        <i className="fas fa-eraser pr-1.5 pl-2.5" />
+        Töm filter
       </p>
     </button>
   );

@@ -10,6 +10,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <title>Movie Center</title>
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"

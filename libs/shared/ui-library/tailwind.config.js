@@ -16,11 +16,11 @@ export default {
       serif: ['Roboto'],
     },
     // colors: theme.colors,
-    spacing: theme.spacing,
+    // spacing: theme.spacing,
     fontSize: theme.textScale,
     opacity: theme.opacity,
     borderRadius: theme.borderRadius,
-    boxShadow: theme.shadow,
+    // boxShadow: theme.shadow,
     zIndex: {
       zero: 0,
       backdrop: 10,
@@ -43,6 +43,7 @@ export default {
       boxShadow: {
         none: 'none',
         '3xl': '0 15px 15px rgb(0 0 0 / 25%)',
+        toggle: '1px 1px 3px rgba(0, 0, 0, 0.5)',
       },
       transitionDuration: {
         125: '125ms',

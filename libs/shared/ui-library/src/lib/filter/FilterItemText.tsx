@@ -1,6 +1,4 @@
 import { ChangeEventHandler } from 'react';
-
-import './filter.component.scss';
 import { FilterItem } from './FilterItem';
 import debounce from 'lodash/debounce';
 
@@ -33,15 +31,15 @@ export const FilterItemText = ({
 
   return (
     <FilterItem id={id} label={label} labelAddition={labelAddition}>
-      <div className="filter-freetext-input-wrapper">
+      <div className="flex items-center relative rounded-small">
         <input
-          className="filter-text-input-field"
+          className="border border-gray-300 text-body-medium text-ellipsis overflow-hidden rounded-small py-2 pl-2 pr-8 w-48 filter-text-input-field"
           type="text"
           placeholder={placeholder}
           name={name}
           onChange={debouncedOnChange}
         />
-        <i className="fa fa-search filter-freetext-magnifying-glass" />
+        <i className="fa fa-search absolute right-2" />
       </div>
     </FilterItem>
   );

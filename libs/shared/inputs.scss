@@ -4,15 +4,7 @@ textarea {
 }
 
 input[type='text'] {
-  font-family: 'PT Sans', sans-serif;
-  letter-spacing: 0.06px;
-  font-size: 1rem;
-  color: #515151;
-
-  border: 1px solid #ccc;
-  border-radius: 0;
   box-sizing: border-box;
-  padding: 0.5rem;
 }
 
 textarea {
@@ -46,7 +38,7 @@ textarea:disabled {
 }
 
 mat-select {
-  font-family: 'PT Sans' !important;
+  //font-family: 'PT Sans' !important;
   border: #d5d0cc 1px solid;
   font-weight: bold;
   letter-spacing: 0.06rem;
@@ -84,7 +76,7 @@ mat-select:after {
 }
 
 mat-option {
-  font-family: 'PT Sans' !important;
+  //font-family: 'PT Sans' !important;
   letter-spacing: 0.06rem;
   font-size: 1rem !important;
   color: #515151;
@@ -142,7 +134,7 @@ mat-select:focus .mat-select-trigger {
 }
 
 .mat-list-text {
-  font-family: 'PT Sans';
+  //font-family: 'PT Sans';
   font-size: 1rem;
   line-height: 2rem;
 }
@@ -209,7 +201,7 @@ mat-button-toggle-group:required {
 }
 
 .mat-button-toggle-label-content {
-  font-family: 'PT Sans' !important;
+  //font-family: 'PT Sans' !important;
   letter-spacing: 0.05rem !important;
   font-size: 1rem !important;
   font-weight: bold;
