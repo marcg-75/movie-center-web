@@ -15,6 +15,7 @@
         "baseHref": "/",
         "main": "apps/movie-center-web-redux/src/main.tsx",
         "tsConfig": "apps/movie-center-web-redux/tsconfig.app.json",
+        "postcssConfig": "apps/movie-center-web-redux/postcss.config.js",
         "assets": [
           "apps/movie-center-web-redux/src/favicon.ico",
           "apps/movie-center-web-redux/src/assets"

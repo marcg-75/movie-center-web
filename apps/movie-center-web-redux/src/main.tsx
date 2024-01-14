@@ -1,4 +1,5 @@
-import React from 'react';
+import '@giron/shared-ui-library/variables.css';
+import '@giron/shared-ui-library/styles.css';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';

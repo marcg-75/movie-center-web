@@ -31,6 +31,12 @@
         "libs/shared/movie-components/src/index.ts"
       ],
       "@giron/shared-ui-library": ["libs/shared/ui-library/src/index.ts"],
+      "@giron/shared-ui-library/styles.css": [
+        "libs/shared/ui-library/src/styles.css"
+      ],
+      "@giron/shared-ui-library/variables.css": [
+        "libs/shared/ui-library/src/design-tokens/_variables.css"
+      ],
       "@giron/shared-util-helpers": ["libs/shared/util-helpers/src/index.ts"]
     }
   },

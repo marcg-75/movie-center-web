@@ -94,6 +94,7 @@ Nx comes with local caching already built-in (check your `nx.json`). On CI you m
   - Still at least one field that goes from uncontrolled to controlled.
 - UI
   - Filter component responsiveness.
+  - MUI components doesn't play well with Tailwind. Where Tailwind styling is required, please use Headless UI (or custom) components instead.
 
 ## Rest list
 

@@ -1,6 +1,4 @@
 import { ReactNode } from 'react';
-
-import './filter.component.scss';
 import { LabeledInput } from '../labeled-input';
 
 type Props = {
@@ -17,7 +15,7 @@ export const FilterItem = ({
   children,
 }: Props) => {
   return (
-    <div className="filter-item">
+    <div className="inline">
       <LabeledInput
         htmlFor={id}
         label={label}
@@ -25,7 +23,7 @@ export const FilterItem = ({
         labelMode="bold"
         orientation="column"
       >
-        <div className="filter-body-block-field">{children}</div>
+        <div className="pt-1 px-0 pb-2.5">{children}</div>
       </LabeledInput>
     </div>
   );
