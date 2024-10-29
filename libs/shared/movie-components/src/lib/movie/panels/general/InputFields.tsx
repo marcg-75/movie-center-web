@@ -6,7 +6,7 @@ import {
   TextareaAutosize,
   TextField,
 } from '@mui/material';
-import { DatePicker, TimePicker } from '@mui/x-date-pickers';
+import { DatePicker, PickerValidDate, TimePicker } from '@mui/x-date-pickers';
 import { Control, Controller, UseFormSetValue } from 'react-hook-form';
 import { toDate } from 'date-fns';
 import {
@@ -194,7 +194,7 @@ export const InputFields = ({
             <TimePicker
               {...field}
               className="date-input"
-              value={movie.runtime ? toDate(new Date(movie.runtime)) : null}
+              value={movie.runtime ? toDate(new Date(movie.runtime)) as PickerValidDate : null}
               format="HH:mm"
               ampm={false}
             />
@@ -210,7 +210,7 @@ export const InputFields = ({
             <DatePicker
               {...field}
               format="yyyy-MM-dd"
-              value={movie.releaseDate ? new Date(movie.releaseDate) : null}
+              value={movie.releaseDate ? new Date(movie.releaseDate) as PickerValidDate : null}
             />
           )}
         />

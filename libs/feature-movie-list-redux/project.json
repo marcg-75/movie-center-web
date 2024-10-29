@@ -17,7 +17,7 @@
         "tsConfig": "libs/feature-movie-list-redux/tsconfig.lib.json",
         "project": "libs/feature-movie-list-redux/package.json",
         "entryFile": "libs/feature-movie-list-redux/src/index.ts",
-        "external": ["react", "react-dom", "@emotion/react/jsx-runtime"],
+        "external": ["react", "react-dom"],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [

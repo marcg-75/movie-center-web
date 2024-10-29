@@ -1,7 +1,6 @@
 import { LabeledInputProps } from './labeled-input.model';
 import { LabeledInput } from './LabeledInput';
-import { TimeField } from '@mui/x-date-pickers';
-import { toDate } from 'date-fns';
+import { PickerValidDate, TimeField } from '@mui/x-date-pickers';
 
 interface Props extends LabeledInputProps {
   defaultValue?: string;
@@ -17,7 +16,7 @@ export const LabeledTimeInput = ({
   required = false,
   testName = 'LabelledTimeInput_test',
 }: Props) => {
-  const runtime = defaultValue ? toDate(new Date(defaultValue)) : undefined;
+  const runtime: PickerValidDate | undefined = defaultValue ? new Date(defaultValue) as PickerValidDate : undefined;
 
   return (
     <LabeledInput

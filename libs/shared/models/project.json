@@ -17,7 +17,7 @@
         "tsConfig": "libs/shared/models/tsconfig.lib.json",
         "project": "libs/shared/models/package.json",
         "entryFile": "libs/shared/models/src/index.ts",
-        "external": ["react", "react-dom", "@emotion/react/jsx-runtime"],
+        "external": ["react", "react-dom"],
         "rollupConfig": "@nx/react/plugins/bundle-rollup",
         "compiler": "babel",
         "assets": [

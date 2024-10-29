@@ -13,7 +13,7 @@ import {
   TextareaAutosize,
   TextField,
 } from '@mui/material';
-import { DatePicker } from '@mui/x-date-pickers';
+import { DatePicker, PickerValidDate } from '@mui/x-date-pickers';
 import {
   mapMultipleSelectionToChips,
   SelectMenuProps,
@@ -135,7 +135,7 @@ export const InputFields = ({ control, moviePersonalInfo }: Props) => {
               format="yyyy-MM-dd"
               value={
                 moviePersonalInfo.obtainDate
-                  ? new Date(moviePersonalInfo.obtainDate)
+                  ? new Date(moviePersonalInfo.obtainDate) as PickerValidDate
                   : null
               }
             />
