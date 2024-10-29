@@ -19,7 +19,7 @@ jobs:
           node-version: 20
 
       - name: 📦 Install dependencies
-        run: npm install
+        run: npm install --include=optional
 
       - uses: nrwl/nx-set-shas@v3
       # This line is needed for nx affected to work when CI is running on a PR

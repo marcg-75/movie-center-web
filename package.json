@@ -104,5 +104,11 @@
     "micromatch@<4.0.8": ">=4.0.8",
     "path-to-regexp@<1.9.0": ">=1.9.0",
     "webpack@<5.95.0": ">=5.95.0"
+  },
+  "optionalDependencies": {
+    "@nx/nx-darwin-arm64": "18.0.4",
+    "@nx/nx-darwin-x64": "18.0.4",
+    "@nx/nx-linux-x64-gnu": "18.0.4",
+    "@nx/nx-win32-x64-msvc": "18.0.4"
   }
 }
