@@ -16,7 +16,9 @@ export const LabeledTimeInput = ({
   required = false,
   testName = 'LabelledTimeInput_test',
 }: Props) => {
-  const runtime: PickerValidDate | undefined = defaultValue ? new Date(defaultValue) as PickerValidDate : undefined;
+  const runtime: PickerValidDate | undefined = defaultValue
+    ? (new Date(defaultValue) as PickerValidDate)
+    : undefined;
 
   return (
     <LabeledInput

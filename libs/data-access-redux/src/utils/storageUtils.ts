@@ -20,8 +20,10 @@ const getDefaultStorageType = (): STORAGE_TYPE => {
 
 const DEFAULT_STORAGE_TYPE: STORAGE_TYPE = getDefaultStorageType();
 
-const strCacheExptime = process.env.NX_CACHE_EXP_TIME_MINUTES
-const EXPIRATION_TIME_MINUTES: number = strCacheExptime ? parseInt(strCacheExptime) : 0;
+const strCacheExptime = process.env.NX_CACHE_EXP_TIME_MINUTES;
+const EXPIRATION_TIME_MINUTES: number = strCacheExptime
+  ? parseInt(strCacheExptime)
+  : 0;
 
 /**
  * Retrieve cached data.

@@ -135,7 +135,7 @@ export const InputFields = ({ control, moviePersonalInfo }: Props) => {
               format="yyyy-MM-dd"
               value={
                 moviePersonalInfo.obtainDate
-                  ? new Date(moviePersonalInfo.obtainDate) as PickerValidDate
+                  ? (new Date(moviePersonalInfo.obtainDate) as PickerValidDate)
                   : null
               }
             />

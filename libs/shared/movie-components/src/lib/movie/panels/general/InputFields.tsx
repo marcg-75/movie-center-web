@@ -194,7 +194,11 @@ export const InputFields = ({
             <TimePicker
               {...field}
               className="date-input"
-              value={movie.runtime ? toDate(new Date(movie.runtime)) as PickerValidDate : null}
+              value={
+                movie.runtime
+                  ? (toDate(new Date(movie.runtime)) as PickerValidDate)
+                  : null
+              }
               format="HH:mm"
               ampm={false}
             />
@@ -210,7 +214,11 @@ export const InputFields = ({
             <DatePicker
               {...field}
               format="yyyy-MM-dd"
-              value={movie.releaseDate ? new Date(movie.releaseDate) as PickerValidDate : null}
+              value={
+                movie.releaseDate
+                  ? (new Date(movie.releaseDate) as PickerValidDate)
+                  : null
+              }
             />
           )}
         />

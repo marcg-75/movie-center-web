@@ -15,7 +15,9 @@ export const LabeledDateInput = ({
   orientation,
   testName = 'LabelledDateInput_test',
 }: Props) => {
-  const date: PickerValidDate | undefined = defaultValue ? new Date(defaultValue) as PickerValidDate : undefined;
+  const date: PickerValidDate | undefined = defaultValue
+    ? (new Date(defaultValue) as PickerValidDate)
+    : undefined;
 
   return (
     <LabeledInput
