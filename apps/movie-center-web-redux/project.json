@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/movie-center-web-redux",
   "projectType": "application",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
@@ -76,6 +77,5 @@
         "jestConfig": "apps/movie-center-web-redux/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }
