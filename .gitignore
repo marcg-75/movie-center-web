@@ -50,3 +50,4 @@ Thumbs.db
 .next
 
 .nx/migrate-runs
+.claude/worktrees
