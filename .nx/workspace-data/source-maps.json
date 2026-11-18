@@ -2935,8 +2935,8 @@
       "nx/target-defaults"
     ],
     "targets.build.dependsOn": [
-      "nx.json#targetDefaults.build",
-      "nx/target-defaults"
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
     ],
     "targets.build.inputs.0": [
       "nx.json#targetDefaults.build",
@@ -2951,6 +2951,14 @@
       "nx/target-defaults"
     ],
     "targets.build.executor": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
       "apps/movie-center-web/project.json",
       "nx/core/project-json"
     ],
@@ -3034,35 +3042,7 @@
       "apps/movie-center-web/project.json",
       "nx/core/project-json"
     ],
-    "targets.build.defaultConfiguration": [
-      "apps/movie-center-web/project.json",
-      "nx/core/project-json"
-    ],
-    "targets.build.options.outputPath": [
-      "apps/movie-center-web/project.json",
-      "nx/core/project-json"
-    ],
-    "targets.build.options.postcssConfig": [
-      "apps/movie-center-web/project.json",
-      "nx/core/project-json"
-    ],
-    "targets.build.options": [
-      "apps/movie-center-web/project.json",
-      "nx/core/project-json"
-    ],
-    "targets.build.configurations.development.outputPath": [
-      "apps/movie-center-web/project.json",
-      "nx/core/project-json"
-    ],
-    "targets.build.configurations.development": [
-      "apps/movie-center-web/project.json",
-      "nx/core/project-json"
-    ],
-    "targets.build.configurations.production": [
-      "apps/movie-center-web/project.json",
-      "nx/core/project-json"
-    ],
-    "targets.build.configurations": [
+    "targets.build.options.cwd": [
       "apps/movie-center-web/project.json",
       "nx/core/project-json"
     ],
@@ -3074,15 +3054,11 @@
       "apps/movie-center-web/project.json",
       "nx/core/project-json"
     ],
-    "targets.serve.defaultConfiguration": [
+    "targets.serve.options.command": [
       "apps/movie-center-web/project.json",
       "nx/core/project-json"
     ],
-    "targets.serve.options.buildTarget": [
-      "apps/movie-center-web/project.json",
-      "nx/core/project-json"
-    ],
-    "targets.serve.options.dev": [
+    "targets.serve.options.cwd": [
       "apps/movie-center-web/project.json",
       "nx/core/project-json"
     ],
@@ -3090,47 +3066,31 @@
       "apps/movie-center-web/project.json",
       "nx/core/project-json"
     ],
-    "targets.serve.configurations.development.buildTarget": [
+    "targets.start": [
       "apps/movie-center-web/project.json",
       "nx/core/project-json"
     ],
-    "targets.serve.configurations.development.dev": [
+    "targets.start.executor": [
       "apps/movie-center-web/project.json",
       "nx/core/project-json"
     ],
-    "targets.serve.configurations.development": [
+    "targets.start.dependsOn.0": [
       "apps/movie-center-web/project.json",
       "nx/core/project-json"
     ],
-    "targets.serve.configurations.production.buildTarget": [
+    "targets.start.dependsOn": [
       "apps/movie-center-web/project.json",
       "nx/core/project-json"
     ],
-    "targets.serve.configurations.production.dev": [
+    "targets.start.options.command": [
       "apps/movie-center-web/project.json",
       "nx/core/project-json"
     ],
-    "targets.serve.configurations.production": [
+    "targets.start.options.cwd": [
       "apps/movie-center-web/project.json",
       "nx/core/project-json"
     ],
-    "targets.serve.configurations": [
-      "apps/movie-center-web/project.json",
-      "nx/core/project-json"
-    ],
-    "targets.export": [
-      "apps/movie-center-web/project.json",
-      "nx/core/project-json"
-    ],
-    "targets.export.executor": [
-      "apps/movie-center-web/project.json",
-      "nx/core/project-json"
-    ],
-    "targets.export.options.buildTarget": [
-      "apps/movie-center-web/project.json",
-      "nx/core/project-json"
-    ],
-    "targets.export.options": [
+    "targets.start.options": [
       "apps/movie-center-web/project.json",
       "nx/core/project-json"
     ],

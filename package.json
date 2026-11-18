@@ -2,6 +2,7 @@
   "name": "@giron/root",
   "version": "0.0.0",
   "license": "MIT",
+  "packageManager": "pnpm@10.34.1",
   "scripts": {
     "start": "nx serve movie-center-web",
     "build": "nx build movie-center-web",

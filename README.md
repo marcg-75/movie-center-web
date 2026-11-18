@@ -6,18 +6,20 @@
 
 ## Start the app
 
+Install dependencies with `pnpm install`.
+
 There are currently two apps in this monorepo:
 
 - movie-center-web (next.js- and react-query based, currently work-in-progress and far from complete)
-  - To start the development server run `nx serve movie-center-web`. Open your browser and navigate to http://localhost:4200/.
+  - To start the development server run `pnpm start`. Open your browser and navigate to http://localhost:4200/.
 - movie-center-web-redux (the old Redux- and react-router based app. Fully functional, but quite crude and not complete)
-  - To start the development server run `nx serve movie-center-web-redux`. Open your browser and navigate to http://localhost:4300/.
+  - To start the development server run `pnpm start-redux`. Open your browser and navigate to http://localhost:4300/.
 
 ## Generate code
 
 If you happen to use Nx plugins, you can leverage code generators that might come with it.
 
-Run `nx list` to get a list of available plugins and whether they have generators. Then run `nx list <plugin-name>` to see what generators are available.
+Run `pnpm exec nx list` to get a list of available plugins and whether they have generators. Then run `pnpm exec nx list <plugin-name>` to see what generators are available.
 
 Learn more about [Nx generators on the docs](https://nx.dev/plugin-features/use-code-generators).
 
@@ -26,19 +28,19 @@ Learn more about [Nx generators on the docs](https://nx.dev/plugin-features/use-
 To execute tasks with Nx use the following syntax:
 
 ```
-nx <target> <project> <...options>
+pnpm exec nx <target> <project> <...options>
 ```
 
 You can also run multiple targets:
 
 ```
-nx run-many -t <target1> <target2>
+pnpm exec nx run-many -t <target1> <target2>
 ```
 
 ..or add `-p` to filter specific projects
 
 ```
-nx run-many -t <target1> <target2> -p <proj1> <proj2>
+pnpm exec nx run-many -t <target1> <target2> -p <proj1> <proj2>
 ```
 
 Targets can be defined in the `package.json` or `projects.json`. Learn more [in the docs](https://nx.dev/core-features/run-tasks).
@@ -49,7 +51,7 @@ Have a look at the [Nx Console extensions](https://nx.dev/nx-console). It provid
 
 ## Ready to deploy?
 
-Just run `nx build demoapp` to build the application. The build artifacts will be stored in the `dist/` directory, ready to be deployed.
+Run `pnpm exec nx build demoapp` to build the application. The build artifacts will be stored in the `dist/` directory, ready to be deployed.
 
 ## Set up CI!
 
