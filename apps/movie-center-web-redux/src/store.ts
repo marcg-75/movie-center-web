@@ -1,5 +1,5 @@
 import { applyMiddleware, compose, createStore } from 'redux';
-import reduxThunk from 'redux-thunk';
+import { thunk } from 'redux-thunk';
 import { apiMiddleware } from 'redux-api-middleware';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
@@ -28,7 +28,7 @@ export default function configureStore() {
   const store = createStore(
     persistedReducers,
     initialState,
-    composeEnhancers(applyMiddleware(reduxThunk, apiMiddleware))
+    composeEnhancers(applyMiddleware(thunk, apiMiddleware))
   );
   const persistor = persistStore(store);
 

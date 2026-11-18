@@ -4,17 +4,14 @@ import { getBackendClient } from '@giron/shared-data-access-api-client';
 import { PATH_PREFIX } from './constants';
 import { convertToMilliseconds } from '@giron/shared-util-helpers';
 
-export const useStudiosQuery = <T>(select: (data: NameEntityModel[]) => T) => {
+export const useStudiosQuery = () => {
   const client = getBackendClient();
 
-  return useQuery(
-    ['studios'],
-    async () => {
+  return useQuery<NameEntityModel[]>({
+    queryKey: ['studios'],
+    queryFn: async () => {
       return await client.get<NameEntityModel[]>(`${PATH_PREFIX}/studios`);
     },
-    {
-      select,
-      staleTime: convertToMilliseconds(1, 'days'),
-    }
-  );
+    staleTime: convertToMilliseconds(1, 'days'),
+  });
 };

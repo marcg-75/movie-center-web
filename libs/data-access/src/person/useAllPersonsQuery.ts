@@ -5,21 +5,15 @@ import { convertToMilliseconds } from '@giron/shared-util-helpers';
 
 const PATH_PREFIX = 'person/all';
 
-export const useAllPersonsQuery = <T>(
-  select: (data: NameEntityModel[]) => T,
-  enabled: boolean
-) => {
+export const useAllPersonsQuery = (enabled: boolean) => {
   const client = getBackendClient();
 
-  return useQuery(
-    ['persons'],
-    async () => {
+  return useQuery<NameEntityModel[]>({
+    queryKey: ['persons'],
+    queryFn: async () => {
       return await client.get<NameEntityModel[]>(`${PATH_PREFIX}`);
     },
-    {
-      select,
-      staleTime: convertToMilliseconds(1, 'hours'),
-      enabled,
-    }
-  );
+    staleTime: convertToMilliseconds(1, 'hours'),
+    enabled,
+  });
 };

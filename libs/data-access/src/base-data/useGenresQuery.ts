@@ -4,17 +4,14 @@ import { getBackendClient } from '@giron/shared-data-access-api-client';
 import { PATH_PREFIX } from './constants';
 import { convertToMilliseconds } from '@giron/shared-util-helpers';
 
-export const useGenresQuery = <T>(select: (data: SelectableModel[]) => T) => {
+export const useGenresQuery = () => {
   const client = getBackendClient();
 
-  return useQuery(
-    ['genres'],
-    async () => {
+  return useQuery<SelectableModel[]>({
+    queryKey: ['genres'],
+    queryFn: async () => {
       return await client.get<SelectableModel[]>(`${PATH_PREFIX}/genres`);
     },
-    {
-      select,
-      staleTime: convertToMilliseconds(1, 'days'),
-    }
-  );
+    staleTime: convertToMilliseconds(1, 'days'),
+  });
 };

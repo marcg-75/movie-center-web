@@ -4,17 +4,14 @@ import { getBackendClient } from '@giron/shared-data-access-api-client';
 import { PATH_PREFIX } from './constants';
 import { convertToMilliseconds } from '@giron/shared-util-helpers';
 
-export const useLanguagesQuery = <T>(select: (data: LanguageModel[]) => T) => {
+export const useLanguagesQuery = () => {
   const client = getBackendClient();
 
-  return useQuery(
-    ['languages'],
-    async () => {
+  return useQuery<LanguageModel[]>({
+    queryKey: ['languages'],
+    queryFn: async () => {
       return await client.get<LanguageModel[]>(`${PATH_PREFIX}/languages`);
     },
-    {
-      select,
-      staleTime: convertToMilliseconds(1, 'days'),
-    }
-  );
+    staleTime: convertToMilliseconds(1, 'days'),
+  });
 };

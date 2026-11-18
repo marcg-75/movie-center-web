@@ -57,11 +57,11 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
   //   defaultValues: movieDetails,
   // }
 
-  const { mutate: createMovieMutate, isLoading: isCreatingMovie } =
+  const { mutate: createMovieMutate, isPending: isCreatingMovie } =
     useCreateMovieMutation();
-  const { mutate: updateMovieMutate, isLoading: isUpdatingMovie } =
+  const { mutate: updateMovieMutate, isPending: isUpdatingMovie } =
     useUpdateMovieMutation();
-  const { mutate: deleteMovieMutate, isLoading: isDeletingMovie } =
+  const { mutate: deleteMovieMutate, isPending: isDeletingMovie } =
     useDeleteMovieMutation();
 
   const onSave = (movieChanges: IMovie) => {

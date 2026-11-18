@@ -4,17 +4,14 @@ import { getBackendClient } from '@giron/shared-data-access-api-client';
 import { PATH_PREFIX } from './constants';
 import { convertToMilliseconds } from '@giron/shared-util-helpers';
 
-export const useRolesQuery = <T>(select: (data: SelectableModel[]) => T) => {
+export const useRolesQuery = () => {
   const client = getBackendClient();
 
-  return useQuery(
-    ['roles'],
-    async () => {
+  return useQuery<SelectableModel[]>({
+    queryKey: ['roles'],
+    queryFn: async () => {
       return await client.get<SelectableModel[]>(`${PATH_PREFIX}/roles`);
     },
-    {
-      select,
-      staleTime: convertToMilliseconds(1, 'days'),
-    }
-  );
+    staleTime: convertToMilliseconds(1, 'days'),
+  });
 };

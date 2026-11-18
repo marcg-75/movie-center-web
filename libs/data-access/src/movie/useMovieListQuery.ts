@@ -10,8 +10,7 @@ interface MovieListResponse {
   content: IMovie[];
 }
 
-export const useMovieListQuery = <T>(
-  select: (data: MovieListResponse) => T,
+export const useMovieListQuery = (
   sortOrder: string,
   sortDir: string,
   page: number,
@@ -28,13 +27,10 @@ export const useMovieListQuery = <T>(
     pageSize
   );
 
-  return useQuery(
-    ['movies', filter, queryKey],
-    async () => {
+  return useQuery<MovieListResponse>({
+    queryKey: ['movies', filter, queryKey],
+    queryFn: async () => {
       return await client.get<MovieListResponse>(`${PATH_PREFIX}${queryKey}`);
     },
-    {
-      select,
-    }
-  );
+  });
 };

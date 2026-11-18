@@ -11,24 +11,22 @@ export const useMovieDetailsQuery = <T>(
 ) => {
   const client = getBackendClient();
 
-  return useQuery(
-    ['movie', movieId],
-    async () => {
+  return useQuery<IMovie, Error, T>({
+    queryKey: ['movie', movieId],
+    queryFn: async () => {
       return await client.get<IMovie>(`${PATH_PREFIX}/${movieId}`);
     },
-    {
-      select: (data) => select(transformToInnerModel(data)),
-      enabled: !!movieId && movieId !== 0,
-    }
-  );
+    select: (data) => select(transformToInnerModel(data)),
+    enabled: !!movieId && movieId !== 0,
+  });
 };
 
 export const useCreateMovieMutation = () => {
   const client = getBackendClient();
   const queryClient = useQueryClient();
 
-  return useMutation(
-    async (movie: IMovie) => {
+  return useMutation({
+    mutationFn: async (movie: IMovie) => {
       if (!movie) {
         throw new Error('Can not create movie. Movie is missing.');
       }
@@ -42,23 +40,23 @@ export const useCreateMovieMutation = () => {
         body: movie,
       });
     },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['movies', 'actors', 'persons']);
-      },
-      onError: (error) => {
-        console.error('Failed to create movie: ' + error);
-      },
-    }
-  );
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['movies', 'actors', 'persons'],
+      });
+    },
+    onError: (error) => {
+      console.error('Failed to create movie: ' + error);
+    },
+  });
 };
 
 export const useUpdateMovieMutation = () => {
   const client = getBackendClient();
   const queryClient = useQueryClient();
 
-  return useMutation(
-    async (movie: IMovie) => {
+  return useMutation({
+    mutationFn: async (movie: IMovie) => {
       if (!movie || !movie.id || movie.id === 0) {
         throw new Error('Can not update movie. Movie Id is missing.');
       }
@@ -67,36 +65,36 @@ export const useUpdateMovieMutation = () => {
         body: movie,
       });
     },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['movies', 'movie', 'actors', 'persons']);
-      },
-      onError: (error) => {
-        console.error('Failed to update movie: ' + error);
-      },
-    }
-  );
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['movies', 'movie', 'actors', 'persons'],
+      });
+    },
+    onError: (error) => {
+      console.error('Failed to update movie: ' + error);
+    },
+  });
 };
 
 export const useDeleteMovieMutation = () => {
   const client = getBackendClient();
   const queryClient = useQueryClient();
 
-  return useMutation(
-    async (movieId: number) => {
+  return useMutation({
+    mutationFn: async (movieId: number) => {
       if (!movieId || movieId === 0) {
         throw new Error('Can not delete movie. Movie Id is missing.');
       }
 
       return await client.delete<boolean>(`${PATH_PREFIX}/${movieId}`);
     },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries(['movies', 'movie', 'actors', 'persons']);
-      },
-      onError: (error) => {
-        console.error('Failed to delete movie: ' + error);
-      },
-    }
-  );
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['movies', 'movie', 'actors', 'persons'],
+      });
+    },
+    onError: (error) => {
+      console.error('Failed to delete movie: ' + error);
+    },
+  });
 };

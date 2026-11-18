@@ -5,17 +5,14 @@ import { convertToMilliseconds } from '@giron/shared-util-helpers';
 
 const PATH_PREFIX = 'person/actors';
 
-export const useActorsQuery = <T>(select: (data: PersonRoleModel[]) => T) => {
+export const useActorsQuery = () => {
   const client = getBackendClient();
 
-  return useQuery(
-    ['actors'],
-    async () => {
+  return useQuery<PersonRoleModel[]>({
+    queryKey: ['actors'],
+    queryFn: async () => {
       return await client.get<PersonRoleModel[]>(`${PATH_PREFIX}`);
     },
-    {
-      select,
-      staleTime: convertToMilliseconds(1, 'hours'),
-    }
-  );
+    staleTime: convertToMilliseconds(1, 'hours'),
+  });
 };
