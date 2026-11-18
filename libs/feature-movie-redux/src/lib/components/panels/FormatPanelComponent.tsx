@@ -38,9 +38,7 @@ const FormatPanelComponent = ({
   useEffect(() => {
     setIsMovieLoading(!movie?.movieLoading || movie.movieLoading.loading);
     setIsBaseDataLoading(
-      !baseData ||
-        baseData.formatsLoading?.loading ||
-        baseData.languagesLoading?.loading
+      !baseData || baseData.formatsLoading?.loading || baseData.languagesLoading?.loading,
     );
   }, [movie, baseData]);
 

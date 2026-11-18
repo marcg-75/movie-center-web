@@ -21,28 +21,18 @@ interface MovieListProps {
   dispatch: (any: unknown) => void;
 }
 
-const MovieListComponent = ({
-  movieList,
-  history,
-  location,
-  dispatch,
-}: MovieListProps) => {
-  const [sort, setSort] = useState(
-    getDefaultSortModel('title', location.search)
-  );
+const MovieListComponent = ({ movieList, history, location, dispatch }: MovieListProps) => {
+  const [sort, setSort] = useState(getDefaultSortModel('title', location.search));
 
   useEffect(() => {
     loadMovies(sort);
   }, [sort]);
 
   const loadMovies = (sort: SortModel) => {
-    const sortOrder = SORT_ORDERS_BY_COLUMN.filter(
-      (csort) => csort.column === sort.sortOrder
-    )[0].sortOrder;
+    const sortOrder = SORT_ORDERS_BY_COLUMN.filter((csort) => csort.column === sort.sortOrder)[0]
+      .sortOrder;
 
-    dispatch(
-      getMovies(movieList.filter, sortOrder, sort.sortDirection, 0, 1000)
-    );
+    dispatch(getMovies(movieList.filter, sortOrder, sort.sortDirection, 0, 1000));
   };
 
   const createMovie = () => {

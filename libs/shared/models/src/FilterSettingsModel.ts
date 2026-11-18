@@ -23,15 +23,9 @@ export class FilterSettings<T> {
   static fromRaw<T>(rawData: FilterSettingsRaw): FilterSettings<T> {
     switch (rawData.filterType) {
       case FilterType.MOVIE:
-        return new FilterSettings(
-          rawData,
-          JSON.parse(rawData.filterValues) as Filter<T>
-        );
+        return new FilterSettings(rawData, JSON.parse(rawData.filterValues) as Filter<T>);
       default:
-        return new FilterSettings(
-          rawData,
-          JSON.parse(rawData.filterValues) as Filter<T>
-        );
+        return new FilterSettings(rawData, JSON.parse(rawData.filterValues) as Filter<T>);
     }
   }
 

@@ -2,14 +2,11 @@ module.exports = {
   primary: 'rgb(var(--color-primary) / <alpha-value>)',
   'on-primary': 'rgb(var(--color-on-primary) / <alpha-value>)',
   'primary-container': 'rgb(var(--color-primary-container) / <alpha-value>)',
-  'on-primary-container':
-    'rgb(var(--color-on-primary-container) / <alpha-value>)',
+  'on-primary-container': 'rgb(var(--color-on-primary-container) / <alpha-value>)',
   secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
   'on-secondary': 'rgb(var(--color-on-secondary) / <alpha-value>)',
-  'secondary-container':
-    'rgb(var(--color-secondary-container) / <alpha-value>)',
-  'on-secondary-container':
-    'rgb(var(--color-on-secondary-container) / <alpha-value>)',
+  'secondary-container': 'rgb(var(--color-secondary-container) / <alpha-value>)',
+  'on-secondary-container': 'rgb(var(--color-on-secondary-container) / <alpha-value>)',
   tertiary: 'rgb(var(--color-tertiary) / <alpha-value>)',
   'on-tertiary': 'rgb(var(--color-on-tertiary) / <alpha-value>)',
   error: 'rgb(var(--color-error) / <alpha-value>)',

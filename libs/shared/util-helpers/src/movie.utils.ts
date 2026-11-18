@@ -20,9 +20,7 @@ export const transformToInnerModel = (movieItem: IMovie): IMovie => {
     releaseDate: releaseDate ? format(releaseDate, DATE_FORMAT) : undefined,
     movieFormatInfo: {
       ...movieFormatInfo,
-      format: movieFormatInfo.format
-        ? movieFormatInfo.format
-        : ({} as SelectableModel),
+      format: movieFormatInfo.format ? movieFormatInfo.format : ({} as SelectableModel),
     },
     moviePersonalInfo: {
       ...moviePersonalInfo,

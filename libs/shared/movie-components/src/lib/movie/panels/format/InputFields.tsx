@@ -1,23 +1,9 @@
 import { Control, Controller, UseFormSetValue } from 'react-hook-form';
-import {
-  IMovie,
-  LanguageModel,
-  MovieFormatInfo,
-  SelectableModel,
-} from '@giron/shared-models';
+import { IMovie, LanguageModel, MovieFormatInfo, SelectableModel } from '@giron/shared-models';
 import { LabeledInput } from '@giron/shared-ui-library';
-import {
-  Box,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-  TextField,
-} from '@mui/material';
+import { Box, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
-import {
-  mapMultipleSelectionToChips,
-  SelectMenuProps,
-} from '@giron/shared-util-helpers';
+import { mapMultipleSelectionToChips, SelectMenuProps } from '@giron/shared-util-helpers';
 
 const REGIONS = ['', '1', '2', '3', '4', '5', '6'];
 const regionOptions: SelectableModel[] = REGIONS.map((r) => ({
@@ -39,56 +25,39 @@ type Props = {
   languages?: LanguageModel[];
 };
 
-export const InputFields = ({
-  control,
-  setValue,
-  movieFormatInfo,
-  formats,
-  languages,
-}: Props) => {
-  const [selectedFormat, setSelectedFormat] = useState(
-    movieFormatInfo.format?.code || ''
-  );
+export const InputFields = ({ control, setValue, movieFormatInfo, formats, languages }: Props) => {
+  const [selectedFormat, setSelectedFormat] = useState(movieFormatInfo.format?.code || '');
   const [upcId, setUpcId] = useState(movieFormatInfo.upcId || '');
   const [region, setRegion] = useState<string>(
-    movieFormatInfo.region ? `${movieFormatInfo.region}` : ''
+    movieFormatInfo.region ? `${movieFormatInfo.region}` : '',
   );
-  const [discs, setDiscs] = useState(
-    movieFormatInfo.discs ? `${movieFormatInfo.discs}` : ''
-  );
-  const [pictureFormat, setPictureFormat] = useState(
-    movieFormatInfo.pictureFormat || ''
-  );
+  const [discs, setDiscs] = useState(movieFormatInfo.discs ? `${movieFormatInfo.discs}` : '');
+  const [pictureFormat, setPictureFormat] = useState(movieFormatInfo.pictureFormat || '');
   const [system, setSystem] = useState(movieFormatInfo.system || '');
   const [selectedAudio, setSelectedAudio] = useState<string[]>([]);
   const [selectedSubtitles, setSelectedSubtitles] = useState<string[]>([]);
 
   useEffect(() => {
     const currentAudioLanguageIds: string[] =
-      movieFormatInfo?.audioLanguages?.map(
-        (lang: LanguageModel) => '' + lang.id
-      ) || [];
+      movieFormatInfo?.audioLanguages?.map((lang: LanguageModel) => '' + lang.id) || [];
 
     const currentSubtitleIds: string[] =
-      movieFormatInfo?.subtitles?.map((lang: LanguageModel) => '' + lang.id) ||
-      [];
+      movieFormatInfo?.subtitles?.map((lang: LanguageModel) => '' + lang.id) || [];
 
     setSelectedAudio(currentAudioLanguageIds);
     setSelectedSubtitles(currentSubtitleIds);
   }, [movieFormatInfo]);
 
-  const languageOptions: SelectableModel[] | undefined = languages?.map(
-    (l) => ({
-      code: l.id + '',
-      name: l.nameSwedish,
-    })
-  );
+  const languageOptions: SelectableModel[] | undefined = languages?.map((l) => ({
+    code: l.id + '',
+    name: l.nameSwedish,
+  }));
 
   const formatChanged = (event: SelectChangeEvent) => {
     const { value } = event.target;
 
     const chosenFormat: SelectableModel | undefined = formats?.find(
-      (f: SelectableModel) => f.code === value
+      (f: SelectableModel) => f.code === value,
     );
 
     if (chosenFormat) {
@@ -112,17 +81,16 @@ export const InputFields = ({
   };
 
   const getSelectedLanguages = (
-    value: string | string[]
+    value: string | string[],
   ): { chosenLanguages: LanguageModel[]; selectedOptions: string[] } => {
     const chosenLanguages: LanguageModel[] = [];
 
-    const selectedOptions =
-      typeof value === 'string' ? value.split(',') : value;
+    const selectedOptions = typeof value === 'string' ? value.split(',') : value;
 
     for (let i = 0; i < selectedOptions.length; i++) {
       const option = selectedOptions[i];
       const lang: LanguageModel | undefined = languages?.find(
-        (l: LanguageModel) => l.id === parseInt(option, 10)
+        (l: LanguageModel) => l.id === parseInt(option, 10),
       );
 
       if (lang) {
@@ -154,10 +122,7 @@ export const InputFields = ({
         <Controller
           control={control}
           name="movieFormatInfo.format"
-          render={({
-            field: { onChange, ...field },
-            fieldState: { error },
-          }) => (
+          render={({ field: { onChange, ...field }, fieldState: { error } }) => (
             <>
               <Select
                 {...field}

@@ -19,11 +19,7 @@ export const CrewPanelComponent = ({
   testName = 'CrewPanelComponent_test',
 }: Props) => {
   const { crew, isCrewLoading, error: crewError } = useCrew();
-  const {
-    persons,
-    isPersonsLoading,
-    error: personsError,
-  } = useAllPersons(loadAllPersons);
+  const { persons, isPersonsLoading, error: personsError } = useAllPersons(loadAllPersons);
   const { roles, isRolesLoading, error: rolesError } = useRoles();
 
   return (

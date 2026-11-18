@@ -6,10 +6,7 @@ import {
 import { useEffect, useState } from 'react';
 import { FilterItem, FilterItemText, Loader } from '@giron/shared-ui-library';
 import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
-import {
-  mapMultipleSelectionToText,
-  SelectMenuProps,
-} from '@giron/shared-util-helpers';
+import { mapMultipleSelectionToText, SelectMenuProps } from '@giron/shared-util-helpers';
 
 const helpFilterFreetext =
   'Du kan välja att filtrera på filmens titel, genre eller annat. Tryck sedan på ' +
@@ -21,12 +18,7 @@ type Props = {
   filterChanged: (filter: MovieFilter) => void;
   isLoading?: boolean;
 };
-export const RegularFilter = ({
-  filter,
-  genres,
-  filterChanged,
-  isLoading = false,
-}: Props) => {
+export const RegularFilter = ({ filter, genres, filterChanged, isLoading = false }: Props) => {
   const [filterGenresToSelect, setFilterGenresToSelect] = useState([
     MovieFilter.FILTER_DEFAULT_ALL_GENRES,
   ]);
@@ -41,10 +33,7 @@ export const RegularFilter = ({
   }, [filter, genres, isLoading]);
 
   const genreChangeHandler = (event: SelectChangeEvent): void => {
-    const filterCopy: MovieModelFilter = Object.assign(
-      {},
-      filter
-    ) as MovieModelFilter;
+    const filterCopy: MovieModelFilter = Object.assign({}, filter) as MovieModelFilter;
 
     filterCopy.genreCode = event.target.value || undefined;
 
@@ -54,10 +43,7 @@ export const RegularFilter = ({
   };
 
   const textValueChangeHandler = (value: string, controlName: string): void => {
-    const filterCopy: MovieModelFilter = Object.assign(
-      {},
-      filter
-    ) as MovieModelFilter;
+    const filterCopy: MovieModelFilter = Object.assign({}, filter) as MovieModelFilter;
 
     switch (controlName) {
       case 'title':
@@ -92,9 +78,7 @@ export const RegularFilter = ({
           className="bg-white filter-select"
           value={filter.genreCode}
           onChange={genreChangeHandler}
-          renderValue={(selected) =>
-            mapMultipleSelectionToText(selected, filterGenresToSelect)
-          }
+          renderValue={(selected) => mapMultipleSelectionToText(selected, filterGenresToSelect)}
           MenuProps={SelectMenuProps}
           slotProps={{
             input: {

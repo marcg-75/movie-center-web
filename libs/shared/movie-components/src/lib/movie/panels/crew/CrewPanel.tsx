@@ -47,33 +47,20 @@ export const CrewPanel = ({
   enableSelectFromAllPersons,
   testName = 'CrewPanel_test',
 }: Props) => {
-  const [casters, setCasters] = useState<CastAndCrewModel[]>(
-    movie?.casters || []
-  );
+  const [casters, setCasters] = useState<CastAndCrewModel[]>(movie?.casters || []);
   const [cinematography, setCinematography] = useState<CastAndCrewModel[]>(
-    movie?.cinematography || []
+    movie?.cinematography || [],
   );
-  const [directors, setDirectors] = useState<CastAndCrewModel[]>(
-    movie?.directors || []
-  );
-  const [editors, setEditors] = useState<CastAndCrewModel[]>(
-    movie?.editors || []
-  );
+  const [directors, setDirectors] = useState<CastAndCrewModel[]>(movie?.directors || []);
+  const [editors, setEditors] = useState<CastAndCrewModel[]>(movie?.editors || []);
   const [misc, setMisc] = useState<CastAndCrewModel[]>(movie?.otherRoles || []);
   const [music, setMusic] = useState<CastAndCrewModel[]>(movie?.music || []);
-  const [producers, setProducers] = useState<CastAndCrewModel[]>(
-    movie?.producers || []
-  );
+  const [producers, setProducers] = useState<CastAndCrewModel[]>(movie?.producers || []);
   const [sound, setSound] = useState<CastAndCrewModel[]>(movie?.sound || []);
-  const [writers, setWriters] = useState<CastAndCrewModel[]>(
-    movie?.writers || []
-  );
+  const [writers, setWriters] = useState<CastAndCrewModel[]>(movie?.writers || []);
   const [art, setArt] = useState<CastAndCrewModel[]>(movie?.art || []);
 
-  const updateCrewMembers = (
-    role: RoleEnum,
-    crewMembers: CastAndCrewModel[]
-  ) => {
+  const updateCrewMembers = (role: RoleEnum, crewMembers: CastAndCrewModel[]) => {
     switch (role) {
       case RoleEnum.CASTING:
         setValue('casters', crewMembers);
@@ -114,7 +101,7 @@ export const CrewPanel = ({
     event: MouseEvent<HTMLButtonElement>,
     cacId: number,
     personName: string,
-    role: RoleEnum
+    role: RoleEnum,
   ) => {
     event.preventDefault();
     event.stopPropagation();
@@ -123,9 +110,7 @@ export const CrewPanel = ({
       return;
     }
 
-    const rRole = roles?.find(
-      (r: SelectableModel) => r.code === RoleEnum[role]
-    );
+    const rRole = roles?.find((r: SelectableModel) => r.code === RoleEnum[role]);
 
     if (!window.confirm(`Vill du ta bort denna ${rRole?.name} från filmen?`)) {
       return;
@@ -134,10 +119,7 @@ export const CrewPanel = ({
     const crewMembers = existingMovieCrewMembersForRole(movie, role);
 
     crewMembers.forEach((a: CastAndCrewModel) => {
-      if (
-        ((a.id && a.id === cacId) || !a.id) &&
-        a.personRole.person.name === personName
-      ) {
+      if (((a.id && a.id === cacId) || !a.id) && a.personRole.person.name === personName) {
         a.deleted = true;
       }
     });
@@ -145,27 +127,20 @@ export const CrewPanel = ({
     updateCrewMembers(role, crewMembers);
   };
 
-  const mapToElements = (
-    crew: CastAndCrewModel[],
-    role: RoleEnum
-  ): ReactNode[] =>
+  const mapToElements = (crew: CastAndCrewModel[], role: RoleEnum): ReactNode[] =>
     crew
       .filter((cac: CastAndCrewModel) => !cac.deleted)
       .map((cac: CastAndCrewModel, i: number) => {
         return (
           <div key={i} id={'' + cac.id} hidden={cac.deleted}>
             <span className="text-value">
-              {cac.personRole.person
-                ? cac.personRole.person.name
-                : 'Namn saknas'}
+              {cac.personRole.person ? cac.personRole.person.name : 'Namn saknas'}
             </span>
 
             {enableMovieInfoEdit && (
               <button
                 className="btn secondary"
-                onClick={(e) =>
-                  removeCrewMember(e, cac.id, cac.personRole.person.name, role)
-                }
+                onClick={(e) => removeCrewMember(e, cac.id, cac.personRole.person.name, role)}
               >
                 Ta bort från film
               </button>
@@ -180,9 +155,7 @@ export const CrewPanel = ({
     content = (
       <div>
         <ul>
-          <li>
-            {typeof error === 'string' ? error : (error as Error).message}
-          </li>
+          <li>{typeof error === 'string' ? error : (error as Error).message}</li>
         </ul>
       </div>
     );
@@ -207,24 +180,15 @@ export const CrewPanel = ({
       </div>
     );
   } else {
-    const directorElements: ReactNode[] = mapToElements(
-      directors,
-      RoleEnum.DIRECTOR
-    );
-    const producerElements: ReactNode[] = mapToElements(
-      producers,
-      RoleEnum.PRODUCER
-    );
+    const directorElements: ReactNode[] = mapToElements(directors, RoleEnum.DIRECTOR);
+    const producerElements: ReactNode[] = mapToElements(producers, RoleEnum.PRODUCER);
     const composerElements: ReactNode[] = mapToElements(music, RoleEnum.MUSIC);
     const writerElements: ReactNode[] = mapToElements(writers, RoleEnum.WRITER);
-    const casterElements: ReactNode[] = mapToElements(
-      casters,
-      RoleEnum.CASTING
-    );
+    const casterElements: ReactNode[] = mapToElements(casters, RoleEnum.CASTING);
     const editorElements: ReactNode[] = mapToElements(editors, RoleEnum.EDITOR);
     const cinematographyElements: ReactNode[] = mapToElements(
       cinematography,
-      RoleEnum.CINEMATOGRAPHY
+      RoleEnum.CINEMATOGRAPHY,
     );
     const soundElements: ReactNode[] = mapToElements(sound, RoleEnum.SOUND);
     const artElements: ReactNode[] = mapToElements(art, RoleEnum.ART);
@@ -293,26 +257,22 @@ export const CrewPanel = ({
   return <div data-test-name={testName}>{content}</div>;
 };
 
-const createAllCrewRoleOptions = (
-  roles: Array<SelectableModel>
-): ReactNode[] => {
+const createAllCrewRoleOptions = (roles: Array<SelectableModel>): ReactNode[] => {
   if (!roles) {
     return [];
   }
 
   const crewRoles: Array<SelectableModel> = roles.filter(
-    (role: SelectableModel) => role.code !== RoleEnum[RoleEnum.ACTOR]
+    (role: SelectableModel) => role.code !== RoleEnum[RoleEnum.ACTOR],
   );
 
-  const options: ReactNode[] = crewRoles.map(
-    (option: SelectableModel, i: number) => {
-      return (
-        <option key={i + 1} value={option.code}>
-          {option.name}
-        </option>
-      );
-    }
-  );
+  const options: ReactNode[] = crewRoles.map((option: SelectableModel, i: number) => {
+    return (
+      <option key={i + 1} value={option.code}>
+        {option.name}
+      </option>
+    );
+  });
   options.unshift(<option key="0" value="" />);
 
   return options;

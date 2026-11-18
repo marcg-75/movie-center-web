@@ -22,7 +22,7 @@ export const successLoadingState: LoadingState = {
 
 export const getFailedLoadingState = (
   error?: string | Error,
-  errors?: string[] | Error[]
+  errors?: string[] | Error[],
 ): LoadingState => ({
   ...initialLoadingState,
   error,

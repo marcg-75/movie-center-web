@@ -1,12 +1,7 @@
 import '../../movie.details.scss';
 import React, { MouseEvent, useEffect, useState } from 'react';
 import { Loader } from '@giron/shared-ui-library';
-import {
-  CastAndCrewModel,
-  IMovie,
-  NameEntityModel,
-  PersonRoleModel,
-} from '@giron/shared-models';
+import { CastAndCrewModel, IMovie, NameEntityModel, PersonRoleModel } from '@giron/shared-models';
 import { UseFormSetValue } from 'react-hook-form';
 import { AddActor } from './AddActor';
 import { sortPersonRoles } from '../../utils/person.utils';
@@ -43,12 +38,8 @@ export const CastPanel = ({
   enableSelectFromAllPersons = false,
   testName = 'CastPanel_test',
 }: Props) => {
-  const [actorsInMovie, setActorsInMovie] = useState<CastAndCrewModel[]>(
-    movie?.actors || []
-  );
-  const [selectableActors, setSelectableActors] = useState<PersonRoleModel[]>(
-    []
-  );
+  const [actorsInMovie, setActorsInMovie] = useState<CastAndCrewModel[]>(movie?.actors || []);
+  const [selectableActors, setSelectableActors] = useState<PersonRoleModel[]>([]);
 
   useEffect(() => {
     if (actors) {
@@ -64,7 +55,7 @@ export const CastPanel = ({
   const removeActor = (
     event: MouseEvent<HTMLButtonElement>,
     actorId: number,
-    personName: string
+    personName: string,
   ) => {
     event.preventDefault();
     event.stopPropagation();
@@ -80,10 +71,7 @@ export const CastPanel = ({
     const actorsForMovie = movie.actors ? movie.actors : [];
 
     actorsForMovie.forEach((a: CastAndCrewModel) => {
-      if (
-        (a.id && a.id === actorId) ||
-        (!a.id && a.personRole.person.name === personName)
-      ) {
+      if ((a.id && a.id === actorId) || (!a.id && a.personRole.person.name === personName)) {
         a.deleted = true;
       }
     });
@@ -97,9 +85,7 @@ export const CastPanel = ({
     content = (
       <div>
         <ul>
-          <li>
-            {typeof error === 'string' ? error : (error as Error).message}
-          </li>
+          <li>{typeof error === 'string' ? error : (error as Error).message}</li>
         </ul>
       </div>
     );
@@ -124,29 +110,23 @@ export const CastPanel = ({
       </div>
     );
   } else {
-    const castElements = actorsInMovie.map(
-      (actor: CastAndCrewModel, i: number) => (
-        <div key={i} id={'' + actor.id} hidden={actor.deleted}>
-          <span className="text-value">
-            {actor.personRole.person
-              ? actor.personRole.person.name
-              : 'Namn saknas'}
-          </span>
-          <span className="text-value">{actor.characterName}</span>
+    const castElements = actorsInMovie.map((actor: CastAndCrewModel, i: number) => (
+      <div key={i} id={'' + actor.id} hidden={actor.deleted}>
+        <span className="text-value">
+          {actor.personRole.person ? actor.personRole.person.name : 'Namn saknas'}
+        </span>
+        <span className="text-value">{actor.characterName}</span>
 
-          {enableMovieInfoEdit && (
-            <button
-              className="btn secondary"
-              onClick={(e) =>
-                removeActor(e, actor.id, actor.personRole.person.name)
-              }
-            >
-              Ta bort från film
-            </button>
-          )}
-        </div>
-      )
-    );
+        {enableMovieInfoEdit && (
+          <button
+            className="btn secondary"
+            onClick={(e) => removeActor(e, actor.id, actor.personRole.person.name)}
+          >
+            Ta bort från film
+          </button>
+        )}
+      </div>
+    ));
 
     content = (
       <div className="panel-content">
@@ -154,11 +134,7 @@ export const CastPanel = ({
 
         {enableMovieInfoEdit && (
           <>
-            <AddActor
-              movie={movie}
-              actors={selectableActors}
-              onAddActors={updateActors}
-            />
+            <AddActor movie={movie} actors={selectableActors} onAddActors={updateActors} />
 
             <AddNewActor
               movie={movie}

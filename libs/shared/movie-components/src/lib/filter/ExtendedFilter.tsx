@@ -13,52 +13,32 @@ type Props = {
   isLoading?: boolean;
 };
 
-export const ExtendedFilter = ({
-  filter,
-  formats,
-  filterChanged,
-  isLoading = false,
-}: Props) => {
+export const ExtendedFilter = ({ filter, formats, filterChanged, isLoading = false }: Props) => {
   const [filterFormatsToSelect, setFilterFormatsToSelect] = useState([
     MovieModelFilter.FILTER_DEFAULT_ALL_FORMATS,
   ]);
-  const [filterGradesToSelect] = useState(
-    MovieModelFilter.FILTER_SELECTABLE_GRADES
-  );
+  const [filterGradesToSelect] = useState(MovieModelFilter.FILTER_SELECTABLE_GRADES);
 
   useEffect(() => {
-    if (
-      !filterFormatsToSelect ||
-      (filterFormatsToSelect.length < 2 && formats)
-    ) {
-      const formatsToSelect = Object.assign(
-        [],
-        formats
-      ) as Array<SelectableModel>;
+    if (!filterFormatsToSelect || (filterFormatsToSelect.length < 2 && formats)) {
+      const formatsToSelect = Object.assign([], formats) as Array<SelectableModel>;
       formatsToSelect.unshift(MovieModelFilter.FILTER_DEFAULT_ALL_GENRES);
 
       setFilterFormatsToSelect(formatsToSelect);
     }
   }, [filter, formats, isLoading]);
 
-  const changeHandler = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ): void => {
+  const changeHandler = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>): void => {
     const control = e.target;
 
-    const filterCopy: MovieModelFilter = Object.assign(
-      {},
-      filter
-    ) as MovieModelFilter;
+    const filterCopy: MovieModelFilter = Object.assign({}, filter) as MovieModelFilter;
 
     switch (control.name) {
       case 'formatCode':
         filterCopy.formatCode = control.value || undefined;
         break;
       case 'grade':
-        filterCopy.grade = control.value
-          ? parseInt(control.value, 10)
-          : undefined;
+        filterCopy.grade = control.value ? parseInt(control.value, 10) : undefined;
         break;
     }
 
@@ -67,25 +47,21 @@ export const ExtendedFilter = ({
     }
   };
 
-  const selectableFormatItems: ReactNode[] = filterFormatsToSelect.map(
-    (option, i) => {
-      return (
-        <option key={i} value={option.code}>
-          {option.name}
-        </option>
-      );
-    }
-  );
+  const selectableFormatItems: ReactNode[] = filterFormatsToSelect.map((option, i) => {
+    return (
+      <option key={i} value={option.code}>
+        {option.name}
+      </option>
+    );
+  });
 
-  const selectableGradeItems: ReactNode[] = filterGradesToSelect.map(
-    (option, i) => {
-      return (
-        <option key={i} value={option.code}>
-          {option.name}
-        </option>
-      );
-    }
-  );
+  const selectableGradeItems: ReactNode[] = filterGradesToSelect.map((option, i) => {
+    return (
+      <option key={i} value={option.code}>
+        {option.name}
+      </option>
+    );
+  });
 
   return isLoading ? (
     <div>
@@ -94,11 +70,7 @@ export const ExtendedFilter = ({
   ) : (
     <>
       <FilterItem id="format-filter" label="Format">
-        <select
-          name="formatCode"
-          value={filter.formatCode}
-          onChange={changeHandler}
-        >
+        <select name="formatCode" value={filter.formatCode} onChange={changeHandler}>
           {selectableFormatItems}
         </select>
       </FilterItem>

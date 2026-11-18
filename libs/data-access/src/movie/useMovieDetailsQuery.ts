@@ -5,10 +5,7 @@ import { transformToInnerModel } from '@giron/shared-util-helpers';
 
 const PATH_PREFIX = 'movie';
 
-export const useMovieDetailsQuery = <T>(
-  select: (data: IMovie) => T,
-  movieId: number
-) => {
+export const useMovieDetailsQuery = <T>(select: (data: IMovie) => T, movieId: number) => {
   const client = getBackendClient();
 
   return useQuery<IMovie, Error, T>({
@@ -32,7 +29,7 @@ export const useCreateMovieMutation = () => {
       }
       if (!!movie.id && movie.id > 0) {
         throw new Error(
-          'Can not create movie. It seems to already exist (id is > 0). Try updating it instead.'
+          'Can not create movie. It seems to already exist (id is > 0). Try updating it instead.',
         );
       }
 

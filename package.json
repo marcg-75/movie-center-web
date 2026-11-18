@@ -1,8 +1,8 @@
 {
   "name": "@giron/root",
   "version": "0.0.0",
+  "private": true,
   "license": "MIT",
-  "packageManager": "pnpm@10.34.1",
   "scripts": {
     "start": "nx serve movie-center-web",
     "build": "nx build movie-center-web",
@@ -10,13 +10,14 @@
     "start-redux": "nx serve movie-center-web-redux",
     "build-redux": "nx build movie-center-web-redux",
     "test-redux": "nx test movie-center-web-redux",
-    "lint": "nx run-many --all --target=lint",
-    "affected:lint": "nx affected --base=master --head=HEAD --target=lint",
-    "affected:test": "nx affected --base=master --head=HEAD --target=test",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "lint:output": "pnpm lint 2> output.txt",
+    "lint": "oxlint apps/ && oxlint libs/",
+    "lint:fix": "oxlint apps/ --fix && oxlint libs/ --fix",
     "graph": "nx graph --groupByFolder --focus=web-client",
     "upgrade-nx": "nx migrate latest"
   },
-  "private": true,
   "dependencies": {
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
@@ -40,9 +41,9 @@
     "redux-api-middleware": "3.2.1",
     "redux-persist": "6.0.0",
     "redux-thunk": "3.1.0",
+    "rollup": "4.68.6",
     "tslib": "2.6.3",
-    "universal-base64": "2.1.0",
-    "rollup": "4.68.6"
+    "universal-base64": "2.1.0"
   },
   "devDependencies": {
     "@babel/core": "7.29.7",
@@ -50,8 +51,6 @@
     "@mui/material": "5.18.0",
     "@mui/x-date-pickers": "7.29.4",
     "@nx/cypress": "24.0.6",
-    "@nx/eslint": "24.0.6",
-    "@nx/eslint-plugin": "24.0.6",
     "@nx/jest": "24.0.6",
     "@nx/js": "24.0.6",
     "@nx/react": "24.0.6",
@@ -73,23 +72,16 @@
     "@types/react-dom": "19.3.0",
     "@types/react-router-dom": "5.3.3",
     "@types/redux-api-middleware": "3.2.7",
-    "@typescript-eslint/eslint-plugin": "8.73.0",
-    "@typescript-eslint/parser": "8.73.0",
     "autoprefixer": "10.5.0",
     "babel-jest": "30.3.0",
     "cypress": "13.17.0",
     "dotenv": "16.6.1",
-    "eslint": "9.9.1",
-    "eslint-config-next": "16.4.6",
-    "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-cypress": "3.6.0",
-    "eslint-plugin-import": "2.32.0",
-    "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-react": "7.37.5",
-    "eslint-plugin-react-hooks": "7.1.1",
     "jest": "30.3.0",
     "jest-environment-jsdom": "30.0.5",
+    "jest-util": "30.0.5",
     "nx": "24.0.6",
+    "oxfmt": "0.79.0",
+    "oxlint": "1.94.0",
     "postcss": "8.5.15",
     "prettier": "2.8.8",
     "react-hook-form": "7.78.0",
@@ -99,15 +91,15 @@
     "ts-node": "10.9.2",
     "typescript": "5.9.3",
     "url-loader": "4.1.1",
-    "webpack-cli": "7.0.0",
-    "webpack-dev-server": "5.2.7",
     "webpack": "5.112.2",
-    "jest-util": "30.0.5"
+    "webpack-cli": "7.0.0",
+    "webpack-dev-server": "5.2.7"
   },
   "optionalDependencies": {
     "@nx/nx-darwin-arm64": "24.0.6",
     "@nx/nx-darwin-x64": "24.0.6",
     "@nx/nx-linux-x64-gnu": "24.0.6",
     "@nx/nx-win32-x64-msvc": "24.0.6"
-  }
+  },
+  "packageManager": "pnpm@10.34.1"
 }

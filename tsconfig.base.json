@@ -19,21 +19,13 @@
       "@giron/data-access-redux": ["libs/data-access-redux/src/index.ts"],
       "@giron/feature-movie": ["libs/feature-movie/src/index.ts"],
       "@giron/feature-movie-list": ["libs/feature-movie-list/src/index.ts"],
-      "@giron/feature-movie-list-redux": [
-        "libs/feature-movie-list-redux/src/index.ts"
-      ],
+      "@giron/feature-movie-list-redux": ["libs/feature-movie-list-redux/src/index.ts"],
       "@giron/feature-movie-redux": ["libs/feature-movie-redux/src/index.ts"],
-      "@giron/shared-data-access-api-client": [
-        "libs/shared/data-access-api-client/src/index.ts"
-      ],
+      "@giron/shared-data-access-api-client": ["libs/shared/data-access-api-client/src/index.ts"],
       "@giron/shared-models": ["libs/shared/models/src/index.ts"],
-      "@giron/shared-movie-components": [
-        "libs/shared/movie-components/src/index.ts"
-      ],
+      "@giron/shared-movie-components": ["libs/shared/movie-components/src/index.ts"],
       "@giron/shared-ui-library": ["libs/shared/ui-library/src/index.ts"],
-      "@giron/shared-ui-library/styles.css": [
-        "libs/shared/ui-library/src/styles.css"
-      ],
+      "@giron/shared-ui-library/styles.css": ["libs/shared/ui-library/src/styles.css"],
       "@giron/shared-ui-library/variables.css": [
         "libs/shared/ui-library/src/design-tokens/_variables.css"
       ],

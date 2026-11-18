@@ -49,7 +49,7 @@ export const movieReducer = (
     movieUpdated: false,
     movieDeleted: false,
   },
-  { type, payload, movieItem }: MovieActionProps
+  { type, payload, movieItem }: MovieActionProps,
 ) => {
   switch (type) {
     case MOVIE_FETCHING:
@@ -112,10 +112,7 @@ export const movieReducer = (
 
       return {
         ...state,
-        movieLoading: getFailedLoadingState(
-          undefined,
-          createErrorMessageArray(payload)
-        ),
+        movieLoading: getFailedLoadingState(undefined, createErrorMessageArray(payload)),
         movieCreated: false,
       };
     case MOVIE_UPDATING:

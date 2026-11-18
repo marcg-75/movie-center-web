@@ -44,45 +44,39 @@ export const ListFilter = ({
     window.history.back();
   };
 
-  const cnTransitionAllEaseInOut = cn(
-    'transition-all duration-200 ease-in-out'
-  );
+  const cnTransitionAllEaseInOut = cn('transition-all duration-200 ease-in-out');
 
   const filterClassNames = cn('text-body-small pb-5', cnTransitionAllEaseInOut);
   const filterBodyClassNames = cn(
     'flex justify-between bg-blue-100 border border-gray-300 p-4 w-auto',
-    cnTransitionAllEaseInOut
+    cnTransitionAllEaseInOut,
   );
 
   const toggleContainerClassNames = cn(
     'bg-white inline-block relative border border-gray-400 rounded-full',
-    'cursor-pointer transition duration-200 w-10 h-[22px]'
+    'cursor-pointer transition duration-200 w-10 h-[22px]',
   );
 
   const toggleButtonClassNames = cn(
     'absolute inset-0 rounded-full transition-all duration-200',
     'before:flex before:relative before:bg-white before:top-[1px] before:rounded-full before:shadow-toggle',
     'before:transition-all before:duration-200 before:ease-in-out before:w-[18px] before:h-[18px] before:content-[""]',
-    'peer-checked:bg-blue-900 peer-checked:before:ml-5'
+    'peer-checked:bg-blue-900 peer-checked:before:ml-5',
   );
 
   const backButtonClassNames = cn(
     'bg-blue-100 text-[#007d7a] relative font-bold border border-b-0 border-gray-300 px-4 mb-[-1px] ml-auto',
     {
       hidden: !isVisible,
-    }
+    },
   );
 
   return (
     <div className={filterClassNames} data-test-name={testName}>
       <div className="flex filter-header">
         <div className="flex relative bg-blue-200 border border-gray-300 font-bold leading-8 uppercase cursor-pointer py-0.5 px-4 mb-[-1px] min-w-[600px] filter-header-toggle-container">
-          <span
-            className="inline-flex items-center"
-            onClick={() => toggleFilter()}
-          >
-            <i className="text-pink-600 text-title-large mr-1.5 fas fa-caret-right" />{' '}
-            {header}{' '}
+          <span className="inline-flex items-center" onClick={() => toggleFilter()}>
+            <i className="text-pink-600 text-title-large mr-1.5 fas fa-caret-right" /> {header}{' '}
             <i className="ml-1 far fa-question-circle" title={helpText} />
           </span>
 

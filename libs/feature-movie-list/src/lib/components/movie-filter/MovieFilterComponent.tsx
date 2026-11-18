@@ -13,9 +13,7 @@ type Props = {
   testName?: string;
 };
 
-export const MovieFilterComponent = ({
-  testName = 'MovieFilterComponent_test',
-}: Props) => {
+export const MovieFilterComponent = ({ testName = 'MovieFilterComponent_test' }: Props) => {
   const { setFilter, resetFilter } = useMovieFilter();
 
   const filterChanged = (filter: MovieFilterModel) => {
@@ -32,14 +30,10 @@ export const MovieFilterComponent = ({
         header="Filtrering av filmer"
         helpText={helpFilter}
         clearFilter={clearFilter}
-        enableSaveFilter={
-          process.env.NEXT_PUBLIC_ENABLE_SAVE_MOVIE_FILTER === 'true'
-        }
+        enableSaveFilter={process.env.NEXT_PUBLIC_ENABLE_SAVE_MOVIE_FILTER === 'true'}
         compactModeActions={true}
         regularContent={<RegularFilterContent filterChanged={filterChanged} />}
-        extendedContent={
-          <ExtendedFilterContent filterChanged={filterChanged} />
-        }
+        extendedContent={<ExtendedFilterContent filterChanged={filterChanged} />}
       />
     </div>
   );

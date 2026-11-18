@@ -31,7 +31,7 @@ export const movieListReducer = (
     moviesNotLoaded: true,
     filter: DEFAULT_FILTER,
   },
-  { type, payload, filter }: MovieListActionProps
+  { type, payload, filter }: MovieListActionProps,
 ) => {
   switch (type) {
     case MOVIES_FETCHING:

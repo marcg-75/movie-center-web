@@ -6,13 +6,7 @@ import {
   SelectableModel,
 } from '@giron/shared-models';
 import { Loader } from '@giron/shared-ui-library';
-import React, {
-  ChangeEvent,
-  MouseEvent,
-  ReactNode,
-  useEffect,
-  useState,
-} from 'react';
+import React, { ChangeEvent, MouseEvent, ReactNode, useEffect, useState } from 'react';
 import { mapToPersonOptionElements } from '../../utils/person.utils';
 
 type Props = {
@@ -30,21 +24,17 @@ export const AddNewActor = ({
   enableSelectFromAllPersons,
   onAddActors,
 }: Props) => {
-  const [selectablePersons, setSelectablePersons] = useState<NameEntityModel[]>(
-    []
-  );
+  const [selectablePersons, setSelectablePersons] = useState<NameEntityModel[]>([]);
 
   const [selectedPersonId, setSelectedPersonId] = useState<string>('');
   const [selectedPersonName, setSelectedPersonName] = useState<string>('');
-  const [selectedCharacterName, setSelectedCharacterName] =
-    useState<string>('');
+  const [selectedCharacterName, setSelectedCharacterName] = useState<string>('');
 
   useEffect(() => {
     getSelectablePersons();
   }, [movie, persons]);
 
-  const selectablePersonOptions: ReactNode[] =
-    mapToPersonOptionElements(selectablePersons);
+  const selectablePersonOptions: ReactNode[] = mapToPersonOptionElements(selectablePersons);
 
   const clearSelectedPerson = () => {
     setSelectablePersons([]);
@@ -71,21 +61,16 @@ export const AddNewActor = ({
     // If a new name is given (not an existing person is selected), check if the name already exists.
     if (
       !selectedPersonId?.length &&
-      persons.findIndex((p: NameEntityModel) => p.name === selectedPersonName) >
-        -1 &&
+      persons.findIndex((p: NameEntityModel) => p.name === selectedPersonName) > -1 &&
       !window.confirm(
-        'En person med detta namn finns redan. Vill du skapa en ny person som har samma namn? Avbryt annars och välj befintlig person i listan intill.'
+        'En person med detta namn finns redan. Vill du skapa en ny person som har samma namn? Avbryt annars och välj befintlig person i listan intill.',
       )
     ) {
       setSelectedPersonName('');
       return;
     }
 
-    updateMovieActors(
-      selectedPersonId,
-      selectedPersonName,
-      selectedCharacterName
-    );
+    updateMovieActors(selectedPersonId, selectedPersonName, selectedCharacterName);
 
     setSelectedPersonId('');
     setSelectedPersonName('');
@@ -95,11 +80,7 @@ export const AddNewActor = ({
   };
 
   // Adds new actor (existing or completely new PERSON)
-  const updateMovieActors = (
-    personId: string,
-    personName: string,
-    characterName: string
-  ) => {
+  const updateMovieActors = (personId: string, personName: string, characterName: string) => {
     if (!movie || (!personId && !personName) || !characterName) {
       return;
     }
@@ -126,15 +107,8 @@ export const AddNewActor = ({
   };
 
   const getSelectablePersons = () => {
-    if (
-      enableSelectFromAllPersons &&
-      persons &&
-      persons.length > 0 &&
-      !!movie
-    ) {
-      const currentActorsInMovie: Array<CastAndCrewModel> = movie.actors
-        ? movie.actors
-        : [];
+    if (enableSelectFromAllPersons && persons && persons.length > 0 && !!movie) {
+      const currentActorsInMovie: Array<CastAndCrewModel> = movie.actors ? movie.actors : [];
       let selectablePersons: NameEntityModel[] = [];
 
       if (currentActorsInMovie?.length) {
@@ -142,7 +116,7 @@ export const AddNewActor = ({
         selectablePersons = persons.filter((person: NameEntityModel) => {
           return (
             currentActorsInMovie.findIndex(
-              (cac: CastAndCrewModel) => cac.personRole.person.id === person.id
+              (cac: CastAndCrewModel) => cac.personRole.person.id === person.id,
             ) === -1
           );
         });

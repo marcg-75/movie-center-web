@@ -40,16 +40,12 @@ export const movieToString = (movie: IMovie): string => {
   if (genres) {
     movie.genres.forEach(
       (movieGenre: MovieGenreModel) =>
-        (genres += `${movieGenre.genre.name}${
-          movieGenre.mainGenre ? '(main genre)' : ''
-        }, `)
+        (genres += `${movieGenre.genre.name}${movieGenre.mainGenre ? '(main genre)' : ''}, `),
     );
   }
 
   if (studios) {
-    movie.studios.forEach(
-      (studio: NameEntityModel) => (studios += `${studio.name}, `)
-    );
+    movie.studios.forEach((studio: NameEntityModel) => (studios += `${studio.name}, `));
   }
 
   return `ID: ${movie.id}, Title: ${movie.title}, Description: ${movie.description},

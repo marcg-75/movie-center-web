@@ -30,17 +30,13 @@ export const AddNewCrewMember = ({
   enableSelectFromAllPersons,
   onAddCrewMember,
 }: Props) => {
-  const [selectablePersonsForRole, setSelectablePersonsForRole] = useState<
-    NameEntityModel[]
-  >([]);
+  const [selectablePersonsForRole, setSelectablePersonsForRole] = useState<NameEntityModel[]>([]);
 
   const [roleCodeToAdd, setRoleCodeToAdd] = useState<string>();
   const [selectedPersonId, setSelectedPersonId] = useState<string>('');
   const [selectedPersonName, setSelectedPersonName] = useState<string>('');
 
-  const personsForRoleOptions: ReactNode[] = mapToPersonOptionElements(
-    selectablePersonsForRole
-  );
+  const personsForRoleOptions: ReactNode[] = mapToPersonOptionElements(selectablePersonsForRole);
 
   const clearSelectedPerson = () => {
     setSelectablePersonsForRole([]);
@@ -55,10 +51,7 @@ export const AddNewCrewMember = ({
       return;
     }
 
-    if (
-      !roleCodeToAdd?.length &&
-      (!selectedPersonId?.length || !selectedPersonName?.length)
-    ) {
+    if (!roleCodeToAdd?.length && (!selectedPersonId?.length || !selectedPersonName?.length)) {
       alert('Roll, befintlig person eller ny persons namn måste anges.');
       return;
     }
@@ -66,10 +59,9 @@ export const AddNewCrewMember = ({
     // If a new name is given (not an existing person is selected), check if the name already exists.
     if (
       !selectedPersonId?.length &&
-      persons.findIndex((p: NameEntityModel) => p.name === selectedPersonName) >
-        -1 &&
+      persons.findIndex((p: NameEntityModel) => p.name === selectedPersonName) > -1 &&
       !window.confirm(
-        'En person med detta namn finns redan. Vill du skapa en ny person som har samma namn? Avbryt annars och välj befintlig person i listan intill.'
+        'En person med detta namn finns redan. Vill du skapa en ny person som har samma namn? Avbryt annars och välj befintlig person i listan intill.',
       )
     ) {
       setSelectedPersonName('');
@@ -88,11 +80,7 @@ export const AddNewCrewMember = ({
   };
 
   // Adds new crew member (existing or completely new PERSON)
-  const updateMovieCrew = (
-    personId: string,
-    personName: string,
-    pRole: RoleEnum
-  ) => {
+  const updateMovieCrew = (personId: string, personName: string, pRole: RoleEnum) => {
     if (!movie || (!personId && !personName)) {
       return;
     }
@@ -117,9 +105,7 @@ export const AddNewCrewMember = ({
     onAddCrewMember(pRole, crewMembers);
   };
 
-  const getSelectablePersonsByRole = (
-    event: ChangeEvent<HTMLSelectElement>
-  ) => {
+  const getSelectablePersonsByRole = (event: ChangeEvent<HTMLSelectElement>) => {
     const roleCode: string = event.target.value;
 
     if (
@@ -131,8 +117,10 @@ export const AddNewCrewMember = ({
       !!movie
     ) {
       const role: RoleEnum = RoleEnum[roleCode as keyof typeof RoleEnum];
-      const currentCrewMembersForRole: CastAndCrewModel[] =
-        existingMovieCrewMembersForRole(movie, role);
+      const currentCrewMembersForRole: CastAndCrewModel[] = existingMovieCrewMembersForRole(
+        movie,
+        role,
+      );
       let selectablePersonsForRole: Array<NameEntityModel> = [];
 
       if (currentCrewMembersForRole?.length) {
@@ -140,7 +128,7 @@ export const AddNewCrewMember = ({
         selectablePersonsForRole = persons.filter((person: NameEntityModel) => {
           return (
             currentCrewMembersForRole.findIndex(
-              (cac: CastAndCrewModel) => cac.personRole.person.id === person.id
+              (cac: CastAndCrewModel) => cac.personRole.person.id === person.id,
             ) === -1
           );
         });
@@ -160,11 +148,7 @@ export const AddNewCrewMember = ({
     <div>
       <label>Lägg till ny medlem:</label>
 
-      <select
-        id="newCrewRole"
-        name="newCrewRole"
-        onChange={(e) => getSelectablePersonsByRole(e)}
-      >
+      <select id="newCrewRole" name="newCrewRole" onChange={(e) => getSelectablePersonsByRole(e)}>
         {allCrewRoleOptions}
       </select>
 
@@ -176,9 +160,7 @@ export const AddNewCrewMember = ({
             id="newCrewPersonId"
             name="crewPersonId"
             onChange={(e) => setSelectedPerson(e)}
-            disabled={
-              !selectablePersonsForRole || !selectablePersonsForRole.length
-            }
+            disabled={!selectablePersonsForRole || !selectablePersonsForRole.length}
           >
             {personsForRoleOptions}
           </select>

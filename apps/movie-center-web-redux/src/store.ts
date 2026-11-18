@@ -8,8 +8,7 @@ import { reducers } from '@giron/data-access-redux';
 //import {authInterceptor} from './authInterceptorMiddleware';
 
 const initialState = {};
-const composeEnhancers =
-  /*window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] ||*/ compose; // eslint-disable-line no-underscore-dangle
+const composeEnhancers = /*window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'] ||*/ compose; // eslint-disable-line no-underscore-dangle
 
 const persistConfig = {
   key: 'mc_store',
@@ -28,7 +27,7 @@ export default function configureStore() {
   const store = createStore(
     persistedReducers,
     initialState,
-    composeEnhancers(applyMiddleware(thunk, apiMiddleware))
+    composeEnhancers(applyMiddleware(thunk, apiMiddleware)),
   );
   const persistor = persistStore(store);
 

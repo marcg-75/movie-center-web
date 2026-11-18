@@ -1,10 +1,4 @@
-export {
-  useGenres,
-  useFormats,
-  useStudios,
-  useRoles,
-  useLanguages,
-} from './base-data';
+export { useGenres, useFormats, useStudios, useRoles, useLanguages } from './base-data';
 export {
   useMovieList,
   useMovieDetails,

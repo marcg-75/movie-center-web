@@ -27,9 +27,7 @@ const PersonalInfoPanelComponent = ({
   return (
     <PersonalInfoPanel
       control={control}
-      moviePersonalInfo={
-        movieItem?.moviePersonalInfo || ({} as MoviePersonalInfo)
-      }
+      moviePersonalInfo={movieItem?.moviePersonalInfo || ({} as MoviePersonalInfo)}
       isLoading={isMovieLoading}
       errors={movieLoading?.errors}
       testName={testName}

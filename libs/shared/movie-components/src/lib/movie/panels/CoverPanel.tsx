@@ -53,16 +53,10 @@ export const CoverPanel = ({
         <div className="labelled-input">
           <label htmlFor="foregroundUrl">Förgrundsbild:</label>
           {cover.fgFileName ? (
-            <img
-              src={IMAGE_URL + cover.fgFileName}
-              alt="Förgrundsbild"
-              className="cover-image"
-            />
+            <img src={IMAGE_URL + cover.fgFileName} alt="Förgrundsbild" className="cover-image" />
           ) : (
             <>
-              {cover.foregroundUrl && (
-                <img src={cover.foregroundUrl} alt="Förgrundsbild" />
-              )}
+              {cover.foregroundUrl && <img src={cover.foregroundUrl} alt="Förgrundsbild" />}
 
               <Controller
                 control={control}
@@ -86,16 +80,10 @@ export const CoverPanel = ({
         <div className="labelled-input">
           <label htmlFor="backgroundUrl">Bakgrundsbild:</label>
           {cover.bgFileName ? (
-            <img
-              src={IMAGE_URL + cover.bgFileName}
-              alt="Bakgrundsbild"
-              className="cover-image"
-            />
+            <img src={IMAGE_URL + cover.bgFileName} alt="Bakgrundsbild" className="cover-image" />
           ) : (
             <>
-              {cover.backgroundUrl && (
-                <img src={cover.backgroundUrl} alt="Bakgrundsbild" />
-              )}
+              {cover.backgroundUrl && <img src={cover.backgroundUrl} alt="Bakgrundsbild" />}
 
               <Controller
                 control={control}

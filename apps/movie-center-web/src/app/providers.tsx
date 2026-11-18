@@ -14,14 +14,12 @@ export default function Providers({ children }: { children: React.ReactNode }) {
             refetchOnWindowFocus: false,
           },
         },
-      })
+      }),
   );
 
   return (
     <QueryClientProvider client={queryClient}>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        {children}
-      </LocalizationProvider>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>{children}</LocalizationProvider>
     </QueryClientProvider>
   );
 }

@@ -5,13 +5,16 @@ export function buildQueryString(params?: QueryParams): string {
     return '';
   }
 
-  const stringObject = Object.entries(params).reduce((acc, [k, v]) => {
-    if (typeof v !== 'undefined') {
-      acc[k] = v.toString();
-    }
+  const stringObject = Object.entries(params).reduce(
+    (acc, [k, v]) => {
+      if (typeof v !== 'undefined') {
+        acc[k] = v.toString();
+      }
 
-    return acc;
-  }, {} as Record<string, string>);
+      return acc;
+    },
+    {} as Record<string, string>,
+  );
 
   return `?${new URLSearchParams(stringObject)?.toString()}`;
 }

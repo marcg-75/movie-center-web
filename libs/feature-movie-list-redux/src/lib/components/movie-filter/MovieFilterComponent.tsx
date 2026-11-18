@@ -21,10 +21,7 @@ type Props = {
   testName?: string;
 };
 
-export const MovieFilterComponent = ({
-  dispatch,
-  testName = 'MovieFilter_test',
-}: Props) => {
+export const MovieFilterComponent = ({ dispatch, testName = 'MovieFilter_test' }: Props) => {
   useEffect(() => {
     dispatch(clearMovieActionState());
   }, []);
@@ -46,9 +43,7 @@ export const MovieFilterComponent = ({
         enableSaveFilter={process.env.NX_ENABLE_SAVE_MOVIE_FILTER === 'true'}
         compactModeActions={true}
         regularContent={<RegularFilterContent filterChanged={filterChanged} />}
-        extendedContent={
-          <ExtendedFilterContent filterChanged={filterChanged} />
-        }
+        extendedContent={<ExtendedFilterContent filterChanged={filterChanged} />}
       />
     </div>
   );

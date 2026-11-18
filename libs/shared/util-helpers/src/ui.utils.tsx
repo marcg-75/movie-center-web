@@ -15,7 +15,7 @@ export const SelectMenuProps = {
 
 export const mapMultipleSelectionToChips = (
   selected: string | string[],
-  options?: SelectableModel[]
+  options?: SelectableModel[],
 ): string | ReactNode[] => {
   if (typeof selected === 'string') {
     const option = options?.find((op) => op.code === selected);
@@ -29,7 +29,7 @@ export const mapMultipleSelectionToChips = (
 
 export const mapMultipleSelectionToText = (
   selected: string | string[],
-  options?: SelectableModel[]
+  options?: SelectableModel[],
 ): string | ReactNode[] => {
   if (typeof selected === 'string') {
     const option = options?.find((op) => op.code === selected);

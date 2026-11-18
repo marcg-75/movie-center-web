@@ -1,25 +1,11 @@
 import { FocusEvent, useEffect, useState } from 'react';
-import {
-  Box,
-  MenuItem,
-  Select,
-  TextareaAutosize,
-  TextField,
-} from '@mui/material';
+import { Box, MenuItem, Select, TextareaAutosize, TextField } from '@mui/material';
 import { DatePicker, PickerValidDate, TimePicker } from '@mui/x-date-pickers';
 import { Control, Controller, UseFormSetValue } from 'react-hook-form';
 import { toDate } from 'date-fns';
-import {
-  IMovie,
-  MovieGenreModel,
-  NameEntityModel,
-  SelectableModel,
-} from '@giron/shared-models';
+import { IMovie, MovieGenreModel, NameEntityModel, SelectableModel } from '@giron/shared-models';
 import { LabeledInput } from '@giron/shared-ui-library';
-import {
-  mapMultipleSelectionToChips,
-  SelectMenuProps,
-} from '@giron/shared-util-helpers';
+import { mapMultipleSelectionToChips, SelectMenuProps } from '@giron/shared-util-helpers';
 
 type Props = {
   control: Control<IMovie>;
@@ -31,13 +17,7 @@ type Props = {
   onStudiosChange?: (genres: SelectableModel[]) => void;
 };
 
-export const InputFields = ({
-  control,
-  setValue,
-  movie,
-  genres,
-  studios,
-}: Props) => {
+export const InputFields = ({ control, setValue, movie, genres, studios }: Props) => {
   const [country, setCountry] = useState('');
   const [ageRestriction, setAgeRestriction] = useState('');
   const [description, setDescription] = useState('');
@@ -47,14 +27,10 @@ export const InputFields = ({
   const [imdbId, setImdbId] = useState('');
 
   useEffect(() => {
-    const currentAdditionalGenres: MovieGenreModel[] = movie.genres?.filter(
-      (mg) => !mg.mainGenre
-    );
+    const currentAdditionalGenres: MovieGenreModel[] = movie.genres?.filter((mg) => !mg.mainGenre);
 
     const currentAdditionalGenreCodes: string[] =
-      currentAdditionalGenres?.length > 0
-        ? currentAdditionalGenres.map((mg) => mg.genre.code)
-        : [];
+      currentAdditionalGenres?.length > 0 ? currentAdditionalGenres.map((mg) => mg.genre.code) : [];
 
     const currentStudioIds: string[] = movie.studios
       ? movie.studios.map((studio: NameEntityModel) => '' + studio.id)
@@ -73,13 +49,12 @@ export const InputFields = ({
   const additionalGenresChanged = (value: string | string[]) => {
     const chosenGenres: MovieGenreModel[] = [];
 
-    const selectedOptions =
-      typeof value === 'string' ? value.split(',') : value;
+    const selectedOptions = typeof value === 'string' ? value.split(',') : value;
 
     for (let i = 0; i < selectedOptions.length; i++) {
       const option = selectedOptions[i];
       const genre: SelectableModel | undefined = genres?.find(
-        (g: SelectableModel) => g.code === option
+        (g: SelectableModel) => g.code === option,
       );
 
       if (genre) {
@@ -113,13 +88,12 @@ export const InputFields = ({
   const studiosChanged = (value: string | string[]) => {
     const chosenStudios: NameEntityModel[] = [];
 
-    const selectedOptions =
-      typeof value === 'string' ? value.split(',') : value;
+    const selectedOptions = typeof value === 'string' ? value.split(',') : value;
 
     for (let i = 0; i < selectedOptions.length; i++) {
       const option = selectedOptions[i];
       const studio: NameEntityModel | undefined = studios?.find(
-        (s: NameEntityModel) => s.id === parseInt(option, 10)
+        (s: NameEntityModel) => s.id === parseInt(option, 10),
       );
 
       if (studio) {
@@ -136,7 +110,7 @@ export const InputFields = ({
       ({
         code: '' + option.id,
         name: option.name,
-      } as SelectableModel)
+      }) as SelectableModel,
   );
 
   return (
@@ -194,11 +168,7 @@ export const InputFields = ({
             <TimePicker
               {...field}
               className="date-input"
-              value={
-                movie.runtime
-                  ? (toDate(new Date(movie.runtime)) as PickerValidDate)
-                  : null
-              }
+              value={movie.runtime ? (toDate(new Date(movie.runtime)) as PickerValidDate) : null}
               format="HH:mm"
               ampm={false}
             />
@@ -214,11 +184,7 @@ export const InputFields = ({
             <DatePicker
               {...field}
               format="yyyy-MM-dd"
-              value={
-                movie.releaseDate
-                  ? (new Date(movie.releaseDate) as PickerValidDate)
-                  : null
-              }
+              value={movie.releaseDate ? (new Date(movie.releaseDate) as PickerValidDate) : null}
             />
           )}
         />
@@ -307,10 +273,7 @@ export const InputFields = ({
         />
       </LabeledInput>
 
-      <div
-        style={{ opacity: '0.65' }}
-        title="Fungerar, men detta flöde har UI-buggar."
-      >
+      <div style={{ opacity: '0.65' }} title="Fungerar, men detta flöde har UI-buggar.">
         <LabeledInput htmlFor="newStudio" label="Lägg till ny studio:">
           <TextField
             type="text"
@@ -322,18 +285,11 @@ export const InputFields = ({
         {/*TODO: Add add-button*/}
       </div>
 
-      <LabeledInput
-        htmlFor="description"
-        label="Beskrivning: *"
-        orientation="column"
-      >
+      <LabeledInput htmlFor="description" label="Beskrivning: *" orientation="column">
         <Controller
           control={control}
           name="description"
-          render={({
-            field: { onChange, ...field },
-            fieldState: { error },
-          }) => (
+          render={({ field: { onChange, ...field }, fieldState: { error } }) => (
             <>
               <TextareaAutosize
                 {...field}
@@ -360,10 +316,7 @@ export const InputFields = ({
       </LabeledInput>
 
       {movie.imdbId ? (
-        <a
-          href={`https://www.imdb.com/title/${movie.imdbId}/`}
-          target="browser1"
-        >
+        <a href={`https://www.imdb.com/title/${movie.imdbId}/`} target="browser1">
           IMDB info
         </a>
       ) : (

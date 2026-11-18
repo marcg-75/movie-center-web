@@ -25,15 +25,9 @@ type Props = {
 };
 
 export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
-  const [movieDetails, setMovieDetails] = useState<IMovie>(
-    {} as unknown as IMovie
-  );
+  const [movieDetails, setMovieDetails] = useState<IMovie>({} as unknown as IMovie);
   const router = useRouter();
-  const {
-    movie,
-    isMovieLoading,
-    error: movieLoadingError,
-  } = useMovieDetails(movieId);
+  const { movie, isMovieLoading, error: movieLoadingError } = useMovieDetails(movieId);
   const [error, setError] = useState<unknown>();
 
   useEffect(() => {
@@ -57,12 +51,9 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
   //   defaultValues: movieDetails,
   // }
 
-  const { mutate: createMovieMutate, isPending: isCreatingMovie } =
-    useCreateMovieMutation();
-  const { mutate: updateMovieMutate, isPending: isUpdatingMovie } =
-    useUpdateMovieMutation();
-  const { mutate: deleteMovieMutate, isPending: isDeletingMovie } =
-    useDeleteMovieMutation();
+  const { mutate: createMovieMutate, isPending: isCreatingMovie } = useCreateMovieMutation();
+  const { mutate: updateMovieMutate, isPending: isUpdatingMovie } = useUpdateMovieMutation();
+  const { mutate: deleteMovieMutate, isPending: isDeletingMovie } = useDeleteMovieMutation();
 
   const onSave = (movieChanges: IMovie) => {
     setError(undefined);
@@ -113,10 +104,7 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
   };
 
   const onCancel = () => {
-    if (
-      isDirty &&
-      !window.confirm('Vill du avbryta redigeringen av denna film?')
-    ) {
+    if (isDirty && !window.confirm('Vill du avbryta redigeringen av denna film?')) {
       return;
     }
 
@@ -127,9 +115,7 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
     setError(undefined);
 
     if (
-      !window.confirm(
-        'Vill du verkligen radera denna film? Det går inte att ångra sig efteråt.'
-      )
+      !window.confirm('Vill du verkligen radera denna film? Det går inte att ångra sig efteråt.')
     ) {
       return;
     }
@@ -145,12 +131,7 @@ export const MovieDetailsComponent = ({ movieId, testName }: Props) => {
       <MovieDetails
         control={control}
         movie={movieDetails}
-        isLoading={
-          isMovieLoading ||
-          isCreatingMovie ||
-          isUpdatingMovie ||
-          isDeletingMovie
-        }
+        isLoading={isMovieLoading || isCreatingMovie || isUpdatingMovie || isDeletingMovie}
         isCreateMode={movieId === 0}
         onDelete={onDelete}
         onReset={onReset}

@@ -25,9 +25,7 @@ export const MovieList = ({
   testName = 'MovieList_test',
 }: Props) => {
   const getMovieGenres = (movie: IMovie, limit = 3): string[] => {
-    const mainGenre: MovieGenreModel | undefined = movie.genres.find(
-      (mg) => mg.mainGenre
-    );
+    const mainGenre: MovieGenreModel | undefined = movie.genres.find((mg) => mg.mainGenre);
 
     if (mainGenre) {
       return [mainGenre.genre.name];
@@ -36,9 +34,7 @@ export const MovieList = ({
     const result: string[] = movie.genres.map((mg) => mg.genre.name);
     const genreNames = result.slice(0, limit);
 
-    return genreNames.map((genre, idx) =>
-      idx < genreNames.length - 1 ? `${genre}, ` : genre
-    );
+    return genreNames.map((genre, idx) => (idx < genreNames.length - 1 ? `${genre}, ` : genre));
   };
 
   return (
@@ -57,8 +53,8 @@ export const MovieList = ({
                   <div className="list-no-items-text">
                     <h5>Filtreringsresultat saknas</h5>
                     <p>
-                      Det finns tyvärr inga filmer som passar filtreringen.
-                      Ändra filtreringen eller registrera en ny film.
+                      Det finns tyvärr inga filmer som passar filtreringen. Ändra filtreringen eller
+                      registrera en ny film.
                     </p>
                   </div>
                 )}
@@ -89,9 +85,7 @@ export const MovieList = ({
                         <span>Film</span>
                         <span>
                           {sort.sortOrder === 'title' && (
-                            <i
-                              className={`icons sort-icon fas fa-sort-${sort.sortArrow}`}
-                            />
+                            <i className={`icons sort-icon fas fa-sort-${sort.sortArrow}`} />
                           )}
                         </span>
                       </th>
@@ -105,9 +99,7 @@ export const MovieList = ({
                         <span>Betyg</span>
                         <span>
                           {sort.sortOrder === 'grade' && (
-                            <i
-                              className={`icons sort-icon fas fa-sort-${sort.sortArrow}`}
-                            />
+                            <i className={`icons sort-icon fas fa-sort-${sort.sortArrow}`} />
                           )}
                         </span>
                       </th>
@@ -137,9 +129,7 @@ export const MovieList = ({
                             className="text-left px-1 mat-cell cdk-column-grade mat-column-grade"
                             onClick={() => goToMovie(element.id)}
                           >
-                            {element.moviePersonalInfo
-                              ? element.moviePersonalInfo.grade
-                              : ''}
+                            {element.moviePersonalInfo ? element.moviePersonalInfo.grade : ''}
                           </td>
                         </tr>
                       );
@@ -149,10 +139,7 @@ export const MovieList = ({
               )}
             </div>
 
-            <div
-              className="middle-panel-navigate-bottom-to-top"
-              onClick={() => scrollToTop()}
-            >
+            <div className="middle-panel-navigate-bottom-to-top" onClick={() => scrollToTop()}>
               <span className="icons app-link-with-icon">
                 <i className="app-icon fas fa-chevron-circle-up back-to-top"></i>
               </span>

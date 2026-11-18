@@ -17,20 +17,12 @@ export const MovieListComponent = () => {
   const router = useRouter();
   const searchParms = useSearchParams();
 
-  const [sort, setSort] = useState(
-    getDefaultSortModel('title', searchParms.toString())
-  );
+  const [sort, setSort] = useState(getDefaultSortModel('title', searchParms.toString()));
 
-  const sortOrder = SORT_ORDERS_BY_COLUMN.filter(
-    (csort) => csort.column === sort.sortOrder
-  )[0].sortOrder;
+  const sortOrder = SORT_ORDERS_BY_COLUMN.filter((csort) => csort.column === sort.sortOrder)[0]
+    .sortOrder;
 
-  const { movies, isMoviesLoading } = useMovieList(
-    sortOrder,
-    sort.sortDirection,
-    0,
-    1000
-  );
+  const { movies, isMoviesLoading } = useMovieList(sortOrder, sort.sortDirection, 0, 1000);
 
   const createMovie = () => {
     router.push('/movie/0');

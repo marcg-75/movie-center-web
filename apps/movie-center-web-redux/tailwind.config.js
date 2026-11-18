@@ -10,10 +10,7 @@ import config from '../../libs/shared/ui-library/tailwind.config';
 module.exports = {
   darkMode: 'class',
   content: [
-    join(
-      __dirname,
-      '{src,app,components}/**/*!(*.stories|*.spec).{ts,tsx,html}'
-    ),
+    join(__dirname, '{src,app,components}/**/*!(*.stories|*.spec).{ts,tsx,html}'),
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: config.theme,

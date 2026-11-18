@@ -31,10 +31,7 @@ const CrewPanelComponent = ({
   const [isCrewLoading, setIsCrewLoading] = useState(false);
 
   useEffect(() => {
-    if (
-      !isCrewLoading &&
-      ((!crewLoading?.loading && !crewLoading?.loaded) || !crew?.length)
-    ) {
+    if (!isCrewLoading && ((!crewLoading?.loading && !crewLoading?.loaded) || !crew?.length)) {
       setIsCrewLoading(true);
       dispatch(getCrew());
     }

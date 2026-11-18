@@ -37,9 +37,7 @@ export const LabeledSelect = ({
   required = false,
   testName = 'LabelledSelect_test',
 }: Props) => {
-  const mapMultipleSelectionToChips = (
-    selected: string | string[]
-  ): string | ReactNode[] => {
+  const mapMultipleSelectionToChips = (selected: string | string[]): string | ReactNode[] => {
     if (typeof selected === 'string') {
       const option = options?.find((op) => op.code === selected);
       return option?.name || selected;

@@ -60,9 +60,7 @@ export const MovieDetails = ({
     e.preventDefault();
     e.stopPropagation();
 
-    if (
-      !window.confirm('Vill du ta bort alla gjorda ändringar av denna film?')
-    ) {
+    if (!window.confirm('Vill du ta bort alla gjorda ändringar av denna film?')) {
       return;
     }
 
@@ -98,11 +96,7 @@ export const MovieDetails = ({
 
     return (
       <MoviePageLayout testName={testName}>
-        {!!error && (
-          <div>
-            {typeof error === 'string' ? error : (error as Error).message}
-          </div>
-        )}
+        {!!error && <div>{typeof error === 'string' ? error : (error as Error).message}</div>}
 
         {errors && (
           <ul>
@@ -125,10 +119,7 @@ export const MovieDetails = ({
         <Controller
           control={control}
           name="title"
-          render={({
-            field: { onChange, ...field },
-            fieldState: { error },
-          }) => (
+          render={({ field: { onChange, ...field }, fieldState: { error } }) => (
             <>
               <TextField
                 {...field}
@@ -160,55 +151,37 @@ export const MovieDetails = ({
     const menuItems = (
       <>
         <button
-          className={
-            'movie-menu-link-box ' +
-            (activePanel === PANEL_GENERAL ? 'active' : '')
-          }
+          className={'movie-menu-link-box ' + (activePanel === PANEL_GENERAL ? 'active' : '')}
           onClick={(e) => onChangePanel(e, PANEL_GENERAL)}
         >
           Generell information
         </button>
         <button
-          className={
-            'movie-menu-link-box ' +
-            (activePanel === PANEL_CAST ? 'active' : '')
-          }
+          className={'movie-menu-link-box ' + (activePanel === PANEL_CAST ? 'active' : '')}
           onClick={(e) => onChangePanel(e, PANEL_CAST)}
         >
           Rollbesättning
         </button>
         <button
-          className={
-            'movie-menu-link-box ' +
-            (activePanel === PANEL_CREW ? 'active' : '')
-          }
+          className={'movie-menu-link-box ' + (activePanel === PANEL_CREW ? 'active' : '')}
           onClick={(e) => onChangePanel(e, PANEL_CREW)}
         >
           Filmteam
         </button>
         <button
-          className={
-            'movie-menu-link-box ' +
-            (activePanel === PANEL_FORMAT ? 'active' : '')
-          }
+          className={'movie-menu-link-box ' + (activePanel === PANEL_FORMAT ? 'active' : '')}
           onClick={(e) => onChangePanel(e, PANEL_FORMAT)}
         >
           Media & Format
         </button>
         <button
-          className={
-            'movie-menu-link-box ' +
-            (activePanel === PANEL_COVER ? 'active' : '')
-          }
+          className={'movie-menu-link-box ' + (activePanel === PANEL_COVER ? 'active' : '')}
           onClick={(e) => onChangePanel(e, PANEL_COVER)}
         >
           Omslagsbilder
         </button>
         <button
-          className={
-            'movie-menu-link-box ' +
-            (activePanel === PANEL_PERSONAL ? 'active' : '')
-          }
+          className={'movie-menu-link-box ' + (activePanel === PANEL_PERSONAL ? 'active' : '')}
           onClick={(e) => onChangePanel(e, PANEL_PERSONAL)}
         >
           Personlig information
@@ -231,19 +204,13 @@ export const MovieDetails = ({
             Ångra
           </button>
 
-          <button
-            className="btn secondary"
-            onClick={(e: MouseEvent) => onCancelEdit(e)}
-          >
+          <button className="btn secondary" onClick={(e: MouseEvent) => onCancelEdit(e)}>
             Avbryt
           </button>
         </div>
 
         {!isCreateMode && (
-          <button
-            className="btn secondary"
-            onClick={(e: MouseEvent) => onDeleteMovie(e)}
-          >
+          <button className="btn secondary" onClick={(e: MouseEvent) => onDeleteMovie(e)}>
             Radera film
           </button>
         )}
@@ -261,21 +228,13 @@ export const MovieDetails = ({
               <div className="general-info">{generalInfoPanel}</div>
             )}
 
-            {activePanel === PANEL_CAST && (
-              <div className="cast-info">{castPanel}</div>
-            )}
+            {activePanel === PANEL_CAST && <div className="cast-info">{castPanel}</div>}
 
-            {activePanel === PANEL_CREW && (
-              <div className="crew-info">{crewPanel}</div>
-            )}
+            {activePanel === PANEL_CREW && <div className="crew-info">{crewPanel}</div>}
 
-            {activePanel === PANEL_FORMAT && (
-              <div className="format-info">{formatPanel}</div>
-            )}
+            {activePanel === PANEL_FORMAT && <div className="format-info">{formatPanel}</div>}
 
-            {activePanel === PANEL_COVER && (
-              <div className="cover-info">{coverPanel}</div>
-            )}
+            {activePanel === PANEL_COVER && <div className="cover-info">{coverPanel}</div>}
 
             {activePanel === PANEL_PERSONAL && (
               <div className="personal-info">{personalInfoPanel}</div>

@@ -32,7 +32,7 @@ export default function personReducer(
     crewNotLoaded: true,
     personsNotLoaded: true,
   },
-  { type, payload }: PersonActionProps
+  { type, payload }: PersonActionProps,
 ) {
   switch (type) {
     case ACTORS_FETCHING:
@@ -56,7 +56,7 @@ export default function personReducer(
         actors: [],
         actorsLoading: getFailedLoadingState(
           undefined,
-          createErrorMessageArray(payload as McPayload)
+          createErrorMessageArray(payload as McPayload),
         ),
       };
     case CREW_FETCHING:
@@ -80,7 +80,7 @@ export default function personReducer(
         crew: [],
         crewLoading: getFailedLoadingState(
           undefined,
-          createErrorMessageArray(payload as McPayload)
+          createErrorMessageArray(payload as McPayload),
         ),
         crewNotLoaded: false,
       };
@@ -105,7 +105,7 @@ export default function personReducer(
         persons: [],
         personsLoading: getFailedLoadingState(
           undefined,
-          createErrorMessageArray(payload as McPayload)
+          createErrorMessageArray(payload as McPayload),
         ),
         personsNotLoaded: false,
       };

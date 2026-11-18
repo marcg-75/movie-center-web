@@ -56,7 +56,7 @@ const MovieDetailsComponent = ({
     const { pathname } = location;
     const movieId = parseInt(
       pathname.substring(pathname.lastIndexOf('/') + 1, pathname.length),
-      10
+      10,
     );
 
     // Clear action state
@@ -148,10 +148,7 @@ const MovieDetailsComponent = ({
   };
 
   const onCancel = () => {
-    if (
-      isDirty &&
-      !window.confirm('Vill du avbryta redigeringen av denna film?')
-    ) {
+    if (isDirty && !window.confirm('Vill du avbryta redigeringen av denna film?')) {
       return;
     }
 
@@ -160,9 +157,7 @@ const MovieDetailsComponent = ({
 
   const onDelete = (movieId: number) => {
     if (
-      !window.confirm(
-        'Vill du verkligen radera denna film? Det går inte att ångra sig efteråt.'
-      )
+      !window.confirm('Vill du verkligen radera denna film? Det går inte att ångra sig efteråt.')
     ) {
       return;
     }
@@ -180,9 +175,7 @@ const MovieDetailsComponent = ({
         onDelete={onDelete}
         onReset={onReset}
         onCancel={onCancel}
-        generalInfoPanel={
-          <GeneralInfoPanel control={control} setValue={setValue} />
-        }
+        generalInfoPanel={<GeneralInfoPanel control={control} setValue={setValue} />}
         castPanel={<CastPanel setValue={setValue} />}
         crewPanel={<CrewPanel setValue={setValue} />}
         formatPanel={<FormatPanel control={control} setValue={setValue} />}

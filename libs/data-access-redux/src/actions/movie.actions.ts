@@ -42,17 +42,9 @@ export const DEFAULT_FILTER: MovieFilter = {
 } as MovieFilter;
 
 /** @deprecated  */
-export const getAllMovies = (
-  filter: MovieFilter,
-  sortOrder = 'title',
-  sortDir = 'asc'
-) =>
+export const getAllMovies = (filter: MovieFilter, sortOrder = 'title', sortDir = 'asc') =>
   createAction({
-    endpoint: `${BASE_URL}/all${createMovieListQueryString(
-      filter,
-      sortOrder,
-      sortDir
-    )}`,
+    endpoint: `${BASE_URL}/all${createMovieListQueryString(filter, sortOrder, sortDir)}`,
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
     types: [MOVIES_FETCHING, MOVIES_RECEIVED, MOVIES_ERROR],
@@ -63,7 +55,7 @@ export const getMovies = (
   sortOrder = 'title',
   sortDir = 'asc',
   page = 0,
-  pageSize?: number
+  pageSize?: number,
 ) =>
   createAction({
     endpoint: `${BASE_URL}/list${createMovieListQueryString(
@@ -71,7 +63,7 @@ export const getMovies = (
       sortOrder,
       sortDir,
       page,
-      pageSize
+      pageSize,
     )}`,
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },

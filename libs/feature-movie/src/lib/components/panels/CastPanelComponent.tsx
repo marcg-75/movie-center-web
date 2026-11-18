@@ -19,11 +19,7 @@ export const CastPanelComponent = ({
   testName = 'CastPanelComponent_test',
 }: Props) => {
   const { actors, isActorsLoading, error: actorsError } = useActors();
-  const {
-    persons,
-    isPersonsLoading,
-    error: personsError,
-  } = useAllPersons(loadAllPersons);
+  const { persons, isPersonsLoading, error: personsError } = useAllPersons(loadAllPersons);
 
   return (
     <CastPanel

@@ -9,7 +9,7 @@ import React, { ReactNode } from 'react';
 
 export const existingMovieCrewMembersForRole = (
   movie: IMovie,
-  role: RoleEnum
+  role: RoleEnum,
 ): CastAndCrewModel[] => {
   switch (role) {
     case RoleEnum.DIRECTOR:
@@ -64,9 +64,7 @@ export const getCrewTypeName = (role: RoleEnum): string => {
   }
 };
 
-export const sortPersonRoles = (
-  personRoles: PersonRoleModel[]
-): PersonRoleModel[] => {
+export const sortPersonRoles = (personRoles: PersonRoleModel[]): PersonRoleModel[] => {
   // Sort
   return personRoles.sort((a: PersonRoleModel, b: PersonRoleModel) => {
     const nameA = a.person.name.toUpperCase(); // ignore upper and lowercase
@@ -84,22 +82,18 @@ export const sortPersonRoles = (
   });
 };
 
-export const mapToPersonOptionElements = (
-  persons: NameEntityModel[]
-): ReactNode[] => {
+export const mapToPersonOptionElements = (persons: NameEntityModel[]): ReactNode[] => {
   if (!persons) {
     return [];
   }
 
-  const options: ReactNode[] = persons.map(
-    (option: NameEntityModel, i: number) => {
-      return (
-        <option key={i + 1} value={option.id}>
-          {option.name}
-        </option>
-      );
-    }
-  );
+  const options: ReactNode[] = persons.map((option: NameEntityModel, i: number) => {
+    return (
+      <option key={i + 1} value={option.id}>
+        {option.name}
+      </option>
+    );
+  });
   options.unshift(<option key={0} value="" />);
 
   return options;

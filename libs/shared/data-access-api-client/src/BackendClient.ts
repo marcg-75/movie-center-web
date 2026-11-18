@@ -1,9 +1,4 @@
-import {
-  BackendFetchOptions,
-  HTTPMethod,
-  QueryParams,
-  RequestError,
-} from './backend.types';
+import { BackendFetchOptions, HTTPMethod, QueryParams, RequestError } from './backend.types';
 import { buildPath, buildQueryString } from './fetch-utils';
 
 export class BackendClient {
@@ -54,7 +49,7 @@ export class BackendClient {
       params?: QueryParams;
       body?: unknown;
       signal?: AbortSignal;
-    } = {}
+    } = {},
   ): Promise<T> {
     const finalPath = buildPath(path);
     const queryString = buildQueryString(options.params);
@@ -87,9 +82,7 @@ export class BackendClient {
       }
     }
 
-    return Promise.reject(
-      `Failed to fetch, exceeded max retries. url: "${url}"`
-    );
+    return Promise.reject(`Failed to fetch, exceeded max retries. url: "${url}"`);
   }
 
   private defaultHeaders: Record<string, string> = {

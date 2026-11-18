@@ -1,23 +1,10 @@
 import { Control, Controller } from 'react-hook-form';
-import {
-  IMovie,
-  MoviePersonalInfo,
-  SelectableModel,
-} from '@giron/shared-models';
+import { IMovie, MoviePersonalInfo, SelectableModel } from '@giron/shared-models';
 import { LabeledInput } from '@giron/shared-ui-library';
 import { useState } from 'react';
-import {
-  Box,
-  MenuItem,
-  Select,
-  TextareaAutosize,
-  TextField,
-} from '@mui/material';
+import { Box, MenuItem, Select, TextareaAutosize, TextField } from '@mui/material';
 import { DatePicker, PickerValidDate } from '@mui/x-date-pickers';
-import {
-  mapMultipleSelectionToChips,
-  SelectMenuProps,
-} from '@giron/shared-util-helpers';
+import { mapMultipleSelectionToChips, SelectMenuProps } from '@giron/shared-util-helpers';
 
 const GRADES = ['', '5', '4.5', '4', '3.5', '3', '2.5', '2', '1.5', '1'];
 const gradeOptions: SelectableModel[] = GRADES.map((g) => ({
@@ -38,18 +25,14 @@ type Props = {
 
 export const InputFields = ({ control, moviePersonalInfo }: Props) => {
   const [archiveNumber, setArchiveNumber] = useState(
-    moviePersonalInfo.archiveNumber ? `${moviePersonalInfo.archiveNumber}` : ''
+    moviePersonalInfo.archiveNumber ? `${moviePersonalInfo.archiveNumber}` : '',
   );
-  const [grade, setGrade] = useState(
-    moviePersonalInfo.grade ? `${moviePersonalInfo.grade}` : ''
-  );
+  const [grade, setGrade] = useState(moviePersonalInfo.grade ? `${moviePersonalInfo.grade}` : '');
   const [obtainPrice, setObtainPrice] = useState(
-    moviePersonalInfo.obtainPrice ? `${moviePersonalInfo.obtainPrice}` : ''
+    moviePersonalInfo.obtainPrice ? `${moviePersonalInfo.obtainPrice}` : '',
   );
   const [currency, setCurrency] = useState(moviePersonalInfo.currency || '');
-  const [obtainPlace, setObtainPlace] = useState(
-    moviePersonalInfo.obtainPlace || ''
-  );
+  const [obtainPlace, setObtainPlace] = useState(moviePersonalInfo.obtainPlace || '');
   const [notes, setNotes] = useState(moviePersonalInfo.notes || '');
 
   return (

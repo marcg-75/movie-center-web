@@ -3,7 +3,7 @@
  */
 export function convertToMilliseconds(
   value: number,
-  unit: 'seconds' | 'minutes' | 'hours' | 'days'
+  unit: 'seconds' | 'minutes' | 'hours' | 'days',
 ): number {
   switch (unit) {
     case 'seconds':

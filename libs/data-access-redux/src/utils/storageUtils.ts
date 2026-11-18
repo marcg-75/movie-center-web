@@ -21,9 +21,7 @@ const getDefaultStorageType = (): STORAGE_TYPE => {
 const DEFAULT_STORAGE_TYPE: STORAGE_TYPE = getDefaultStorageType();
 
 const strCacheExptime = process.env.NX_CACHE_EXP_TIME_MINUTES;
-const EXPIRATION_TIME_MINUTES: number = strCacheExptime
-  ? parseInt(strCacheExptime)
-  : 0;
+const EXPIRATION_TIME_MINUTES: number = strCacheExptime ? parseInt(strCacheExptime) : 0;
 
 /**
  * Retrieve cached data.
@@ -36,7 +34,7 @@ const EXPIRATION_TIME_MINUTES: number = strCacheExptime
 export const getStoredData = (
   storageKey: string,
   ignoreExpiration: boolean = false,
-  storageType: STORAGE_TYPE = DEFAULT_STORAGE_TYPE
+  storageType: STORAGE_TYPE = DEFAULT_STORAGE_TYPE,
 ): unknown | null => {
   if (storageKey && storageKey.trim().length > 0) {
     const storage = getStorage(storageType);
@@ -50,9 +48,7 @@ export const getStoredData = (
         if (!ignoreExpiration && data.timestamp) {
           const now = new Date();
           const expiration = new Date(data.timestamp);
-          expiration.setMinutes(
-            expiration.getMinutes() + EXPIRATION_TIME_MINUTES
-          );
+          expiration.setMinutes(expiration.getMinutes() + EXPIRATION_TIME_MINUTES);
 
           // Only return the content if it hasn't expired. Remove otherwise.
           if (now.getTime() > expiration.getTime()) {
@@ -67,7 +63,7 @@ export const getStoredData = (
       console.error(
         "storageUtils.getStoredData - Storage for storage type '" +
           storageType +
-          "' could not be found."
+          "' could not be found.",
       );
     }
   }
@@ -77,7 +73,7 @@ export const getStoredData = (
 export const setStoredData = (
   storageKey: string,
   content: unknown,
-  storageType: STORAGE_TYPE = DEFAULT_STORAGE_TYPE
+  storageType: STORAGE_TYPE = DEFAULT_STORAGE_TYPE,
 ): void => {
   if (storageKey && storageKey.trim().length > 0) {
     const storage = getStorage(storageType);
@@ -93,19 +89,17 @@ export const setStoredData = (
       console.error(
         "storageUtils.setStoredData - Storage for storage type '" +
           storageType +
-          "' could not be found."
+          "' could not be found.",
       );
     }
   } else {
     console.warn(
-      'storageUtils.setStoredData - Could not add data to storage. Storage key missing.'
+      'storageUtils.setStoredData - Could not add data to storage. Storage key missing.',
     );
   }
 };
 
-export const clearStoredData = (
-  storageType: STORAGE_TYPE = DEFAULT_STORAGE_TYPE
-): void => {
+export const clearStoredData = (storageType: STORAGE_TYPE = DEFAULT_STORAGE_TYPE): void => {
   const storage = getStorage(storageType);
 
   if (storage) {
@@ -114,14 +108,12 @@ export const clearStoredData = (
     console.error(
       "storageUtils.clearStoredData - Storage for storage type '" +
         storageType +
-        "' could not be found."
+        "' could not be found.",
     );
   }
 };
 
-const getStorage = (
-  storageType: STORAGE_TYPE = DEFAULT_STORAGE_TYPE
-): Storage | null => {
+const getStorage = (storageType: STORAGE_TYPE = DEFAULT_STORAGE_TYPE): Storage | null => {
   let storage;
 
   switch (storageType) {

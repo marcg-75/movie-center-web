@@ -44,7 +44,7 @@ export default function baseDataReducer(
     studiosLoaded: false,
     languagesLoaded: false,
   },
-  { type, payload }: BaseDataActionProps
+  { type, payload }: BaseDataActionProps,
 ) {
   switch (type) {
     case GENRES_FETCHING:

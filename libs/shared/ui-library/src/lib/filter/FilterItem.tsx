@@ -8,12 +8,7 @@ type Props = {
   children: ReactNode;
 };
 
-export const FilterItem = ({
-  id = '',
-  label,
-  labelAddition,
-  children,
-}: Props) => {
+export const FilterItem = ({ id = '', label, labelAddition, children }: Props) => {
   return (
     <div className="inline">
       <LabeledInput

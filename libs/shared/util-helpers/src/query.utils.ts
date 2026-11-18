@@ -5,7 +5,7 @@ export const createMovieListQueryString = (
   sortOrder: string,
   sortDir: string,
   page?: number,
-  pageSize?: number
+  pageSize?: number,
 ): string => {
   let params: Map<string, string> = new Map();
   let qpString = '';
@@ -15,24 +15,15 @@ export const createMovieListQueryString = (
       params = params.set('title', filter.title);
     }
 
-    if (
-      filter.genreCode &&
-      filter.genreCode !== MovieFilter.FILTER_DEFAULT_ALL_GENRES.code
-    ) {
+    if (filter.genreCode && filter.genreCode !== MovieFilter.FILTER_DEFAULT_ALL_GENRES.code) {
       params = params.set('genre', filter.genreCode);
     }
 
-    if (
-      filter.formatCode &&
-      filter.formatCode !== MovieFilter.FILTER_DEFAULT_ALL_FORMATS.code
-    ) {
+    if (filter.formatCode && filter.formatCode !== MovieFilter.FILTER_DEFAULT_ALL_FORMATS.code) {
       params = params.set('format', filter.formatCode);
     }
 
-    if (
-      filter.grade &&
-      filter.grade !== MovieFilter.FILTER_DEFAULT_ALL_GRADES.code
-    ) {
+    if (filter.grade && filter.grade !== MovieFilter.FILTER_DEFAULT_ALL_GRADES.code) {
       params = params.set('grade', '' + filter.grade);
     }
 
@@ -51,9 +42,7 @@ export const createMovieListQueryString = (
     qp = iter.next();
   }
 
-  return qpString.length
-    ? `?${qpString.substring(0, qpString.length - 1)}`
-    : '';
+  return qpString.length ? `?${qpString.substring(0, qpString.length - 1)}` : '';
 };
 
 const addPageParams = (
@@ -61,7 +50,7 @@ const addPageParams = (
   sortOrder: string,
   sortDir: string,
   page?: number,
-  pageSize?: number
+  pageSize?: number,
 ): Map<string, string> => {
   if (page || page === 0) {
     params = params.set('page', '' + page);

@@ -2,19 +2,12 @@ import '@giron/shared-ui-library/variables.css';
 import '@giron/shared-ui-library/styles.css';
 import Providers from './providers';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
         <title>Movie Center</title>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=PT+Sans:400,700"

@@ -25,9 +25,7 @@ const { store /*, persistor*/ } = configureStore();
 
 //injectGlobal`${theme.skins.Global(theme, process.env.NODE_ENV)}`; // eslint-disable-line no-unused-expressions
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
   <Provider store={store}>
@@ -45,5 +43,5 @@ root.render(
       </Router>
     </LocalizationProvider>
     {/*</PersistGate>*/}
-  </Provider>
+  </Provider>,
 );

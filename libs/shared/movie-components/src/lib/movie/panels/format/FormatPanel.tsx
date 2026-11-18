@@ -1,11 +1,6 @@
 import '../../movie.details.scss';
 import { Loader } from '@giron/shared-ui-library';
-import {
-  IMovie,
-  LanguageModel,
-  MovieFormatInfo,
-  SelectableModel,
-} from '@giron/shared-models';
+import { IMovie, LanguageModel, MovieFormatInfo, SelectableModel } from '@giron/shared-models';
 import { Control, UseFormSetValue } from 'react-hook-form';
 import { InputFields } from './InputFields';
 

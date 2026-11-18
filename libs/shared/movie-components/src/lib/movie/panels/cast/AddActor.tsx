@@ -1,8 +1,4 @@
-import {
-  CastAndCrewModel,
-  IMovie,
-  PersonRoleModel,
-} from '@giron/shared-models';
+import { CastAndCrewModel, IMovie, PersonRoleModel } from '@giron/shared-models';
 import { MouseEvent, ReactNode, useState } from 'react';
 
 type Props = {
@@ -12,8 +8,7 @@ type Props = {
 };
 
 export const AddActor = ({ movie, actors, onAddActors }: Props) => {
-  const [actorPersonRoleIdToAdd, setActorPersonRoleIdToAdd] =
-    useState<string>('');
+  const [actorPersonRoleIdToAdd, setActorPersonRoleIdToAdd] = useState<string>('');
   const [characterNameToAdd, setCharacterNameToAdd] = useState<string>('');
 
   const addActor = (event: MouseEvent<HTMLButtonElement>) => {
@@ -31,7 +26,7 @@ export const AddActor = ({ movie, actors, onAddActors }: Props) => {
     const allCurrentActors: PersonRoleModel[] = actors ? actors : [];
     const actorsForMovie: CastAndCrewModel[] = movie.actors ? movie.actors : [];
     const selectedActor: PersonRoleModel | undefined = allCurrentActors.find(
-      (a: PersonRoleModel) => a.id === parseInt(actorPersonRoleIdToAdd, 10)
+      (a: PersonRoleModel) => a.id === parseInt(actorPersonRoleIdToAdd, 10),
     );
 
     const newActor: CastAndCrewModel = {
@@ -57,7 +52,7 @@ export const AddActor = ({ movie, actors, onAddActors }: Props) => {
           {option.person.name}
         </option>
       );
-    }
+    },
   );
   currentActorOptions.unshift(<option key="0" value=""></option>);
 

@@ -14,18 +14,12 @@ export const useMovieListQuery = (
   sortOrder: string,
   sortDir: string,
   page: number,
-  pageSize?: number
+  pageSize?: number,
 ) => {
   const { filter } = useMovieFilter();
   const client = getBackendClient();
 
-  const queryKey = createMovieListQueryString(
-    filter,
-    sortOrder,
-    sortDir,
-    page,
-    pageSize
-  );
+  const queryKey = createMovieListQueryString(filter, sortOrder, sortDir, page, pageSize);
 
   return useQuery<MovieListResponse>({
     queryKey: ['movies', filter, queryKey],
