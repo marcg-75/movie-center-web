@@ -54,3 +54,5 @@ Thumbs.db
 .claude/settings.local.json
 .nx/polygraph
 .nx/self-healing
+tools/ai-migrations
+migrations.json
