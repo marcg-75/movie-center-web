@@ -1,5 +1,5 @@
 /* eslint-disable */
-export default {
+module.exports = {
   displayName: 'feature-movie-redux',
   preset: '../../jest.preset.js',
   transform: {

@@ -1,5 +1,5 @@
 /* eslint-disable */
-export default {
+module.exports = {
   displayName: 'movie-center-web-redux',
   preset: '../../jest.preset.js',
   transform: {
