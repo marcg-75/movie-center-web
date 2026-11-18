@@ -6,15 +6,16 @@
   "scripts": {
     "start": "nx serve movie-center-web",
     "build": "nx build movie-center-web",
-    "test": "nx test movie-center-web",
     "start-redux": "nx serve movie-center-web-redux",
     "build-redux": "nx build movie-center-web-redux",
-    "test-redux": "nx test movie-center-web-redux",
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "lint:output": "pnpm lint 2> output.txt",
     "lint": "oxlint apps/ && oxlint libs/",
     "lint:fix": "oxlint apps/ --fix && oxlint libs/ --fix",
+    "test": "nx test movie-center-web",
+    "test:e2e": "nx e2e movie-center-web-e2e",
+    "test-redux": "nx test movie-center-web-redux",
     "graph": "nx graph --groupByFolder --focus=web-client",
     "upgrade-nx": "nx migrate latest",
     "typecheck": "node scripts/typecheck.mjs"
@@ -50,13 +51,14 @@
     "@babel/preset-react": "7.29.7",
     "@mui/material": "5.18.0",
     "@mui/x-date-pickers": "7.29.4",
-    "@nx/cypress": "24.0.6",
     "@nx/js": "24.0.6",
+    "@nx/playwright": "24.0.6",
     "@nx/react": "24.0.6",
     "@nx/rollup": "24.0.6",
     "@nx/vitest": "24.0.6",
     "@nx/webpack": "24.0.6",
     "@nx/workspace": "24.0.6",
+    "@playwright/test": "1.65.1",
     "@pmmmwh/react-refresh-webpack-plugin": "0.6.2",
     "@rollup/plugin-url": "8.0.2",
     "@svgr/rollup": "8.1.0",
@@ -77,7 +79,6 @@
     "@vitest/coverage-v8": "~5.0.1",
     "@vitest/ui": "~5.0.1",
     "autoprefixer": "10.5.0",
-    "cypress": "13.17.0",
     "dotenv": "16.6.1",
     "jsdom": "^27.1.0",
     "nx": "24.0.6",
@@ -102,6 +103,10 @@
     "@nx/nx-darwin-x64": "24.0.6",
     "@nx/nx-linux-x64-gnu": "24.0.6",
     "@nx/nx-win32-x64-msvc": "24.0.6"
+  },
+  "engines": {
+    "node": ">=24.15.0 <25",
+    "pnpm": "10.x"
   },
   "packageManager": "pnpm@10.34.1",
   "pnpm": {

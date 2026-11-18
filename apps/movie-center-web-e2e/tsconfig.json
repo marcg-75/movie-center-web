@@ -3,18 +3,16 @@
   "compilerOptions": {
     "allowJs": true,
     "outDir": "../../dist/out-tsc",
-    "module": "commonjs",
-    "types": ["cypress", "node"],
+    "module": "esnext",
+    "types": ["node"],
     "sourceMap": false
   },
   "include": [
     "**/*.ts",
     "**/*.js",
-    "cypress.config.ts",
-    "**/*.cy.ts",
-    "**/*.cy.tsx",
-    "**/*.cy.js",
-    "**/*.cy.jsx",
+    "playwright.config.mts",
+    "src/**/*.spec.ts",
+    "src/**/*.spec.js",
     "**/*.d.ts"
   ]
 }

@@ -28,10 +28,6 @@
         "command": "next start",
         "cwd": "apps/movie-center-web"
       }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"]
     }
   }
 }
