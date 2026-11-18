@@ -1,0 +1,3634 @@
+{
+  "libs/data-access": {
+    "root": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.0": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.1": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.2": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.3": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.executor": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.1": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.executor": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.cache": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.0": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.1": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.2": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.executor": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.options": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.configurations.ci.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci.codeCoverage": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "name": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "libs/data-access/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "libs/data-access/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "libs/data-access/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "libs/data-access/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "libs/data-access/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageVersion": [
+      "libs/data-access/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "libs/data-access/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "libs/data-access/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "libs/data-access/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn.0": [
+      "libs/data-access/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "libs/data-access/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "libs/data-access/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs.0": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs.0": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.project": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.entryFile": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.0": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.1": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.2": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.rollupConfig": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.compiler": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets.0": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs.0": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "libs/data-access/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "libs/data-access-redux": {
+    "root": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.0": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.1": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.2": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.3": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.executor": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.1": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.executor": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.cache": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.0": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.1": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.2": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.executor": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.options": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.configurations.ci.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci.codeCoverage": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "name": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "libs/data-access-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "libs/data-access-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "libs/data-access-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "libs/data-access-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "libs/data-access-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageVersion": [
+      "libs/data-access-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "libs/data-access-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "libs/data-access-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "libs/data-access-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn.0": [
+      "libs/data-access-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "libs/data-access-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "libs/data-access-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs.0": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs.0": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.project": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.entryFile": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.0": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.1": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.2": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.rollupConfig": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.compiler": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets.0": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs.0": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "libs/data-access-redux/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "libs/feature-movie": {
+    "root": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.0": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.1": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.2": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.3": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.executor": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.1": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.executor": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.cache": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.0": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.1": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.2": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.executor": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.options": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.configurations.ci.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci.codeCoverage": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "name": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "libs/feature-movie/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "libs/feature-movie/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "libs/feature-movie/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "libs/feature-movie/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "libs/feature-movie/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageVersion": [
+      "libs/feature-movie/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "libs/feature-movie/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "libs/feature-movie/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "libs/feature-movie/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn.0": [
+      "libs/feature-movie/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "libs/feature-movie/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "libs/feature-movie/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs.0": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs.0": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.project": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.entryFile": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.0": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.1": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.rollupConfig": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.compiler": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets.0": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs.0": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "libs/feature-movie/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "libs/feature-movie-list": {
+    "root": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.0": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.1": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.2": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.3": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.executor": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.1": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.executor": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.cache": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.0": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.1": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.2": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.executor": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.options": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.configurations.ci.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci.codeCoverage": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "name": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "libs/feature-movie-list/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "libs/feature-movie-list/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "libs/feature-movie-list/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "libs/feature-movie-list/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "libs/feature-movie-list/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageVersion": [
+      "libs/feature-movie-list/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "libs/feature-movie-list/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "libs/feature-movie-list/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "libs/feature-movie-list/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn.0": [
+      "libs/feature-movie-list/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "libs/feature-movie-list/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "libs/feature-movie-list/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs.0": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs.0": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.project": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.entryFile": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.0": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.1": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.rollupConfig": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.compiler": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets.0": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs.0": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "libs/feature-movie-list/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "libs/feature-movie-list-redux": {
+    "root": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.0": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.1": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.2": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.3": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.executor": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.1": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.executor": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.cache": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.0": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.1": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.2": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.executor": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.options": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.configurations.ci.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci.codeCoverage": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "name": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "libs/feature-movie-list-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "libs/feature-movie-list-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "libs/feature-movie-list-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "libs/feature-movie-list-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "libs/feature-movie-list-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageVersion": [
+      "libs/feature-movie-list-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "libs/feature-movie-list-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "libs/feature-movie-list-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "libs/feature-movie-list-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn.0": [
+      "libs/feature-movie-list-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "libs/feature-movie-list-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "libs/feature-movie-list-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs.0": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs.0": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.project": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.entryFile": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.0": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.1": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.rollupConfig": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.compiler": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets.0": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs.0": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "libs/feature-movie-list-redux/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "libs/feature-movie-redux": {
+    "root": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.0": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.1": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.2": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.3": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.executor": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.1": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.executor": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.cache": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.0": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.1": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.2": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.executor": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.options": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.configurations.ci.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci.codeCoverage": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "name": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "libs/feature-movie-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "libs/feature-movie-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "libs/feature-movie-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "libs/feature-movie-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "libs/feature-movie-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageVersion": [
+      "libs/feature-movie-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "libs/feature-movie-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "libs/feature-movie-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "libs/feature-movie-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn.0": [
+      "libs/feature-movie-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "libs/feature-movie-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "libs/feature-movie-redux/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs.0": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs.0": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.project": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.entryFile": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.0": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.1": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.2": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.rollupConfig": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.compiler": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets.0": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs.0": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "libs/feature-movie-redux/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "libs/shared/data-access-api-client": {
+    "root": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.0": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.1": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.2": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.3": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.executor": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.1": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.executor": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.cache": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.0": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.1": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.2": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.executor": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.options": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.configurations.ci.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci.codeCoverage": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "name": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "libs/shared/data-access-api-client/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "libs/shared/data-access-api-client/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "libs/shared/data-access-api-client/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "libs/shared/data-access-api-client/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "libs/shared/data-access-api-client/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageVersion": [
+      "libs/shared/data-access-api-client/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "libs/shared/data-access-api-client/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "libs/shared/data-access-api-client/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "libs/shared/data-access-api-client/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn.0": [
+      "libs/shared/data-access-api-client/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "libs/shared/data-access-api-client/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "libs/shared/data-access-api-client/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs.0": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs.0": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.project": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.entryFile": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.0": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.1": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.2": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.rollupConfig": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.compiler": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets.0": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs.0": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "libs/shared/data-access-api-client/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "libs/shared/models": {
+    "root": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.0": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.1": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.2": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.3": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.executor": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.1": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.executor": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageVersion": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn.0": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "libs/shared/models/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs.0": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs.0": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.project": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.entryFile": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.0": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.1": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.rollupConfig": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.compiler": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets.0": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "libs/shared/models/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "libs/shared/movie-components": {
+    "root": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.0": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.1": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.2": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.3": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.executor": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.1": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.executor": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.cache": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.0": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.1": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.2": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.executor": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.options": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.configurations.ci.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci.codeCoverage": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "name": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "libs/shared/movie-components/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "libs/shared/movie-components/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "libs/shared/movie-components/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "libs/shared/movie-components/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "libs/shared/movie-components/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageVersion": [
+      "libs/shared/movie-components/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "libs/shared/movie-components/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "libs/shared/movie-components/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "libs/shared/movie-components/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn.0": [
+      "libs/shared/movie-components/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "libs/shared/movie-components/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "libs/shared/movie-components/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs.0": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs.0": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.project": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.entryFile": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.0": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.1": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.rollupConfig": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.compiler": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets.0": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs.0": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "libs/shared/movie-components/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "libs/shared/ui-library": {
+    "root": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.0": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.1": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.2": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.3": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.executor": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.1": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.executor": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.cache": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.0": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.1": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.2": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.executor": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.options": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.configurations.ci.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci.codeCoverage": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "name": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "libs/shared/ui-library/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "libs/shared/ui-library/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "libs/shared/ui-library/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "libs/shared/ui-library/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "libs/shared/ui-library/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageVersion": [
+      "libs/shared/ui-library/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "libs/shared/ui-library/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "libs/shared/ui-library/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "libs/shared/ui-library/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn.0": [
+      "libs/shared/ui-library/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "libs/shared/ui-library/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "libs/shared/ui-library/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs.0": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs.0": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.project": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.entryFile": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.0": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.1": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.rollupConfig": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.compiler": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets.0": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs.0": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "libs/shared/ui-library/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "libs/shared/util-helpers": {
+    "root": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.0": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.1": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.2": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.3": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.executor": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.1": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.executor": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.cache": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.0": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.1": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.2": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.executor": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.options": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.configurations.ci.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci.codeCoverage": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "name": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "libs/shared/util-helpers/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "libs/shared/util-helpers/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "libs/shared/util-helpers/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "libs/shared/util-helpers/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "libs/shared/util-helpers/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageVersion": [
+      "libs/shared/util-helpers/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "libs/shared/util-helpers/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish": [
+      "libs/shared/util-helpers/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.executor": [
+      "libs/shared/util-helpers/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn.0": [
+      "libs/shared/util-helpers/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.dependsOn": [
+      "libs/shared/util-helpers/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.nx-release-publish.options": [
+      "libs/shared/util-helpers/package.json",
+      "nx/core/package-json"
+    ],
+    "$schema": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs.0": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs.0": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.project": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.entryFile": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.0": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.1": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external.2": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.external": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.rollupConfig": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.compiler": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets.0": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs.0": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "libs/shared/util-helpers/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "apps/movie-center-web": {
+    "root": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.0": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.1": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.2": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.3": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.executor": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.1": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.executor": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.cache": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.0": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.1": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.2": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.executor": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.options": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.configurations.ci.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci.codeCoverage": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "name": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs.0": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.defaultConfiguration": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.postcssConfig": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.outputPath": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.dev": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.dev": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.dev": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.export": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.export.executor": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.export.options.buildTarget": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.export.options": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs.0": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs.0": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "apps/movie-center-web/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "apps/movie-center-web-e2e": {
+    "root": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.0": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.1": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.2": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.3": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.executor": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.cache": [
+      "nx.json#targetDefaults.e2e",
+      "nx/target-defaults"
+    ],
+    "targets.e2e.inputs.0": [
+      "nx.json#targetDefaults.e2e",
+      "nx/target-defaults"
+    ],
+    "targets.e2e.inputs.1": [
+      "nx.json#targetDefaults.e2e",
+      "nx/target-defaults"
+    ],
+    "targets.e2e.inputs": [
+      "nx.json#targetDefaults.e2e",
+      "nx/target-defaults"
+    ],
+    "targets.e2e.executor": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies.movie-center-web": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.options.cypressConfig": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.options.testingType": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.options.devServerTarget": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.options": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.configurations.production.devServerTarget": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.configurations.production": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.e2e.configurations": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs.0": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "apps/movie-center-web-e2e/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "apps/movie-center-web-redux": {
+    "root": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.0": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.1": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.2": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs.3": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json#targetDefaults.lint",
+      "nx/target-defaults"
+    ],
+    "targets.lint.executor": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.0": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs.1": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json#targetDefaults.build",
+      "nx/target-defaults"
+    ],
+    "targets.build.executor": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.cache": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.0": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.1": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs.2": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.executor": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.passWithNoTests": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.options": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.configurations.ci.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci.codeCoverage": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations.ci": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "targets.test.configurations": [
+      "nx.json#targetDefaults.@nx/jest:jest",
+      "nx/target-defaults"
+    ],
+    "name": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs.0": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.defaultConfiguration": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.compiler": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.index": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.baseHref": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.main": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.postcssConfig": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets.0": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets.1": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.styles.0": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.styles": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.scripts": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.webpackConfig": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.extractLicenses": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.optimization": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.sourceMap": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.vendorChunk": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production.fileReplacements.0": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production.fileReplacements": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production.optimization": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production.outputHashing": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production.sourceMap": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production.namedChunks": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production.extractLicenses": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production.vendorChunk": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.buildTarget": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.port": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.hmr": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.hmr": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs.0": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.outputs": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs.0": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.outputs": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.jestConfig": [
+      "apps/movie-center-web-redux/project.json",
+      "nx/core/project-json"
+    ]
+  }
+}
