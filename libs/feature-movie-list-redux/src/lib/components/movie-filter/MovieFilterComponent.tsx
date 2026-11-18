@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 import {
   clearFilterAndReloadMovies,
   clearMovieActionState,
@@ -17,7 +18,7 @@ const helpFilter =
   '"Rensa filtrering", varefter alla filmer kommer att visas.';
 
 type Props = {
-  dispatch: (any: unknown) => void;
+  dispatch: Dispatch<any>;
   testName?: string;
 };
 

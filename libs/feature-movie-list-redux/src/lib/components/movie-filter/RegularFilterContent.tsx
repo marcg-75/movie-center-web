@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 import { BaseDataStateModel, loadGenres, MovieListStateModel } from '@giron/data-access-redux';
 import { MovieFilter as MovieModelFilter } from '@giron/shared-models';
 import { RegularFilter } from '@giron/shared-movie-components';
@@ -8,7 +9,7 @@ type Props = {
   filter: MovieModelFilter;
   baseData: BaseDataStateModel;
   filterChanged: (filter: MovieModelFilter) => void;
-  dispatch: (any: unknown) => void;
+  dispatch: Dispatch<any>;
 };
 
 const RegularFilterContent = ({ filter, baseData, filterChanged, dispatch }: Props) => {

@@ -1,9 +1,10 @@
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 import { getMovies, MovieListStateModel } from '@giron/data-access-redux';
 import { MovieFilterComponent } from './movie-filter';
 import { SortModel } from '@giron/shared-models';
-import * as H from 'history';
+import type { RouteComponentProps } from 'react-router-dom';
 import { MovieList } from '@giron/shared-movie-components';
 import { useEffect, useState } from 'react';
 import { getDefaultSortModel } from '@giron/shared-util-helpers';
@@ -14,11 +15,9 @@ const SORT_ORDERS_BY_COLUMN = [
   { column: 'grade', sortOrder: 'moviePersonalInfo.grade' },
 ];
 
-interface MovieListProps {
+interface MovieListProps extends RouteComponentProps {
   movieList: MovieListStateModel;
-  history: H.History;
-  location: H.Location;
-  dispatch: (any: unknown) => void;
+  dispatch: Dispatch<any>;
 }
 
 const MovieListComponent = ({ movieList, history, location, dispatch }: MovieListProps) => {

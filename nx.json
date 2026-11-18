@@ -15,18 +15,9 @@
         "{workspaceRoot}/eslint.config.js"
       ]
     },
-    "@nx/jest:jest": {
+    "test": {
       "cache": true,
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
-      "options": {
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
-      }
+      "inputs": ["default", "^production"]
     },
     "e2e": {
       "cache": true,
@@ -39,7 +30,8 @@
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
-      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/vite.config.*",
+      "!{projectRoot}/vitest.config.*",
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/test-setup.[jt]s",
       "!{projectRoot}/cypress/**/*",
@@ -64,7 +56,7 @@
       "library": {
         "style": "css",
         "linter": "eslint",
-        "unitTestRunner": "jest"
+        "unitTestRunner": "vitest"
       }
     },
     "@nx/next": {
@@ -75,5 +67,15 @@
     }
   },
   "useInferencePlugins": false,
-  "analytics": false
+  "analytics": false,
+  "plugins": [
+    {
+      "plugin": "@nx/vitest",
+      "options": {
+        "testTargetName": "test",
+        "ciTargetName": "test-ci",
+        "testMode": "run"
+      }
+    }
+  ]
 }

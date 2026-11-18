@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 import {
   BaseDataStateModel,
   loadFormats,
@@ -15,7 +16,7 @@ interface FormatPanelProps {
   baseData: BaseDataStateModel;
   control: Control<IMovie>;
   setValue: UseFormSetValue<IMovie>;
-  dispatch: (any: unknown) => void;
+  dispatch: Dispatch<any>;
   testName?: string;
 }
 

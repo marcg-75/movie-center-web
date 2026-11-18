@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import * as H from 'history';
+import type { Dispatch } from 'redux';
+import type { RouteComponentProps } from 'react-router-dom';
 import GeneralInfoPanel from './panels/GeneralInfoPanelComponent';
 import CastPanel from './panels/CastPanelComponent';
 import CrewPanel from './panels/CrewPanelComponent';
@@ -28,12 +29,10 @@ import { useForm } from 'react-hook-form';
 import { removeUndefinedValuesFromObject } from '@giron/shared-util-helpers';
 import { format } from 'date-fns';
 
-interface MovieProps {
+interface MovieProps extends RouteComponentProps {
   movie: MovieStateModel;
   baseData: BaseDataStateModel;
-  history: H.History;
-  location: H.Location;
-  dispatch: (any: unknown) => void;
+  dispatch: Dispatch<any>;
   testName?: string;
 }
 

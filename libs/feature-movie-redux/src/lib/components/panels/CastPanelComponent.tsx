@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 import { getActors, MovieStateModel, PersonStateModel } from '@giron/data-access-redux';
 import { IMovie } from '@giron/shared-models';
 import { CastPanel } from '@giron/shared-movie-components';
@@ -9,7 +10,7 @@ interface CastPanelProps {
   movie: MovieStateModel;
   person: PersonStateModel;
   setValue: UseFormSetValue<IMovie>;
-  dispatch: (any: unknown) => void;
+  dispatch: Dispatch<any>;
   testName?: string;
 }
 
