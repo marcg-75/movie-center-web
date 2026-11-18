@@ -6,42 +6,27 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/next:build",
-      "outputs": ["{options.outputPath}"],
-      "defaultConfiguration": "production",
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/.next"],
       "options": {
-        "outputPath": "apps/movie-center-web",
-        "postcssConfig": "apps/movie-center-web/postcss.config.js"
+        "command": "next build",
+        "cwd": "apps/movie-center-web"
       },
-      "configurations": {
-        "development": {
-          "outputPath": "apps/movie-center-web"
-        },
-        "production": {}
-      }
+      "dependsOn": []
     },
     "serve": {
-      "executor": "@nx/next:server",
-      "defaultConfiguration": "development",
+      "executor": "nx:run-commands",
       "options": {
-        "buildTarget": "movie-center-web:build",
-        "dev": true
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "movie-center-web:build:development",
-          "dev": true
-        },
-        "production": {
-          "buildTarget": "movie-center-web:build:production",
-          "dev": false
-        }
+        "command": "next dev",
+        "cwd": "apps/movie-center-web"
       }
     },
-    "export": {
-      "executor": "@nx/next:export",
+    "start": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
       "options": {
-        "buildTarget": "movie-center-web:build:production"
+        "command": "next start",
+        "cwd": "apps/movie-center-web"
       }
     },
     "test": {
