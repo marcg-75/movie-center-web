@@ -45,6 +45,391 @@
   "nxJsonPlugins": [],
   "fileMap": {
     "projectFileMap": {
+      "feature-movie-redux": [
+        {
+          "file": "libs/feature-movie-redux/.babelrc",
+          "hash": "2946678488919325452"
+        },
+        {
+          "file": "libs/feature-movie-redux/.eslintrc.json",
+          "hash": "11012487992710232822"
+        },
+        {
+          "file": "libs/feature-movie-redux/README.md",
+          "hash": "11220171860844471186"
+        },
+        {
+          "file": "libs/feature-movie-redux/jest.config.ts",
+          "hash": "11909333087184310769"
+        },
+        {
+          "file": "libs/feature-movie-redux/package.json",
+          "hash": "14344493829672557291"
+        },
+        {
+          "file": "libs/feature-movie-redux/project.json",
+          "hash": "14694329669751223121"
+        },
+        {
+          "file": "libs/feature-movie-redux/src/index.ts",
+          "hash": "16094656348279192315"
+        },
+        {
+          "file": "libs/feature-movie-redux/src/lib/components/MovieDetailsComponent.tsx",
+          "hash": "12322285384809785087",
+          "deps": [
+            "npm:react",
+            "npm:react-router-dom",
+            "npm:react-redux",
+            "npm:history",
+            "data-access-redux",
+            "shared-models",
+            "shared-movie-components",
+            "npm:react-hook-form",
+            "shared-util-helpers",
+            "npm:date-fns"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-redux/src/lib/components/panels/CastPanelComponent.tsx",
+          "hash": "17155214454444555291",
+          "deps": [
+            "npm:react",
+            "npm:react-redux",
+            "data-access-redux",
+            "shared-models",
+            "shared-movie-components",
+            "npm:react-hook-form"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-redux/src/lib/components/panels/CoverPanelComponent.tsx",
+          "hash": "4584215474613364329",
+          "deps": [
+            "npm:react",
+            "npm:react-redux",
+            "data-access-redux",
+            "shared-models",
+            "shared-movie-components",
+            "npm:react-hook-form"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-redux/src/lib/components/panels/CrewPanelComponent.tsx",
+          "hash": "1503060302999255604",
+          "deps": [
+            "npm:react",
+            "npm:react-redux",
+            "data-access-redux",
+            "shared-models",
+            "shared-movie-components",
+            "npm:react-hook-form"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-redux/src/lib/components/panels/FormatPanelComponent.tsx",
+          "hash": "10286281797730739847",
+          "deps": [
+            "npm:react",
+            "npm:react-redux",
+            "data-access-redux",
+            "shared-models",
+            "shared-movie-components",
+            "npm:react-hook-form"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-redux/src/lib/components/panels/GeneralInfoPanelComponent.tsx",
+          "hash": "3016857528748128589",
+          "deps": [
+            "npm:react",
+            "npm:react-redux",
+            "data-access-redux",
+            "shared-models",
+            "shared-movie-components",
+            "npm:react-hook-form"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-redux/src/lib/components/panels/PersonalInfoPanelComponent.tsx",
+          "hash": "3101036784787807676",
+          "deps": [
+            "npm:react",
+            "npm:react-redux",
+            "data-access-redux",
+            "shared-models",
+            "shared-movie-components",
+            "npm:react-hook-form"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-redux/src/lib/utils/movie.utils.ts",
+          "hash": "9463119448321490423",
+          "deps": [
+            "data-access-redux"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-redux/tsconfig.json",
+          "hash": "12937361759397702261"
+        },
+        {
+          "file": "libs/feature-movie-redux/tsconfig.lib.json",
+          "hash": "15147195313780277677"
+        },
+        {
+          "file": "libs/feature-movie-redux/tsconfig.spec.json",
+          "hash": "6514620907549802163"
+        }
+      ],
+      "feature-movie-list": [
+        {
+          "file": "libs/feature-movie-list/.babelrc",
+          "hash": "17595877548105968951"
+        },
+        {
+          "file": "libs/feature-movie-list/.eslintrc.json",
+          "hash": "11012487992710232822"
+        },
+        {
+          "file": "libs/feature-movie-list/README.md",
+          "hash": "4550770967173827440"
+        },
+        {
+          "file": "libs/feature-movie-list/jest.config.ts",
+          "hash": "13849533708681928670"
+        },
+        {
+          "file": "libs/feature-movie-list/package.json",
+          "hash": "3708773252546878152"
+        },
+        {
+          "file": "libs/feature-movie-list/project.json",
+          "hash": "7350335086466385486"
+        },
+        {
+          "file": "libs/feature-movie-list/src/index.ts",
+          "hash": "465020141657747363"
+        },
+        {
+          "file": "libs/feature-movie-list/src/lib/components/MovieListComponent.tsx",
+          "hash": "12965099386066727587",
+          "deps": [
+            "npm:next",
+            "shared-movie-components",
+            "shared-models",
+            "data-access",
+            "npm:react",
+            "shared-util-helpers"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-list/src/lib/components/movie-filter/ExtendedFilterContent.tsx",
+          "hash": "16042941212455295579",
+          "deps": [
+            "shared-models",
+            "data-access",
+            "shared-movie-components"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-list/src/lib/components/movie-filter/MovieFilterComponent.tsx",
+          "hash": "9857185542556942297",
+          "deps": [
+            "shared-models",
+            "shared-movie-components",
+            "data-access"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-list/src/lib/components/movie-filter/RegularFilterContent.tsx",
+          "hash": "17795428103635552665",
+          "deps": [
+            "shared-models",
+            "shared-movie-components",
+            "data-access"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-list/tsconfig.json",
+          "hash": "12937361759397702261"
+        },
+        {
+          "file": "libs/feature-movie-list/tsconfig.lib.json",
+          "hash": "15147195313780277677"
+        },
+        {
+          "file": "libs/feature-movie-list/tsconfig.spec.json",
+          "hash": "6514620907549802163"
+        }
+      ],
+      "shared-models": [
+        {
+          "file": "libs/shared/models/.babelrc",
+          "hash": "2946678488919325452"
+        },
+        {
+          "file": "libs/shared/models/.eslintrc.json",
+          "hash": "15946965712701950674"
+        },
+        {
+          "file": "libs/shared/models/README.md",
+          "hash": "18175043920999896166"
+        },
+        {
+          "file": "libs/shared/models/package.json",
+          "hash": "8169402844617128157"
+        },
+        {
+          "file": "libs/shared/models/project.json",
+          "hash": "7613087161010132091"
+        },
+        {
+          "file": "libs/shared/models/src/CastAndCrewModel.ts",
+          "hash": "12030457365822765891"
+        },
+        {
+          "file": "libs/shared/models/src/CoverModel.ts",
+          "hash": "6442158033994276088"
+        },
+        {
+          "file": "libs/shared/models/src/Filter.ts",
+          "hash": "12651990787081608075"
+        },
+        {
+          "file": "libs/shared/models/src/FilterSettingsModel.ts",
+          "hash": "11748890348866768945"
+        },
+        {
+          "file": "libs/shared/models/src/LanguageModel.ts",
+          "hash": "902687819461228938"
+        },
+        {
+          "file": "libs/shared/models/src/MovieFilter.ts",
+          "hash": "9719583037600593238"
+        },
+        {
+          "file": "libs/shared/models/src/MovieGenreModel.ts",
+          "hash": "2951555876403309328"
+        },
+        {
+          "file": "libs/shared/models/src/NameEntityModel.ts",
+          "hash": "12568849852033559154"
+        },
+        {
+          "file": "libs/shared/models/src/PersonRoleModel.ts",
+          "hash": "14713148545080014342"
+        },
+        {
+          "file": "libs/shared/models/src/RoleEnum.ts",
+          "hash": "10635469381760893768"
+        },
+        {
+          "file": "libs/shared/models/src/SelectableModel.ts",
+          "hash": "6721878583078149698"
+        },
+        {
+          "file": "libs/shared/models/src/SortModel.ts",
+          "hash": "10732230098001007970"
+        },
+        {
+          "file": "libs/shared/models/src/index.ts",
+          "hash": "14642843049612393801"
+        },
+        {
+          "file": "libs/shared/models/src/movie.model.ts",
+          "hash": "6314496396874250079"
+        },
+        {
+          "file": "libs/shared/models/tsconfig.json",
+          "hash": "9466653708934095578"
+        },
+        {
+          "file": "libs/shared/models/tsconfig.lib.json",
+          "hash": "12782505187182166395"
+        }
+      ],
+      "shared-util-helpers": [
+        {
+          "file": "libs/shared/util-helpers/.babelrc",
+          "hash": "2946678488919325452"
+        },
+        {
+          "file": "libs/shared/util-helpers/.eslintrc.json",
+          "hash": "15946965712701950674"
+        },
+        {
+          "file": "libs/shared/util-helpers/README.md",
+          "hash": "18060648120269236574"
+        },
+        {
+          "file": "libs/shared/util-helpers/jest.config.ts",
+          "hash": "15899493442216018513"
+        },
+        {
+          "file": "libs/shared/util-helpers/package.json",
+          "hash": "8521819159764662407"
+        },
+        {
+          "file": "libs/shared/util-helpers/project.json",
+          "hash": "6583224008940224610"
+        },
+        {
+          "file": "libs/shared/util-helpers/src/duration.utils.ts",
+          "hash": "12355841082365284045"
+        },
+        {
+          "file": "libs/shared/util-helpers/src/index.ts",
+          "hash": "11613953681629250068"
+        },
+        {
+          "file": "libs/shared/util-helpers/src/list.util.ts",
+          "hash": "13660285739366846982",
+          "deps": [
+            "shared-models"
+          ]
+        },
+        {
+          "file": "libs/shared/util-helpers/src/movie.utils.ts",
+          "hash": "11808711820724630947",
+          "deps": [
+            "shared-models",
+            "npm:date-fns"
+          ]
+        },
+        {
+          "file": "libs/shared/util-helpers/src/page.utils.ts",
+          "hash": "13284335436356594250"
+        },
+        {
+          "file": "libs/shared/util-helpers/src/query.utils.ts",
+          "hash": "1925479014892007715",
+          "deps": [
+            "shared-models"
+          ]
+        },
+        {
+          "file": "libs/shared/util-helpers/src/ui.utils.tsx",
+          "hash": "9178318918146223981",
+          "deps": [
+            "npm:react",
+            "npm:@mui/material",
+            "shared-models"
+          ]
+        },
+        {
+          "file": "libs/shared/util-helpers/tsconfig.json",
+          "hash": "5803453740373313970"
+        },
+        {
+          "file": "libs/shared/util-helpers/tsconfig.lib.json",
+          "hash": "12782505187182166395"
+        },
+        {
+          "file": "libs/shared/util-helpers/tsconfig.spec.json",
+          "hash": "622485232520597903"
+        }
+      ],
       "movie-center-web-redux": [
         {
           "file": "apps/movie-center-web-redux/.babelrc",
@@ -166,272 +551,70 @@
           ]
         }
       ],
-      "shared-ui-library": [
+      "shared-data-access-api-client": [
         {
-          "file": "libs/shared/ui-library/.babelrc",
-          "hash": "17595877548105968951"
+          "file": "libs/shared/data-access-api-client/.babelrc",
+          "hash": "2946678488919325452"
         },
         {
-          "file": "libs/shared/ui-library/.eslintrc.json",
+          "file": "libs/shared/data-access-api-client/.eslintrc.json",
           "hash": "15946965712701950674"
         },
         {
-          "file": "libs/shared/ui-library/README.md",
-          "hash": "5900580560119561842"
+          "file": "libs/shared/data-access-api-client/README.md",
+          "hash": "6318872832312776105"
         },
         {
-          "file": "libs/shared/ui-library/jest.config.ts",
-          "hash": "13042665037740856864"
+          "file": "libs/shared/data-access-api-client/jest.config.ts",
+          "hash": "8945243335330208767"
         },
         {
-          "file": "libs/shared/ui-library/package.json",
-          "hash": "13136699579600462098"
+          "file": "libs/shared/data-access-api-client/package.json",
+          "hash": "2561660716526112685"
         },
         {
-          "file": "libs/shared/ui-library/postcss.config.js",
-          "hash": "13598591179375906364"
+          "file": "libs/shared/data-access-api-client/project.json",
+          "hash": "11004118050582803688"
         },
         {
-          "file": "libs/shared/ui-library/project.json",
-          "hash": "3447065209253375364"
+          "file": "libs/shared/data-access-api-client/src/BackendClient.ts",
+          "hash": "3079932398945208545"
         },
         {
-          "file": "libs/shared/ui-library/src/design-tokens/_variables.css",
-          "hash": "12500467773664301828"
+          "file": "libs/shared/data-access-api-client/src/api-client.test.ts",
+          "hash": "15749147823864467949"
         },
         {
-          "file": "libs/shared/ui-library/src/design-tokens/borderRadius.js",
-          "hash": "5101088507714613168"
+          "file": "libs/shared/data-access-api-client/src/api-client.ts",
+          "hash": "2293560492141604130"
         },
         {
-          "file": "libs/shared/ui-library/src/design-tokens/colors.js",
-          "hash": "5344829663499817828"
+          "file": "libs/shared/data-access-api-client/src/backend.types.ts",
+          "hash": "2412946075827388965"
         },
         {
-          "file": "libs/shared/ui-library/src/design-tokens/opacity.js",
-          "hash": "5640893930910198830"
+          "file": "libs/shared/data-access-api-client/src/fetch-utils.test.ts",
+          "hash": "5681208620650372646"
         },
         {
-          "file": "libs/shared/ui-library/src/design-tokens/shadow.js",
-          "hash": "15107176683150904251"
+          "file": "libs/shared/data-access-api-client/src/fetch-utils.ts",
+          "hash": "11202950085229254949"
         },
         {
-          "file": "libs/shared/ui-library/src/design-tokens/spacing.js",
-          "hash": "6634239757996323963"
+          "file": "libs/shared/data-access-api-client/src/index.ts",
+          "hash": "12998720405752972393"
         },
         {
-          "file": "libs/shared/ui-library/src/design-tokens/textScale.js",
-          "hash": "6751221359371316724"
-        },
-        {
-          "file": "libs/shared/ui-library/src/design-tokens/theme.js",
-          "hash": "783090295157667414"
-        },
-        {
-          "file": "libs/shared/ui-library/src/index.ts",
-          "hash": "7704242601655162755"
-        },
-        {
-          "file": "libs/shared/ui-library/src/lib/filter/FilterItem.tsx",
-          "hash": "14214749347912495299",
-          "deps": [
-            "npm:react"
-          ]
-        },
-        {
-          "file": "libs/shared/ui-library/src/lib/filter/FilterItemClear.tsx",
-          "hash": "13276713665883295300"
-        },
-        {
-          "file": "libs/shared/ui-library/src/lib/filter/FilterItemText.tsx",
-          "hash": "4632551049849052776",
-          "deps": [
-            "npm:react",
-            "npm:lodash"
-          ]
-        },
-        {
-          "file": "libs/shared/ui-library/src/lib/filter/index.ts",
-          "hash": "534194540409779116"
-        },
-        {
-          "file": "libs/shared/ui-library/src/lib/labeled-input/LabeledDateInput.tsx",
-          "hash": "5700436595750408572",
-          "deps": [
-            "npm:@mui/x-date-pickers"
-          ]
-        },
-        {
-          "file": "libs/shared/ui-library/src/lib/labeled-input/LabeledInput.tsx",
-          "hash": "15898409074030783527",
-          "deps": [
-            "npm:react",
-            "npm:classnames"
-          ]
-        },
-        {
-          "file": "libs/shared/ui-library/src/lib/labeled-input/LabeledSelect.tsx",
-          "hash": "18173369472694319054",
-          "deps": [
-            "npm:@mui/material",
-            "shared-models",
-            "npm:react"
-          ]
-        },
-        {
-          "file": "libs/shared/ui-library/src/lib/labeled-input/LabeledTextInput.tsx",
-          "hash": "6496047098285023574",
-          "deps": [
-            "npm:@mui/material",
-            "npm:react"
-          ]
-        },
-        {
-          "file": "libs/shared/ui-library/src/lib/labeled-input/LabeledTextarea.tsx",
-          "hash": "7663634936169489845",
-          "deps": [
-            "npm:@mui/material"
-          ]
-        },
-        {
-          "file": "libs/shared/ui-library/src/lib/labeled-input/LabeledTimeInput.tsx",
-          "hash": "16788688614838150525",
-          "deps": [
-            "npm:@mui/x-date-pickers"
-          ]
-        },
-        {
-          "file": "libs/shared/ui-library/src/lib/labeled-input/index.ts",
-          "hash": "11814387137152344757"
-        },
-        {
-          "file": "libs/shared/ui-library/src/lib/labeled-input/labeled-input.model.ts",
-          "hash": "11758683969997591773",
-          "deps": [
-            "npm:react",
-            "npm:react-hook-form",
-            "shared-models"
-          ]
-        },
-        {
-          "file": "libs/shared/ui-library/src/lib/labeled-input/labeled-input.scss",
-          "hash": "5518364561365641272"
-        },
-        {
-          "file": "libs/shared/ui-library/src/lib/loader/Loader.tsx",
-          "hash": "14160200279646521577"
-        },
-        {
-          "file": "libs/shared/ui-library/src/lib/loader/loader.component.scss",
-          "hash": "10908508234544016574"
-        },
-        {
-          "file": "libs/shared/ui-library/src/screenSizes.ts",
-          "hash": "1881481955779411961"
-        },
-        {
-          "file": "libs/shared/ui-library/src/styles.css",
-          "hash": "5944766973516173024"
-        },
-        {
-          "file": "libs/shared/ui-library/tailwind.config.js",
-          "hash": "1715627784584129143",
-          "deps": [
-            "npm:@nx/next"
-          ]
-        },
-        {
-          "file": "libs/shared/ui-library/tsconfig.json",
+          "file": "libs/shared/data-access-api-client/tsconfig.json",
           "hash": "5803453740373313970"
         },
         {
-          "file": "libs/shared/ui-library/tsconfig.lib.json",
+          "file": "libs/shared/data-access-api-client/tsconfig.lib.json",
           "hash": "12782505187182166395"
         },
         {
-          "file": "libs/shared/ui-library/tsconfig.spec.json",
+          "file": "libs/shared/data-access-api-client/tsconfig.spec.json",
           "hash": "622485232520597903"
-        }
-      ],
-      "feature-movie-list": [
-        {
-          "file": "libs/feature-movie-list/.babelrc",
-          "hash": "17595877548105968951"
-        },
-        {
-          "file": "libs/feature-movie-list/.eslintrc.json",
-          "hash": "11012487992710232822"
-        },
-        {
-          "file": "libs/feature-movie-list/README.md",
-          "hash": "4550770967173827440"
-        },
-        {
-          "file": "libs/feature-movie-list/jest.config.ts",
-          "hash": "13849533708681928670"
-        },
-        {
-          "file": "libs/feature-movie-list/package.json",
-          "hash": "3708773252546878152"
-        },
-        {
-          "file": "libs/feature-movie-list/project.json",
-          "hash": "7350335086466385486"
-        },
-        {
-          "file": "libs/feature-movie-list/src/index.ts",
-          "hash": "465020141657747363"
-        },
-        {
-          "file": "libs/feature-movie-list/src/lib/components/MovieListComponent.tsx",
-          "hash": "12965099386066727587",
-          "deps": [
-            "npm:next",
-            "shared-movie-components",
-            "shared-models",
-            "data-access",
-            "npm:react",
-            "shared-util-helpers"
-          ]
-        },
-        {
-          "file": "libs/feature-movie-list/src/lib/components/movie-filter/ExtendedFilterContent.tsx",
-          "hash": "16042941212455295579",
-          "deps": [
-            "shared-models",
-            "data-access",
-            "shared-movie-components"
-          ]
-        },
-        {
-          "file": "libs/feature-movie-list/src/lib/components/movie-filter/MovieFilterComponent.tsx",
-          "hash": "9857185542556942297",
-          "deps": [
-            "shared-models",
-            "shared-movie-components",
-            "data-access"
-          ]
-        },
-        {
-          "file": "libs/feature-movie-list/src/lib/components/movie-filter/RegularFilterContent.tsx",
-          "hash": "17795428103635552665",
-          "deps": [
-            "shared-models",
-            "shared-movie-components",
-            "data-access"
-          ]
-        },
-        {
-          "file": "libs/feature-movie-list/tsconfig.json",
-          "hash": "12937361759397702261"
-        },
-        {
-          "file": "libs/feature-movie-list/tsconfig.lib.json",
-          "hash": "15147195313780277677"
-        },
-        {
-          "file": "libs/feature-movie-list/tsconfig.spec.json",
-          "hash": "6514620907549802163"
         }
       ],
       "data-access-redux": [
@@ -581,6 +764,48 @@
           "hash": "6514620907549802163"
         }
       ],
+      "movie-center-web-e2e": [
+        {
+          "file": "apps/movie-center-web-e2e/.eslintrc.json",
+          "hash": "14060216369337943343"
+        },
+        {
+          "file": "apps/movie-center-web-e2e/cypress.config.ts",
+          "hash": "12586416982398116375",
+          "deps": [
+            "npm:@nx/cypress",
+            "npm:cypress"
+          ]
+        },
+        {
+          "file": "apps/movie-center-web-e2e/project.json",
+          "hash": "17448235023995989069"
+        },
+        {
+          "file": "apps/movie-center-web-e2e/src/e2e/app.cy.ts",
+          "hash": "2069828182996469657"
+        },
+        {
+          "file": "apps/movie-center-web-e2e/src/fixtures/example.json",
+          "hash": "11785586596216172004"
+        },
+        {
+          "file": "apps/movie-center-web-e2e/src/support/app.po.ts",
+          "hash": "11157016311132186162"
+        },
+        {
+          "file": "apps/movie-center-web-e2e/src/support/commands.ts",
+          "hash": "5397443931564808659"
+        },
+        {
+          "file": "apps/movie-center-web-e2e/src/support/e2e.ts",
+          "hash": "1054106023200826784"
+        },
+        {
+          "file": "apps/movie-center-web-e2e/tsconfig.json",
+          "hash": "10740392072068377465"
+        }
+      ],
       "feature-movie": [
         {
           "file": "libs/feature-movie/.babelrc",
@@ -693,281 +918,6 @@
         {
           "file": "libs/feature-movie/tsconfig.spec.json",
           "hash": "6514620907549802163"
-        }
-      ],
-      "movie-center-web-e2e": [
-        {
-          "file": "apps/movie-center-web-e2e/.eslintrc.json",
-          "hash": "14060216369337943343"
-        },
-        {
-          "file": "apps/movie-center-web-e2e/cypress.config.ts",
-          "hash": "12586416982398116375",
-          "deps": [
-            "npm:@nx/cypress",
-            "npm:cypress"
-          ]
-        },
-        {
-          "file": "apps/movie-center-web-e2e/project.json",
-          "hash": "17448235023995989069"
-        },
-        {
-          "file": "apps/movie-center-web-e2e/src/e2e/app.cy.ts",
-          "hash": "2069828182996469657"
-        },
-        {
-          "file": "apps/movie-center-web-e2e/src/fixtures/example.json",
-          "hash": "11785586596216172004"
-        },
-        {
-          "file": "apps/movie-center-web-e2e/src/support/app.po.ts",
-          "hash": "11157016311132186162"
-        },
-        {
-          "file": "apps/movie-center-web-e2e/src/support/commands.ts",
-          "hash": "5397443931564808659"
-        },
-        {
-          "file": "apps/movie-center-web-e2e/src/support/e2e.ts",
-          "hash": "1054106023200826784"
-        },
-        {
-          "file": "apps/movie-center-web-e2e/tsconfig.json",
-          "hash": "10740392072068377465"
-        }
-      ],
-      "shared-data-access-api-client": [
-        {
-          "file": "libs/shared/data-access-api-client/.babelrc",
-          "hash": "2946678488919325452"
-        },
-        {
-          "file": "libs/shared/data-access-api-client/.eslintrc.json",
-          "hash": "15946965712701950674"
-        },
-        {
-          "file": "libs/shared/data-access-api-client/README.md",
-          "hash": "6318872832312776105"
-        },
-        {
-          "file": "libs/shared/data-access-api-client/jest.config.ts",
-          "hash": "8945243335330208767"
-        },
-        {
-          "file": "libs/shared/data-access-api-client/package.json",
-          "hash": "2561660716526112685"
-        },
-        {
-          "file": "libs/shared/data-access-api-client/project.json",
-          "hash": "11004118050582803688"
-        },
-        {
-          "file": "libs/shared/data-access-api-client/src/BackendClient.ts",
-          "hash": "3079932398945208545"
-        },
-        {
-          "file": "libs/shared/data-access-api-client/src/api-client.test.ts",
-          "hash": "15749147823864467949"
-        },
-        {
-          "file": "libs/shared/data-access-api-client/src/api-client.ts",
-          "hash": "2293560492141604130"
-        },
-        {
-          "file": "libs/shared/data-access-api-client/src/backend.types.ts",
-          "hash": "2412946075827388965"
-        },
-        {
-          "file": "libs/shared/data-access-api-client/src/fetch-utils.test.ts",
-          "hash": "5681208620650372646"
-        },
-        {
-          "file": "libs/shared/data-access-api-client/src/fetch-utils.ts",
-          "hash": "11202950085229254949"
-        },
-        {
-          "file": "libs/shared/data-access-api-client/src/index.ts",
-          "hash": "12998720405752972393"
-        },
-        {
-          "file": "libs/shared/data-access-api-client/tsconfig.json",
-          "hash": "5803453740373313970"
-        },
-        {
-          "file": "libs/shared/data-access-api-client/tsconfig.lib.json",
-          "hash": "12782505187182166395"
-        },
-        {
-          "file": "libs/shared/data-access-api-client/tsconfig.spec.json",
-          "hash": "622485232520597903"
-        }
-      ],
-      "shared-util-helpers": [
-        {
-          "file": "libs/shared/util-helpers/.babelrc",
-          "hash": "2946678488919325452"
-        },
-        {
-          "file": "libs/shared/util-helpers/.eslintrc.json",
-          "hash": "15946965712701950674"
-        },
-        {
-          "file": "libs/shared/util-helpers/README.md",
-          "hash": "18060648120269236574"
-        },
-        {
-          "file": "libs/shared/util-helpers/jest.config.ts",
-          "hash": "15899493442216018513"
-        },
-        {
-          "file": "libs/shared/util-helpers/package.json",
-          "hash": "8521819159764662407"
-        },
-        {
-          "file": "libs/shared/util-helpers/project.json",
-          "hash": "6583224008940224610"
-        },
-        {
-          "file": "libs/shared/util-helpers/src/duration.utils.ts",
-          "hash": "12355841082365284045"
-        },
-        {
-          "file": "libs/shared/util-helpers/src/index.ts",
-          "hash": "11613953681629250068"
-        },
-        {
-          "file": "libs/shared/util-helpers/src/list.util.ts",
-          "hash": "13660285739366846982",
-          "deps": [
-            "shared-models"
-          ]
-        },
-        {
-          "file": "libs/shared/util-helpers/src/movie.utils.ts",
-          "hash": "11808711820724630947",
-          "deps": [
-            "shared-models",
-            "npm:date-fns"
-          ]
-        },
-        {
-          "file": "libs/shared/util-helpers/src/page.utils.ts",
-          "hash": "13284335436356594250"
-        },
-        {
-          "file": "libs/shared/util-helpers/src/query.utils.ts",
-          "hash": "1925479014892007715",
-          "deps": [
-            "shared-models"
-          ]
-        },
-        {
-          "file": "libs/shared/util-helpers/src/ui.utils.tsx",
-          "hash": "9178318918146223981",
-          "deps": [
-            "npm:react",
-            "npm:@mui/material",
-            "shared-models"
-          ]
-        },
-        {
-          "file": "libs/shared/util-helpers/tsconfig.json",
-          "hash": "5803453740373313970"
-        },
-        {
-          "file": "libs/shared/util-helpers/tsconfig.lib.json",
-          "hash": "12782505187182166395"
-        },
-        {
-          "file": "libs/shared/util-helpers/tsconfig.spec.json",
-          "hash": "622485232520597903"
-        }
-      ],
-      "shared-models": [
-        {
-          "file": "libs/shared/models/.babelrc",
-          "hash": "2946678488919325452"
-        },
-        {
-          "file": "libs/shared/models/.eslintrc.json",
-          "hash": "15946965712701950674"
-        },
-        {
-          "file": "libs/shared/models/README.md",
-          "hash": "18175043920999896166"
-        },
-        {
-          "file": "libs/shared/models/package.json",
-          "hash": "8169402844617128157"
-        },
-        {
-          "file": "libs/shared/models/project.json",
-          "hash": "7613087161010132091"
-        },
-        {
-          "file": "libs/shared/models/src/CastAndCrewModel.ts",
-          "hash": "12030457365822765891"
-        },
-        {
-          "file": "libs/shared/models/src/CoverModel.ts",
-          "hash": "6442158033994276088"
-        },
-        {
-          "file": "libs/shared/models/src/Filter.ts",
-          "hash": "12651990787081608075"
-        },
-        {
-          "file": "libs/shared/models/src/FilterSettingsModel.ts",
-          "hash": "11748890348866768945"
-        },
-        {
-          "file": "libs/shared/models/src/LanguageModel.ts",
-          "hash": "902687819461228938"
-        },
-        {
-          "file": "libs/shared/models/src/MovieFilter.ts",
-          "hash": "9719583037600593238"
-        },
-        {
-          "file": "libs/shared/models/src/MovieGenreModel.ts",
-          "hash": "2951555876403309328"
-        },
-        {
-          "file": "libs/shared/models/src/NameEntityModel.ts",
-          "hash": "12568849852033559154"
-        },
-        {
-          "file": "libs/shared/models/src/PersonRoleModel.ts",
-          "hash": "14713148545080014342"
-        },
-        {
-          "file": "libs/shared/models/src/RoleEnum.ts",
-          "hash": "10635469381760893768"
-        },
-        {
-          "file": "libs/shared/models/src/SelectableModel.ts",
-          "hash": "6721878583078149698"
-        },
-        {
-          "file": "libs/shared/models/src/SortModel.ts",
-          "hash": "10732230098001007970"
-        },
-        {
-          "file": "libs/shared/models/src/index.ts",
-          "hash": "14642843049612393801"
-        },
-        {
-          "file": "libs/shared/models/src/movie.model.ts",
-          "hash": "6314496396874250079"
-        },
-        {
-          "file": "libs/shared/models/tsconfig.json",
-          "hash": "9466653708934095578"
-        },
-        {
-          "file": "libs/shared/models/tsconfig.lib.json",
-          "hash": "12782505187182166395"
         }
       ],
       "movie-center-web": [
@@ -1315,6 +1265,99 @@
           "hash": "622485232520597903"
         }
       ],
+      "feature-movie-list-redux": [
+        {
+          "file": "libs/feature-movie-list-redux/.babelrc",
+          "hash": "2946678488919325452"
+        },
+        {
+          "file": "libs/feature-movie-list-redux/.eslintrc.json",
+          "hash": "11012487992710232822"
+        },
+        {
+          "file": "libs/feature-movie-list-redux/README.md",
+          "hash": "7800475271072464458"
+        },
+        {
+          "file": "libs/feature-movie-list-redux/jest.config.ts",
+          "hash": "7026711467189910635"
+        },
+        {
+          "file": "libs/feature-movie-list-redux/package.json",
+          "hash": "1546701957760385488"
+        },
+        {
+          "file": "libs/feature-movie-list-redux/project.json",
+          "hash": "3641901178011766469"
+        },
+        {
+          "file": "libs/feature-movie-list-redux/src/index.ts",
+          "hash": "14307034492056287017"
+        },
+        {
+          "file": "libs/feature-movie-list-redux/src/lib/components/MovieListComponent.tsx",
+          "hash": "11144977300102181594",
+          "deps": [
+            "npm:react-router-dom",
+            "npm:react-redux",
+            "data-access-redux",
+            "shared-models",
+            "npm:history",
+            "shared-movie-components",
+            "npm:react",
+            "shared-util-helpers"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-list-redux/src/lib/components/movie-filter/ExtendedFilterContent.tsx",
+          "hash": "10158071904188421056",
+          "deps": [
+            "npm:react",
+            "data-access-redux",
+            "npm:react-redux",
+            "shared-models",
+            "shared-movie-components"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-list-redux/src/lib/components/movie-filter/MovieFilterComponent.tsx",
+          "hash": "4340907777038767025",
+          "deps": [
+            "npm:react",
+            "npm:react-redux",
+            "data-access-redux",
+            "shared-models",
+            "shared-movie-components"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-list-redux/src/lib/components/movie-filter/RegularFilterContent.tsx",
+          "hash": "5827718709314554461",
+          "deps": [
+            "npm:react",
+            "npm:react-redux",
+            "data-access-redux",
+            "shared-models",
+            "shared-movie-components"
+          ]
+        },
+        {
+          "file": "libs/feature-movie-list-redux/src/lib/components/movie-filter/index.ts",
+          "hash": "10363704994165646104"
+        },
+        {
+          "file": "libs/feature-movie-list-redux/tsconfig.json",
+          "hash": "12937361759397702261"
+        },
+        {
+          "file": "libs/feature-movie-list-redux/tsconfig.lib.json",
+          "hash": "15147195313780277677"
+        },
+        {
+          "file": "libs/feature-movie-list-redux/tsconfig.spec.json",
+          "hash": "6514620907549802163"
+        }
+      ],
       "data-access": [
         {
           "file": "libs/data-access/.babelrc",
@@ -1533,234 +1576,191 @@
           "hash": "6514620907549802163"
         }
       ],
-      "feature-movie-list-redux": [
+      "shared-ui-library": [
         {
-          "file": "libs/feature-movie-list-redux/.babelrc",
-          "hash": "2946678488919325452"
+          "file": "libs/shared/ui-library/.babelrc",
+          "hash": "17595877548105968951"
         },
         {
-          "file": "libs/feature-movie-list-redux/.eslintrc.json",
-          "hash": "11012487992710232822"
+          "file": "libs/shared/ui-library/.eslintrc.json",
+          "hash": "15946965712701950674"
         },
         {
-          "file": "libs/feature-movie-list-redux/README.md",
-          "hash": "7800475271072464458"
+          "file": "libs/shared/ui-library/README.md",
+          "hash": "5900580560119561842"
         },
         {
-          "file": "libs/feature-movie-list-redux/jest.config.ts",
-          "hash": "7026711467189910635"
+          "file": "libs/shared/ui-library/jest.config.ts",
+          "hash": "13042665037740856864"
         },
         {
-          "file": "libs/feature-movie-list-redux/package.json",
-          "hash": "1546701957760385488"
+          "file": "libs/shared/ui-library/package.json",
+          "hash": "13136699579600462098"
         },
         {
-          "file": "libs/feature-movie-list-redux/project.json",
-          "hash": "3641901178011766469"
+          "file": "libs/shared/ui-library/postcss.config.js",
+          "hash": "13598591179375906364"
         },
         {
-          "file": "libs/feature-movie-list-redux/src/index.ts",
-          "hash": "14307034492056287017"
+          "file": "libs/shared/ui-library/project.json",
+          "hash": "3447065209253375364"
         },
         {
-          "file": "libs/feature-movie-list-redux/src/lib/components/MovieListComponent.tsx",
-          "hash": "11144977300102181594",
+          "file": "libs/shared/ui-library/src/design-tokens/_variables.css",
+          "hash": "12500467773664301828"
+        },
+        {
+          "file": "libs/shared/ui-library/src/design-tokens/borderRadius.js",
+          "hash": "5101088507714613168"
+        },
+        {
+          "file": "libs/shared/ui-library/src/design-tokens/colors.js",
+          "hash": "5344829663499817828"
+        },
+        {
+          "file": "libs/shared/ui-library/src/design-tokens/opacity.js",
+          "hash": "5640893930910198830"
+        },
+        {
+          "file": "libs/shared/ui-library/src/design-tokens/shadow.js",
+          "hash": "15107176683150904251"
+        },
+        {
+          "file": "libs/shared/ui-library/src/design-tokens/spacing.js",
+          "hash": "6634239757996323963"
+        },
+        {
+          "file": "libs/shared/ui-library/src/design-tokens/textScale.js",
+          "hash": "6751221359371316724"
+        },
+        {
+          "file": "libs/shared/ui-library/src/design-tokens/theme.js",
+          "hash": "783090295157667414"
+        },
+        {
+          "file": "libs/shared/ui-library/src/index.ts",
+          "hash": "7704242601655162755"
+        },
+        {
+          "file": "libs/shared/ui-library/src/lib/filter/FilterItem.tsx",
+          "hash": "14214749347912495299",
           "deps": [
-            "npm:react-router-dom",
-            "npm:react-redux",
-            "data-access-redux",
-            "shared-models",
-            "npm:history",
-            "shared-movie-components",
-            "npm:react",
-            "shared-util-helpers"
+            "npm:react"
           ]
         },
         {
-          "file": "libs/feature-movie-list-redux/src/lib/components/movie-filter/ExtendedFilterContent.tsx",
-          "hash": "10158071904188421056",
+          "file": "libs/shared/ui-library/src/lib/filter/FilterItemClear.tsx",
+          "hash": "13276713665883295300"
+        },
+        {
+          "file": "libs/shared/ui-library/src/lib/filter/FilterItemText.tsx",
+          "hash": "4632551049849052776",
           "deps": [
             "npm:react",
-            "data-access-redux",
-            "npm:react-redux",
-            "shared-models",
-            "shared-movie-components"
+            "npm:lodash"
           ]
         },
         {
-          "file": "libs/feature-movie-list-redux/src/lib/components/movie-filter/MovieFilterComponent.tsx",
-          "hash": "4340907777038767025",
+          "file": "libs/shared/ui-library/src/lib/filter/index.ts",
+          "hash": "534194540409779116"
+        },
+        {
+          "file": "libs/shared/ui-library/src/lib/labeled-input/LabeledDateInput.tsx",
+          "hash": "5700436595750408572",
           "deps": [
-            "npm:react",
-            "npm:react-redux",
-            "data-access-redux",
-            "shared-models",
-            "shared-movie-components"
+            "npm:@mui/x-date-pickers"
           ]
         },
         {
-          "file": "libs/feature-movie-list-redux/src/lib/components/movie-filter/RegularFilterContent.tsx",
-          "hash": "5827718709314554461",
+          "file": "libs/shared/ui-library/src/lib/labeled-input/LabeledInput.tsx",
+          "hash": "15898409074030783527",
           "deps": [
             "npm:react",
-            "npm:react-redux",
-            "data-access-redux",
-            "shared-models",
-            "shared-movie-components"
+            "npm:classnames"
           ]
         },
         {
-          "file": "libs/feature-movie-list-redux/src/lib/components/movie-filter/index.ts",
-          "hash": "10363704994165646104"
+          "file": "libs/shared/ui-library/src/lib/labeled-input/LabeledSelect.tsx",
+          "hash": "18173369472694319054",
+          "deps": [
+            "npm:@mui/material",
+            "shared-models",
+            "npm:react"
+          ]
         },
         {
-          "file": "libs/feature-movie-list-redux/tsconfig.json",
-          "hash": "12937361759397702261"
+          "file": "libs/shared/ui-library/src/lib/labeled-input/LabeledTextInput.tsx",
+          "hash": "6496047098285023574",
+          "deps": [
+            "npm:@mui/material",
+            "npm:react"
+          ]
         },
         {
-          "file": "libs/feature-movie-list-redux/tsconfig.lib.json",
-          "hash": "15147195313780277677"
+          "file": "libs/shared/ui-library/src/lib/labeled-input/LabeledTextarea.tsx",
+          "hash": "7663634936169489845",
+          "deps": [
+            "npm:@mui/material"
+          ]
         },
         {
-          "file": "libs/feature-movie-list-redux/tsconfig.spec.json",
-          "hash": "6514620907549802163"
-        }
-      ],
-      "feature-movie-redux": [
-        {
-          "file": "libs/feature-movie-redux/.babelrc",
-          "hash": "2946678488919325452"
+          "file": "libs/shared/ui-library/src/lib/labeled-input/LabeledTimeInput.tsx",
+          "hash": "16788688614838150525",
+          "deps": [
+            "npm:@mui/x-date-pickers"
+          ]
         },
         {
-          "file": "libs/feature-movie-redux/.eslintrc.json",
-          "hash": "11012487992710232822"
+          "file": "libs/shared/ui-library/src/lib/labeled-input/index.ts",
+          "hash": "11814387137152344757"
         },
         {
-          "file": "libs/feature-movie-redux/README.md",
-          "hash": "11220171860844471186"
-        },
-        {
-          "file": "libs/feature-movie-redux/jest.config.ts",
-          "hash": "11909333087184310769"
-        },
-        {
-          "file": "libs/feature-movie-redux/package.json",
-          "hash": "14344493829672557291"
-        },
-        {
-          "file": "libs/feature-movie-redux/project.json",
-          "hash": "14694329669751223121"
-        },
-        {
-          "file": "libs/feature-movie-redux/src/index.ts",
-          "hash": "16094656348279192315"
-        },
-        {
-          "file": "libs/feature-movie-redux/src/lib/components/MovieDetailsComponent.tsx",
-          "hash": "12322285384809785087",
+          "file": "libs/shared/ui-library/src/lib/labeled-input/labeled-input.model.ts",
+          "hash": "11758683969997591773",
           "deps": [
             "npm:react",
-            "npm:react-router-dom",
-            "npm:react-redux",
-            "npm:history",
-            "data-access-redux",
-            "shared-models",
-            "shared-movie-components",
             "npm:react-hook-form",
-            "shared-util-helpers",
-            "npm:date-fns"
+            "shared-models"
           ]
         },
         {
-          "file": "libs/feature-movie-redux/src/lib/components/panels/CastPanelComponent.tsx",
-          "hash": "17155214454444555291",
+          "file": "libs/shared/ui-library/src/lib/labeled-input/labeled-input.scss",
+          "hash": "5518364561365641272"
+        },
+        {
+          "file": "libs/shared/ui-library/src/lib/loader/Loader.tsx",
+          "hash": "14160200279646521577"
+        },
+        {
+          "file": "libs/shared/ui-library/src/lib/loader/loader.component.scss",
+          "hash": "10908508234544016574"
+        },
+        {
+          "file": "libs/shared/ui-library/src/screenSizes.ts",
+          "hash": "1881481955779411961"
+        },
+        {
+          "file": "libs/shared/ui-library/src/styles.css",
+          "hash": "5944766973516173024"
+        },
+        {
+          "file": "libs/shared/ui-library/tailwind.config.js",
+          "hash": "1715627784584129143",
           "deps": [
-            "npm:react",
-            "npm:react-redux",
-            "data-access-redux",
-            "shared-models",
-            "shared-movie-components",
-            "npm:react-hook-form"
+            "npm:@nx/next"
           ]
         },
         {
-          "file": "libs/feature-movie-redux/src/lib/components/panels/CoverPanelComponent.tsx",
-          "hash": "4584215474613364329",
-          "deps": [
-            "npm:react",
-            "npm:react-redux",
-            "data-access-redux",
-            "shared-models",
-            "shared-movie-components",
-            "npm:react-hook-form"
-          ]
+          "file": "libs/shared/ui-library/tsconfig.json",
+          "hash": "5803453740373313970"
         },
         {
-          "file": "libs/feature-movie-redux/src/lib/components/panels/CrewPanelComponent.tsx",
-          "hash": "1503060302999255604",
-          "deps": [
-            "npm:react",
-            "npm:react-redux",
-            "data-access-redux",
-            "shared-models",
-            "shared-movie-components",
-            "npm:react-hook-form"
-          ]
+          "file": "libs/shared/ui-library/tsconfig.lib.json",
+          "hash": "12782505187182166395"
         },
         {
-          "file": "libs/feature-movie-redux/src/lib/components/panels/FormatPanelComponent.tsx",
-          "hash": "10286281797730739847",
-          "deps": [
-            "npm:react",
-            "npm:react-redux",
-            "data-access-redux",
-            "shared-models",
-            "shared-movie-components",
-            "npm:react-hook-form"
-          ]
-        },
-        {
-          "file": "libs/feature-movie-redux/src/lib/components/panels/GeneralInfoPanelComponent.tsx",
-          "hash": "3016857528748128589",
-          "deps": [
-            "npm:react",
-            "npm:react-redux",
-            "data-access-redux",
-            "shared-models",
-            "shared-movie-components",
-            "npm:react-hook-form"
-          ]
-        },
-        {
-          "file": "libs/feature-movie-redux/src/lib/components/panels/PersonalInfoPanelComponent.tsx",
-          "hash": "3101036784787807676",
-          "deps": [
-            "npm:react",
-            "npm:react-redux",
-            "data-access-redux",
-            "shared-models",
-            "shared-movie-components",
-            "npm:react-hook-form"
-          ]
-        },
-        {
-          "file": "libs/feature-movie-redux/src/lib/utils/movie.utils.ts",
-          "hash": "9463119448321490423",
-          "deps": [
-            "data-access-redux"
-          ]
-        },
-        {
-          "file": "libs/feature-movie-redux/tsconfig.json",
-          "hash": "12937361759397702261"
-        },
-        {
-          "file": "libs/feature-movie-redux/tsconfig.lib.json",
-          "hash": "15147195313780277677"
-        },
-        {
-          "file": "libs/feature-movie-redux/tsconfig.spec.json",
-          "hash": "6514620907549802163"
+          "file": "libs/shared/ui-library/tsconfig.spec.json",
+          "hash": "622485232520597903"
         }
       ]
     },
@@ -1807,7 +1807,7 @@
       },
       {
         "file": "jest.config.ts",
-        "hash": "12333515226966617182"
+        "hash": "3494843969422251966"
       },
       {
         "file": "jest.preset.js",
