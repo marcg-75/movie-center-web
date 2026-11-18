@@ -34,14 +34,8 @@ jobs:
       - name: Format check
         run: pnpm exec nx format:check --base=origin/${{ env.MAIN_BRANCH }}
 
-      - name: Nx linting check
-        run: pnpm exec nx affected --base=origin/${{ env.MAIN_BRANCH }} --head=HEAD --target=lint --parallel=3
-
       - name: Run lint
         run: pnpm lint
-
-      - name: Nx unit test
-        run: pnpm exec nx affected --base=origin/${{ env.MAIN_BRANCH }} --head=HEAD -t test --parallel=3
 
       - name: Run tests
         run: pnpm test
