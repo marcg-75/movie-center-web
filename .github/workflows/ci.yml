@@ -3,12 +3,12 @@ on:
   push:
     branches:
       # GitHub event filters do not support workflow variables.
-      - master
+      - main
   pull_request:
-    branches: [master]
+    branches: [main]
 
 env:
-  MAIN_BRANCH: master
+  MAIN_BRANCH: main
 
 jobs:
   checks:
