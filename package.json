@@ -104,5 +104,10 @@
     "@nx/nx-linux-x64-gnu": "24.0.6",
     "@nx/nx-win32-x64-msvc": "24.0.6"
   },
-  "packageManager": "pnpm@10.34.1"
+  "packageManager": "pnpm@10.34.1",
+  "pnpm": {
+    "overrides": {
+      "handlebars@<4.7.10": "4.7.10"
+    }
+  }
 }
