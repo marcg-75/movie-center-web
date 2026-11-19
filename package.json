@@ -54,7 +54,6 @@
     "@nx/webpack": "24.0.6",
     "@nx/workspace": "24.0.6",
     "@playwright/test": "1.65.1",
-    "@svgr/webpack": "8.1.0",
     "@swc/helpers": "~0.5.18",
     "@tailwindcss/postcss": "4.3.5",
     "@testing-library/jest-dom": "7.0.1",
@@ -64,17 +63,17 @@
     "@types/react-dom": "19.3.0",
     "@types/react-router-dom": "5.3.3",
     "@types/redux-api-middleware": "3.2.7",
-    "@vitejs/plugin-react": "^6.0.0",
-    "jsdom": "^27.1.0",
+    "@vitejs/plugin-react": "6.3.0",
+    "jsdom": "31.0.1",
     "nx": "24.0.6",
     "oxfmt": "0.79.0",
     "oxlint": "1.94.0",
     "prettier": "2.8.8",
-    "react-hook-form": "7.78.0",
+    "react-hook-form": "7.92.0",
     "tailwindcss": "4.3.5",
     "typescript": "5.9.3",
-    "vite": "^8.0.0",
-    "vitest": "~5.0.1",
+    "vite": "8.3.8",
+    "vitest": "5.1.1",
     "webpack": "5.112.2",
     "webpack-cli": "7.0.0",
     "webpack-dev-server": "5.2.7"
@@ -92,6 +91,7 @@
   "packageManager": "pnpm@10.34.1",
   "pnpm": {
     "overrides": {
+      "form-data@<4.0.6": "4.0.6",
       "handlebars@<4.7.10": "4.7.10",
       "websocket-driver@<0.7.5": "0.7.5"
     }
