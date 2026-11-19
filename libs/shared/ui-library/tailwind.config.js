@@ -1,14 +1,8 @@
-import { createGlobPatternsForDependencies } from '@nx/next/tailwind';
-import { join } from 'path';
-import theme from './src/design-tokens/theme';
-import { screenSizes } from './src/screenSizes';
+const theme = require('./src/design-tokens/theme.js');
+const { screenSizes } = require('./src/screenSizes.ts');
 
-export default {
+module.exports = {
   darkMode: 'class',
-  content: [
-    join(__dirname, './src/**/*.{js,ts,jsx,tsx,mdx}'),
-    ...createGlobPatternsForDependencies(__dirname),
-  ],
   theme: {
     screens: screenSizes,
     fontFamily: {
