@@ -146,7 +146,7 @@ export const AddNewCrewMember = ({
 
   return (
     <div>
-      <label>Lägg till ny medlem:</label>
+      <label htmlFor="newCrewRole">Lägg till ny medlem:</label>
 
       <select id="newCrewRole" name="newCrewRole" onChange={(e) => getSelectablePersonsByRole(e)}>
         {allCrewRoleOptions}
@@ -159,6 +159,7 @@ export const AddNewCrewMember = ({
           <select
             id="newCrewPersonId"
             name="crewPersonId"
+            aria-label="Välj befintlig person"
             onChange={(e) => setSelectedPerson(e)}
             disabled={!selectablePersonsForRole || !selectablePersonsForRole.length}
           >
@@ -166,6 +167,7 @@ export const AddNewCrewMember = ({
           </select>
         ))}
 
+      <label htmlFor="newCrewName">Namn:</label>
       <input
         className="text-input-field"
         type="text"

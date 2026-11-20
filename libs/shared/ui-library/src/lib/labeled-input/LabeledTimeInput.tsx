@@ -28,7 +28,13 @@ export const LabeledTimeInput = ({
       orientation={orientation}
       testName={testName}
     >
-      <TimeField className="date-input" value={runtime} format="HH:mm" required={required} />
+      <TimeField
+        className="date-input"
+        name={name}
+        value={runtime}
+        format="HH:mm"
+        required={required}
+      />
     </LabeledInput>
   );
 };

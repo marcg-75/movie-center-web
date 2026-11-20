@@ -75,13 +75,18 @@ export const AddCrewMember = ({ movie, crew, allCrewRoleOptions, onAddCrewMember
 
   return (
     <div>
-      <label>Lägg till medlem:</label>
+      <label htmlFor="crewRoleToAdd">Lägg till medlem:</label>
 
-      <select value={roleCodeToAdd} onChange={(e) => getSelectableCrewMembersByRole(e)}>
+      <select
+        id="crewRoleToAdd"
+        value={roleCodeToAdd}
+        onChange={(e) => getSelectableCrewMembersByRole(e)}
+      >
         {allCrewRoleOptions}
       </select>
 
       <select
+        aria-label="Välj person"
         value={crewPersonRoleIdToAdd}
         disabled={!selectableCrewMembersForRole || !selectableCrewMembersForRole.length}
         onChange={(e) => setCrewPersonRoleIdToAdd(e.target.value)}
@@ -120,7 +125,11 @@ const createSelectableCrewMembersForRole = (personRoles: PersonRoleModel[]): Rea
       </option>
     );
   });
-  options.unshift(<option key="0" value="" />);
+  options.unshift(
+    <option key="0" value="">
+      Välj person
+    </option>,
+  );
 
   return options;
 };

@@ -37,6 +37,7 @@ export const LabeledTextInput = ({
       <TextField
         type="text"
         id={htmlFor}
+        name={name}
         placeholder={placeholder}
         required={required}
         value={defaultValue}

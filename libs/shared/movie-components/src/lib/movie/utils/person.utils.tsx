@@ -94,7 +94,11 @@ export const mapToPersonOptionElements = (persons: NameEntityModel[]): ReactNode
       </option>
     );
   });
-  options.unshift(<option key={0} value="" />);
+  options.unshift(
+    <option key={0} value="">
+      Välj person
+    </option>,
+  );
 
   return options;
 };

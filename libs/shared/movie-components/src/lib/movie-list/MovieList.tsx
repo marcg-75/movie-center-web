@@ -59,19 +59,20 @@ export const MovieList = ({
                   </div>
                 )}
 
-                <div
-                  onClick={() => createMovie()}
+                <button
+                  type="button"
+                  onClick={createMovie}
                   className={
-                    'list-create-link-container' + (movies && movies.length)
-                      ? ' list-create-link-container-aligned'
-                      : ''
+                    movies?.length
+                      ? 'list-create-link-container list-create-link-container-aligned'
+                      : 'list-create-link-container'
                   }
                 >
-                  <div className="list-create-link-icon">
+                  <span className="list-create-link-icon">
                     <i className="text-pink-600 fas fa-plus-circle"></i>
-                  </div>{' '}
-                  <div className="list-create-link-text">Lägg till ny film</div>
-                </div>
+                  </span>{' '}
+                  <span className="list-create-link-text">Lägg till ny film</span>
+                </button>
               </div>
 
               {movies && movies.length > 0 && (
@@ -139,14 +140,18 @@ export const MovieList = ({
               )}
             </div>
 
-            <div className="middle-panel-navigate-bottom-to-top" onClick={() => scrollToTop()}>
+            <button
+              type="button"
+              className="middle-panel-navigate-bottom-to-top"
+              onClick={() => scrollToTop()}
+            >
               <span className="icons app-link-with-icon">
                 <i className="app-icon fas fa-chevron-circle-up back-to-top"></i>
               </span>
               <span className="text-body-small font-bold app-text middle-panel-navigate-bottom-to-top-text">
                 Tillbaka till toppen
               </span>
-            </div>
+            </button>
           </div>
         )}
       </div>

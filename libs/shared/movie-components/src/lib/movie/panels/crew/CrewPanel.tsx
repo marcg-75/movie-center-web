@@ -273,7 +273,11 @@ const createAllCrewRoleOptions = (roles: Array<SelectableModel>): ReactNode[] =>
       </option>
     );
   });
-  options.unshift(<option key="0" value="" />);
+  options.unshift(
+    <option key="0" value="">
+      Välj roll
+    </option>,
+  );
 
   return options;
 };

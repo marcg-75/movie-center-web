@@ -122,7 +122,7 @@ export const InputFields = ({ control, setValue, movieFormatInfo, formats, langu
         <Controller
           control={control}
           name="movieFormatInfo.format"
-          render={({ field: { onChange, ...field }, fieldState: { error } }) => (
+          render={({ field, fieldState: { error } }) => (
             <>
               <Select
                 {...field}

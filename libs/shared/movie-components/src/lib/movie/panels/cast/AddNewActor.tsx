@@ -132,7 +132,7 @@ export const AddNewActor = ({
 
   return (
     <div>
-      <label>Lägg till ny skådespelare:</label>
+      <label htmlFor="newActorName">Lägg till ny skådespelare:</label>
 
       {enableSelectFromAllPersons &&
         (isPersonsLoading ? (
@@ -141,6 +141,7 @@ export const AddNewActor = ({
           <select
             id="newActorPersonId"
             name="newActorPersonId"
+            aria-label="Välj befintlig skådespelare"
             value={selectedPersonId}
             onChange={(e) => setSelectedPerson(e)}
             disabled={!selectablePersons || !selectablePersons.length}
@@ -163,6 +164,7 @@ export const AddNewActor = ({
         }}
       />
 
+      <label htmlFor="newActorCharacterName">Rollnamn:</label>
       <input
         className="text-input-field"
         type="text"

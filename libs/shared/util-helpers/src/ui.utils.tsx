@@ -35,7 +35,7 @@ export const mapMultipleSelectionToText = (
     const option = options?.find((op) => op.code === selected);
     return option?.name || selected;
   }
-  return selected.map((value, idx) => {
+  return selected.map((value) => {
     const option = options?.find((op) => op.code === value);
     return option?.name || value;
   });

@@ -77,7 +77,7 @@ export class BackendClient {
         }
 
         return (await response.json()) as T;
-      } catch (ex) {
+      } catch {
         retries++;
       }
     }

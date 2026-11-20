@@ -54,18 +54,24 @@ export const AddActor = ({ movie, actors, onAddActors }: Props) => {
       );
     },
   );
-  currentActorOptions.unshift(<option key="0" value=""></option>);
+  currentActorOptions.unshift(
+    <option key="0" value="">
+      Välj skådespelare
+    </option>,
+  );
 
   return (
     <div>
-      <label>Lägg till skådespelare:</label>
+      <label htmlFor="actorPersonRoleIdToAdd">Skådespelare:</label>
       <select
+        id="actorPersonRoleIdToAdd"
         value={actorPersonRoleIdToAdd}
         onChange={(e) => setActorPersonRoleIdToAdd(e.target.value)}
       >
         {currentActorOptions}
       </select>
 
+      <label htmlFor="actorCharacterName">Rollnamn:</label>
       <input
         className="text-input-field"
         type="text"

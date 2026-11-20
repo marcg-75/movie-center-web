@@ -75,15 +75,21 @@ export const ListFilter = ({
     <div className={filterClassNames} data-test-name={testName}>
       <div className="flex filter-header">
         <div className="flex relative bg-blue-200 border border-gray-300 font-bold leading-8 uppercase cursor-pointer py-0.5 px-4 mb-[-1px] min-w-[600px] filter-header-toggle-container">
-          <span className="inline-flex items-center" onClick={() => toggleFilter()}>
+          <button
+            type="button"
+            className="inline-flex items-center uppercase font-bold"
+            aria-expanded={isVisible}
+            onClick={() => toggleFilter()}
+          >
             <i className="text-pink-600 text-title-large mr-1.5 fas fa-caret-right" /> {header}{' '}
             <i className="ml-1 far fa-question-circle" title={helpText} />
-          </span>
+          </button>
 
           <div className="inline-flex justify-between absolute right-4 filter-toggles">
             {isExtendedFilterEnabled && (
               <span className="inline-flex items-center">
                 <label className={toggleContainerClassNames}>
+                  <span className="sr-only">Utökade filter</span>
                   <input
                     type="checkbox"
                     className="peer absolute opacity-0"
@@ -93,14 +99,21 @@ export const ListFilter = ({
                   />
                   <div className={toggleButtonClassNames}></div>
                 </label>
-                <span className="pl-2.5" onClick={() => toggleExtended()}>
+                <button
+                  type="button"
+                  className="pl-2.5"
+                  aria-expanded={isExtendedVisible}
+                  onClick={() => toggleExtended()}
+                >
                   Utökad
-                </span>
+                </button>
               </span>
             )}
 
-            <span
+            <button
+              type="button"
               className="inline-flex items-center min-w-[58px] ml-12"
+              aria-expanded={isVisible}
               onClick={() => toggleFilter()}
             >
               <span>{toggleText}</span>
@@ -110,7 +123,7 @@ export const ListFilter = ({
                   'fa-angle-down': !isVisible,
                 })}
               />
-            </span>
+            </button>
           </div>
         </div>
 
