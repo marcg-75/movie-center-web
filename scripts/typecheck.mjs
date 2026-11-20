@@ -1,11 +1,12 @@
 import { readdirSync } from 'node:fs';
-import { join, relative } from 'node:path';
+import { dirname, join, relative } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 
 const root = process.cwd();
 const require = createRequire(join(root, 'package.json'));
-const tsc = require.resolve('typescript/bin/tsc');
+const typescriptPackage = require.resolve('typescript/package.json');
+const tsc = join(dirname(typescriptPackage), 'bin', 'tsc');
 const ignoredDirectories = new Set(['.git', '.next', '.nx', 'coverage', 'dist', 'node_modules']);
 const configs = [];
 
